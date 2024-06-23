@@ -760,7 +760,9 @@ button.loginUser{
 }
 .helpCenter .helpTopics div{
   padding: 25px;
-  background-image: linear-gradient(#ed174a, #853447, #e91647);
+  /* background-image: linear-gradient(#ed174a, #853447, #e91647);
+   */
+   border: 2px dotted #075eb4;
   transition: all 0.3s ease;
 }
 .helpCenter .helpTopics div:hover{
@@ -773,11 +775,11 @@ button.loginUser{
   color: #000;
 }
 .helpCenter .helpTopics svg{
-  color: #ddd1d1;
+  color: #000;
   font-size: 30px;
 }
 .helpCenter .helpTopics div h5{
-  color: #fff;
+  color: #000;
   transition: all 0.3s ease;
 }
 .helpCenter .helpTopics div h5:hover{
@@ -815,6 +817,9 @@ button.loginUser{
     grid-template-columns: repeat(4, 1fr);
     row-gap: 25px;
     column-gap: 25px;
+  }
+  footer{
+    display: none;
   }
 }
 @media screen and (max-width: 800px) {
