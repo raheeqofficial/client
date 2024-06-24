@@ -3,6 +3,8 @@
 
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css');
+@import url('https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
 
 body{font-family: "Lato", sans-serif; font-size: 14px; color: rgba(0,0,0,0.8); overflow-x: hidden; font-size: 15px;}
 
@@ -235,7 +237,7 @@ nav .navPart2 ul li:hover .submenu{opacity: 1; visibility: inherit; top: 100%;}
 .viewAllBtn svg{font-size: 20px;}
 
 
-.productItem{width: 100%; height: 450px; overflow: hidden; border: 1px solid rgba(0,0,0,0.1); cursor: pointer; position: relative; transition: all 0.2s; background: #f1f1f1; border-radius: 10px !important;
+.productItem{width: 100%; height: auto; overflow: hidden; border: 1px solid rgba(0,0,0,0.1); cursor: pointer; position: relative; transition: all 0.2s; background: #f1f1f1; border-radius: 10px !important;
   text-decoration: none; color:#000; display: block; overflow: hidden;}
 
 .productItem:hover{text-decoration: none;}
@@ -302,7 +304,31 @@ text-decoration: line-through;}
 .productItemSliderWrapper .productItemSlider{position: relative;}
 .productItemSliderWrapper::after{content: ''; width: 100%; height: 100%; z-index: 10000; position: absolute; bottom: 0px; left: 0px; opacity: 0.1; pointer-events: none; background:#000; opacity: 0.2;}
 .productItem:hover .productItemSliderWrapper .productItemSlider{}
-
+.catTabs{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.catTabs .tabsHd{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  background-image: linear-gradient(#075eb4, #6fa5db);
+  height: 120px;
+  width: 100%;
+}
+.catTabs .tabsHd h3{
+  color: #fff;
+  font-size: 40px;
+  font-weight: bold;
+  font-family: "Playwrite FR Moderne", cursive;
+}
+.catTabs .tabsHd p{
+  color: #fff;
+  font-family: "Playfair Display", serif;
+}
   .product_row{margin-left: -10px; margin-right: -10px;}
   .product_row .swiper{padding-right: 80px !important;}
 .product_row .productItem{border-right: 1px solid transparent !important;}

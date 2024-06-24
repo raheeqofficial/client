@@ -41,8 +41,9 @@ const Home = () => {
     };
 
     const selectCat = (cat) => {
-        setselectedCat(cat);
-    }
+        const decodedCat = decodeURIComponent(cat);
+        setselectedCat(decodedCat);
+    };
 
 
     useEffect(() => {
@@ -73,19 +74,28 @@ const Home = () => {
     }, [context.categoryData])
 
     const cleanCategoryName = (name) => {
-        return name.replace(/(\d+%)|('s )/g, '');
+        return decodeURIComponent(name).replace(/(\d+%)|('s )/g, '');
     };
+    // useEffect(() => {
+    //     if (selectedCat !== undefined) {
+    //         fetchDataFromApi(`/api/products?catName=${selectedCat}`).then((res) => {
+    //             setFilterData(res.products);
+    //             console.log(res.products)
+    //             console.log(selectedCat)
+    //         })
+    //     }
+
+    // }, [selectedCat]);
     useEffect(() => {
         if (selectedCat !== undefined) {
-            fetchDataFromApi(`/api/products?catName=${selectedCat}`).then((res) => {
+            const encodedCategory = encodeURIComponent(selectedCat);
+            fetchDataFromApi(`/api/products?catName=${encodedCategory}`).then((res) => {
                 setFilterData(res.products);
-                console.log(res.products)
-                // console.log(selectedCat)
-            })
+                console.log(res.products);
+            });
         }
-
     }, [selectedCat]);
-
+    
     return (
         <>
             {
@@ -115,119 +125,8 @@ const Home = () => {
                         </div>
 
                         <div className="col-md-9 productRow">
-                            <div className="d-flex align-items-center res-flex-column">
-                                <div className="info" style={{ width: "35%" }}>
-                                    <h3 className="mb-0 hd">Popular Products</h3>
-                                    <p className="text-light text-sml mb-0">Do not miss the current offers until the end of March.</p>
-                                </div>
 
-                                <div className="ml-auto res-full" style={{ width: "65%" }}>
-                                    <Tabs
-                                        value={value}
-                                        onChange={handleChange}
-                                        variant="scrollable"
-                                        scrollButtons="auto"
-                                        className="filterTabs"
-                                    >
-                                        {
-                                            context.categoryData?.map((item, index) => {
-                                                const cleanedCatName = cleanCategoryName(item.name);
-                                                return (
-                                                    <Tab className="item" label={cleanedCatName}
-                                                        onClick={() => selectCat(cleanedCatName)} />
-                                                )
-                                            })
-                                        }
-                                    </Tabs>
-                                </div>
-
-                            </div>
-
-
-                            <div className="product_row w-100 mt-2">
-                                <Swiper
-                                    slidesPerView={4}
-                                    spaceBetween={0}
-                                    navigation={true}
-                                    slidesPerGroup={context.windowWidth > 992 ? 3 : 1}
-                                    modules={[Navigation]}
-                                    className="mySwiper"
-                                    breakpoints={{
-                                        300: {
-                                            slidesPerView: 1,
-                                            spaceBetween: 5,
-                                        },
-                                        400: {
-                                            slidesPerView: 2,
-                                            spaceBetween: 5,
-                                        },
-                                        600: {
-                                            slidesPerView: 3,
-                                            spaceBetween: 5,
-                                        },
-                                        750: {
-                                            slidesPerView: 4,
-                                            spaceBetween: 5,
-                                        }
-                                    }}
-                                >
-                                    {
-                                        filterData?.length !== 0 && filterData?.slice(0)?.reverse()?.map((item, index) => {
-                                            return (
-                                                <SwiperSlide key={index}>
-                                                    <ProductItem item={item} />
-                                                </SwiperSlide>
-                                            )
-                                        })
-                                    }
-
-                                </Swiper>
-                            </div>
-
-
-                            <div className="d-flex mt-4 mb-4 bannerSec">
-                                <div className="banner">
-                                    <img src={banner3} className="cursor w-100" />
-                                </div>
-
-                                <div className="banner">
-                                    <img src={banner4} className="cursor w-100" />
-                                </div>
-
-                                <div className="banner">
-                                    <img src={banner4} className="cursor w-100" />
-                                </div>
-
-                            </div>
-
-
-
-                            <div className="d-flex align-items-center mt-3">
-                                <div className="info w-75">
-                                    <h3 className="mb-0 hd">NEW PRODUCTS</h3>
-                                    <p className="text-light text-sml mb-0">New products with updated stocks.</p>
-                                </div>
-
-                            </div>
-
-
-
-                            <div className="product_row productRow2 w-100 mt-4 d-flex">
-                                {
-                                    productsData?.products?.length !== 0 && productsData?.products?.slice(0).reverse().map((item, index) => {
-                                        return (
-                                            <ProductItem key={index} item={item} />
-                                        )
-                                    })
-                                }
-
-
-                            </div>
-
-
-
-
-                            <div className="d-flex align-items-center mt-4">
+                        <div className="d-flex align-items-center mt-4">
                                 <div className="info">
                                     <h3 className="mb-0 hd">featured products</h3>
                                     <p className="text-light text-sml mb-0">Do not miss the current offers until the end of March.</p>
@@ -277,14 +176,131 @@ const Home = () => {
                                 </Swiper>
                             </div>
 
+                           
+
+
+                            <div className="d-flex mt-4 mb-4 bannerSec">
+                                <div className="banner">
+                                    <img src={banner3} className="cursor w-100" />
+                                </div>
+
+                                <div className="banner">
+                                    <img src={banner4} className="cursor w-100" />
+                                </div>
+
+                                <div className="banner">
+                                    <img src={banner4} className="cursor w-100" />
+                                </div>
+
+                            </div>
+
+
+
+                            <div className="d-flex align-items-center mt-3">
+                                <div className="info w-75">
+                                    <h3 className="mb-0 hd">NEW PRODUCTS</h3>
+                                    <p className="text-light text-sml mb-0">New products with updated stocks.</p>
+                                </div>
+
+                            </div>
+
+                            <div className="product_row productRow2 w-100 mt-4 d-flex">
+                                {
+                                    productsData?.products?.length !== 0 && productsData?.products?.slice(0).reverse().map((item, index) => {
+                                        return (
+                                            <ProductItem key={index} item={item} />
+                                        )
+                                    })
+                                }
+
+
+                            </div>
+
+
+
+
+                            <div className="catTabs mt-4">
+                                <div className="tabsHd">
+                                    <h3 className="mb-0">#Popular Products</h3>
+                                    <p className="mb-0">Do not miss the current offers until the end of March.</p>
+                                </div>
+
+                                <div className="catTabsName">
+                                    <Tabs
+                                        value={value}
+                                        onChange={handleChange}
+                                        variant="scrollable"
+                                        scrollButtons="auto"
+                                        className="filterTabs"
+                                    >
+                                        {
+                                            context.categoryData?.map((item, index) => {
+                                                const decodedCat = decodeURIComponent(item?.name)
+                                                const cleanedCatName = cleanCategoryName(item?.name);
+
+                                                return (
+                                                    <Tab key={index} className="item" label={decodedCat}
+                                                        onClick={() => selectCat(decodedCat)} />
+                                                )
+                                            })
+                                        }
+                                    </Tabs>
+
+                                </div>
+
+                            </div>
+
+
+                            <div className="product_row productRow2 w-100 mt-4 d-flex">
+                                {/* <Swiper
+                                    slidesPerView={4}
+                                    spaceBetween={0}
+                                    navigation={true}
+                                    slidesPerGroup={context.windowWidth > 992 ? 3 : 1}
+                                    modules={[Navigation]}
+                                    className="mySwiper"
+                                    breakpoints={{
+                                        300: {
+                                            slidesPerView: 1,
+                                            spaceBetween: 5,
+                                        },
+                                        400: {
+                                            slidesPerView: 2,
+                                            spaceBetween: 5,
+                                        },
+                                        600: {
+                                            slidesPerView: 3,
+                                            spaceBetween: 5,
+                                        },
+                                        750: {
+                                            slidesPerView: 4,
+                                            spaceBetween: 5,
+                                        }
+                                    }}
+                                >
+                                    <SwiperSlide key={index}>
+                                                   
+                                                   </SwiperSlide>
+
+                                </Swiper> */}
+                                {
+                                        filterData?.length !== 0 && filterData?.slice(0)?.reverse()?.map((item, index) => {
+                                            return (
+                                                
+                                                 <ProductItem item={item} />
+                                            )
+                                        })
+                                    }
+                            </div>
+
 
 
                         </div>
 
                     </div>
-                    
+
                 </div>
-                
+
             </section>
             <section className="newsLetterSection mt-3 mb-3 d-flex align-items-center">
                 <div className="container">
