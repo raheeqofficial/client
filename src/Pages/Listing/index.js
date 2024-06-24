@@ -124,12 +124,16 @@ const Listing = () => {
 
                             <div className="showBy mt-0 mb-3 d-flex align-items-center">
                                 <div className="d-flex align-items-center btnWrapper">
-                                    <Button className={productView === 'one' && 'act'} onClick={() => setProductView('one')}><IoIosMenu />
+                                    {/* <Button className={productView === 'one' && 'act'} onClick={() => setProductView('one')}><IoIosMenu />
+                                    </Button> */}
+                                    <Button className={'act'}><IoIosMenu />
                                     </Button>
 
-                                    <Button className={productView === 'three' && 'act'} onClick={() => setProductView('three')}>
+                                    {/* <Button className={productView === 'three' && 'act'} onClick={() => setProductView('three')}>
+                                        <CgMenuGridR /></Button> */}
+                                    <Button className={'act'}>
                                         <CgMenuGridR /></Button>
-                                    <Button className={productView === 'four' && 'act'} onClick={() => setProductView('four')}><TfiLayoutGrid4Alt /></Button>
+                                    <Button className={'act'}><TfiLayoutGrid4Alt /></Button>
                                 </div>
 
                                 <div className="ml-auto showByFilter">

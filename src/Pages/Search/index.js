@@ -16,6 +16,7 @@ import { fetchDataFromApi } from "../../utils/api";
 import CircularProgress from '@mui/material/CircularProgress';
 import { FaFilter } from "react-icons/fa";
 import { MyContext } from "../../App";
+import { BsEmojiDizzy } from "react-icons/bs";
 
 const SearchPage = () => {
 
@@ -89,12 +90,12 @@ const SearchPage = () => {
 
                             <div className="showBy mt-0 mb-3 d-flex align-items-center">
                                 <div className="d-flex align-items-center btnWrapper">
-                                    <Button className={productView === 'one' && 'act'} onClick={() => setProductView('one')}><IoIosMenu />
+                                    <Button className={'act'}><IoIosMenu />
                                     </Button>
 
-                                    <Button className={productView === 'three' && 'act'} onClick={() => setProductView('three')}>
+                                    <Button className={'act'}>
                                         <CgMenuGridR /></Button>
-                                    <Button className={productView === 'four' && 'act'} onClick={() => setProductView('four')}><TfiLayoutGrid4Alt /></Button>
+                                    <Button className={'act'}><TfiLayoutGrid4Alt /></Button>
                                 </div>
 
                                 <div className="ml-auto showByFilter">
@@ -119,33 +120,39 @@ const SearchPage = () => {
                                 </div>
                             </div>
 
-
-                            <div className="productListing">
-                                {
-                                    isLoading === true ?
-                                        <div className="loading d-flex align-items-center justify-content-center">
-                                            <CircularProgress color="inherit" />
-                                        </div>
-                                        :
-
-                                        <>
-                                            {
-                                                productData?.length !== 0 && productData?.map((item, index) => {
-                                                    return (
-                                                        <>
-                                                        <ProductItem key={index} itemView={productView} item={item} />
-                                                        </>
-                                                        
-                                                    )
-                                                })
-                                            }
-                                        </>
-
-                                }
-
-
-
-                            </div>
+                            {
+                                                productData?.length === 0 ? <div className="no-result">
+                                                    <BsEmojiDizzy /> &nbsp;
+                                                    <p className="mb-0 ml-2">No data found</p>
+                                                </div> : (
+                                                    <div className="productListing-data">
+                                                    {
+                                                        isLoading === true ?
+                                                            <div className="loading d-flex align-items-center justify-content-center">
+                                                                <CircularProgress color="inherit" />
+                                                            </div>
+                                                            :
+                    
+                                                            <>
+                                                                {
+                                                                    productData?.length !== 0 && productData?.map((item, index) => {
+                                                                        return (
+                                                                            <>
+                                                                                <ProductItem key={index} itemView={productView} item={item} />
+                                                                            </>
+                    
+                                                                        )
+                                                                    })
+                                                                }
+                                                            </>
+                    
+                                                    }
+                    
+                    
+                    
+                                                </div>
+                                                ) }
+                           
 
 
 
