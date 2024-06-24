@@ -6,12 +6,23 @@ import { Link } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-
+import { useState } from "react";
+import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import Fade from '@mui/material/Fade';
+import AddIcon from '@mui/icons-material/Add';
+import { BiMinus } from "react-icons/bi";
+import { FacebookRounded } from "@mui/icons-material";
 
 const Footer = () => {
+    const [expanded, setExpanded] = useState(false);
+
+    const handleExpansion = () => {
+        setExpanded((prevExpanded) => !prevExpanded);
+    };
     return (
         <>
-            
+
             <footer>
                 <div className="container">
                     <div className="topInfo row">
@@ -127,6 +138,93 @@ const Footer = () => {
 
                 </div>
             </footer>
+            <div className="mb-footer">
+                <div className="mb-accordian">
+                <Accordion
+                    expanded={expanded}
+                    onChange={handleExpansion}
+                    slots={{ transition: Fade }}
+                    slotProps={{ transition: { timeout: 400 } }}
+                    sx={{
+                        '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
+                        '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
+                    }}
+                >
+                    <AccordionSummary
+                        expandIcon={expanded  === true ? <BiMinus /> : <AddIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                    >
+                        <Typography>Custom transition using Fade</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion
+                    expanded={expanded}
+                    onChange={handleExpansion}
+                    slots={{ transition: Fade }}
+                    slotProps={{ transition: { timeout: 400 } }}
+                    sx={{
+                        '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
+                        '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
+                    }}
+                >
+                    <AccordionSummary
+                        expandIcon={expanded  === true ? <BiMinus /> : <AddIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                    >
+                        <Typography>Custom transition using Fade</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                <Accordion
+                    expanded={expanded}
+                    onChange={handleExpansion}
+                    slots={{ transition: Fade }}
+                    slotProps={{ transition: { timeout: 400 } }}
+                    sx={{
+                        '& .MuiAccordion-region': { height: expanded ? 'auto' : 0 },
+                        '& .MuiAccordionDetails-root': { display: expanded ? 'block' : 'none' },
+                    }}
+                >
+                    <AccordionSummary
+                        expandIcon={expanded  === true ? <BiMinus /> : <AddIcon />}
+                        aria-controls="panel1-content"
+                        id="panel1-header"
+                    >
+                        <Typography>Custom transition using Fade</Typography>
+                    </AccordionSummary>
+                    <AccordionDetails>
+                        <Typography>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+                            malesuada lacus ex, sit amet blandit leo lobortis eget.
+                        </Typography>
+                    </AccordionDetails>
+                </Accordion>
+                </div>
+                <div className="mb-copyright">
+                <div className="mb-social">
+                    <Link to={'#'}><FacebookRounded/></Link>
+                    <Link to={'#'}><FacebookRounded/></Link>
+                    <Link to={'#'}><FacebookRounded/></Link>
+                    <Link to={'#'}><FacebookRounded/></Link>
+                </div>
+                <div className="mb-cr-txt">
+                    <p>Made by Raheeq. All rights reserved</p>
+                </div>
+                </div>
+            </div>
         </>
     )
 }

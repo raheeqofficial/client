@@ -12,7 +12,7 @@ const HomeCat = (props) => {
     const context = useContext(MyContext);
 
     return (
-        <section className="homeCat pb-2">
+        <section className="homeCat">
             <div className="container">
             <h3 className="mb-3 hd text-center">Featured Categories</h3>
             <div className="homeCatBox">
@@ -24,8 +24,8 @@ const HomeCat = (props) => {
                                 <Link to={`/products/category/${cat.id}`} key={index}>
                                 <div className="item text-center cursor" style={{ background: cat.color }}>
                                     <img src={cat.images[0]} />
-                                    <h6>{cat.name?.substr(0, 20) + "..."}</h6>
                                 </div>
+                                <h6>{cat?.name.length > 17 ? cat?.name.substr(0,15) + '...' : cat?.name}</h6>
                             </Link>
                                     
                             )
