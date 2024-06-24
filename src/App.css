@@ -885,8 +885,8 @@ button.loginUser{
 }
 @media screen and (max-width: 650px) {
   .homeCat{
-    margin: 10px;
-    padding: 30px 10px;
+    margin: 0px !important;
+    padding: 30px 20px;
   }
   /* .homeCatBox{
     grid-template-columns: repeat(2, 1fr);
@@ -895,7 +895,12 @@ button.loginUser{
   .homeCat a{
     width: 120px;
     height: 120px;
+    gap: 0px;
+    /* padding: 0px; */
     margin-bottom: 30px;
+  }
+  .homeCat .container{
+    padding: 0px !important;
   }
   .homeCat .item{
     width: 100%;
