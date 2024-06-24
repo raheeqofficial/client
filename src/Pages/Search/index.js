@@ -82,7 +82,7 @@ const SearchPage = () => {
         <>
             <section className="product_Listing_Page">
                 <div className="container">
-                    <div className="productListing d-flex">
+                    <div className="productListing">
                         {/* <Sidebar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating}  isOpenFilter={isOpenFilter} /> */}
 
                         <div className="content_right">

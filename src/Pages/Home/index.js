@@ -204,7 +204,7 @@ const Home = () => {
 
                             </div>
 
-                            <div className="product_row productRow2 w-100 mt-4 d-flex">
+                            <div className="product_row productRow2 w-100 mt-4">
                                 {
                                     productsData?.products?.length !== 0 && productsData?.products?.slice(0).reverse().map((item, index) => {
                                         return (
@@ -251,7 +251,7 @@ const Home = () => {
                             </div>
 
 
-                            <div className="product_row productRow2 w-100 mt-4 d-flex">
+                            <div className="product_row productRow2 w-100 mt-4">
                                 {/* <Swiper
                                     slidesPerView={4}
                                     spaceBetween={0}

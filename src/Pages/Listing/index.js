@@ -117,7 +117,7 @@ const Listing = () => {
         <>
             <section className="product_Listing_Page">
                 <div className="container">
-                    <div className="productListing d-flex  w-100">
+                    <div className="productListing w-100">
                         {/* <Sidebar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating} isOpenFilter={isOpenFilter} /> */}
 
                         <div className="content_right">
@@ -155,7 +155,7 @@ const Listing = () => {
                             </div>
 
 
-                            <div className="productListing">
+                            <div className="productListing-data">
                                 {
                                     isLoading === true ?
                                         <div className="loading d-flex align-items-center justify-content-center">

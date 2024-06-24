@@ -189,25 +189,24 @@ const ProductItem = (props) => {
                 </div>
 
                 <div className="info">
+                    <div className='infoWrapper'>
                     <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.prodId : props.item?.id}`}><h4>{props?.item?.name?.substr(0, 30) + '...'}</h4></Link>
 
-                    {
-                        props?.item?.countInStock>=1 ?  <span className="text-success d-block">In Stock</span>
-                        :
+{
+    props?.item?.countInStock>=1 ?  <span className="text-success d-block">In Stock</span>
+    :
 
-                        <span className="text-danger d-block">Out of Stock</span>
+    <span className="text-danger d-block">Out of Stock</span>
 
-                    }
-                   
-                    <Rating className="mt-2 mb-2" name="read-only" value={props?.item?.rating} readOnly size="small" precision={0.5} />
+}
 
-                    <div className="d-flex">
-                        <span className="oldPrice">Rs {props?.item?.oldPrice}</span>
-                        <span className="netPrice text-danger ml-2">Rs {props?.item?.price}</span>
+<Rating className="info-rating" name="read-only" value={props?.item?.rating} readOnly size="small" precision={0.5} />
+
+<div className="d-flex">
+    <span className="oldPrice">Rs {props?.item?.oldPrice}</span>
+    <span className="netPrice text-danger ml-2">Rs {props?.item?.price}</span>
+</div>
                     </div>
-
-
-                   
                 </div>
 
             </div>
