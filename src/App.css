@@ -85,6 +85,9 @@ button {
   font-weight: 600 !important;
   padding: 5px 20px !important;
 }
+.smBtn{
+  display: none;
+}
 
 .bg-red {
   background: #ed174a !important;
@@ -202,6 +205,12 @@ button {
   margin-top: 195px !important;
 }
 
+.headerWrapper .row{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px  20px;
+}
 .headerWrapper .top-strip {
   padding: 8px 0px;
 }
@@ -219,6 +228,7 @@ button {
 .logoWrapper img {
   width: 100%;
 }
+
 
 .headerWrapper .header .part2 .countryDrop {
   width: 170px;
@@ -264,10 +274,10 @@ button {
 }
 
 .headerSearchWrapper {
-  width: 78%;
+  width: 100%;
 }
 .headerSearch {
-  width: 90%;
+  width: 550px;
   height: 50px;
   background: #e7e7e7;
   padding: 5px;
@@ -2364,6 +2374,12 @@ button.loginUser {
   .accordianBox{
     padding: 0px !important;
   }
+  .lgBtn{
+    display: none;
+  }
+  .smBtn{
+    display: block;
+  }
 }
 @media screen and (max-width: 650px) {
   .homeCat {
@@ -2470,6 +2486,9 @@ button.loginUser {
   .catTabs .tabsHd h3 {
     font-size: 20px;
     margin-top: 4px;
+  }
+  .logoWrapper h1{
+    font-size: 22px !important;
   }
   .catTabs .tabsHd p {
     font-size: 15px;

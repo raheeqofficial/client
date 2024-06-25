@@ -93,12 +93,12 @@ const Header = () => {
                     <header className="header">
                         <div className="container">
                             <div className="row">
-                                <div className="logoWrapper d-flex align-items-center col-sm-2">
+                                <div className="logoWrapper d-flex align-items-center">
                                     {/* <Link to={'/'}><img src={Logo} alt='Logo' /></Link> */}
                                     <Link to={'/'}><h1>Raheeq</h1></Link>
                                 </div>
 
-                                <div className='col-sm-10 d-flex align-items-center part2'>
+                                <div className=' d-flex align-items-center part2'>
 
                                     {/* {
                                         context.countryList.length !== 0 && context.windowWidth > 992 && <CountryDropdown />

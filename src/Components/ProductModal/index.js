@@ -9,8 +9,10 @@ import { MdOutlineCompareArrows } from "react-icons/md";
 import { MyContext } from '../../App';
 import ProductZoom from '../ProductZoom';
 import { IoCartSharp } from "react-icons/io5";
-import { editData, fetchDataFromApi, postData } from '../../utils/api';
+import { fetchDataFromApi, postData } from '../../utils/api';
 import { FaHeart } from "react-icons/fa";
+import { CircularProgress } from '@mui/material';
+import { AiOutlineShoppingCart } from "react-icons/ai";
 
 
 const ProductModal = (props) => {
@@ -18,16 +20,43 @@ const ProductModal = (props) => {
     const [productQuantity, setProductQuantity] = useState();
     const [chengeQuantity, setchengeQuantity] = useState(0);
     let [cartFields, setCartFields] = useState({});
+    
+    const [activeWeight, setActiveWeight] = useState(null);
+    const [activeColor, setActiveColor] = useState(null);
+    const [activeRam, setActiveRam] = useState(null);
+    const [activeTabs, setActiveTabs] = useState(0);
     const [isLoading, setIsLoading] = useState(false);
     const [activeSize, setActiveSize] = useState(null);
-    const [tabError, setTabError] = useState(false);
     const [isAddedToMyList, setSsAddedToMyList] = useState(false);
+    const [tabError, setTabError] = useState(false);
+    const [weightTabError, setWeightTabError] = useState(false);
+    const [colorTabError, setColorTabError] = useState(false);
+    const [ramTabError, setRamTabError] = useState(false);
 
     const context = useContext(MyContext);
+    const isActiveSize = (index) => {
+        setActiveSize(index);
+        setTabError(false);
+    }
+    const isActiveWeight = (index) => {
+        setActiveWeight(index)
+        setWeightTabError(false);
+    }
+    const isActiveColor = (index) => {
+        setActiveColor(index)
+        setColorTabError(false);
+    }
+    const isActiveRam = (index) => {
+        setActiveRam(index)
+        setRamTabError(false);
+    }
 
     useEffect(() => {
         if (props?.data?.productRam.length === 0 && props?.data?.productWeight.length === 0 && props?.data?.size.length === 0) {
             setActiveSize(1);
+                setActiveRam(1);
+                setActiveWeight(1);
+                setActiveColor(1);
         }
 
         const user = JSON.parse(localStorage.getItem("user"));
@@ -79,16 +108,50 @@ const ProductModal = (props) => {
     // }
 
 
-    const addtoCart = () => {
+    // const addtoCart = () => {
 
-        if (activeSize !== null) {
+    //     if (activeSize !== null) {
+    //         const user = JSON.parse(localStorage.getItem("user"));
+
+    //         cartFields.productTitle = props?.data?.name
+    //         cartFields.productSize = props?.data?.size
+    //         cartFields.productWeight = props?.data?.productWeight
+    //         cartFields.productColor = props?.data?.color
+    //         cartFields.productRam = props?.data?.productRam
+    //         cartFields.image = props?.data?.images[0]
+    //         cartFields.rating = props?.data?.rating
+    //         cartFields.price = props?.data?.price
+    //         cartFields.quantity = productQuantity
+    //         cartFields.subTotal = parseInt(props?.data?.price * productQuantity)
+    //         cartFields.productId = props?.data?.id
+    //         cartFields.userId = user?.userId
+
+
+    //         context.addToCart(cartFields);
+    //     } else {
+    //         setTabError(true);
+    //     }
+
+    // }
+    const addtoCart = () => {
+        const hasSize = props?.data?.size?.length > 0 
+        const hasRam = props?.data?.productRam?.length > 0;
+        const hasWeight = props?.data?.productWeight?.length > 0;
+        const hasColor = props?.data?.color?.length > 0;
+    
+        if ((hasSize && activeSize !== null) || (hasWeight && activeWeight !== null) || (hasColor && activeColor !== null) || (hasRam && activeRam !== null)) {
             const user = JSON.parse(localStorage.getItem("user"));
+            const selectedSize = props?.data?.size?.length !== 0 ? props?.data.size[activeSize] : null
+            const selectedWeight = props?.data?.productWeight?.length !== 0 ? props?.data.productWeight[activeWeight] : null
+            const selectedColor = props?.data?.color?.length !== 0 ? props?.data.color[activeColor] : null
+            const selectedRam = props?.data?.productRam?.length !== 0 ? props?.data.productRam[activeRam] : null
+
 
             cartFields.productTitle = props?.data?.name
-            cartFields.productSize = props?.data?.size
-            cartFields.productWeight = props?.data?.productWeight
-            cartFields.productColor = props?.data?.color
-            cartFields.productRam = props?.data?.productRam
+            cartFields.productSize = selectedSize
+            cartFields.productWeight = selectedWeight
+            cartFields.productRam = selectedRam
+            cartFields.productColor = selectedColor
             cartFields.image = props?.data?.images[0]
             cartFields.rating = props?.data?.rating
             cartFields.price = props?.data?.price
@@ -100,7 +163,10 @@ const ProductModal = (props) => {
 
             context.addToCart(cartFields);
         } else {
-            setTabError(true);
+            setTabError(!hasSize || activeSize === null);
+            setColorTabError(!hasColor || activeColor === null);
+            setWeightTabError(!hasWeight || activeWeight === null);
+            setRamTabError(!hasRam || activeRam === null);
         }
 
     }
@@ -187,11 +253,11 @@ const ProductModal = (props) => {
                             props?.data?.productRam?.length !== 0 &&
                             <div className='productSize d-flex align-items-center'>
                                 <span>RAM:</span>
-                                <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
+                                <ul className={`list list-inline mb-0 pl-4 ${ramTabError === true && 'error'}`}>
                                     {
                                         props?.data?.productRam?.map((item, index) => {
                                             return (
-                                                <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActive(index)}>{item}</a></li>
+                                                <li className='list-inline-item'><a className={`tag ${activeRam === index ? 'active' : ''}`} onClick={() => isActiveRam(index)}>{item}</a></li>
                                             )
                                         })
                                     }
@@ -209,7 +275,7 @@ const ProductModal = (props) => {
                                     {
                                         props?.data?.size?.map((item, index) => {
                                             return (
-                                                <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActive(index)}>{item}</a></li>
+                                                <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActiveSize(index)}>{item}</a></li>
                                             )
                                         })
                                     }
@@ -223,11 +289,11 @@ const ProductModal = (props) => {
                             props?.data?.productWeight?.length !== 0 &&
                             <div className='productSize d-flex align-items-center'>
                                 <span>Weight:</span>
-                                <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
+                                <ul className={`list list-inline mb-0 pl-4 ${weightTabError === true && 'error'}`}>
                                     {
                                         props?.data?.productWeight?.map((item, index) => {
                                             return (
-                                                <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActive(index)}>{item}</a></li>
+                                                <li className='list-inline-item'><a className={`tag ${activeWeight === index ? 'active' : ''}`} onClick={() => isActiveWeight(index)}>{item}</a></li>
                                             )
                                         })
                                     }
@@ -235,17 +301,41 @@ const ProductModal = (props) => {
                                 </ul>
                             </div>
                         }
+                        {
+                                props?.data?.color?.length !== 0 &&
+                                <div className='productSize d-flex align-items-center'>
+                                    <span>Color:</span>
+                                    <ul className={`list list-inline mb-0 pl-4 ${colorTabError === true && 'error'}`}>
+                                        {
+                                            props?.data?.color?.map((item, index) => {
+                                                return (
+                                                    <li className='list-inline-item'><a className={`tag ${activeColor === index ? 'active' : ''}`} onClick={() => isActiveColor(index)}>{item}</a></li>
+                                                )
+                                            })
+                                        }
 
+                                    </ul>
+                                </div>
+                            }
 
 
                         <div className='d-flex align-items-center'>
                             <QuantityBox quantity={quantity} item={props?.data} />
 
-                            <Button className='btn-blue bg-red btn-lg btn-big btn-round ml-3' onClick={() => addtoCart()}><IoCartSharp />
+                            <div className='lgBtn'>
+                            <Button className=' btn-blue bg-red btn-lg btn-big btn-round ml-3' onClick={() => addtoCart()}><IoCartSharp />
                                 {
                                     context.addingInCart === true ? "adding..." : " Add to cart"
                                 }
                             </Button>
+                            </div>
+                            <div className='smBtn'>
+                            <Button className=' btn-blue bg-red btn-lg btn-big btn-round ml-3' onClick={() => addtoCart()}><IoCartSharp />
+                                {
+                                    context.addingInCart === true && <AiOutlineShoppingCart/>
+                                }
+                            </Button>
+                            </div>
                         </div>
 
 
