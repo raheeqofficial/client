@@ -1,6 +1,5 @@
 @media only screen and (min-width:320px) and (max-width:992px){
   body,html{overflow-x: hidden;}
-  body{padding-bottom: 45px !important;}
   .res-hide{display: none !important;}
 
   .container{max-width: 100% !important ;}
@@ -77,9 +76,9 @@
   footer .topInfo::-webkit-scrollbar{display: none !important;}
   footer .topInfo .col{width: 250px !important; max-width: 250px !important; flex: 0 0 250px !important; display: inline-block !important;}
 
-  footer .linksWrap{display: block !important; white-space: nowrap !important; overflow: scroll !important; overflow-y: hidden !important;}
+  /* footer .linksWrap{display: block !important; white-space: nowrap !important; overflow: scroll !important; overflow-y: hidden !important;}
   footer .linksWrap::-webkit-scrollbar{display: none !important;}
-  footer .linksWrap .col{width: 250px !important; max-width: 250px !important; flex: 0 0 250px !important; display: inline-block !important;}
+  footer .linksWrap .col{width: 250px !important; max-width: 250px !important; flex: 0 0 250px !important; display: inline-block !important;} */
 
   .headerWrapperFixed + section{margin-top: 140px !important;}
 

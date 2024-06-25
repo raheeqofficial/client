@@ -127,6 +127,7 @@ const Home = () => {
 
                         <div className="col-md-9 productRow">
 
+                            <div className="featuredProducts">
                             <div className="d-flex align-items-center mt-4">
                                 <div className="info">
                                     <h3 className="mb-0 hd">featured products</h3>
@@ -188,6 +189,7 @@ const Home = () => {
 
 
                             </div>
+                            </div>
 
 
 
@@ -208,6 +210,7 @@ const Home = () => {
 
 
 
+                            <div className="newProducts">
                             <div className="d-flex align-items-center mt-3">
                                 <div className="info w-75">
                                     <h3 className="mb-0 hd">NEW PRODUCTS</h3>
@@ -227,10 +230,12 @@ const Home = () => {
 
 
                             </div>
+                            </div>
 
 
 
 
+                            <div className="popularProducts">
                             <div className="catTabs mt-4">
                                 <div className="tabsHd">
                                     <h3 className="mb-0">#Popular Products</h3>
@@ -238,7 +243,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="catTabsName">
-                                <Box sx={{ maxWidth: { xs: 420, sm: 780 }, bgcolor: 'background.paper' }}>
+                                <Box sx={{ maxWidth: { xs: 350, sm: 680 }, bgcolor: 'background.paper' }}>
                                     <Tabs
                                         value={value}
                                         onChange={handleChange}
@@ -304,6 +309,7 @@ const Home = () => {
                                         )
                                     })
                                 }
+                            </div>
                             </div>
 
 
