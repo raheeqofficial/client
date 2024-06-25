@@ -3,6 +3,7 @@ import { CiDeliveryTruck } from "react-icons/ci";
 import { Accordion, AccordionDetails, AccordionSummary } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { questionData } from '../../data/customerQuestion';
+import { GrMapLocation } from "react-icons/gr";
 
 const HelpCenter = () => {
 
@@ -14,38 +15,78 @@ const HelpCenter = () => {
       <div className="helpTopics">
         <div>
           <Link to={'/help-center/shipping-delivery'}>
-          <CiDeliveryTruck/>
+          {/* <CiDeliveryTruck/> */}
+          <img width="48" height="48" src="https://img.icons8.com/color/48/delivery--v1.png" alt="delivery--v1"/>
           <h5>Shipping and Delivery</h5>
           </Link>
         </div>
         <div>
           <Link to={'#'}>
-          <CiDeliveryTruck/>
+          {/* <GrMapLocation/> */}
+          <img width="48" height="48" src="https://img.icons8.com/color/48/place-marker--v1.png" alt="place-marker--v1"/>
+          <h5>Track My Order</h5>
+          </Link>
+        </div>
+        <div>
+          <Link to={'#'}>
+          <img width="48" height="48" src="https://img.icons8.com/pulsar-gradient/48/coin-in-hand.png" alt="coin-in-hand"/>
+          <h5>Returns My Order</h5>
+          </Link>
+        </div>
+        <div>
+          <Link to={'#'}>
+          <img width="48" height="48" src="https://img.icons8.com/color/48/cancel-order.png" alt="cancel-order"/>
+          <h5>Cancel My Order</h5>
+          </Link>
+        </div>
+        <div>
+          <Link to={'#'}>
+          <img width="48" height="48" src="https://img.icons8.com/bubbles/50/guest-male.png" alt="guest-male"/>
+          <h5>My Account</h5>
+          </Link>
+        </div>
+        <div>
+          <Link to={'#'}>
+          <img width="48" height="48" src="https://img.icons8.com/fluency/48/lock-orientation.png" alt="lock-orientation"/>
+          <h5>Reset Password</h5>
+          </Link>
+        </div>
+      </div>
+      <div className="helpTopics-mb">
+        <div>
+          <Link to={'/help-center/shipping-delivery'}>
+          <img width="48" height="48" src="https://img.icons8.com/color/48/delivery--v1.png" alt="delivery--v1"/>
           <h5>Shipping and Delivery</h5>
           </Link>
         </div>
         <div>
           <Link to={'#'}>
-          <CiDeliveryTruck/>
-          <h5>Shipping and Delivery</h5>
+          <img width="48" height="48" src="https://img.icons8.com/color/48/place-marker--v1.png" alt="place-marker--v1"/>
+          <h5>Track My Order</h5>
           </Link>
         </div>
         <div>
           <Link to={'#'}>
-          <CiDeliveryTruck/>
-          <h5>Shipping and Delivery</h5>
+          <img width="48" height="48" src="https://img.icons8.com/pulsar-gradient/48/coin-in-hand.png" alt="coin-in-hand"/>
+          <h5>Returns My Order</h5>
           </Link>
         </div>
         <div>
           <Link to={'#'}>
-          <CiDeliveryTruck/>
-          <h5>Shipping and Delivery</h5>
+          <img width="48" height="48" src="https://img.icons8.com/color/48/cancel-order.png" alt="cancel-order"/>
+          <h5>Cancel My Order</h5>
           </Link>
         </div>
         <div>
           <Link to={'#'}>
-          <CiDeliveryTruck/>
-          <h5>Shipping and Delivery</h5>
+          <img width="48" height="48" src="https://img.icons8.com/bubbles/50/guest-male.png" alt="guest-male"/>
+          <h5>My Account</h5>
+          </Link>
+        </div>
+        <div>
+          <Link to={'#'}>
+          <img width="48" height="48" src="https://img.icons8.com/fluency/48/lock-orientation.png" alt="lock-orientation"/>
+          <h5>Reset Password</h5>
           </Link>
         </div>
       </div>

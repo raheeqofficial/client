@@ -81,6 +81,13 @@ const Header = () => {
 
     return (
         <>
+        <div className='header-top'>
+            <ul>
+                <li><Link>Become a seller</Link></li>
+                <li><Link>Become a investor</Link></li>
+                <li><Link>Faq</Link></li>
+            </ul>
+        </div>
             <div ref={headerRef}>
                 <div className="headerWrapper">
                     <header className="header">
