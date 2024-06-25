@@ -20,6 +20,7 @@ import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
 import newsLetterImg from '../../assets/images/newsletter.png';
 import { IoMailOutline } from "react-icons/io5";
+import { Box } from "@mui/material";
 
 
 
@@ -95,7 +96,7 @@ const Home = () => {
             });
         }
     }, [selectedCat]);
-    
+
     return (
         <>
             {
@@ -126,7 +127,7 @@ const Home = () => {
 
                         <div className="col-md-9 productRow">
 
-                        <div className="d-flex align-items-center mt-4">
+                            <div className="d-flex align-items-center mt-4">
                                 <div className="info">
                                     <h3 className="mb-0 hd">featured products</h3>
                                     <p className="text-light text-sml mb-0">Do not miss the current offers until the end of March.</p>
@@ -136,7 +137,7 @@ const Home = () => {
                             </div>
 
 
-                            <div className="product_row w-100 mt-2">
+                            {/* <div className="product_row w-100 mt-2">
                                 <Swiper
                                     slidesPerView={4}
                                     spaceBetween={0}
@@ -174,9 +175,20 @@ const Home = () => {
                                     }
 
                                 </Swiper>
+                            </div> */}
+
+                            <div className="product_row productRow2 w-100 mt-4">
+                                {
+                                    featuredProducts?.length !== 0 && featuredProducts?.slice(0)?.reverse()?.map((item, index) => {
+                                        return (
+                                            <ProductItem key={index} item={item} />
+                                        )
+                                    })
+                                }
+
+
                             </div>
 
-                           
 
 
                             <div className="d-flex mt-4 mb-4 bannerSec">
@@ -226,6 +238,7 @@ const Home = () => {
                                 </div>
 
                                 <div className="catTabsName">
+                                <Box sx={{ maxWidth: { xs: 420, sm: 780 }, bgcolor: 'background.paper' }}>
                                     <Tabs
                                         value={value}
                                         onChange={handleChange}
@@ -245,13 +258,13 @@ const Home = () => {
                                             })
                                         }
                                     </Tabs>
-
+                                </Box>
                                 </div>
 
                             </div>
 
 
-                            <div className="product_row productRow2 w-100 mt-4">
+                            <div className="product_row productRow2 w-100 mt-4 mb-3">
                                 {/* <Swiper
                                     slidesPerView={4}
                                     spaceBetween={0}
@@ -284,13 +297,13 @@ const Home = () => {
 
                                 </Swiper> */}
                                 {
-                                        filterData?.length !== 0 && filterData?.slice(0)?.reverse()?.map((item, index) => {
-                                            return (
-                                                
-                                                 <ProductItem item={item} />
-                                            )
-                                        })
-                                    }
+                                    filterData?.length !== 0 && filterData?.slice(0)?.reverse()?.map((item, index) => {
+                                        return (
+
+                                            <ProductItem item={item} />
+                                        )
+                                    })
+                                }
                             </div>
 
 
