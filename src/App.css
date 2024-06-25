@@ -2269,6 +2269,7 @@ button.loginUser {
   .featuredProducts,
   .popularProducts {
     padding: 0px 15px !important;
+    padding-right: 0px !important;
   }
   .productItem {
     width: 100%;
@@ -2298,6 +2299,9 @@ button.loginUser {
   }
   .productItem .info .infoWrapper span {
     font-size: 10px !important;
+  }
+  .accordianBox{
+    padding: 20px !important;
   }
 }
 @media screen and (max-width: 800px) {
@@ -2357,6 +2361,9 @@ button.loginUser {
     color: #000;
     text-align: center;
   }
+  .accordianBox{
+    padding: 0px !important;
+  }
 }
 @media screen and (max-width: 650px) {
   .homeCat {
@@ -2401,6 +2408,9 @@ button.loginUser {
   }
   .helpMsg h1 {
     font-size: 16px;
+  }
+  .helpCenterWrapper{
+    margin: 0px 10px;
   }
 }
 @media screen and (max-width: 575px) {
