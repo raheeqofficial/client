@@ -26,6 +26,7 @@ import Success from "./Pages/success/Success";
 import HelpCenterApp from "./Pages/Help center";
 import ShippingAndDelivery from "./Pages/Help center/ShippingAndDelivery";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
+import BecomeSeller from "./Pages/BecomeAseller/BecomeSeller";
 
 const MyContext = createContext();
 
@@ -254,6 +255,7 @@ function App() {
           <Route exact={true} path="/my-account" element={<MyAccount />} />
           <Route exact={true} path="/search" element={<SearchPage />} />
           <Route exact={true} path="/success" element={<Success />} />
+          <Route exact={true} path="/become-seller" element={<BecomeSeller />} />
           <Route exact={true} path="/help-center" element={<HelpCenterApp />} />
           <Route exact={true} path="/help-center/shipping-delivery" element={<ShippingAndDelivery />} />
         </Routes>

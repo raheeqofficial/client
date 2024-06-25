@@ -169,7 +169,7 @@ const ProductDetails = () => {
         const hasWeight = productData?.productWeight?.length > 0;
         const hasColor = productData?.color?.length > 0;
     
-        if ((hasSize && activeSize !== null) || (hasWeight && activeWeight !== null) || (hasColor && activeColor !== null) || (hasRam && activeRam !== null)) {
+        if (((hasSize && activeSize !== null) && (hasColor && activeColor !== null) ) || (hasWeight && activeWeight !== null)  || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
             const user = JSON.parse(localStorage.getItem("user"));
             const selectedSize = productData?.size?.length !== 0 ? productData.size[activeSize] : null
             const selectedWeight = productData?.productWeight?.length !== 0 ? productData.productWeight[activeWeight] : null

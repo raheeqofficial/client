@@ -83,7 +83,7 @@ const Header = () => {
         <>
         <div className='header-top'>
             <ul>
-                <li><Link>Become a seller</Link></li>
+                <li><Link to={'/become-seller'}>Become a seller</Link></li>
                 <li><Link>Become a investor</Link></li>
                 <li><Link>Faq</Link></li>
             </ul>

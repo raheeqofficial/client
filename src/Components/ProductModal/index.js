@@ -108,38 +108,13 @@ const ProductModal = (props) => {
     // }
 
 
-    // const addtoCart = () => {
-
-    //     if (activeSize !== null) {
-    //         const user = JSON.parse(localStorage.getItem("user"));
-
-    //         cartFields.productTitle = props?.data?.name
-    //         cartFields.productSize = props?.data?.size
-    //         cartFields.productWeight = props?.data?.productWeight
-    //         cartFields.productColor = props?.data?.color
-    //         cartFields.productRam = props?.data?.productRam
-    //         cartFields.image = props?.data?.images[0]
-    //         cartFields.rating = props?.data?.rating
-    //         cartFields.price = props?.data?.price
-    //         cartFields.quantity = productQuantity
-    //         cartFields.subTotal = parseInt(props?.data?.price * productQuantity)
-    //         cartFields.productId = props?.data?.id
-    //         cartFields.userId = user?.userId
-
-
-    //         context.addToCart(cartFields);
-    //     } else {
-    //         setTabError(true);
-    //     }
-
-    // }
     const addtoCart = () => {
         const hasSize = props?.data?.size?.length > 0 
         const hasRam = props?.data?.productRam?.length > 0;
         const hasWeight = props?.data?.productWeight?.length > 0;
         const hasColor = props?.data?.color?.length > 0;
     
-        if ((hasSize && activeSize !== null) || (hasWeight && activeWeight !== null) || (hasColor && activeColor !== null) || (hasRam && activeRam !== null)) {
+        if (((hasSize && activeSize !== null) && (hasColor && activeColor !== null) ) || (hasWeight && activeWeight !== null)  || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
             const user = JSON.parse(localStorage.getItem("user"));
             const selectedSize = props?.data?.size?.length !== 0 ? props?.data.size[activeSize] : null
             const selectedWeight = props?.data?.productWeight?.length !== 0 ? props?.data.productWeight[activeWeight] : null
@@ -319,7 +294,7 @@ const ProductModal = (props) => {
                             }
 
 
-                        <div className='d-flex align-items-center'>
+                        <div className='qc-box d-flex align-items-center'>
                             <QuantityBox quantity={quantity} item={props?.data} />
 
                             <div className='lgBtn'>
