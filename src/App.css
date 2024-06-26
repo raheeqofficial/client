@@ -329,8 +329,8 @@ header .part3 .circle svg {
   width: 25px !important;
   height: 25px !important;
 }
-.headerSearch button.MuiButtonBase-root{
-  display: none !important;
+.headerSearch .css-ptiqhd-MuiSvgIcon-root{
+  margin-bottom: 50px !important;
 }
 
 header .part3 .circle {

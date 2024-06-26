@@ -5,6 +5,12 @@ import Dialog from '@mui/material/Dialog';
 import { MdClose } from "react-icons/md";
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
+import moment from 'moment';
+
+const formatDate = (isoDate) => {
+  return moment(isoDate).format('DD/MM/YYYY hh:mm A');
+};
+
 const Orders = () => {
 
     const [orders, setOrders] = useState([]);
@@ -72,6 +78,7 @@ const Orders = () => {
                             <tbody>
                                 {
                                     orders?.length !== 0 && orders?.map((order, index) => {
+                                        const formattedDate = formatDate(order?.date); 
                                         return (
                                             <>
                                                 <tr key={index}>
@@ -91,7 +98,7 @@ const Orders = () => {
                                                             <span className='badge badge-success'>{order?.status}</span>
                                                         }
                                                     </td>
-                                                    <td>{order?.date}</td>
+                                                    <td>{formattedDate}</td>
                                                 </tr>
 
                                             </>

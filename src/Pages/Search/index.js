@@ -119,40 +119,34 @@ const SearchPage = () => {
                                     </Menu>
                                 </div>
                             </div>
-
                             {
-                                                productData?.length === 0 ? <div className="no-result">
-                                                    <BsEmojiDizzy /> &nbsp;
-                                                    <p className="mb-0 ml-2">No data found</p>
-                                                </div> : (
-                                                    <div className="productListing-data">
-                                                    {
-                                                        isLoading === true ?
-                                                            <div className="loading d-flex align-items-center justify-content-center">
-                                                                <CircularProgress color="inherit" />
-                                                            </div>
-                                                            :
-                    
+                                isLoading === true ?
+                                    <div className="loading d-flex align-items-center justify-content-center">
+                                        <CircularProgress color="inherit" />
+                                    </div> :
+                                    productData?.length === 0 ? <div className="no-result">
+                                        <BsEmojiDizzy /> &nbsp;
+                                        <p className="mb-0 ml-2">No data found</p>
+                                    </div> : (
+                                        <div className="productListing-data">
+                                            <>
+                                                {
+                                                    productData?.length !== 0 && productData?.map((item, index) => {
+                                                        return (
                                                             <>
-                                                                {
-                                                                    productData?.length !== 0 && productData?.map((item, index) => {
-                                                                        return (
-                                                                            <>
-                                                                                <ProductItem key={index} itemView={productView} item={item} />
-                                                                            </>
-                    
-                                                                        )
-                                                                    })
-                                                                }
+                                                                <ProductItem key={index} itemView={productView} item={item} />
                                                             </>
-                    
-                                                    }
-                    
-                    
-                    
-                                                </div>
-                                                ) }
-                           
+
+                                                        )
+                                                    })
+                                                }
+                                            </>
+
+
+
+                                        </div>
+                                    )}
+
 
 
 

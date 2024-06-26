@@ -14,7 +14,7 @@ const SearchBox = (props) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const context = useContext(MyContext);
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (searchFields) {
@@ -47,7 +47,7 @@ const SearchBox = (props) => {
                 context.setSearchData(res);
                 setIsLoading(false);
                 props.closeSearch();
-                history("/search");
+                navigate("/search");
             });
         }
     };
@@ -59,12 +59,21 @@ const SearchBox = (props) => {
         }
     };
 
+    const handleOptionChange = (event, value) => {
+        if (value && value.id) {
+            navigate(`/product/${value.id}`);
+            props.closeSearch();
+        }
+    };
+
     return (
         <div className='headerSearch ml-3 mr-3'>
             <Autocomplete
                 freeSolo
-                options={options.map(option => option.name)}
+                options={options}
+                getOptionLabel={(option) => option.name}
                 onInputChange={onChangeValue}
+                onChange={handleOptionChange}
                 renderInput={(params) => (
                     <TextField
                         {...params}
@@ -84,9 +93,9 @@ const SearchBox = (props) => {
                     />
                 )}
             />
-            <Button onClick={searchProducts}>
+            {/* <Button onClick={searchProducts}>
                 {isLoading ? <CircularProgress size={24} /> : <IoIosSearch />}
-            </Button>
+            </Button> */}
         </div>
     );
 };
