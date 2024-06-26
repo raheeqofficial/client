@@ -1,53 +1,94 @@
+import React, { useContext, useEffect, useState } from 'react';
 import Button from '@mui/material/Button';
+import CircularProgress from '@mui/material/CircularProgress';
+import TextField from '@mui/material/TextField';
+import Autocomplete from '@mui/material/Autocomplete';
 import { IoIosSearch } from "react-icons/io";
 import { fetchDataFromApi } from '../../../utils/api';
-import { useContext, useEffect, useState } from 'react';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
-import CircularProgress from '@mui/material/CircularProgress';
 
 const SearchBox = (props) => {
-    
-
     const [searchFields, setSearchFields] = useState("");
+    const [options, setOptions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
 
     const context = useContext(MyContext);
-
     const history = useNavigate();
 
-    const onChangeValue = (e) => {
-        setSearchFields(e.target.value);
-    }
+    useEffect(() => {
+        if (searchFields) {
+            const fetchData = async () => {
+                setIsLoading(true);
+                try {
+                    const res = await fetchDataFromApi(`/api/search?q=${searchFields}`);
+                    setOptions(res);
+                } catch (error) {
+                    console.error('Error fetching data:', error);
+                } finally {
+                    setIsLoading(false);
+                }
+            };
 
+            fetchData();
+        } else {
+            setOptions([]);
+        }
+    }, [searchFields]);
 
-    const searchProducts = (e) => {
+    const onChangeValue = (event, newValue) => {
+        setSearchFields(newValue);
+    };
+
+    const searchProducts = () => {
         if (searchFields !== "") {
             setIsLoading(true);
             fetchDataFromApi(`/api/search?q=${searchFields}`).then((res) => {
                 context.setSearchData(res);
-                setTimeout(() => {
-                    setIsLoading(false);
-                }, 2000);
+                setIsLoading(false);
                 props.closeSearch();
                 history("/search");
-            })
+            });
         }
+    };
 
-    }
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            searchProducts();
+        }
+    };
 
     return (
         <div className='headerSearch ml-3 mr-3'>
-            <input type='text' placeholder='Search for products...' onChange={onChangeValue} />
+            <Autocomplete
+                freeSolo
+                options={options.map(option => option.name)}
+                onInputChange={onChangeValue}
+                renderInput={(params) => (
+                    <TextField
+                        {...params}
+                        placeholder='Search for products...'
+                        variant='outlined'
+                        fullWidth
+                        onKeyDown={handleKeyDown}
+                        InputProps={{
+                            ...params.InputProps,
+                            endAdornment: (
+                                <>
+                                    {isLoading ? <CircularProgress size={20} /> : null}
+                                    {params.InputProps.endAdornment}
+                                </>
+                            ),
+                        }}
+                    />
+                )}
+            />
             <Button onClick={searchProducts}>
-                {
-                    isLoading === true ? <CircularProgress /> : <IoIosSearch />
-                }
-
-
+                {isLoading ? <CircularProgress size={24} /> : <IoIosSearch />}
             </Button>
         </div>
-    )
-}
+    );
+};
 
 export default SearchBox;

@@ -8,6 +8,7 @@
 @import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css");
 @import url("https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
 body {
   font-family: "Lato", sans-serif;
@@ -285,11 +286,11 @@ button {
 .headerSearch {
   width: 550px;
   height: 50px;
-  background: #e7e7e7;
-  padding: 5px;
-  position: relative;
+  /* background: #e7e7e7; */
+  /* padding: 5px; */
+  /* position: relative; */
   border-radius: 5px;
-  border: 1px solid rgba(0, 0, 0, 0.05);
+  /* border: 1px solid rgba(0, 0, 0, 0.05); */
 }
 .headerSearch input {
   background: transparent !important;
@@ -327,6 +328,9 @@ header .part3 .circle svg {
 .headerSearch button .MuiCircularProgress-root {
   width: 25px !important;
   height: 25px !important;
+}
+.headerSearch button.MuiButtonBase-root{
+  display: none !important;
 }
 
 header .part3 .circle {
@@ -1689,7 +1693,7 @@ footer .linksWrap ul li a:hover {
 
 .detailsPageTabs {
   border-radius: 25px !important;
-  background: #f7f2ff;
+  background: #fff;
 }
 
 .customTabs ul li {
@@ -2268,6 +2272,7 @@ button.loginUser {
   justify-content: center; /*center vertically */
   align-items: center; /* center horizontally */
   background: linear-gradient(135deg, var(--main-blue), var(--main-purple));
+  font-family: "Poppins", sans-serif;
   padding: 50px 10px;
 }
 /* container and form */

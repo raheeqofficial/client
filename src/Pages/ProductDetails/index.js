@@ -15,6 +15,11 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { MyContext } from "../../App";
 import { FaHeart } from "react-icons/fa";
 
+import moment from 'moment';
+
+const formatDate = (isoDate) => {
+  return moment(isoDate).format('DD/MM/YYYY hh:mm A');
+};
 
 const ProductDetails = () => {
 
@@ -151,10 +156,11 @@ const ProductDetails = () => {
                 review: "",
                 customerRating: 1
             })
-
+            setIsLoading(false)
             fetchDataFromApi(`/api/productReviews?productId=${id}`).then((res) => {
                 setreviewsData(res);
             })
+            setIsLoading(false)
         })
 
     }
@@ -586,12 +592,16 @@ const ProductDetails = () => {
 
                                             {
                                                 reviewsData?.length !== 0 && reviewsData?.slice(0)?.reverse()?.map((item, index) => {
+                                                    const formattedDate = formatDate(item?.dateCreated); 
                                                     return (
                                                         <div className='reviewBox mb-4 border-bottom' key={index}>
 
                                                             <div className='info'>
                                                                 <div className='d-flex align-items-center w-100'>
+                                                                    <div className="d-flex align-items-center w-100">
+                                                                    <img width="40" height="40" src="https://img.icons8.com/fluency/48/user-male-circle--v1.png" alt="user-male-circle--v1" className="mr-1"/>
                                                                     <h5>{item?.customerName}</h5>
+                                                                    </div>
 
                                                                     <div className='ml-auto'>
                                                                         <Rating name="half-rating-read"
@@ -599,7 +609,7 @@ const ProductDetails = () => {
                                                                     </div>
                                                                 </div>
 
-                                                                <h6 className='text-light'>{item?.dateCreated}</h6>
+                                                                <h6 className='text-light'>{formattedDate}</h6>
 
                                                                 <p>{item?.review} </p>
                                                             </div>
@@ -615,7 +625,9 @@ const ProductDetails = () => {
                                             <br className='res-hide' />
 
 
-                                            <form className='reviewForm' onSubmit={addReview}>
+                                            {
+                                                context.isLogin === true && (
+                                                    <form className='reviewForm' onSubmit={addReview}>
 
                                                 <h4>Add a review</h4>
                                                 <div className='form-group'>
@@ -645,6 +657,8 @@ const ProductDetails = () => {
                                                 </div>
 
                                             </form>
+                                                )
+                                            }
 
                                         </div>
 
