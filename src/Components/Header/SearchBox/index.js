@@ -3,7 +3,6 @@ import Button from '@mui/material/Button';
 import CircularProgress from '@mui/material/CircularProgress';
 import TextField from '@mui/material/TextField';
 import Autocomplete from '@mui/material/Autocomplete';
-import { IoIosSearch } from "react-icons/io";
 import { fetchDataFromApi } from '../../../utils/api';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
