@@ -27,7 +27,8 @@ import HelpCenterApp from "./Pages/Help center";
 import ShippingAndDelivery from "./Pages/Help center/ShippingAndDelivery";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import BecomeSeller from "./Pages/BecomeAseller/BecomeSeller";
-import BottomHeader from "./Components/BottomHeader/BottomHeader";
+import BottomHeader from "./Components/BottomHeader/BottomMenu";
+import MobileAccount from "./Pages/MobileAccount/MobileAccount";
 
 const MyContext = createContext();
 
@@ -254,6 +255,7 @@ function App() {
           <Route exact={true} path="/orders" element={<Orders />} />
           <Route exact={true} path="/*" element={<PageNotFound />} />
           <Route exact={true} path="/my-account" element={<MyAccount />} />
+          <Route exact={true} path="/account" element={<MobileAccount />} />
           <Route exact={true} path="/search" element={<SearchPage />} />
           <Route exact={true} path="/success" element={<Success />} />
           <Route exact={true} path="/become-seller" element={<BecomeSeller />} />

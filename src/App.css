@@ -110,6 +110,7 @@ button svg {
   color: #fff;
 }
 
+
 .badge {
   display: inline-block;
   padding: 7px 10px;
@@ -2440,7 +2441,32 @@ form input[type="radio"] {
 .sellerForm .button input:hover {
   background: linear-gradient(-135deg, var(--main-blue), var(--main-purple));
 }
-
+.mb-account{
+  background-color: #ecdede;
+  min-height: 70vh;
+  padding-bottom: 90px;
+}
+.mb-wrapper{
+  padding: 20px;
+  background-color: #fff;
+}
+.mb-account .mb-account-heading{
+  background: #0858f7;
+  padding: 15px 20px;
+}
+.mb-account .mb-account-heading h3{
+  font-size: 18px;
+  color: #fff;
+}
+.mb-wrapper .mb-box{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.mb-wrapper .mb-box p{
+  margin-bottom: 0px;
+  color: #282828;
+}
 /* ------------ */
 
 @media screen and (max-width: 1300px) {
@@ -2491,6 +2517,9 @@ form input[type="radio"] {
 }
 button svg{
   color: #000 !important;
+}
+.active{
+  color: #075eb4 !important;
 }
 .mobile-bottom-navigation .count{
   background: var(--bittersweet);
@@ -2587,6 +2616,9 @@ button svg{
     grid-template-columns: repeat(3, 1fr);
     row-gap: 25px;
   margin: 20px 0px;
+  }
+  .copyright{
+    margin-bottom: 65px;
   }
   .helpTopics-mb div{
     /* width: 50px; */

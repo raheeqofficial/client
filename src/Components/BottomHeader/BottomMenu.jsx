@@ -1,21 +1,23 @@
 import * as React from "react";
-import Tabs from "@mui/material/Tabs";
-import Tab from "@mui/material/Tab";
-import PhoneIcon from "@mui/icons-material/Phone";
-import FavoriteIcon from "@mui/icons-material/Favorite";
-import PersonPinIcon from "@mui/icons-material/PersonPin";
 import { IoBagHandleOutline, IoGridOutline, IoHomeOutline } from "react-icons/io5";
 import { GrGrid } from "react-icons/gr";
+import { FiUser } from "react-icons/fi";
 import { IoMdCart } from "react-icons/io";
-import { FaUser } from "react-icons/fa";
+import { Link } from "react-router-dom";
+import { MyContext } from "../../App";
 
-export default function BottomHeader() {
+export default function BottomMenu() {
   const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+  const context = React.useContext(MyContext)
 
+  const handleClick = (index) => {
+    setValue(index)
+    context.setisHeaderFooterShow(true)
+  }
   return (
     // <div className="botomHeader">
     //   <Tabs
@@ -36,19 +38,27 @@ export default function BottomHeader() {
                 <IoBagHandleOutline/>
                 <span className="count">0</span>
             </button> */}
+            <Link to={'/'}onClick={() => handleClick(0)}>
             <button className="action-btn">
-                <IoHomeOutline/>
+                <IoHomeOutline  className={`${value === 0 && 'active'}`} />
             </button>
+            </Link>
+            <Link to={'/'} onClick={()=>handleClick(1)}>
             <button className="action-btn">
-                <IoGridOutline/>
+                <IoGridOutline className={`${value === 1 && 'active'}`}/>
             </button>
+            </Link>
+            <Link to={'/cart'} onClick={()=>handleClick(2)}>
             <button className="action-btn">
-                <IoMdCart/>
+                <IoMdCart className={`${value === 2 && 'active'}`}/>
                 <span className="count">0</span>
             </button>
+            </Link>
+            <Link to={'/account'} onClick={()=>handleClick(3)}>
             <button className="action-btn">
-                <FaUser/>
+                <FiUser className={`${value === 3 && 'active'}`}/>
             </button>
+            </Link>
         </div>
   );
 }
