@@ -22,7 +22,7 @@ const HomeCat = (props) => {
                             return (
                                 
                                 <Link to={`/products/category/${cat.id}`} key={index}>
-                                <div className="item text-center cursor" style={{ background: cat.color }}>
+                                <div className="item text-center cursor">
                                     <img src={cat.images[0]} />
                                 </div>
                                 <h6>{cat?.name.length > 17 ? cat?.name.substr(0,15) + '...' : cat?.name}</h6>

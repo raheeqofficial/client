@@ -40,23 +40,23 @@ export default function BottomMenu() {
             </button> */}
             <Link to={'/'}onClick={() => handleClick(0)}>
             <button className="action-btn">
-                <IoHomeOutline  className={`${value === 0 && 'active'}`} />
+                <IoHomeOutline  className={`${value === 0 ? 'active' : 'menu-btn'}`} />
             </button>
             </Link>
-            <Link to={'/'} onClick={()=>handleClick(1)}>
+            <Link to={'/categories'} onClick={()=>handleClick(1)}>
             <button className="action-btn">
-                <IoGridOutline className={`${value === 1 && 'active'}`}/>
+                <IoGridOutline className={`${value === 1 ? 'active' : 'menu-btn'}`}/>
             </button>
             </Link>
             <Link to={'/cart'} onClick={()=>handleClick(2)}>
             <button className="action-btn">
-                <IoMdCart className={`${value === 2 && 'active'}`}/>
-                <span className="count">0</span>
+                <IoMdCart className={`${value === 2 ? 'active' : 'menu-btn'}`}/>
+                <span className="count">{context.cartData?.length}</span>
             </button>
             </Link>
-            <Link to={'/account'} onClick={()=>handleClick(3)}>
+            <Link to={context.isLogin === true ? '/account' : '/signIn'} onClick={()=>handleClick(3)}>
             <button className="action-btn">
-                <FiUser className={`${value === 3 && 'active'}`}/>
+                <FiUser className={`${value === 3 ? 'active' : 'menu-btn'}`}/>
             </button>
             </Link>
         </div>

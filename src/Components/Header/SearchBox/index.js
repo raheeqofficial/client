@@ -66,36 +66,41 @@ const SearchBox = (props) => {
     };
 
     return (
+        <>
         <div className='headerSearch ml-3 mr-3'>
-            <Autocomplete
-                freeSolo
-                options={options}
-                getOptionLabel={(option) => option.name}
-                onInputChange={onChangeValue}
-                onChange={handleOptionChange}
-                renderInput={(params) => (
-                    <TextField
-                        {...params}
-                        placeholder='Search for products...'
-                        variant='outlined'
-                        fullWidth
-                        onKeyDown={handleKeyDown}
-                        InputProps={{
-                            ...params.InputProps,
-                            endAdornment: (
-                                <>
-                                    {isLoading ? <CircularProgress size={20} /> : null}
-                                    {params.InputProps.endAdornment}
-                                </>
-                            ),
-                        }}
-                    />
-                )}
+
+<Autocomplete
+        freeSolo
+        options={options}
+        getOptionLabel={(option) => option.name}
+        onInputChange={onChangeValue}
+        onChange={handleOptionChange}
+        renderInput={(params) => (
+            <TextField
+                {...params}
+                placeholder='Search for products...'
+                variant='outlined'
+                fullWidth
+                onKeyDown={handleKeyDown}
+                InputProps={{
+                    ...params.InputProps,
+                    endAdornment: (
+                        <>
+                            {isLoading ? <CircularProgress size={20} /> : null}
+                            {params.InputProps.endAdornment}
+                        </>
+                    ),
+                }}
             />
-            {/* <Button onClick={searchProducts}>
-                {isLoading ? <CircularProgress size={24} /> : <IoIosSearch />}
-            </Button> */}
-        </div>
+        )}
+    />
+    {/* <Button onClick={searchProducts}>
+        {isLoading ? <CircularProgress size={24} /> : <IoIosSearch />}
+    </Button> */}
+</div>
+        
+        </>
+        
     );
 };
 

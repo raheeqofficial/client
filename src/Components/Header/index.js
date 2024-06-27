@@ -118,8 +118,9 @@ const Header = () => {
                                         }
 
                                         <Link to={'/help-center'}><Button className='circle mr-3'><BiSupport /></Button></Link>
-
-                                        {
+                                        { context.windowWidth > 768 && (
+                                            <>
+                                                {
                                             context.isLogin !== true ? <Link to="/signIn"><Button className="circle mr-3"><FaUser /></Button></Link> :
                                                 <>
                                                     <Tooltip placement="top" title="Account Setting">
@@ -167,30 +168,21 @@ const Header = () => {
                                                         </MenuItem>
                                                     </Menu>
                                                 </>
-
-
                                         }
+                                            </>
+                                        ) }
+                                        
 
 
                                         <div className='ml-auto cartTab d-flex align-items-center'>
-
-                                            {/* {
-                                                context.windowWidth > 1000 &&
-                                                <span className='price'>
-
-                                                    {
-                                                        (context.cartData?.length !== 0 ?
-                                                            context.cartData?.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0) : 0)
-                                                    }
-                                                </span>
-                                            } */}
-
-                                            <div className='position-relative ml-2'>
-                                                <Link to="/cart">
-                                                    <Button className='circle'><IoBagOutline /></Button>
-                                                    <span className='count d-flex align-items-center justify-content-center'>{context.cartData?.length}</span>
-                                                </Link>
-                                            </div>
+                                           {
+                                            context.windowWidth > 768 &&  <div className='position-relative ml-2'>
+                                            <Link to="/cart">
+                                                <Button className='circle'><IoBagOutline /></Button>
+                                                <span className='count d-flex align-items-center justify-content-center'>{context.cartData?.length}</span>
+                                            </Link>
+                                        </div>
+                                           }
 
                                             {/* {
                                                 context.windowWidth < 992 &&

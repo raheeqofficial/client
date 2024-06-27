@@ -116,7 +116,8 @@ const SignIn = () => {
             <div className="container">
                 <div className="box card p-3 shadow border-0">
                     <div className="text-center">
-                        <img src={Logo} />
+                        {/* <img src={Logo} /> */}
+                        <h1 className="mb-0">Raheeq</h1>
                     </div>
 
 
