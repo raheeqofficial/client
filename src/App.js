@@ -27,6 +27,7 @@ import HelpCenterApp from "./Pages/Help center";
 import ShippingAndDelivery from "./Pages/Help center/ShippingAndDelivery";
 import PageNotFound from "./Pages/PageNotFound/PageNotFound";
 import BecomeSeller from "./Pages/BecomeAseller/BecomeSeller";
+import BottomHeader from "./Components/BottomHeader/BottomHeader";
 
 const MyContext = createContext();
 
@@ -262,6 +263,7 @@ function App() {
         {
           isHeaderFooterShow === true && <Footer />
         }
+        <BottomHeader/>
 
 
 

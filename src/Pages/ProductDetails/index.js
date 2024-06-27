@@ -588,8 +588,6 @@ const ProductDetails = () => {
                                             <h3>Customer questions & answers</h3>
                                             <br />
 
-
-
                                             {
                                                 reviewsData?.length !== 0 && reviewsData?.slice(0)?.reverse()?.map((item, index) => {
                                                     const formattedDate = formatDate(item?.dateCreated); 

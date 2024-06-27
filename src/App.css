@@ -1,3 +1,46 @@
+:root{
+  --spanish-gray: hsl(0, 0, 60%);
+  --sonic-silver: rgb(136, 127, 127);
+  --eerie-black: rgb(26, 25, 25);
+  --salmon-pink: hsl(353, 100%, 78%);
+  --sandy-brown: hsl(29, 90%, 65%);
+  --bittersweet: hsl(0, 100%, 70%);
+  --ocean-green: hsl(152, 51%, 52%);
+  --davys-gray: rgb(128, 121, 121);
+  --cultured: rgba(231, 221, 221, 0.74);
+  --white: hsl(0, 100%, 100%);
+  --onyx: rgb(63, 62, 62);
+
+
+/*--------typography-----*/
+  --fsl-1: 1.563rem;
+  --fsl-2: 1.375rem;
+  --fsl-3: 1.25rem;
+  --fsl-4: 1.125rem;
+  --fsl-5: 1rem;
+  --fsl-6: 0.938rem;
+  --fsl-7: 0.875rem;
+  --fsl-8: 0.813rem;
+  --fsl-9: 0.75rem;
+  --fsl-10: 0.688rem;
+  --fsl-11: 0.625rem;
+
+  --weight-300: 300;
+  --weight-400: 400;
+  --weight-500: 500;
+  --weight-600: 600;
+  --weight-700: 700;
+
+
+/*----------border-radius-------*/
+  --border-radius-md: 10px;
+  --border-radius-sm: 5px;
+
+
+/*----------transition-------*/   
+  --transition-timing: 0.2s ease;
+}
+
 * {
   margin: 0px;
   padding: 0px;
@@ -324,7 +367,6 @@ header .part3 .circle svg {
   opacity: 0.8;
   color: #000 !important;
 }
-
 .headerSearch button .MuiCircularProgress-root {
   width: 25px !important;
   height: 25px !important;
@@ -2373,6 +2415,10 @@ form input[type="radio"] {
 }
 
 /* submit button */
+
+.mobile-bottom-navigation{
+  display: none;
+}
 .sellerForm .button {
   height: 45px;
   margin: 45px 0;
@@ -2394,6 +2440,9 @@ form input[type="radio"] {
 .sellerForm .button input:hover {
   background: linear-gradient(-135deg, var(--main-blue), var(--main-purple));
 }
+
+/* ------------ */
+
 @media screen and (max-width: 1300px) {
   .productRow2 {
     grid-template-columns: repeat(3, 1fr);
@@ -2412,6 +2461,49 @@ form input[type="radio"] {
   .productRow2 {
     padding-left: 15px !important;
   }
+  
+  .mobile-bottom-navigation{
+    display: block;
+}
+.mobile-bottom-navigation{
+  background: var(--white);
+  position: fixed;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 500px;
+  margin: auto;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px 0;
+  box-shadow: 0 0 10px hsla(0, 0, 0, 0.25);
+  z-index: 9999;
+}
+.mobile-bottom-navigation .action-btn{
+  position: relative;
+  font-size: 26px;
+  color: var(--eerie-black);
+  padding: 10px;
+  background: #fff;
+  border: none;
+}
+button svg{
+  color: #000 !important;
+}
+.mobile-bottom-navigation .count{
+  background: var(--bittersweet);
+  color: var(--white);
+  position: absolute;
+  top: 0;
+  right: 0;
+  font-size: 12px;
+  font-weight: var(--weight-500);
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 20px;
+}
   .bannerSec,
   .newProducts,
   .featuredProducts,
@@ -2612,6 +2704,10 @@ form input[type="radio"] {
     row-gap: 25px;
     column-gap: 0px;
   } */
+  .mobile-bottom-navigation{
+    border-top-left-radius: var(--border-radius-md);
+    border-top-right-radius: var(--border-radius-md);
+}
   .homeCat a {
     width: 100px;
     height: 100px;

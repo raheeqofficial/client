@@ -227,14 +227,8 @@ const Home = () => {
                                         )
                                     })
                                 }
-
-
                             </div>
                             </div>
-
-
-
-
                             <div className="popularProducts">
                             <div className="catTabs mt-4">
                                 <div className="tabsHd">
