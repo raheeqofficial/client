@@ -16,6 +16,7 @@ import { MyContext } from "../../App";
 import { FaHeart } from "react-icons/fa";
 
 import moment from 'moment';
+import axios from "axios";
 
 const formatDate = (isoDate) => {
   return moment(isoDate).format('DD/MM/YYYY hh:mm A');
@@ -62,8 +63,22 @@ const ProductDetails = () => {
         setActiveRam(index)
         setRamTabError(false);
     }
-    
+    const { staticId } = useParams();
 
+    // useEffect(() => {
+    //     const fetchData = async () => {
+    //         try {
+    //             const url = `/api/products/staticId/${staticId}`;
+    //             console.log('Fetching URL:', url); 
+    //             const response = await axios.get(url);
+    //             console.log('Response:', response.data);
+    //         } catch (error) {
+    //             console.error('Error fetching product:', error.response?.data || error.message);
+    //         }
+    //     };
+
+    //     fetchData();
+    // }, [staticId]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -71,9 +86,8 @@ const ProductDetails = () => {
         setActiveColor(null);
         setActiveWeight(null);
         setActiveWeight(null);
-        fetchDataFromApi(`/api/products/${id}`).then((res) => {
+        fetchDataFromApi(`/api/products/staticId/${id}`).then((res) => {
             setProductData(res);
-
             if (res?.productRam?.length === 0 && res?.productWeight?.length === 0 && res?.size?.length === 0 && res?.color?.length === 0) {
                 setActiveSize(1);
                 setActiveRam(1);
@@ -90,6 +104,7 @@ const ProductDetails = () => {
 
             fetchDataFromApi(`/api/products/recentlyViewd`).then((response) => {
                 setRecentlyViewdProducts(response);
+                console.log(response)
             })
 
 
@@ -184,6 +199,7 @@ const ProductDetails = () => {
 
 
             cartFields.productTitle = productData?.name
+            cartFields.staticId = productData?.staticId
             cartFields.productSize = selectedSize
             cartFields.productWeight = selectedWeight
             cartFields.productRam = selectedRam

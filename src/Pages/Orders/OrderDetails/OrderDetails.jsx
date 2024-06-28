@@ -25,6 +25,7 @@ const OrderDetails = () => {
     // });
     fetchDataFromApi(`/api/orders/${id}`).then((res) => {
         setproducts(res.products);
+        console.log(res.products)
         setOrders(res)
     })
   }, []);
@@ -86,7 +87,7 @@ const OrderDetails = () => {
                   <div className="details mb-3">
                     <h5>Product Details</h5>
                     <p>Product Id: {item?.id}</p>
-                    {/* <Link to={`/product/${item?._id}`}> */}
+                    <Link to={`/product/${item?.staticId}`}>
                     <div className="pd-container cursor">
                         <div className="img-con">
                             <img src={item?.image} alt="" />
@@ -97,7 +98,7 @@ const OrderDetails = () => {
                             <p>x {item?.quantity}</p>
                         </div>
                     </div>
-                    {/* </Link> */}
+                    </Link>
                     <p>SubTotal: {item?.subTotal}</p>
                   </div>
                 </div>

@@ -11,7 +11,6 @@ import ProductZoom from '../ProductZoom';
 import { IoCartSharp } from "react-icons/io5";
 import { fetchDataFromApi, postData } from '../../utils/api';
 import { FaHeart } from "react-icons/fa";
-import { CircularProgress } from '@mui/material';
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 
@@ -133,6 +132,7 @@ const ProductModal = (props) => {
             cartFields.quantity = productQuantity
             cartFields.subTotal = parseInt(props?.data?.price * productQuantity)
             cartFields.productId = props?.data?.id
+            cartFields.staticId = props?.data?.staticId
             cartFields.userId = user?.userId
 
 
@@ -151,6 +151,7 @@ const ProductModal = (props) => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user !== undefined && user !== null && user !== "") {
             const data = {
+                staticId: props?.data?.staticId,
                 productTitle: props?.data?.name,
                 productSize: props?.data?.size,
                 productWeight: props?.data?.productWeight,

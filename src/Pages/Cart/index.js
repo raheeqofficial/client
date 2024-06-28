@@ -56,6 +56,7 @@ const Cart = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         fetchDataFromApi(`/api/cart?userId=${user?.userId}`).then((res) => {
             setCartData(res);
+            console.log(res)
             setselectedQuantity(res?.quantity)
         })
     }, []);
@@ -70,6 +71,7 @@ const Cart = () => {
         if (chengeQuantity !== 0) {
             setIsLoading(true);
             const user = JSON.parse(localStorage.getItem("user"));
+            cartFields.staticId = item?.staticId
             cartFields.productTitle = item?.productTitle
             cartFields.productSize = item?.productSize
             cartFields.productWeight = item?.productWeight
@@ -152,7 +154,7 @@ const Cart = () => {
                                                         return (
                                                             <tr>
                                                                 <td width="35%">
-                                                                    {/* <Link to={`/product/${item?.productId}`}> */}
+                                                                    <Link to={`/product/${item?.staticId}`}>
                                                                         <div className="d-flex align-items-center cartItemimgWrapper">
                                                                             <div className="imgWrapper">
                                                                                 <img src={item?.image}
@@ -168,7 +170,7 @@ const Cart = () => {
                                                                             </div>
 
                                                                         </div>
-                                                                    {/* </Link> */}
+                                                                    </Link>
                                                                 </td>
                                                                 <td width="15%">Rs {item?.price}</td>
                                                                 <td width="25%">

@@ -2536,6 +2536,18 @@ form input[type="radio"] {
   font-size: 12px;
   font-weight: 600;
 }
+.trackOrderContainer{
+  background-image: url('./assets/images/trackOrder.jpg');
+  background-position: center;
+  background-size: cover;
+  width: 100%;
+  min-height: 80vh;
+}
+.trackOrderContainer .overlay{
+  width: 100%;
+  background: rgba(150, 144, 144, 0.7);
+  min-height: 80vh;
+}
 /* ------------ */
 
 @media screen and (max-width: 1300px) {

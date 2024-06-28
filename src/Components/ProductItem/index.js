@@ -49,8 +49,8 @@ const ProductItem = (props) => {
 
         const user = JSON.parse(localStorage.getItem("user"));
 
-        fetchDataFromApi(`/api/my-list?productId=${id}&userId=${user?.userId}`).then((res)=>{
-            if(res.length!==0){
+        fetchDataFromApi(`/api/my-list?productId=${id}&userId=${user?.userId}`).then((res) => {
+            if (res.length !== 0) {
                 setSsAddedToMyList(true);
             }
         })
@@ -77,66 +77,67 @@ const ProductItem = (props) => {
     }, []);
 
 
-    const addToMyList=(id)=>{
+    const addToMyList = (id) => {
         const user = JSON.parse(localStorage.getItem("user"));
-        if(user!==undefined && user!==null && user!==""){
-            const data={
+        if (user !== undefined && user !== null && user !== "") {
+            const data = {
                 productTitle: props?.item?.name,
+                staticId: props?.item?.staticId,
                 productSize: props?.item?.size,
                 productWeight: props?.item?.productWeight,
                 productColor: props?.item?.color,
                 productRam: props?.item?.productRam,
                 image: props.item?.images[0],
-                rating:props?.item?.rating,
-                price:props?.item?.price,
-                productId:id,
-                userId:user?.userId
+                rating: props?.item?.rating,
+                price: props?.item?.price,
+                productId: id,
+                userId: user?.userId
             }
-            postData(`/api/my-list/add/`,data).then((res)=>{
-                if(res.status!==false){
+            postData(`/api/my-list/add/`, data).then((res) => {
+                if (res.status !== false) {
                     context.setAlertBox({
-                        open:true,
-                        error:false,
-                        msg:"the product added in my list"
+                        open: true,
+                        error: false,
+                        msg: "the product added in my list"
                     })
 
 
 
-                    fetchDataFromApi(`/api/my-list?productId=${id}&userId=${user?.userId}`).then((res)=>{
-                        if(res.length!==0){
+                    fetchDataFromApi(`/api/my-list?productId=${id}&userId=${user?.userId}`).then((res) => {
+                        if (res.length !== 0) {
                             setSsAddedToMyList(true);
                         }
                     })
 
 
-                }else{
+                } else {
                     context.setAlertBox({
-                        open:true,
-                        error:true,
-                        msg:res.msg
-                    }) 
+                        open: true,
+                        error: true,
+                        msg: res.msg
+                    })
                 }
-               
+
             })
-        }else{
+        } else {
             context.setAlertBox({
-                open:true,
-                error:true,
-                msg:"Please Login to continue"
-            }) 
+                open: true,
+                error: true,
+                msg: "Please Login to continue"
+            })
         }
-  
+
     }
 
     return (
         <>
             <div className={`productItem ${props.itemView}`}
-                onMouseEnter={()=>handleMouseEnter(props?.itemView === 'recentlyView' ? props.item?.prodId : props.item?.id)}
+                onMouseEnter={() => handleMouseEnter(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}
                 onMouseLeave={handleMouseLeave}
             >
 
                 <div className="img_rapper">
-                    <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.prodId : props.item?.id}`}>
+                    <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId}`}>
                         <div className='productItemSliderWrapper'>
                             {
                                 isHovered === true &&
@@ -159,7 +160,7 @@ const ProductItem = (props) => {
                         {
                             isLoading === true ?
                                 <Skeleton variant="rectangular" width={300} height={400}>
-                                    <IoIosImages/>
+                                    <IoIosImages />
                                 </Skeleton>
 
                                 :
@@ -174,15 +175,15 @@ const ProductItem = (props) => {
 
                     <span className="badge badge-primary">{props.item?.discount}%</span>
                     <div className="actions">
-                        <Button onClick={() => viewProductDetails(props?.itemView === 'recentlyView' ? props.item?.prodId : props.item?.id)}><TfiFullscreen /></Button>
-                        
-                        <Button className={isAddedToMyList===true && 'active'} onClick={()=>addToMyList(props?.itemView === 'recentlyView' ? props.item?.prodId : props.item?.id)}>
-                        {
-                            isAddedToMyList===true ? <FaHeart style={{ fontSize: '20px' }} />
-                            :
-                            <IoMdHeartEmpty style={{ fontSize: '20px' }} />
-                        }
-                        
+                        <Button onClick={() => viewProductDetails(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}><TfiFullscreen /></Button>
+
+                        <Button className={isAddedToMyList === true && 'active'} onClick={() => addToMyList(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}>
+                            {
+                                isAddedToMyList === true ? <FaHeart style={{ fontSize: '20px' }} />
+                                    :
+                                    <IoMdHeartEmpty style={{ fontSize: '20px' }} />
+                            }
+
                         </Button>
                     </div>
 
@@ -190,22 +191,22 @@ const ProductItem = (props) => {
 
                 <div className="info">
                     <div className='infoWrapper'>
-                    <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.prodId : props.item?.id}`}><h4>{props?.item?.name?.substr(0, 30) + '...'}</h4></Link>
+                        <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId}`}><h4>{props?.item?.name?.substr(0, 30) + '...'}</h4></Link>
 
-{
-    props?.item?.countInStock>=1 ?  <span className="text-success d-block">In Stock</span>
-    :
+                        {
+                            props?.item?.countInStock >= 1 ? <span className="text-success d-block">In Stock</span>
+                                :
 
-    <span className="text-danger d-block">Out of Stock</span>
+                                <span className="text-danger d-block">Out of Stock</span>
 
-}
+                        }
 
-<Rating className="info-rating" name="read-only" value={props?.item?.rating} readOnly size="small" precision={0.5} />
+                        <Rating className="info-rating" name="read-only" value={props?.item?.rating} readOnly size="small" precision={0.5} />
 
-<div className="d-flex">
-    <span className="oldPrice">Rs {props?.item?.oldPrice}</span>
-    <span className="netPrice text-danger ml-2">Rs {props?.item?.price}</span>
-</div>
+                        <div className="d-flex">
+                            <span className="oldPrice">Rs {props?.item?.oldPrice}</span>
+                            <span className="netPrice text-danger ml-2">Rs {props?.item?.price}</span>
+                        </div>
                     </div>
                 </div>
 

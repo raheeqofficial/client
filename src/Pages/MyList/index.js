@@ -36,6 +36,7 @@ const MyList = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         fetchDataFromApi(`/api/my-list?userId=${user?.userId}`).then((res) => {
             setmyListData(res);
+            console.log(res)
         })
     }, []);
 
@@ -89,7 +90,7 @@ const MyList = () => {
                                                             return (
                                                                 <tr>
                                                                     <td width="50%">
-                                                                        <Link to={`/product/${item?.productId}`}>
+                                                                        <Link to={`/product/${item?.staticId}`}>
                                                                             <div className="d-flex align-items-center cartItemimgWrapper">
                                                                                 <div className="imgWrapper">
                                                                                     <img src={item?.image}

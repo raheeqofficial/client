@@ -31,6 +31,7 @@ import BottomHeader from "./Components/BottomHeader/BottomMenu";
 import MobileAccount from "./Pages/MobileAccount/MobileAccount";
 import Categories from "./Pages/Categories/Categories";
 import OrderDetails from "./Pages/Orders/OrderDetails/OrderDetails";
+import TrackOrder from "./Pages/TrackOrder/TrackOrder";
 
 const MyContext = createContext();
 
@@ -122,7 +123,7 @@ function App() {
 
 
   const openProductDetailsModal = (id, status) => {
-    fetchDataFromApi(`/api/products/${id}`).then((res) => {
+    fetchDataFromApi(`/api/products/staticId/${id}`).then((res) => {
       setProductData(res);
       setisOpenProductModal(status);
     })
@@ -263,6 +264,7 @@ function App() {
           <Route exact={true} path="/success" element={<Success />} />
           <Route exact={true} path="/become-seller" element={<BecomeSeller />} />
           <Route exact={true} path="/help-center" element={<HelpCenterApp />} />
+          <Route exact={true} path="/help-center/track-order" element={<TrackOrder />} />
           <Route exact={true} path="/categories" element={<Categories />} />
           <Route exact={true} path="/help-center/shipping-delivery" element={<ShippingAndDelivery />} />
         </Routes>
