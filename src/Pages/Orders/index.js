@@ -21,7 +21,6 @@ const Orders = () => {
     const [isLogin,setIsLogin]  = useState(false);
 
     const history = useNavigate();
-
     useEffect(() => {
         window.scrollTo(0, 0);
 
@@ -36,6 +35,7 @@ const Orders = () => {
         const user = JSON.parse(localStorage.getItem("user"));
         fetchDataFromApi(`/api/orders?userid=${user?.userId}`).then((res) => {
             setOrders(res);
+            console.log(res)
         })
 
     }, []);
@@ -61,16 +61,9 @@ const Orders = () => {
                         <table className='table table-striped table-bordered'>
                             <thead className='thead-light'>
                                 <tr>
-                                    <th>Paymant Id</th>
+                                    <th>Product Id</th>
                                     <th>Products</th>
-                                    <th>Name</th>
-                                    <th>Phone Number</th>
-                                    <th>Address</th>
-                                    <th>Pincode</th>
-                                    <th>Total Amount</th>
-                                    <th>Email</th>
-                                    <th>User Id</th>
-                                    <th>Order Status</th>
+                                    <th>Order Details</th>
                                     <th>Date</th>
                                 </tr>
                             </thead>
@@ -85,19 +78,9 @@ const Orders = () => {
                                                     <td><span className='text-blue fonmt-weight-bold'>{order?.id}</span></td>
                                                     <td><span className='text-blue fonmt-weight-bold cursor' onClick={() => showProducts(order?._id)}>Click here to view</span>
                                                     </td>
-                                                    <td>{order?.name}</td>
-                                                    <td>{order?.phoneNumber}</td>
-                                                    <td>{order?.address}</td>
-                                                    <td>{order?.pincode}</td>
-                                                    <td>{order?.amount}</td>
-                                                    <td>{order?.email}</td>
-                                                    <td>{order?.userid}</td>
-                                                    <td>
-                                                        {order?.status === "pending" ?
-                                                            <span className='badge badge-danger'>{order?.status}</span> :
-                                                            <span className='badge badge-success'>{order?.status}</span>
-                                                        }
-                                                    </td>
+                                                    <Link to={`/order/details/${order?._id}`}><td>
+                                                        See details
+                                                    </td></Link>
                                                     <td>{formattedDate}</td>
                                                 </tr>
 

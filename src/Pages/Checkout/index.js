@@ -173,12 +173,9 @@ const Checkout = () => {
             userid: user.userId,
             products: cartData
         }
-
-       // console.log(payLoad)
         setLoading(true)
 
         postData(`/api/orders/create`, payLoad).then(res => {
-            // setCartData([]);
             window.location.href = "/success";
         })
 
@@ -190,58 +187,6 @@ const Checkout = () => {
                 msg:"Your order placed successfully"
             })
         },1000)
-
-
-        // var options = {
-        //     key: process.env.REACT_APP_RAZORPAY_KEY_ID,
-        //     key_secret: process.env.REACT_APP_RAZORPAY_KEY_SECRET,
-        //     amount: parseInt(totalAmount * 100),
-        //     currency: "INR",
-        //     order_receipt: 'order_rcptid_' + formFields.fullName,
-        //     name: "E-Bharat",
-        //     description: "for testing purpose",
-        //     handler: function (response) {
-
-        //          console.log(response)
-
-
-        //         const paymentId = response.razorpay_payment_id
-
-        //         const user = JSON.parse(localStorage.getItem("user"));
-
-        //         const payLoad = {
-        //             name: addressInfo.name,
-        //             phoneNumber: formFields.phoneNumber,
-        //             address: addressInfo.address,
-        //             pincode: addressInfo.pincode,
-        //             amount: parseInt(totalAmount * 100),
-        //             paymentId: paymentId,
-        //             email: user.email,
-        //             userid: user.userId,
-        //             products: cartData
-        //         }
-
-        //        // console.log(payLoad)
-
-
-        //         postData(`/api/orders/create`, payLoad).then(res => {
-        //             history("/orders");
-        //         })
-
-
-
-        //     },
-
-        //     theme: {
-        //         color: "#3399cc"
-        //     }
-        // };
-
-
-        // var pay = new window.Razorpay(options);
-        // pay.open();
-
-
     }
 
     return (

@@ -30,6 +30,7 @@ import BecomeSeller from "./Pages/BecomeAseller/BecomeSeller";
 import BottomHeader from "./Components/BottomHeader/BottomMenu";
 import MobileAccount from "./Pages/MobileAccount/MobileAccount";
 import Categories from "./Pages/Categories/Categories";
+import OrderDetails from "./Pages/Orders/OrderDetails/OrderDetails";
 
 const MyContext = createContext();
 
@@ -254,6 +255,7 @@ function App() {
              <Route path="/" exact={true} element={<Home />} />
           } */}
           <Route exact={true} path="/orders" element={<Orders />} />
+          <Route exact={true} path="/order/details/:id" element={<OrderDetails />} />
           <Route exact={true} path="/*" element={<PageNotFound />} />
           <Route exact={true} path="/my-account" element={<MyAccount />} />
           <Route exact={true} path="/account" element={<MobileAccount />} />
