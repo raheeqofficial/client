@@ -32,6 +32,7 @@ import MobileAccount from "./Pages/MobileAccount/MobileAccount";
 import Categories from "./Pages/Categories/Categories";
 import OrderDetails from "./Pages/Orders/OrderDetails/OrderDetails";
 import TrackOrder from "./Pages/TrackOrder/TrackOrder";
+import Error from "./Pages/productError/Error";
 
 const MyContext = createContext();
 
@@ -245,6 +246,7 @@ function App() {
           <Route path="/products/category/:id" exact={true} element={<Listing />} />
           <Route path="/products/subCat/:id" exact={true} element={<Listing />} />
           <Route exact={true} path="/product/:id" element={<ProductDetails />} />
+          <Route exact={true} path="/product/error" element={<Error />} />
           <Route exact={true} path="/cart" element={<Cart />} />
           <Route exact={true} path="/signIn" element={<SignIn />} />
           <Route exact={true} path="/signUp" element={<SignUp />} />
@@ -258,7 +260,7 @@ function App() {
           <Route exact={true} path="/orders" element={<Orders />} />
           <Route exact={true} path="/order/details/:id" element={<OrderDetails />} />
           <Route exact={true} path="/*" element={<PageNotFound />} />
-          <Route exact={true} path="/my-account" element={<MyAccount />} />
+          <Route exact={true} path="/account-setting" element={<MyAccount />} />
           <Route exact={true} path="/account" element={<MobileAccount />} />
           <Route exact={true} path="/search" element={<SearchPage />} />
           <Route exact={true} path="/success" element={<Success />} />

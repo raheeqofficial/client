@@ -9,7 +9,7 @@ import { MdOutlineCompareArrows } from "react-icons/md";
 import Tooltip from '@mui/material/Tooltip';
 import RelatedProducts from "./RelatedProducts";
 
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { fetchDataFromApi, postData } from "../../utils/api";
 import CircularProgress from '@mui/material/CircularProgress';
 import { MyContext } from "../../App";
@@ -23,7 +23,7 @@ const formatDate = (isoDate) => {
 };
 
 const ProductDetails = () => {
-
+    const history = useNavigate();
     const [activeSize, setActiveSize] = useState(null);
     const [activeWeight, setActiveWeight] = useState(null);
     const [activeColor, setActiveColor] = useState(null);
@@ -46,6 +46,7 @@ const ProductDetails = () => {
     const { id } = useParams();
 
     const context = useContext(MyContext);
+    const [error, setError] = useState(null);
 
     const isActiveSize = (index) => {
         setActiveSize(index);
@@ -86,34 +87,42 @@ const ProductDetails = () => {
         setActiveColor(null);
         setActiveWeight(null);
         setActiveWeight(null);
-        fetchDataFromApi(`/api/products/staticId/${id}`).then((res) => {
-            setProductData(res);
-            if (res?.productRam?.length === 0 && res?.productWeight?.length === 0 && res?.size?.length === 0 && res?.color?.length === 0) {
+        const fetchProduct = async () => {
+          try {
+            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/staticId/${id}`);
+            setProductData(res?.data);
+            if (res?.data?.productRam?.length === 0 && res?.data?.productWeight?.length === 0 && res?.data?.size?.length === 0 && res?.data?.color?.length === 0) {
                 setActiveSize(1);
                 setActiveRam(1);
                 setActiveWeight(1);
                 setActiveColor(1);
             }
-
-            fetchDataFromApi(`/api/products?subCatId=${res?.subCatId}`)
+            fetchDataFromApi(`/api/products?subCatId=${res?.data?.subCatId}`)
                 .then((res) => {
                     const filteredData = res?.products?.filter(item => item.id !== id);
                     setRelatedProductData(filteredData)
                 })
-
-
             fetchDataFromApi(`/api/products/recentlyViewd`).then((response) => {
                 setRecentlyViewdProducts(response);
                 console.log(response)
             })
-
-
-            postData(`/api/products/recentlyViewd`, res);
-
-
-        })
-
-
+            postData(`/api/products/recentlyViewd`, res?.data);
+          } catch (err) {
+            if (axios.isAxiosError(err)) {
+              if (err.response && err.response.status === 404) {
+                history('/product/error');
+              } else {
+                setError('An unexpected error occurred');
+              }
+            } else {
+              setError('An unexpected error occurred');
+            }
+          } finally {
+            setIsLoading(false);
+          }
+        };
+    
+        fetchProduct();
         fetchDataFromApi(`/api/productReviews?productId=${id}`).then((res) => {
             setreviewsData(res)
         })
@@ -126,6 +135,47 @@ const ProductDetails = () => {
                 setSsAddedToMyList(true);
             }
         })
+      }, [id, history]);
+
+    useEffect(() => {
+        
+        
+        // fetchDataFromApi(`/api/products/staticId/${id}`).then((res) => {
+        //     try {
+        //        if(res.eroor !== true){
+        //         setProductData(res);
+                // if (res?.productRam?.length === 0 && res?.productWeight?.length === 0 && res?.size?.length === 0 && res?.color?.length === 0) {
+                //     setActiveSize(1);
+                //     setActiveRam(1);
+                //     setActiveWeight(1);
+                //     setActiveColor(1);
+                // }
+                // fetchDataFromApi(`/api/products?subCatId=${res?.subCatId}`)
+                //     .then((res) => {
+                //         const filteredData = res?.products?.filter(item => item.id !== id);
+                //         setRelatedProductData(filteredData)
+                //     })
+                // fetchDataFromApi(`/api/products/recentlyViewd`).then((response) => {
+                //     setRecentlyViewdProducts(response);
+                //     console.log(response)
+                // })
+                // postData(`/api/products/recentlyViewd`, res);
+        //        }else{
+        //         context.setAlertBox({
+        //             open: true,
+        //             error: true,
+        //             msg: res.msg
+        //         }
+        //     );
+        //         setIsLoading(false)
+        //        }
+        //     } catch (err) {
+        //         console.log(err)
+        //     }
+        // })
+
+
+        
 
     }, [id]);
 

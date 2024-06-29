@@ -86,10 +86,9 @@ const OrderDetails = () => {
                 <div key={i}>
                   <div className="details mb-3">
                     <h5>Product Details</h5>
-                    <p>Product Id: {item?.id}</p>
                     <Link to={`/product/${item?.staticId}`}>
                     <div className="pd-container cursor">
-                        <div className="img-con">
+                        <div className="img-con shadow">
                             <img src={item?.image} alt="" />
                         </div>
                         <div className="txt-con">
@@ -99,7 +98,6 @@ const OrderDetails = () => {
                         </div>
                     </div>
                     </Link>
-                    <p>SubTotal: {item?.subTotal}</p>
                   </div>
                 </div>
               ))}

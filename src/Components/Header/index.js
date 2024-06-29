@@ -136,7 +136,7 @@ const Header = () => {
                                                         transformOrigin={{ horizontal: 'right', vertical: 'top' }}
                                                         anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
                                                     >
-                                                        <Link to="/my-account">
+                                                        <Link to="/account-setting">
                                                             <MenuItem onClick={handleClose}>
                                                                 <ListItemIcon>
                                                                     <FaUserAlt fontSize="small" />

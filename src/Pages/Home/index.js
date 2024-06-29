@@ -21,6 +21,7 @@ import Tab from '@mui/material/Tab';
 import newsLetterImg from '../../assets/images/newsletter.png';
 import { IoMailOutline } from "react-icons/io5";
 import { Box } from "@mui/material";
+import DealOfDay from "../../Components/DealOfDay/DealOfDay";
 
 
 
@@ -229,6 +230,7 @@ const Home = () => {
                                 }
                             </div>
                             </div>
+                            <DealOfDay/>
                             <div className="popularProducts">
                             <div className="catTabs mt-4">
                                 <div className="tabsHd">

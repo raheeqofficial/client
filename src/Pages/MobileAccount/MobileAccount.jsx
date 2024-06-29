@@ -25,7 +25,7 @@ const MobileAccount = () => {
                 <p className="mb-0">Hello, Welcome to store</p>
               </div>
               <div className="mb-wrapper">
-                <Link to={""}>
+                <Link to={"/account-setting"}>
                   <div className="mb-box">
                     <p>
                       <RiUserSettingsLine />
