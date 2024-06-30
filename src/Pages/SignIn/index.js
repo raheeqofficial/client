@@ -8,12 +8,14 @@ import { Link, useNavigate } from "react-router-dom";
 import GoogleImg from '../../assets/images/googleImg.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { postData } from "../../utils/api";
+import Confetti from 'react-confetti';
 
 const SignIn = () => {
 
     const [isLoading, setIsLoading] = useState(false);
     const context = useContext(MyContext);
     const history = useNavigate();
+    const [submitted, setSubmitted] = useState(false);
 
 
     useEffect(() => {
@@ -45,9 +47,6 @@ const SignIn = () => {
             })
             return false;
         }
-
-
-
         if (formfields.password === "") {
             context.setAlertBox({
                 open: true,
@@ -56,8 +55,6 @@ const SignIn = () => {
             })
             return false;
         }
-
-
         setIsLoading(true);
         postData("/api/user/signin", formfields).then((res) => {
 
@@ -80,10 +77,12 @@ const SignIn = () => {
                         error: false,
                         msg: "User Login Successfully!"
                     });
-
+                    
+        setSubmitted(true);
                     setTimeout(() => {
                         //history("/dashboard");
                         setIsLoading(false);
+
                         window.location.href = "/";
                     }, 2000);
                 }
@@ -103,8 +102,6 @@ const SignIn = () => {
             }
 
         })
-
-
     }
 
 
@@ -125,10 +122,10 @@ const SignIn = () => {
                         <h2 className="mb-4">Sign In</h2>
 
                         <div className="form-group">
-                            <TextField id="standard-basic" label="Email" type="email" required variant="standard" className="w-100" name="email" onChange={onchangeInput}/>
+                            <TextField id="standard-basic" label="Email" type="email" required variant="standard" className="w-100" name="email" onChange={onchangeInput} />
                         </div>
                         <div className="form-group">
-                            <TextField id="standard-basic" label="Password" type="password" required variant="standard" className="w-100" name="password" onChange={onchangeInput}/>
+                            <TextField id="standard-basic" label="Password" type="password" required variant="standard" className="w-100" name="password" onChange={onchangeInput} />
                         </div>
 
 
@@ -141,7 +138,7 @@ const SignIn = () => {
                                     isLoading === true ? <CircularProgress /> : 'Sign In'
                                 }
                             </Button>
-                            <Link to="/"> <Button className="btn-lg btn-big col ml-3"  variant="outlined" onClick={()=>context.setisHeaderFooterShow(true)}>Cancel</Button></Link>
+                            <Link to="/"> <Button className="btn-lg btn-big col ml-3" variant="outlined" onClick={() => context.setisHeaderFooterShow(true)}>Cancel</Button></Link>
                         </div>
 
                         <p className="txt">Not Registered? <Link to="/signUp" className="border-effect">Sign Up</Link></p>
@@ -151,10 +148,21 @@ const SignIn = () => {
                         <Button className="loginWithGoogle mt-2" variant="outlined"><img src={GoogleImg} /> Sign In with Google</Button>
 
                     </form>
-
+                    
                 </div>
             </div>
+            {submitted && (
+                        <Confetti
+                            width={window.innerWidth}
+                            height={window.innerHeight}
+                            numberOfPieces={300}
+                            recycle={false}
+                            run={submitted}
+                            // confettiSource={{ x: window.innerWidth / 2, y: 0, w: 0, h: 0 }}
+                        />
+                    )}
         </section>
+
     )
 }
 
