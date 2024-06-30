@@ -9,10 +9,12 @@ import GoogleImg from '../../assets/images/googleImg.png';
 import { postData } from "../../utils/api";
 import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
+import Confetti from 'react-confetti';
 
 const SignUp = () => {
 
     const [isLoading, setIsLoading] = useState(false); 
+    const [submitted, setSubmitted] = useState(false);
     const [formfields, setFormfields] = useState({
         name: "",
         email: "",
@@ -88,6 +90,7 @@ const SignUp = () => {
                         msg: "Register Successfully!"
                     });
                    
+            setSubmitted(true);
                     setTimeout(() => {
                         setIsLoading(true);
                         history("/signIn");
@@ -187,6 +190,16 @@ const SignUp = () => {
 
                 </div>
             </div>
+            {submitted && (
+                        <Confetti
+                            width={window.innerWidth}
+                            height={window.innerHeight}
+                            numberOfPieces={300}
+                            recycle={false}
+                            run={submitted}
+                            // confettiSource={{ x: window.innerWidth / 2, y: 0, w: 0, h: 0 }}
+                        />
+                    )}
         </section>
     )
 }
