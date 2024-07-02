@@ -186,6 +186,8 @@ const ProductDetails = () => {
         customerName: "",
         customerId: "",
         review: "",
+        shop:"",
+        staticId:"",
         customerRating: 0
     });
 
@@ -209,6 +211,8 @@ const ProductDetails = () => {
         reviews.customerName = user?.name;
         reviews.customerId = user?.userId;
         reviews.productId = id
+        reviews.shop = productData?.shop
+        reviews.staticId = productData?.staticId
 
         setIsLoading(true);
 
@@ -249,6 +253,7 @@ const ProductDetails = () => {
 
 
             cartFields.productTitle = productData?.name
+            cartFields.shop = productData?.shop
             cartFields.staticId = productData?.staticId
             cartFields.productSize = selectedSize
             cartFields.productWeight = selectedWeight
@@ -276,9 +281,6 @@ const ProductDetails = () => {
     const selectedItem = () => {
 
     }
-
-
-
     const gotoReviews = () => {
         window.scrollTo({
             top: 550,
@@ -295,6 +297,7 @@ const ProductDetails = () => {
         if (user !== undefined && user !== null && user !== "") {
             const data = {
                 productTitle: productData?.name,
+                shop: productData?.shop,
                 productSize: productData?.size,
                 productWeight: productData?.productWeight,
                 productColor: productData?.color,

@@ -6,8 +6,10 @@ import { IoBagCheckOutline } from "react-icons/io5";
 import { MyContext } from '../../App';
 import { fetchDataFromApi, postData } from '../../utils/api';
 
-import { useLocation, useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
+import { data } from '../../data/shippingAndDelivery';
+import axios from 'axios';
 
 const Checkout = () => {
 
@@ -26,6 +28,8 @@ const Checkout = () => {
     const [cartData, setCartData] = useState([]);
     const [totalAmount, setTotalAmount] = useState();
     const [loading, setLoading] = useState(false);
+    const [shop, setShop] = useState('');
+    const [productData, setProductData] = useState([]);
     const location = useLocation();
     const goto = useNavigate();
     const { userId } = location.state || {};
@@ -38,19 +42,28 @@ const Checkout = () => {
     }, [userId, goto]);
     useEffect(() => {
         setLoading(true)
-        window.scrollTo(0,0)
+        window.scrollTo(0,0);
+       
         const user = JSON.parse(localStorage.getItem("user"));
+        
         fetchDataFromApi(`/api/cart?userId=${user?.userId}`).then((res) => {
             setLoading(false)
             setCartData(res);
-
+            setShop(res.map((item) => item?.shop))
             setTotalAmount(res.length !== 0 &&
                 res.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0))
-           
-
         })
+        
 
     }, []);
+
+    // useEffect(() => {
+    //         fetchDataFromApi(`/api/products/staticId/${id}`).then((res) => {
+    //             setProductData(res?.data);
+    //         console.log(res)
+    //         })
+            
+    // }, [id])
 
     const onChangeInput = (e) => {
         setFormFields(() => ({
@@ -171,7 +184,8 @@ const Checkout = () => {
             amount: parseInt(totalAmount),
             email: user.email,
             userid: user.userId,
-            products: cartData
+            products: cartData,
+            shop: shop[0],
         }
         setLoading(true)
 

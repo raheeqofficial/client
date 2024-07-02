@@ -122,6 +122,7 @@ const ProductModal = (props) => {
 
 
             cartFields.productTitle = props?.data?.name
+            cartFields.shop = props?.data?.shop
             cartFields.productSize = selectedSize
             cartFields.productWeight = selectedWeight
             cartFields.productRam = selectedRam
@@ -153,6 +154,7 @@ const ProductModal = (props) => {
             const data = {
                 staticId: props?.data?.staticId,
                 productTitle: props?.data?.name,
+                shop: props?.data?.shop,
                 productSize: props?.data?.size,
                 productWeight: props?.data?.productWeight,
                 productColor: props?.data?.color,

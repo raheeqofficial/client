@@ -214,7 +214,8 @@ function App() {
     setSearchData,
     windowWidth,
     isOpenNav,
-    setIsOpenNav
+    setIsOpenNav,
+    productData
   }
 
   return (

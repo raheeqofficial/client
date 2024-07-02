@@ -82,6 +82,7 @@ const ProductItem = (props) => {
         if (user !== undefined && user !== null && user !== "") {
             const data = {
                 productTitle: props?.item?.name,
+                shop: props?.item?.shop,
                 staticId: props?.item?.staticId,
                 productSize: props?.item?.size,
                 productWeight: props?.item?.productWeight,

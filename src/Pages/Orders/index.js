@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 import { fetchDataFromApi } from '../../utils/api';
-import Pagination from '@mui/material/Pagination';
 import Dialog from '@mui/material/Dialog';
 import { MdClose } from "react-icons/md";
 import Button from '@mui/material/Button';

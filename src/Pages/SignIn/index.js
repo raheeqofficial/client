@@ -4,7 +4,6 @@ import { MyContext } from "../../App";
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from "react-router-dom";
-
 import GoogleImg from '../../assets/images/googleImg.png';
 import CircularProgress from '@mui/material/CircularProgress';
 import { postData } from "../../utils/api";
@@ -77,8 +76,8 @@ const SignIn = () => {
                         error: false,
                         msg: "User Login Successfully!"
                     });
-                    
-        setSubmitted(true);
+
+                    setSubmitted(true);
                     setTimeout(() => {
                         //history("/dashboard");
                         setIsLoading(false);
@@ -148,19 +147,19 @@ const SignIn = () => {
                         <Button className="loginWithGoogle mt-2" variant="outlined"><img src={GoogleImg} /> Sign In with Google</Button>
 
                     </form>
-                    
+
                 </div>
             </div>
             {submitted && (
-                        <Confetti
-                            width={window.innerWidth}
-                            height={window.innerHeight}
-                            numberOfPieces={300}
-                            recycle={false}
-                            run={submitted}
-                            // confettiSource={{ x: window.innerWidth / 2, y: 0, w: 0, h: 0 }}
-                        />
-                    )}
+                <Confetti
+                    width={window.innerWidth}
+                    height={window.innerHeight}
+                    numberOfPieces={300}
+                    recycle={false}
+                    run={submitted}
+                // confettiSource={{ x: window.innerWidth / 2, y: 0, w: 0, h: 0 }}
+                />
+            )}
         </section>
 
     )
