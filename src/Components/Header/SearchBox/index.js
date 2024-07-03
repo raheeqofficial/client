@@ -60,47 +60,47 @@ const SearchBox = (props) => {
 
     const handleOptionChange = (event, value) => {
         if (value && value.id) {
-            navigate(`/product/${value.id}`);
+            navigate(`/product/${value.staticId}`);
             props.closeSearch();
         }
     };
 
     return (
         <>
-        <div className='headerSearch ml-3 mr-3'>
+            <div className='headerSearch ml-3 mr-3'>
 
-<Autocomplete
-        freeSolo
-        options={options}
-        getOptionLabel={(option) => option.name}
-        onInputChange={onChangeValue}
-        onChange={handleOptionChange}
-        renderInput={(params) => (
-            <TextField
-                {...params}
-                placeholder='Search for products...'
-                variant='outlined'
-                fullWidth
-                onKeyDown={handleKeyDown}
-                InputProps={{
-                    ...params.InputProps,
-                    endAdornment: (
-                        <>
-                            {isLoading ? <CircularProgress size={20} /> : null}
-                            {params.InputProps.endAdornment}
-                        </>
-                    ),
-                }}
-            />
-        )}
-    />
-    {/* <Button onClick={searchProducts}>
+                <Autocomplete
+                    freeSolo
+                    options={options}
+                    getOptionLabel={(option) => option.name}
+                    onInputChange={onChangeValue}
+                    onChange={handleOptionChange}
+                    renderInput={(params) => (
+                        <TextField
+                            {...params}
+                            placeholder='Search for products...'
+                            variant='outlined'
+                            fullWidth
+                            onKeyDown={handleKeyDown}
+                            InputProps={{
+                                ...params.InputProps,
+                                endAdornment: (
+                                    <>
+                                        {isLoading ? <CircularProgress size={20} /> : null}
+                                        {params.InputProps.endAdornment}
+                                    </>
+                                ),
+                            }}
+                        />
+                    )}
+                />
+                {/* <Button onClick={searchProducts}>
         {isLoading ? <CircularProgress size={24} /> : <IoIosSearch />}
     </Button> */}
-</div>
-        
+            </div>
+
         </>
-        
+
     );
 };
 
