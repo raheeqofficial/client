@@ -54,6 +54,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
 
+
 body {
   font-family: "Lato", sans-serif;
   font-size: 14px;
@@ -63,6 +64,7 @@ body {
   font-size: 15px;
   padding-bottom: 0px !important;
 }
+
 :root {
   --main-blue: #71b7e6;
   --main-purple: #9b59b6;
@@ -96,7 +98,85 @@ body {
   font-size: 28px;
   font-weight: bold;
 }
+.loaderContainer{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  width: 100%;
+}
+.loader {
+  transform: rotateZ(45deg);
+  perspective: 1000px;
+  border-radius: 50%;
+  width: 58px;
+  height: 58px;
+  color: #075eb4;
+}
+  .loader:before,
+  .loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s spin linear infinite;
+  }
+  .loader:after {
+    color: #FF3D00;
+    transform: rotateY(70deg);
+    animation-delay: .4s;
+  }
 
+@keyframes rotate {
+  0% {
+    transform: translate(-50%, -50%) rotateZ(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotateZ(360deg);
+  }
+}
+
+@keyframes rotateccw {
+  0% {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%, -50%) rotate(-360deg);
+  }
+}
+
+@keyframes spin {
+  0%,
+  100% {
+    box-shadow: .2em 0px 0 0px currentcolor;
+  }
+  12% {
+    box-shadow: .2em .2em 0 0 currentcolor;
+  }
+  25% {
+    box-shadow: 0 .2em 0 0px currentcolor;
+  }
+  37% {
+    box-shadow: -.2em .2em 0 0 currentcolor;
+  }
+  50% {
+    box-shadow: -.2em 0 0 0 currentcolor;
+  }
+  62% {
+    box-shadow: -.2em -.2em 0 0 currentcolor;
+  }
+  75% {
+    box-shadow: 0px -.2em 0 0 currentcolor;
+  }
+  87% {
+    box-shadow: .2em -.2em 0 0 currentcolor;
+  }
+}
 .css-10nakn3-MuiModal-root-MuiPopover-root-MuiMenu-root {
   z-index: 1000000 !important;
 }
@@ -111,7 +191,16 @@ button .MuiCircularProgress-root {
 button svg {
   color: #fff;
 }
-
+.flex1{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flex1 p{
+  font-size: 10px;
+  margin-bottom: 0px;
+}
 
 .badge {
   display: inline-block;
@@ -223,7 +312,7 @@ button {
   font-size: 14px;
 }
 .headerWrapper {
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+  /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
   background: #fff;
 }
 .headerWrapperFixed {
@@ -243,10 +332,15 @@ button {
   width: 100%;
   z-index: 10000;
 }
-.headerWrapperFixed.fixed {
+.h-containerWrapper{
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+/* .headerWrapperFixed.fixed {
   top: -123px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
-}
+} */
 .MuiDialog-root {
   z-index: 100000 !important;
 }
@@ -277,6 +371,9 @@ button {
   width: 100%;
   height: auto;
   padding: 20px 0px;
+}
+.logoWrapper{
+  gap: 30px;
 }
 .logoWrapper img {
   width: 100%;
@@ -501,14 +598,20 @@ header .part3 .circle svg {
   color: #000 !important;
   opacity: 0.7;
 }
-
+.navigation-nav{
+  position: sticky;
+  top: -3px !important;
+  box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
+  background: #075eb4;
+  z-index: 999;
+}
 nav .navPart1 {
   max-width: 20%;
   flex: 0 0 20%;
 }
 nav .navPart2 {
-  max-width: 80%;
-  flex: 0 0 80%;
+  max-width: 100%;
+  flex: 0 0 100%;
 }
 
 nav .navPart1 .catWrapper {
@@ -621,7 +724,7 @@ nav .navPart2 ul {
   margin-bottom: 0px;
 }
 nav .navPart2 ul li {
-  padding-bottom: 20px;
+  padding: 10px;
   margin-right: 0px !important;
 }
 nav .navPart2 ul li a {
@@ -631,7 +734,7 @@ nav .navPart2 ul li a button {
   font-size: 14px !important;
   font-weight: 600;
   text-decoration: none;
-  color: rgba(0, 0, 0, 0.7);
+  color: #fff;
   text-transform: uppercase !important;
   display: flex;
   align-items: center;
@@ -645,15 +748,19 @@ nav .navPart2 ul li a button:hover {
 
 nav .navPart2 ul li:hover a button {
   background: #f1f1f1;
+  color: #0858f7 !important;
 }
 
 nav .navPart2 ul li a svg {
   font-size: 20px;
 }
-
+.selected button{
+  background: #f1f1f1;
+  color: #0858f7 !important;
+}
 nav .navPart2 ul li a:hover {
   background: #f0faff;
-  color: #113ebb;
+  color: #113ebb !important;
 }
 
 nav .navPart2 ul li {
@@ -1179,7 +1286,7 @@ nav .navPart2 ul li:hover .submenu {
 
 .sticky {
   position: sticky;
-  top: 10px;
+  top: 70px !important;
   z-index: 100;
 }
 
@@ -1471,7 +1578,7 @@ footer .linksWrap ul li a:hover {
 .product_Listing_Page {
   padding: 25px 0px;
 }
-.product_Listing_Page .productListing-data {
+.productListing-data {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   row-gap: 20px;
@@ -2823,6 +2930,72 @@ a.more-link {
   align-items: center;
   flex-direction: column;
 }
+
+
+.shopDetailCatTab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+  border: 1px solid rgba(0, 0, 0, 0.09) !important;
+  border-radius: 100px !important;
+  font-size: 12px !important;
+  background: #0858f7;
+  color: #fff !important;
+}
+.shopDetailCatTab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+  padding: 2px 18px !important;
+}
+.shopDetailCatTab .MuiButtonBase-root{
+  border: 1px solid rgba(0, 0, 0, 0.09) !important;
+  border-radius: 100px !important;
+  font-size: 12px !important;
+}
+.shopDetailCatTab .css-1aquho2-MuiTabs-indicator {
+  position: static !important;
+  height: 2px;
+  bottom: 0;
+  width: 100%;
+  -webkit-transition: none !important;
+  transition: none !important;
+  background-color: none !important;
+}
+.shopDetailCatTab .css-heg063-MuiTabs-flexContainer{
+  gap: 20px !important;
+}
+.shopPage{
+  padding: 0px !important;
+  margin: 0px !important;
+}
+.topImage{
+  background-image: url('./assets/images/vendor-top.webp');
+  width: 96%;
+  height: 100px;
+  margin: auto;
+  display: flex;
+  overflow: hidden;
+  align-items: center;
+  justify-content: center;
+}
+.topImage h3{
+  color: #fff;
+  word-spacing: 10px;
+}
+.vendorContainer{
+  background: #fff;
+  height: 80px;
+  width: 400px;
+}
+.vendorWrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  width: 100%;
+  gap: 20px;
+}
+.vendorTextBox p{
+  margin-bottom: 0px;
+}
+.shopPage .container{
+  margin: 30px 0px;
+}
 /* ------------ */
 
 @media screen and (max-width: 1300px) {
@@ -2910,7 +3083,7 @@ a.more-link {
   .qc-box{
     margin-top: 16px;
   }
-  .product_Listing_Page .productListing-data {
+.productListing-data {
     grid-template-columns: repeat(3, 1fr) !important;
   }
   .helpCenter .helpTopics {
@@ -2961,6 +3134,9 @@ a.more-link {
   }
   .mobile-bottom-navigation{
     display: block;
+}
+.navigation-nav{
+  display: none;
 }
 .mobile-bottom-navigation{
   background: var(--white);
@@ -3024,6 +3200,13 @@ a.more-link {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 25px;
   } */
+   .topImage{
+    width: 100% !important;
+   }
+   .topImage h3{
+    font-size: 16px !important;
+    word-spacing: 5px;
+   }
   .homeCat a {
     width: 120px;
     height: 120px;
@@ -3065,7 +3248,7 @@ a.more-link {
     column-gap: 30px;
     grid-template-columns: repeat(2, 1fr);
   }
-  .product_Listing_Page .productListing-data {
+  .productListing-data {
     row-gap: 30px;
     column-gap: 30px;
     grid-template-columns: repeat(2, 1fr) !important;
@@ -3113,7 +3296,7 @@ a.more-link {
     column-gap: 10px;
     row-gap: 10px;
   }
-  .product_Listing_Page .productListing-data {
+  .productListing-data {
     column-gap: 10px;
     row-gap: 10px;
   }
@@ -3141,6 +3324,9 @@ a.more-link {
   .catTabs .tabsHd h3 {
     font-size: 20px;
     margin-top: 4px;
+  }
+  nav .navPart2 ul li a button{
+    font-size: 12px !important;
   }
   .logoWrapper h1{
     font-size: 22px !important;

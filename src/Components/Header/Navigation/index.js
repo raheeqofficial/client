@@ -1,81 +1,79 @@
-// import Button from '@mui/material/Button';
-// import { IoIosMenu } from "react-icons/io";
-// import { FaAngleDown } from "react-icons/fa6";
-// import { Link } from 'react-router-dom';
-// import { useContext, useEffect, useState } from 'react';
-// import { FaAngleRight } from "react-icons/fa6";
-// import { MyContext } from '../../../App';
+import Button from '@mui/material/Button';
+import { IoIosMenu } from "react-icons/io";
+import { FaAngleDown } from "react-icons/fa6";
+import { Link } from 'react-router-dom';
+import { useContext, useEffect, useState } from 'react';
+import { FaAngleRight } from "react-icons/fa6";
+import { MyContext } from '../../../App';
 
 
 
-// const Navigation = (props) => {
+const Navigation = () => {
 
-//     const [isopenSidebarVal, setisopenSidebarVal] = useState(false);
-//     const [isOpenNav, setIsOpenNav] = useState(false);
-    
-//     const context = useContext(MyContext);
+    const [isopenSidebarVal, setisopenSidebarVal] = useState(false);
+    const [isOpenNav, setIsOpenNav] = useState(false);
+    const [selected, setSelected] = useState(0)
 
-//     useEffect(()=>{
-//         setIsOpenNav(props.isOpenNav)
-//     },[props.isOpenNav]);
+    const context = useContext(MyContext);
+
+    // useEffect(()=>{
+    //     setIsOpenNav(props.isOpenNav)
+    // },[props.isOpenNav]);
 
 
-//     return (
-//         <nav>
-//             <div className='container'>
+    return (
+        <nav className='navigation-nav'>
+            {/* <div className='container'>
 
-//                 <div className='row'>
-//                     <div className='col-sm-2 navPart1 '>
-//                         <div className='catWrapper'>
-//                             <Button className='allCatTab align-items-center res-hide' onClick={() => setisopenSidebarVal(!isopenSidebarVal)}>
-//                                 <span className='icon1 mr-2'><IoIosMenu /></span>
-//                                 <span className="text">ALL CATEGORIES</span>
-//                                 <span className='icon2  ml-2'><FaAngleDown /></span>
-//                             </Button>
+                <div className='row'> */}
+                    {/* <div className='col-sm-2 navPart1 '>
+                        <div className='catWrapper'>
+                            <Button className='allCatTab align-items-center res-hide' onClick={() => setisopenSidebarVal(!isopenSidebarVal)}>
+                                <span className='icon1 mr-2'><IoIosMenu /></span>
+                                <span className="text">ALL CATEGORIES</span>
+                                <span className='icon2  ml-2'><FaAngleDown /></span>
+                            </Button>
 
-//                             <div className={`sidebarNav ${isopenSidebarVal === true ? 'open' : ''}`}>
-//                                 <ul>
-//                                     {
-//                                         context.subCategoryData?.length !== 0 && context.subCategoryData?.map((item, index) => {
-//                                             return (
-//                                                 <li>
-//                                                     <Link to={`/products/subCat/${item?.id}`}><Button>{item?.subCat} <FaAngleRight className='ml-auto' /></Button></Link>
+                            <div className={`sidebarNav ${isopenSidebarVal === true ? 'open' : ''}`}>
+                                <ul>
+                                    {
+                                        context.subCategoryData?.length !== 0 && context.subCategoryData?.map((item, index) => {
+                                            return (
+                                                <li>
+                                                    <Link to={`/products/subCat/${item?.id}`}><Button>{item?.subCat} <FaAngleRight className='ml-auto' /></Button></Link>
 
-//                                                 </li>
-//                                             )
-//                                         })
-//                                     }
+                                                </li>
+                                            )
+                                        })
+                                    }
 
                                  
                                     
                                    
-//                                 </ul>
-//                             </div>
-//                         </div>
-//                     </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div> */}
 
-//                     <div className={`col-sm-10 navPart2 d-flex align-items-center res-nav-wrapper ${isOpenNav===true ? 'open' : 'close'}`}>
-//                     <div className="res-nav-overlay" onClick={props.closeNav}></div>
-//                         <ul className='list list-inline ml-auto res-nav'>
-//                             <li className='list-inline-item'  onClick={props.closeNav}><Link to="/"><Button>Home</Button></Link></li>
-//                             {
-//                                 props.navData.filter((item, idx) => idx < 6).map((item,index)=>{
-//                                     return (
-//                                         <li className='list-inline-item'  onClick={props.closeNav}>
-//                                             <Link to={`/products/category/${item?.id}`}><Button>{item?.name}</Button></Link>
-                                          
-//                                         </li>
-//                                     )
-//                                 })
+                    <div className={`navPart2 d-flex align-items-center`}>
+                        <div className="res-nav-overlay"></div>
+                        <ul className='list list-inline mb-0'>
+                            <li className={`list-inline-item ${selected === 0 && 'selected'}`} onClick={() => setSelected(0)}><Link to="/"><Button>Home</Button></Link></li>
+                            <li className={`list-inline-item ${selected === 1 && 'selected'}`} onClick={() => setSelected(1)}>
+                                <Link to={`/shops`} ><Button>Shops</Button></Link>
 
-//                             }
-//                         </ul>
-//                     </div>
+                            </li>
+                            <li className={`list-inline-item ${selected === 2 && 'selected'}`} onClick={() => setSelected(2)}>
+                                <Link to={`#`}><Button>Contact Us</Button></Link>
 
-//                 </div>
-//             </div>
-//         </nav >
-//     )
-// }
+                            </li>
+                        </ul>
+                    </div>
 
-// export default Navigation;
+                {/* </div>
+            </div> */}
+        </nav >
+    )
+}
+
+export default Navigation;

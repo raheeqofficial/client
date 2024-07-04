@@ -33,6 +33,7 @@ const Home = () => {
     const [selectedCat, setselectedCat] = useState();
     const [filterData, setFilterData] = useState([]);
     const [homeSlides, setHomeSlides] = useState([]);
+    const [isLoading, setisLoading] = useState(false);
 
     const [value, setValue] = React.useState(0);
 
@@ -52,19 +53,24 @@ const Home = () => {
         window.scrollTo(0, 0);
 
         setselectedCat(context.categoryData[0]?.name)
-
+        setisLoading(true)
 
         fetchDataFromApi(`/api/products/featured`).then((res) => {
             setFeaturedProducts(res)
+            setisLoading(false)
         })
 
 
+        setisLoading(true)
         fetchDataFromApi("/api/products?page=1&perPage=8").then((res) => {
             setProductsData(res);
+            setisLoading(false)
         })
 
+        setisLoading(true)
         fetchDataFromApi("/api/homeBanner").then((res) => {
             setHomeSlides(res);
+            setisLoading(false)
         })
 
     }, [])
@@ -73,7 +79,7 @@ const Home = () => {
     useEffect(() => {
         if (context.categoryData[0] !== undefined)
             setselectedCat(context.categoryData[0].name)
-    }, [context.categoryData])
+    }, [context.categoryData]);
 
     const cleanCategoryName = (name) => {
         return decodeURIComponent(name).replace(/(\d+%)|('s )/g, '');
@@ -91,13 +97,18 @@ const Home = () => {
     useEffect(() => {
         if (selectedCat !== undefined) {
             const encodedCategory = encodeURIComponent(selectedCat);
+            setisLoading(true)
             fetchDataFromApi(`/api/products?catName=${encodedCategory}`).then((res) => {
                 setFilterData(res.products);
-                console.log(res.products);
+                setisLoading(false)
             });
         }
     }, [selectedCat]);
-
+    if (isLoading) {
+        return <div className="loaderContainer">
+          <span class="loader"></span>
+        </div>;
+    }
     return (
         <>
             {
@@ -137,47 +148,6 @@ const Home = () => {
 
 
                             </div>
-
-
-                            {/* <div className="product_row w-100 mt-2">
-                                <Swiper
-                                    slidesPerView={4}
-                                    spaceBetween={0}
-                                    navigation={true}
-                                    slidesPerGroup={context.windowWidth > 992 ? 3 : 1}
-                                    modules={[Navigation]}
-                                    className="mySwiper"
-                                    breakpoints={{
-                                        300: {
-                                            slidesPerView: 1,
-                                            spaceBetween: 5,
-                                        },
-                                        400: {
-                                            slidesPerView: 2,
-                                            spaceBetween: 5,
-                                        },
-                                        600: {
-                                            slidesPerView: 3,
-                                            spaceBetween: 5,
-                                        },
-                                        750: {
-                                            slidesPerView: 4,
-                                            spaceBetween: 5,
-                                        }
-                                    }}
-                                >
-                                    {
-                                        featuredProducts?.length !== 0 && featuredProducts?.slice(0)?.reverse()?.map((item, index) => {
-                                            return (
-                                                <SwiperSlide key={index}>
-                                                    <ProductItem item={item} />
-                                                </SwiperSlide>
-                                            )
-                                        })
-                                    }
-
-                                </Swiper>
-                            </div> */}
 
                             <div className="product_row productRow2 w-100 mt-4">
                                 {
@@ -230,7 +200,7 @@ const Home = () => {
                                 }
                             </div>
                             </div>
-                            <DealOfDay/>
+                            {/* <DealOfDay/> */}
                             <div className="popularProducts">
                             <div className="catTabs mt-4">
                                 <div className="tabsHd">
@@ -266,42 +236,11 @@ const Home = () => {
 
 
                             <div className="product_row productRow2 w-100 mt-4 mb-3">
-                                {/* <Swiper
-                                    slidesPerView={4}
-                                    spaceBetween={0}
-                                    navigation={true}
-                                    slidesPerGroup={context.windowWidth > 992 ? 3 : 1}
-                                    modules={[Navigation]}
-                                    className="mySwiper"
-                                    breakpoints={{
-                                        300: {
-                                            slidesPerView: 1,
-                                            spaceBetween: 5,
-                                        },
-                                        400: {
-                                            slidesPerView: 2,
-                                            spaceBetween: 5,
-                                        },
-                                        600: {
-                                            slidesPerView: 3,
-                                            spaceBetween: 5,
-                                        },
-                                        750: {
-                                            slidesPerView: 4,
-                                            spaceBetween: 5,
-                                        }
-                                    }}
-                                >
-                                    <SwiperSlide key={index}>
-                                                   
-                                                   </SwiperSlide>
-
-                                </Swiper> */}
                                 {
                                     filterData?.length !== 0 && filterData?.slice(0)?.reverse()?.map((item, index) => {
                                         return (
 
-                                            <ProductItem item={item} />
+                                            <ProductItem key={index} item={item} />
                                         )
                                     })
                                 }

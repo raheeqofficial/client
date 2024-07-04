@@ -15,7 +15,6 @@ import { useNavigate } from 'react-router-dom';
 const Cart = () => {
     const [cartData, setCartData] = useState([]);
     const [productQuantity, setProductQuantity] = useState();
-    let [cartFields, setCartFields] = useState({});
     const [isLoading, setIsLoading] = useState(false);
     const [selectedQuantity, setselectedQuantity] = useState();
     const [chengeQuantity, setchengeQuantity] = useState(0);
@@ -45,7 +44,6 @@ const Cart = () => {
         } else {
             goto("/signIn");
         }
-
         fetchDataFromApi(`/api/cart?userId=${userId}`).then((res) => {
             setCartData(res);
             setselectedQuantity(res?.quantity);
@@ -59,17 +57,16 @@ const Cart = () => {
 
     const selectedItem = (item, quantityVal) => {
         if (chengeQuantity !== 0) {
-            setIsLoading(true);
             const cartFields = {
                 ...item,
                 quantity: quantityVal,
                 subTotal: parseInt(item?.price * quantityVal),
                 userId: userId
             };
-
+            setIsLoading(true)
             editData(`/api/cart/${item?._id}`, cartFields).then((res) => {
+                setIsLoading(false)
                 setTimeout(() => {
-                    setIsLoading(false);
                     fetchDataFromApi(`/api/cart?userId=${userId}`).then((res) => {
                         setCartData(res);
                     });
@@ -80,7 +77,6 @@ const Cart = () => {
     }
 
     const removeItem = (id) => {
-        setIsLoading(true);
         deleteData(`/api/cart/${id}`).then((res) => {
             context.setAlertBox({
                 open: true,
@@ -90,12 +86,23 @@ const Cart = () => {
 
             fetchDataFromApi(`/api/cart?userId=${userId}`).then((res) => {
                 setCartData(res);
-                setIsLoading(false);
             });
 
             context.getCartData();
         });
     }
+
+    const calculateSubtotal = () => {
+        if (context.cartData?.length) {
+            return context.cartData
+                .map(item => parseInt(item.price) * item.quantity)
+                .reduce((total, value) => total + value, 0);
+        } else {
+            return 0;
+        }
+    };
+
+    const subtotal = calculateSubtotal();
 
     const calculateTotal = () => {
         const subtotal = context.cartData?.length
@@ -104,6 +111,16 @@ const Cart = () => {
         return subtotal + SHIPPING_RATE;
     }
 
+
+    
+  
+    // if (isLoading) {
+    //     return (
+    //       <div className="loaderContainer">
+    //         <span class="loader"></span>
+    //       </div>
+    //     );
+    //   }
     return (
         <>
             <section className="section cartPage">
@@ -161,9 +178,7 @@ const Cart = () => {
                                     <div className="d-flex align-items-center mb-3">
                                         <span>Subtotal</span>
                                         <span className="ml-auto text-red font-weight-bold">
-                                            {context.cartData?.length
-                                                ? context.cartData.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)
-                                                : 0}
+                                            {subtotal}
                                         </span>
                                     </div>
 

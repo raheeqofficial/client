@@ -112,7 +112,11 @@ const Listing = () => {
     const openFilters = () => {
         setIsOpenFilter(!isOpenFilter)
     }
-
+    if (isLoading) {
+        return <div className="loaderContainer">
+          <span class="loader"></span>
+        </div>;
+    }
     return (
         <>
             <section className="product_Listing_Page">

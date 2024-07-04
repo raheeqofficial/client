@@ -1,7 +1,7 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import './App.css';
 import './responsive.css';
-import { BrowserRouter, Route, Router, Routes, json } from "react-router-dom";
+import { BrowserRouter, Route, Router, Routes, json, useParams } from "react-router-dom";
 import Home from "./Pages/Home";
 import Listing from "./Pages/Listing";
 import ProductDetails from "./Pages/ProductDetails";
@@ -33,6 +33,8 @@ import Categories from "./Pages/Categories/Categories";
 import OrderDetails from "./Pages/Orders/OrderDetails/OrderDetails";
 import TrackOrder from "./Pages/TrackOrder/TrackOrder";
 import Error from "./Pages/productError/Error";
+import Shops from "./Pages/Shops/Shops";
+import ShopDetails from "./Pages/Shops/ShopsDetails/ShopDetails";
 
 const MyContext = createContext();
 
@@ -46,6 +48,7 @@ function App() {
   const [productData, setProductData] = useState([]);
 
   const [categoryData, setCategoryData] = useState([]);
+  const [subCat, setSubCat] = useState([]);
   const [subCategoryData, setsubCategoryData] = useState([]);
   const [addingInCart, setAddingInCart] = useState(false);
 
@@ -67,7 +70,7 @@ function App() {
   })
 
 
-
+  const {id} = useParams()
   useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries/");
 
@@ -97,6 +100,14 @@ function App() {
     };
 
   }, []);
+
+  // useEffect(() => {
+    
+  //   fetchDataFromApi(`/api/subCat?shop=${id}`).then((res) => {
+  //     setSubCat(res.subCatList);
+  //     console.log(res)
+  // });
+  // }, [id])
 
 
   const getCartData = () => {
@@ -203,6 +214,8 @@ function App() {
     user,
     openProductDetailsModal,
     alertBox,
+    subCat,
+    setSubCat,
     setAlertBox,
     addToCart,
     addingInCart,
@@ -270,6 +283,8 @@ function App() {
           <Route exact={true} path="/help-center/track-order" element={<TrackOrder />} />
           <Route exact={true} path="/categories" element={<Categories />} />
           <Route exact={true} path="/help-center/shipping-delivery" element={<ShippingAndDelivery />} />
+          <Route exact={true} path="/shops" element={<Shops />} />
+          <Route exact={true} path="/shops/:id" element={<ShopDetails />} />
         </Routes>
         {
           isHeaderFooterShow === true && <Footer />

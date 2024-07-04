@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Button from '@mui/material/Button';
 import { IoBagOutline } from "react-icons/io5";
 import SearchBox from './SearchBox';
@@ -16,6 +16,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { IoIosSearch } from "react-icons/io";
 import { FaAngleLeft, FaUser } from "react-icons/fa6";
 import { Tooltip } from '@mui/material';
+import Navigation from './Navigation';
 
 
 
@@ -24,6 +25,7 @@ const Header = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [isOpenNav, setIsOpenNav] = useState(false);
     const [isOpenSearch, setIsOpenSearch] = useState(false);
+    const [isLoading, setIsLoading] = useState(false);
     const open = Boolean(anchorEl);
 
     const headerRef = useRef();
@@ -42,8 +44,6 @@ const Header = () => {
         context.setIsLogin(false);
         window.location.href = "/signIn"
     }
-
-
     useEffect(() => {
 
 
@@ -88,7 +88,7 @@ const Header = () => {
                 <li><Link>Faq</Link></li>
             </ul>
         </div>
-            <div ref={headerRef}>
+            <div  ref={headerRef}>
                 <div className="headerWrapper">
                     <header className="header">
                         <div className="container">
@@ -99,10 +99,10 @@ const Header = () => {
                                 </div>
 
                                 <div className=' d-flex align-items-center part2'>
-
                                     {/* {
                                         context.countryList.length !== 0 && context.windowWidth > 992 && <CountryDropdown />
                                     } */}
+                                    
 
                                     <div className={`headerSearchWrapper ${isOpenSearch === true && 'open'}`}>
                                         <div className=' d-flex align-items-center'>
@@ -116,8 +116,9 @@ const Header = () => {
                                         {
                                             context.windowWidth < 992 && <Button className="circle mr-3 toggleNav" onClick={openSearch}><IoIosSearch /></Button>
                                         }
-
+                                        
                                         <Link to={'/help-center'}><Button className='circle mr-3'><BiSupport /></Button></Link>
+                                        
                                         { context.windowWidth > 768 && (
                                             <>
                                                 {
@@ -197,13 +198,9 @@ const Header = () => {
                             </div>
                         </div>
                     </header>
-
-                    {/* {
-                        context.categoryData?.length !== 0 && <Navigation navData={context.categoryData} isOpenNav={isOpenNav} closeNav={closeNav} />
-                    } */}
-
                 </div>
             </div>
+            <Navigation/>
         </>
     )
 }
