@@ -91,18 +91,17 @@ const Cart = () => {
             context.getCartData();
         });
     }
-
+    
     const calculateSubtotal = () => {
         if (context.cartData?.length) {
-            return context.cartData
-                .map(item => parseInt(item.price) * item.quantity)
-                .reduce((total, value) => total + value, 0);
+            const subTotal = context.cartData
+            .map(item => parseInt(item.price) * item.quantity)
+            .reduce((total, value) => total + value, 0);
+            return subTotal
         } else {
             return 0;
         }
     };
-
-    const subtotal = calculateSubtotal();
 
     const calculateTotal = () => {
         const subtotal = context.cartData?.length
@@ -110,6 +109,7 @@ const Cart = () => {
             : 0;
         return subtotal + SHIPPING_RATE;
     }
+    
 
 
     
@@ -178,7 +178,7 @@ const Cart = () => {
                                     <div className="d-flex align-items-center mb-3">
                                         <span>Subtotal</span>
                                         <span className="ml-auto text-red font-weight-bold">
-                                            {subtotal}
+                                            {calculateSubtotal()}
                                         </span>
                                     </div>
 

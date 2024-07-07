@@ -1443,10 +1443,23 @@ footer .linksWrap ul li a:hover {
 
 .productModal .actions button {
   opacity: 1 !important;
+    min-width: 40px !important;
+    height: 40px !important;
+    width: 40px !important;
+    border: 1px solid rgba(0, 0, 0, 0.1) !important;
+    border-radius: 50% !important;
+    background: #fff !important;
+    box-shadow: 0 1px 3px rgb(0 0 0 / 12%), 0 1px 2px rgb(0 0 0 / 24%) !important;
+    transition: all 0s !important;
 }
-.productModal .actions button svg.text-danger {
-  color: #ed174a !important;
-  opacity: 1 !important;
+.productModal .actions button svg {
+  color: #000 !important;
+  opacity: 0.8;
+  pointer-events: none;
+}
+.productModal .actions button.active svg{
+  background: #ed174a !important;
+  border: 1px solid #ed174a !important;
 }
 
 .productModal .MuiPaper-elevation {
@@ -1555,15 +1568,12 @@ footer .linksWrap ul li a:hover {
   text-align: center;
 }
 
-.productModal .actions button {
+/* .productModal .actions button {
   color: #000 !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   font-size: 10px !important;
-}
-.productModal .actions button svg {
-  font-size: 15px !important;
-  color: #000 !important;
-}
+} */
+
 .productModal .actions button:hover {
   background: #f1f1f1;
   opacity: 1 !important;
@@ -1791,7 +1801,7 @@ footer .linksWrap ul li a:hover {
 .productSize {
   width: 100%;
   height: auto;
-  padding: 25px 0px;
+  padding: 10px 0px;
 }
 .productSize ul li {
   margin-right: 10px !important;

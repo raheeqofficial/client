@@ -4,7 +4,7 @@ import Button from '@mui/material/Button';
 import Rating from '@mui/material/Rating';
 import { useContext, useEffect, useState } from 'react';
 import QuantityBox from '../QuantityBox';
-import { IoIosHeartEmpty } from "react-icons/io";
+import { IoIosHeartEmpty, IoMdHeartEmpty } from "react-icons/io";
 import { MdOutlineCompareArrows } from "react-icons/md";
 import { MyContext } from '../../App';
 import ProductZoom from '../ProductZoom';
@@ -60,11 +60,11 @@ const ProductModal = (props) => {
 
         const user = JSON.parse(localStorage.getItem("user"));
 
-        fetchDataFromApi(`/api/my-list?productId=${props?.data?.id}&userId=${user?.userId}`).then((res) => {
-            if (res.length !== 0) {
-                setSsAddedToMyList(true);
-            }
-        })
+        // fetchDataFromApi(`/api/my-list?productId=${props?.data?.id}&userId=${user?.userId}`).then((res) => {
+        //     if (res.length !== 0) {
+        //         setSsAddedToMyList(true);
+        //     }
+        // })
 
     }, [])
 
@@ -162,7 +162,7 @@ const ProductModal = (props) => {
                 image: props?.data?.images[0],
                 rating: props?.data?.rating,
                 price: props?.data?.price,
-                productId: id,
+                productId: props?.data?.staticId,
                 userId: user?.userId
             }
             postData(`/api/my-list/add/`, data).then((res) => {
@@ -171,6 +171,11 @@ const ProductModal = (props) => {
                         open: true,
                         error: false,
                         msg: "the product added in my list"
+                    })
+                    fetchDataFromApi(`/api/my-list?staticId=${id}&userId=${user?.userId}`).then((res) => {
+                        if (res.length !== 0) {
+                            setSsAddedToMyList(true);
+                        }
                     })
                 } else {
                     context.setAlertBox({
@@ -317,28 +322,16 @@ const ProductModal = (props) => {
                         </div>
 
 
-                        <div className='d-flex align-items-center mt-5 actions'>
-                            <Button className='btn-round btn-sml' variant="outlined" onClick={() => addToMyList(props?.data?.id)} >
-
-                                {
-                                    isAddedToMyList === true ?
-                                    <>
-                                        <FaHeart className="text-danger" />
-                                        &nbsp; ADDED TO WISHLIST
-                                    </>
-
+                        {/* <div className='mt-5 actions'>
+                        <Button className={isAddedToMyList === true && 'active'} onClick={() => addToMyList(props.item?.staticId)}>
+                            {
+                                isAddedToMyList === true ? <FaHeart style={{ fontSize: '20px' }} />
                                     :
+                                    <IoMdHeartEmpty style={{ fontSize: '20px' }} />
+                            }
 
-                                <>
-                                    <IoIosHeartEmpty />
-                                    &nbsp; ADD TO WISHLIST
-                                </>
-                                }
-
-
-                            </Button>
-                            <Button className='btn-round btn-sml ml-3' variant="outlined"><MdOutlineCompareArrows /> &nbsp; COMPARE</Button>
-                        </div>
+                        </Button>
+                        </div> */}
 
                     </div>
 

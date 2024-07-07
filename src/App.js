@@ -260,17 +260,13 @@ function App() {
           <Route path="/products/category/:id" exact={true} element={<Listing />} />
           <Route path="/products/subCat/:id" exact={true} element={<Listing />} />
           <Route exact={true} path="/product/:id" element={<ProductDetails />} />
+          <Route exact={true} path="/products/all" element={<Listing />} />
           <Route exact={true} path="/product/error" element={<Error />} />
           <Route exact={true} path="/cart" element={<Cart />} />
           <Route exact={true} path="/signIn" element={<SignIn />} />
           <Route exact={true} path="/signUp" element={<SignUp />} />
           <Route exact={true} path="/my-list" element={<MyList />} />
           <Route exact={true} path="/checkout" element={<Checkout />} />
-          {/* {
-            user?.userId ? <Route exact={true} path="/checkout" element={<Checkout />} />
-             : 
-             <Route path="/" exact={true} element={<Home />} />
-          } */}
           <Route exact={true} path="/orders" element={<Orders />} />
           <Route exact={true} path="/order/details/:id" element={<OrderDetails />} />
           <Route exact={true} path="/*" element={<PageNotFound />} />

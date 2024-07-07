@@ -299,6 +299,7 @@ const ProductDetails = () => {
                 productTitle: productData?.name,
                 shop: productData?.shop,
                 productSize: productData?.size,
+                staticId: productData?.staticId,
                 productWeight: productData?.productWeight,
                 productColor: productData?.color,
                 productRam: productData?.productRam,
@@ -477,7 +478,7 @@ const ProductDetails = () => {
                                 </Button>
 
                                 <Tooltip title={`${isAddedToMyList === true ? 'Added to Wishlist' : 'Add to Wishlist'}`} placement="top">
-                                    <Button className={`btn-blue btn-lg btn-big btn-circle ml-4`} onClick={() => addToMyList(id)}>
+                                    <Button className={`btn-blue btn-lg btn-big btn-circle ml-4 ${isAddedToMyList === true && 'active'}`} onClick={() => addToMyList(id)}>
                                         {
                                             isAddedToMyList === true ? <FaHeart className="text-danger" />
 

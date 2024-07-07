@@ -2,12 +2,9 @@ import HomeBanner from "../../Components/HomeBanner";
 import banner1 from '../../assets/images/banner1.jpg';
 import banner2 from '../../assets/images/banner2.jpg';
 import Button from '@mui/material/Button';
-import { IoIosArrowRoundForward } from "react-icons/io";
 import React, { useContext, useEffect, useState } from "react";
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/navigation';
-import { Navigation } from 'swiper/modules';
 import ProductItem from "../../Components/ProductItem";
 import HomeCat from "../../Components/HomeCat";
 
@@ -22,6 +19,7 @@ import newsLetterImg from '../../assets/images/newsletter.png';
 import { IoMailOutline } from "react-icons/io5";
 import { Box } from "@mui/material";
 import DealOfDay from "../../Components/DealOfDay/DealOfDay";
+import { useNavigate } from "react-router-dom";
 
 
 
@@ -34,6 +32,8 @@ const Home = () => {
     const [filterData, setFilterData] = useState([]);
     const [homeSlides, setHomeSlides] = useState([]);
     const [isLoading, setisLoading] = useState(false);
+    const [TFDiscount, setTFDiscount] = useState([])
+    const navigate = useNavigate()
 
     const [value, setValue] = React.useState(0);
 
@@ -72,8 +72,25 @@ const Home = () => {
             setHomeSlides(res);
             setisLoading(false)
         })
+        let minDiscount = 20;
+        let maxDiscount = 40;
+        fetchDataFromApi(`/api/products?discount=${minDiscount}`).then((res) => {
+            // setProductsData(res);
+            // const products = res?.products
+            // const filteredProducts = products.filter(product => product.discount >= minDiscount && product.discount <= maxDiscount);
+            // setTFDiscount(filteredProducts)
+            console.log(res)
+            setisLoading(false);
+        }).catch((error) => {
+            console.error("Error fetching products:", error);
+            setisLoading(false);
+        });
 
     }, [])
+
+    const handleDiscountClick = (discount) => {
+        navigate(`/products/all?discount=${discount}`)
+    }
 
 
     useEffect(() => {
@@ -165,7 +182,7 @@ const Home = () => {
 
 
                             <div className="d-flex mt-4 mb-4 bannerSec">
-                                <div className="banner">
+                                <div className="banner" onClick={() => handleDiscountClick(20)}>
                                     <img src={banner3} className="cursor w-100" />
                                 </div>
 

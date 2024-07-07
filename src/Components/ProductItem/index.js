@@ -91,7 +91,7 @@ const ProductItem = (props) => {
                 image: props.item?.images[0],
                 rating: props?.item?.rating,
                 price: props?.item?.price,
-                productId: id,
+                productId: props?.item?.staticId,
                 userId: user?.userId
             }
             postData(`/api/my-list/add/`, data).then((res) => {
@@ -104,7 +104,7 @@ const ProductItem = (props) => {
 
 
 
-                    fetchDataFromApi(`/api/my-list?productId=${id}&userId=${user?.userId}`).then((res) => {
+                    fetchDataFromApi(`/api/my-list?staticId=${id}&userId=${user?.userId}`).then((res) => {
                         if (res.length !== 0) {
                             setSsAddedToMyList(true);
                         }
