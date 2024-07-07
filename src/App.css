@@ -3190,6 +3190,9 @@ a.more-link {
   padding: 2px 4px;
   border-radius: 20px;
 }
+.error-container{
+  font-size: 140px;
+}
 }
 @media screen and (max-width: 650px) {
   .homeCat {
@@ -3284,6 +3287,9 @@ a.more-link {
   .user__details::-webkit-scrollbar {
     width: 0;
   }
+  .error-container{
+    font-size: 90px;
+  }
 }
 @media screen and (max-width: 500px) {
   /* .homeCat{
@@ -3316,6 +3322,13 @@ a.more-link {
   }
   .helpTopics-mb {
     grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .errorWrapper .textBox h5{
+    font-size: 14px;
+  }
+  .errorWrapper .textBox p{
+    font-size: 12px;
   }
 }
 @media screen and (max-width: 380px) {

@@ -35,6 +35,7 @@ import TrackOrder from "./Pages/TrackOrder/TrackOrder";
 import Error from "./Pages/productError/Error";
 import Shops from "./Pages/Shops/Shops";
 import ShopDetails from "./Pages/Shops/ShopsDetails/ShopDetails";
+import DiscountPage from "./Pages/DiscountPage/DiscountPage";
 
 const MyContext = createContext();
 
@@ -260,7 +261,7 @@ function App() {
           <Route path="/products/category/:id" exact={true} element={<Listing />} />
           <Route path="/products/subCat/:id" exact={true} element={<Listing />} />
           <Route exact={true} path="/product/:id" element={<ProductDetails />} />
-          <Route exact={true} path="/products/all" element={<Listing />} />
+          <Route exact={true} path="/products/all" element={<DiscountPage />} />
           <Route exact={true} path="/product/error" element={<Error />} />
           <Route exact={true} path="/cart" element={<Cart />} />
           <Route exact={true} path="/signIn" element={<SignIn />} />

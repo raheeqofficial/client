@@ -74,7 +74,7 @@ const Home = () => {
         })
         let minDiscount = 20;
         let maxDiscount = 40;
-        fetchDataFromApi(`/api/products?discount=${minDiscount}`).then((res) => {
+        fetchDataFromApi(`/api/products?discount=${maxDiscount}`).then((res) => {
             // setProductsData(res);
             // const products = res?.products
             // const filteredProducts = products.filter(product => product.discount >= minDiscount && product.discount <= maxDiscount);
@@ -182,7 +182,7 @@ const Home = () => {
 
 
                             <div className="d-flex mt-4 mb-4 bannerSec">
-                                <div className="banner" onClick={() => handleDiscountClick(20)}>
+                                <div className="banner" onClick={() => handleDiscountClick(40)}>
                                     <img src={banner3} className="cursor w-100" />
                                 </div>
 

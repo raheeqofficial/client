@@ -18,7 +18,7 @@ import { FaFilter } from "react-icons/fa";
 import { MyContext } from "../../App";
 import axios from "axios";
 
-const Listing = () => {
+const DiscountPage = () => {
 
     const [anchorEl, setAnchorEl] = useState(null);
     const [productView, setProductView] = useState('four');
@@ -44,22 +44,19 @@ const Listing = () => {
     useEffect(() => {
         window.scrollTo(0, 0);
 
-        let url = window.location.href;
-        let apiEndPoint = "";
-
-        if (url.includes('subCat')) {
-            apiEndPoint = `/api/products?subCat=${id}`
-        }
-        if (url.includes('category')) {
-            apiEndPoint = `/api/products?category=${id}`
-        }
-
-        setisLoading(true);
-        fetchDataFromApi(`${apiEndPoint}`).then((res) => {
+        let minDiscount = 20;
+        let maxDiscount = 40;
+        fetchDataFromApi(`/api/products?discount=${maxDiscount}`).then((res) => {
+            // const products = res?.products
+            // const filteredProducts = products.filter(product => product.discount >= minDiscount && product.discount <= maxDiscount);
+            // setTFDiscount(filteredProducts)
             setProductData(res)
             setisLoading(false);
-        })
-    }, [id]);
+        }).catch((error) => {
+            console.error("Error fetching products:", error);
+            setisLoading(false);
+        });
+    }, []);
 
 
     if (isLoading) {
@@ -150,4 +147,4 @@ const Listing = () => {
     )
 }
 
-export default Listing;
+export default DiscountPage;
