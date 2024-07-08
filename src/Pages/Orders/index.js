@@ -5,6 +5,7 @@ import { MdClose } from "react-icons/md";
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import moment from 'moment';
+import axios from 'axios';
 
 const formatDate = (isoDate) => {
   return moment(isoDate).format('DD/MM/YYYY hh:mm A');
@@ -18,6 +19,7 @@ const Orders = () => {
 
     const [isOpenModal, setIsOpenModal] = useState(false);
     const [isLogin,setIsLogin]  = useState(false);
+    const [error, setError] = useState(null);
 
     const history = useNavigate();
     useEffect(() => {
@@ -32,12 +34,32 @@ const Orders = () => {
         }
 
         const user = JSON.parse(localStorage.getItem("user"));
-        fetchDataFromApi(`/api/orders?userid=${user?.userId}`).then((res) => {
-            setOrders(res);
-            console.log(res)
-        })
+        // fetchDataFromApi(`/api/orders?userid=${user?.userId}`).then((res) => {
+        //     setOrders(res);
+        // }).catch((error) => {
+        //     console.error("Error fetching orders:", error);
+        //     history('/pageNotFound');
+        // });
+        const fetchProduct = async () => {
+            try {
+              const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders?userid=${user?.userId}`);
+              setOrders(res?.data);
+            } catch (err) {
+              if (axios.isAxiosError(err)) {
+                if (err.response && err.response.status === 404) {
+                  history('/product/error');
+                } else {
+                  setError('An unexpected error occurred');
+                }
+              } else {
+                setError('An unexpected error occurred');
+              }
+            }
+          };
+      
+          fetchProduct();
 
-    }, []);
+    }, [history]);
 
 
 

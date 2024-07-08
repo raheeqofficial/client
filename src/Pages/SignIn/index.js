@@ -145,21 +145,20 @@ const SignIn = () => {
                         <h6 className="mt-4 text-center font-weight-bold">Or continue with social account</h6>
 
                         <Button className="loginWithGoogle mt-2" variant="outlined"><img src={GoogleImg} /> Sign In with Google</Button>
-
+                        {submitted && (
+                            <Confetti
+                                width={window.innerWidth}
+                                height={window.innerHeight}
+                                numberOfPieces={300}
+                                recycle={false}
+                                run={submitted}
+                                confettiSource={{ x: window.innerWidth / 2, y: window.innerHeight / 2, w: 0, h: 0 }}
+                            />
+                        )}
                     </form>
 
                 </div>
             </div>
-            {submitted && (
-                <Confetti
-                    width={window.innerWidth}
-                    height={window.innerHeight}
-                    numberOfPieces={300}
-                    recycle={false}
-                    run={submitted}
-                // confettiSource={{ x: window.innerWidth / 2, y: 0, w: 0, h: 0 }}
-                />
-            )}
         </section>
 
     )
