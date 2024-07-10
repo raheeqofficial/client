@@ -36,6 +36,8 @@ import Error from "./Pages/productError/Error";
 import Shops from "./Pages/Shops/Shops";
 import ShopDetails from "./Pages/Shops/ShopsDetails/ShopDetails";
 import DiscountPage from "./Pages/DiscountPage/DiscountPage";
+import Login from "./Pages/Login/Login";
+import OtpVerification from "./Pages/VerifyCode/VerifyCode";
 
 const MyContext = createContext();
 
@@ -265,6 +267,7 @@ function App() {
           <Route exact={true} path="/product/error" element={<Error />} />
           <Route exact={true} path="/cart" element={<Cart />} />
           <Route exact={true} path="/signIn" element={<SignIn />} />
+          <Route exact={true} path="/login" element={<Login />} />
           <Route exact={true} path="/signUp" element={<SignUp />} />
           <Route exact={true} path="/my-list" element={<MyList />} />
           <Route exact={true} path="/checkout" element={<Checkout />} />
@@ -282,6 +285,7 @@ function App() {
           <Route exact={true} path="/help-center/shipping-delivery" element={<ShippingAndDelivery />} />
           <Route exact={true} path="/shops" element={<Shops />} />
           <Route exact={true} path="/shops/:id" element={<ShopDetails />} />
+          <Route exact={true} path="/verify/:id" element={<OtpVerification />} />
         </Routes>
         {
           isHeaderFooterShow === true && <Footer />

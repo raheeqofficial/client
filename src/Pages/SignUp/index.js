@@ -9,8 +9,16 @@ import { postData } from "../../utils/api";
 import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import Confetti from 'react-confetti';
+import { v4 as uuidv4 } from 'uuid';
 
 const SignUp = () => {
+    const [id, setId] = useState('');
+  
+    useEffect(() => {
+        const newId = `${uuidv4()}${uuidv4()}`;
+        setId(newId);
+      }, []);
+    
     const [isLoading, setIsLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [formfields, setFormfields] = useState({
@@ -96,16 +104,17 @@ const SignUp = () => {
         setIsLoading(true);
 
         postData("/api/user/signup", formfields).then((res) => {
+            setSubmitted(true);
             if (res.error !== true) {
                 context.setAlertBox({
                     open: true,
                     error: false,
-                    msg: "Register Successfully!"
+                    msg: "Register Successfully Please verify your account!"
                 });
-                setSubmitted(true);
+                localStorage.setItem("userEmail", formfields.email);
                 setTimeout(() => {
                     setIsLoading(true);
-                    history("/signIn");
+                    history(`/verify/${id}`);
                 }, 2000);
             } else {
                 setIsLoading(false);

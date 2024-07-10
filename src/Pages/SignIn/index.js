@@ -10,13 +10,10 @@ import { postData } from "../../utils/api";
 import Confetti from 'react-confetti';
 
 const SignIn = () => {
-
     const [isLoading, setIsLoading] = useState(false);
     const context = useContext(MyContext);
     const history = useNavigate();
     const [submitted, setSubmitted] = useState(false);
-
-
     useEffect(() => {
         context.setisHeaderFooterShow(false);
     }, []);
@@ -37,7 +34,6 @@ const SignIn = () => {
 
     const login = (e) => {
         e.preventDefault();
-
         if (formfields.email === "") {
             context.setAlertBox({
                 open: true,
@@ -56,7 +52,6 @@ const SignIn = () => {
         }
         setIsLoading(true);
         postData("/api/user/signin", formfields).then((res) => {
-
             try {
 
                 if (res.error !== true) {
@@ -69,17 +64,13 @@ const SignIn = () => {
                     }
 
                     localStorage.setItem("user", JSON.stringify(user));
-
-
                     context.setAlertBox({
                         open: true,
                         error: false,
                         msg: "User Login Successfully!"
                     });
-
                     setSubmitted(true);
                     setTimeout(() => {
-                        //history("/dashboard");
                         setIsLoading(false);
 
                         window.location.href = "/";
