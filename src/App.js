@@ -38,6 +38,8 @@ import ShopDetails from "./Pages/Shops/ShopsDetails/ShopDetails";
 import DiscountPage from "./Pages/DiscountPage/DiscountPage";
 import Login from "./Pages/Login/Login";
 import OtpVerification from "./Pages/VerifyCode/VerifyCode";
+import OrderReceipt from "./Components/OrderReceipt/OrderReceipt";
+import CancelOrder from "./Pages/Help center/CancelOrder";
 
 const MyContext = createContext();
 
@@ -274,16 +276,19 @@ function App() {
           <Route exact={true} path="/orders" element={<Orders />} />
           <Route exact={true} path="/order/details/:id" element={<OrderDetails />} />
           <Route exact={true} path="/*" element={<PageNotFound />} />
+          <Route exact={true} path="/page-not-found" element={<PageNotFound />} />
           <Route exact={true} path="/account-setting" element={<MyAccount />} />
           <Route exact={true} path="/account" element={<MobileAccount />} />
           <Route exact={true} path="/search" element={<SearchPage />} />
           <Route exact={true} path="/success" element={<Success />} />
           <Route exact={true} path="/become-seller" element={<BecomeSeller />} />
           <Route exact={true} path="/help-center" element={<HelpCenterApp />} />
+          <Route exact={true} path="/help-center/cancel-order" element={<CancelOrder />} />
           <Route exact={true} path="/help-center/track-order" element={<TrackOrder />} />
           <Route exact={true} path="/categories" element={<Categories />} />
           <Route exact={true} path="/help-center/shipping-delivery" element={<ShippingAndDelivery />} />
           <Route exact={true} path="/shops" element={<Shops />} />
+          {/* <Route exact={true} path="/order-recepient" element={<OrderReceipt />} /> */}
           <Route exact={true} path="/shops/:id" element={<ShopDetails />} />
           <Route exact={true} path="/verify/:id" element={<OtpVerification />} />
         </Routes>

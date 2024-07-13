@@ -1,18 +1,15 @@
 import React, { useContext, useEffect, useState } from 'react';
 import TextField from '@mui/material/TextField';
 import Button from '@mui/material/Button';
-import { IoBagCheckOutline } from "react-icons/io5";
 
 import { MyContext } from '../../App';
 import { fetchDataFromApi, postData } from '../../utils/api';
 
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { CircularProgress } from '@mui/material';
-import { data } from '../../data/shippingAndDelivery';
-import axios from 'axios';
 
 const Checkout = () => {
-
+    const {id} = useParams()
     const [formFields, setFormFields] = useState({
         fullName: "",
         country: "",
@@ -193,6 +190,7 @@ const Checkout = () => {
             window.location.href = "/success";
         })
 
+        localStorage.setItem("orderId", id);
         setTimeout(() => {
             setLoading(false);
             context.setAlertBox({

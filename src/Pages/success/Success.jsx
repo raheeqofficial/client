@@ -1,8 +1,7 @@
 import { Button } from "@mui/material";
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { HiOutlineInboxStack } from "react-icons/hi2";
-
 const Success = () => {
     const [user, setUser] = useState()
 
@@ -10,9 +9,7 @@ const Success = () => {
         const token = localStorage.getItem("token");
 
         if (token !== "" && token !== undefined && token !== null) {
-    
-          const userData = JSON.parse(localStorage.getItem("user"));
-    
+          const userData = JSON.parse(localStorage.getItem("user"));    
           setUser(userData);
         }
     }, [])

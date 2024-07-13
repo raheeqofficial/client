@@ -10,6 +10,7 @@ const Shops = () => {
     setIsLoading(true);
     fetchDataFromApi("/api/shop").then((res) => {
       setShopData(res);
+      console.log(res)
       setIsLoading(false);
     });
   }, []);

@@ -113,7 +113,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"#"}>
+            <Link to={"/help-center/shipping-delivery"}>
               <img
                 width="48"
                 height="48"

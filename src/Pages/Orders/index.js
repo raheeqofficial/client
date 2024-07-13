@@ -85,6 +85,7 @@ const Orders = () => {
                                     <th>Product Id</th>
                                     <th>Products</th>
                                     <th>Order Details</th>
+                                    <th>Order Status</th>
                                     <th>Date</th>
                                 </tr>
                             </thead>
@@ -99,9 +100,10 @@ const Orders = () => {
                                                     <td><span className='text-blue fonmt-weight-bold'>{order?.id}</span></td>
                                                     <td><span className='text-blue fonmt-weight-bold cursor' onClick={() => showProducts(order?._id)}>Click here to view</span>
                                                     </td>
-                                                    <Link to={`/order/details/${order?._id}`}><td>
+                                                    <td><Link to={`/order/details/${order?._id}`}>
                                                         See details
-                                                    </td></Link>
+                                                    </Link></td>
+                                                    <td className={`${(order.status === "Cancelled" ||  order.status === "Pending") ? "text text-danger":"text text-success"}`}>{order?.status}</td>
                                                     <td>{formattedDate}</td>
                                                 </tr>
 
