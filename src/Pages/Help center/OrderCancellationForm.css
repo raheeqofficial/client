@@ -7,39 +7,39 @@
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.cancellation-form {
+.cancelOrderPage .cancellation-form {
     display: flex;
     flex-direction: column;
 }
 
-.cancellation-form h2 {
+.cancelOrderPage .cancellation-form h2 {
     margin-bottom: 20px;
     text-align: center;
 }
 
-.form-group {
+.cancelOrderPage .form-group {
     margin-bottom: 15px;
 }
 
-.form-group label {
+.cancelOrderPage .form-group label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
 }
 
-.form-group input,
-.form-group textarea {
+.cancelOrderPage .form-group input,
+.cancelOrderPage .form-group textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
 }
 
-.form-group textarea {
+.cancelOrderPage .form-group textarea {
     resize: vertical;
 }
 
-.btn {
+.cancelOrderPage .btn {
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
@@ -49,11 +49,11 @@
     font-size: 16px;
 }
 
-.btn-primary:hover {
+.cancelOrderPage .btn-primary:hover {
     background-color: #0056b3;
 }
 
-.message {
+.cancelOrderPage .message {
     margin-top: 20px;
     text-align: center;
     font-weight: bold;

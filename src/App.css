@@ -2046,7 +2046,7 @@ a:hover {
 
 .signInPage {
   width: 100%;
-  height: 100vh;
+  height: auto;
   position: relative;
   overflow: hidden;
   background: #fff !important;
@@ -2601,6 +2601,9 @@ form input[type="radio"] {
 .mb-wrapper .mb-box p{
   margin-bottom: 0px;
   color: #282828;
+}
+.mb-logout{
+  color: #fff;
 }
 .notLogin{
   width: 100%;

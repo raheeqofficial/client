@@ -12,14 +12,20 @@ const MobileAccount = () => {
     window.scrollTo(0, 0);
   }, []);
   const context = useContext(MyContext);
+  const logout = () => {
+    localStorage.clear();
+    context.setIsLogin(false);
+    window.location.href = "/signIn"
+  }
   return (
     <>
       {context.windowWidth < 768 && (
         <div className="mb-account">
           {context.isLogin === true ? (
             <>
-              <div className="mb-account-heading">
+              <div className="mb-account-heading d-flex align-items-center justify-content-between">
                 <h3 className="mb-0">My Account</h3>
+                <p className="ml-auto mb-0 mb-logout" onClick={logout}>Logout</p>
               </div>
               <div className="mb-account-para">
                 <p className="mb-0">Hello, Welcome to store</p>

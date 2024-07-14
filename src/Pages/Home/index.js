@@ -277,7 +277,7 @@ const Home = () => {
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6">
-                            <p className="text-white mb-1">$20 discount for your first order</p>
+                            {/* <p className="text-white mb-1">$20 discount for your first order</p> */}
                             <h3 className="text-white">Join our newsletter and get...</h3>
                             <p className="text-light">Join our email subscription now to get updates on<br /> promotions and coupons.</p>
 
