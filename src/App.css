@@ -376,7 +376,7 @@ button {
   gap: 30px;
 }
 .logoWrapper img {
-  width: 40%;
+  width: 100%;
   background-position: center;
   background-size: cover;
   object-fit: cover;

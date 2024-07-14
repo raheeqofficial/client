@@ -17,7 +17,7 @@ import { IoIosSearch } from "react-icons/io";
 import { FaAngleLeft, FaUser } from "react-icons/fa6";
 import { Tooltip } from '@mui/material';
 import Navigation from './Navigation';
-import logo from '../../assets/images/eliph-logo.png'
+import logo from '../../assets/images/eliph stores-7.png'
 
 
 
@@ -95,7 +95,7 @@ const Header = () => {
                         <div className="container">
                             <div className="row">
                                 <div className="logoWrapper d-flex align-items-center">
-                                    <Link to={'/'}><img src={logo} alt='Logo' /></Link>
+                                    <Link to={'/'}><img src={logo} width={100} height={100} alt='Logo' /></Link>
                                     {/* <Link to={'/'}><h1>Raheeq</h1></Link> */}
                                 </div>
 
