@@ -1,3 +1,4 @@
+import React from 'react';
 import { useContext, useEffect, useState } from "react";
 import Logo from '../../assets/images/logo.jpg';
 import { MyContext } from "../../App";
@@ -10,15 +11,17 @@ import { useNavigate } from 'react-router-dom';
 import CircularProgress from '@mui/material/CircularProgress';
 import Confetti from 'react-confetti';
 import { v4 as uuidv4 } from 'uuid';
+import CheckIcon from '@mui/icons-material/Check';
+import CloseIcon from '@mui/icons-material/Close';
 
 const SignUp = () => {
     const [id, setId] = useState('');
-  
+
     useEffect(() => {
         const newId = `${uuidv4()}${uuidv4()}`;
         setId(newId);
-      }, []);
-    
+    }, []);
+
     const [isLoading, setIsLoading] = useState(false);
     const [submitted, setSubmitted] = useState(false);
     const [formfields, setFormfields] = useState({
@@ -36,6 +39,12 @@ const SignUp = () => {
         password: ""
     });
 
+    const [passwordStatus, setPasswordStatus] = useState({
+        startsWithLetter: false,
+        minLength: false,
+        specialChar: false
+    });
+
     const context = useContext(MyContext);
     const history = useNavigate();
 
@@ -44,20 +53,32 @@ const SignUp = () => {
     }, []);
 
     const onchangeInput = (e) => {
-        setFormfields(() => ({
-            ...formfields,
-            [e.target.name]: e.target.value
+        const { name, value } = e.target;
+        setFormfields(prevState => ({
+            ...prevState,
+            [name]: value
         }));
+
+        if (name === "password") {
+            validatePasswordInput(value);
+        }
+    };
+
+    const validatePasswordInput = (password) => {
+        const startsWithLetter = /^[a-zA-Z]/.test(password);
+        const minLength = password.length >= 8;
+        const specialChar = /[!@#$%^&*(),.?":{}|<>]/.test(password);
+
+        setPasswordStatus({
+            startsWithLetter,
+            minLength,
+            specialChar
+        });
     };
 
     const validateEmail = (email) => {
         const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return re.test(email);
-    };
-
-    const validatePassword = (password) => {
-        const re = /^[a-zA-Z](?=.*[!@#$%^&*(),.?":{}|<>]).{7,}$/;
-        return re.test(password);
     };
 
     const validatePhone = (phone) => {
@@ -90,8 +111,8 @@ const SignUp = () => {
             setErrors(prevState => ({ ...prevState, phone: "" }));
         }
 
-        if (!validatePassword(formfields.password)) {
-            setErrors(prevState => ({ ...prevState, password: "Password must be at least 8 characters long and contain at least one special character!" }));
+        if (!passwordStatus.startsWithLetter || !passwordStatus.minLength || !passwordStatus.specialChar) {
+            setErrors(prevState => ({ ...prevState, password: "Password does not meet the criteria!" }));
             hasErrors = true;
         } else {
             setErrors(prevState => ({ ...prevState, password: "" }));
@@ -206,6 +227,18 @@ const SignUp = () => {
                             />
                         </div>
 
+                        <div className="password-criteria mt-3">
+                            <p className={`password-criteria-item ${passwordStatus.startsWithLetter ? 'valid' : 'invalid'}`}>
+                                {passwordStatus.startsWithLetter ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password starts with a letter
+                            </p>
+                            <p className={`password-criteria-item ${passwordStatus.minLength ? 'valid' : 'invalid'}`}>
+                                {passwordStatus.minLength ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password is at least 8 characters long
+                            </p>
+                            <p className={`password-criteria-item ${passwordStatus.specialChar ? 'valid' : 'invalid'}`}>
+                                {passwordStatus.specialChar ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password contains a special character
+                            </p>
+                        </div>
+
                         <a className="border-effect cursor txt">Forgot Password?</a>
 
                         <div className="d-flex align-items-center mt-3 mb-3">
@@ -241,7 +274,6 @@ const SignUp = () => {
                     </form>
                 </div>
             </div>
-
         </section>
     );
 };
