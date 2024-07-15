@@ -3,12 +3,13 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { MyContext } from "../../App";
 import Slider from "react-slick";
+import './homeBanner.css'
 
 const HomeBanner = (props) => {
 
     const context = useContext(MyContext);
     const settings = {
-        dots: true,
+        dots: false,
         infinite: true,
         speed: 500,
         slidesToShow: 1,
@@ -18,7 +19,7 @@ const HomeBanner = (props) => {
       };
 
     return (
-        <div className="mt-0 homeBanner">
+        <div className="homeBanner">
          <Slider {...settings}>
             {
                         props?.data?.length !== 0 && props?.data?.map((item, index) => {

@@ -7,7 +7,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductItem from "../../Components/ProductItem";
 import HomeCat from "../../Components/HomeCat";
-
+import './home.css'
 import banner3 from '../../assets/images/banner3.jpg';
 import banner4 from '../../assets/images/banner4.jpg';
 
@@ -20,6 +20,8 @@ import { IoMailOutline } from "react-icons/io5";
 import { Box } from "@mui/material";
 import DealOfDay from "../../Components/DealOfDay/DealOfDay";
 import { useNavigate } from "react-router-dom";
+import SaleCards from "../../Components/SaleCards/SaleCards";
+import FiftyPerSaleCard from "../../Components/fiftyPerSaleCard/FiftyPerSaleCard";
 
 
 
@@ -62,7 +64,7 @@ const Home = () => {
 
 
         setisLoading(true)
-        fetchDataFromApi("/api/products?page=1&perPage=8").then((res) => {
+        fetchDataFromApi("/api/products").then((res) => {
             setProductsData(res);
             setisLoading(false)
         })
@@ -114,7 +116,7 @@ const Home = () => {
     useEffect(() => {
         if (selectedCat !== undefined) {
             const encodedCategory = encodeURIComponent(selectedCat);
-            setisLoading(true)
+            setisLoading(false)
             fetchDataFromApi(`/api/products?catName=${encodedCategory}`).then((res) => {
                 setFilterData(res.products);
                 setisLoading(false)
@@ -127,7 +129,7 @@ const Home = () => {
         </div>;
     }
     return (
-        <>
+        <div className="homeBox">
             {
                 homeSlides?.length !== 0 && <HomeBanner data={homeSlides} />
             }
@@ -137,7 +139,8 @@ const Home = () => {
                 context.categoryData?.length !== 0 && <HomeCat catData={context.categoryData} />
             }
 
-
+            <SaleCards/>
+            <FiftyPerSaleCard/>
 
             <section className="homeProducts">
                 <div className="container">
@@ -296,7 +299,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-        </>
+        </div>
     )
 }
 

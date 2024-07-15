@@ -606,7 +606,7 @@ header .part3 .circle svg {
   top: -3px !important;
   box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
   background: #075eb4;
-  z-index: 999;
+  z-index: 1999;
 }
 nav .navPart1 {
   max-width: 20%;
@@ -911,7 +911,8 @@ nav .navPart2 ul li:hover .submenu {
   cursor: pointer;
   position: relative;
   transition: all 0.2s;
-  background: #f1f1f1;
+  background: #fff;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
   border-radius: 10px !important;
   text-decoration: none;
   color: #000;
@@ -1225,51 +1226,7 @@ nav .navPart2 ul li:hover .submenu {
   background: #2bbef9 !important;
 }
 
-.homeCat {
-  width: 100%;
-  padding: 30px 0px;
-  margin: 50px auto;
-  text-align: center;
-}
-.homeCat a {
-  width: 150px;
-  /* margin-bottom: 40px; */
-}
-.homeCatBox {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-}
-.homeCat .item {
-  width: 100%;
-  height: 150px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.homeCat .item img {
-  width: 100%;
-  margin-bottom: 10px;
-  height: 100%;
-  object-position: top;
-  object-fit: cover;
-}
-.homeCat h6 {
-  font-weight: 600;
-  text-align: center;
-  margin-top: 4px;
-  font-size: 16px;
-  color: #000;
-  opacity: 0.8;
-  text-transform: capitalize;
-}
 
-.homeCat .item:hover {
-  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
-  transform: translateY(-5px);
-}
 
 .productRow2 {
   display: grid;
@@ -3078,14 +3035,6 @@ a.more-link {
   }
 }
 @media screen and (max-width: 800px) {
-  /* .homeCatBox{
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 25px;
-  } */
-  .homeCat .item {
-    width: 100%;
-    height: 100%;
-  }
   .successPage h1 {
     font-size: 20px !important;
   }
@@ -3202,10 +3151,6 @@ a.more-link {
 }
 }
 @media screen and (max-width: 650px) {
-  .homeCat {
-    margin: 0px !important;
-    padding: 30px 20px;
-  }
   footer .linksWrap {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 20px;
@@ -3216,10 +3161,6 @@ a.more-link {
   .p-name{
     font-size: 10px !important;
   }
-  /* .homeCatBox{
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 25px;
-  } */
    .topImage{
     width: 100% !important;
    }
@@ -3227,20 +3168,6 @@ a.more-link {
     font-size: 16px !important;
     word-spacing: 5px;
    }
-  .homeCat a {
-    width: 120px;
-    height: 120px;
-    gap: 0px;
-    /* padding: 0px; */
-    margin-bottom: 30px;
-  }
-  .homeCat .container {
-    padding: 0px !important;
-  }
-  .homeCat .item {
-    width: 100%;
-    height: 100%;
-  }
   .catTabs .tabsHd {
     height: 90px;
     width: 100%;
@@ -3299,22 +3226,10 @@ a.more-link {
   }
 }
 @media screen and (max-width: 500px) {
-  /* .homeCat{
-    margin: 10px 0px;
-  } */
-  /* .homeCatBox{
-    grid-template-columns: repeat(3, 1fr);
-    row-gap: 25px;
-    column-gap: 0px;
-  } */
   .mobile-bottom-navigation{
     border-top-left-radius: var(--border-radius-md);
     border-top-right-radius: var(--border-radius-md);
 }
-  .homeCat a {
-    width: 100px;
-    height: 100px;
-  }
   .productRow2 {
     column-gap: 10px;
     row-gap: 10px;
@@ -3322,10 +3237,6 @@ a.more-link {
   .productListing-data {
     column-gap: 10px;
     row-gap: 10px;
-  }
-  .homeCat .item {
-    width: 100%;
-    height: 100%;
   }
   .helpTopics-mb {
     grid-template-columns: repeat(2, 1fr);
@@ -3341,10 +3252,6 @@ a.more-link {
 @media screen and (max-width: 380px) {
   .header-top ul {
     gap: 15px !important;
-  }
-  .homeCat {
-    margin: 0px !important;
-    padding: 30px 10px;
   }
   .catTabs .tabsHd {
     height: 90px;

@@ -4,7 +4,7 @@ import 'swiper/css';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import { Link } from "react-router-dom";
-
+import './homeCat.css'
 import { MyContext } from "../../App";
 
 const HomeCat = (props) => {
@@ -13,25 +13,27 @@ const HomeCat = (props) => {
 
     return (
         <section className="homeCat">
-            <div className="container">
-            <h3 className="mb-3 hd text-center">Featured Categories</h3>
-            <div className="homeCatBox">
-                                    
-                {
+            <div className="homeCatWrapper">
+                <h3 className="mb-5 hd text-center">Featured Categories</h3>
+                <div className="homeCatBox">
+
+                    {
                         props.catData?.length !== 0 && props.catData?.map((cat, index) => {
                             return (
-                                
+
                                 <Link to={`/products/category/${cat.id}`} key={index}>
-                                <div className="item text-center cursor">
-                                    <img src={cat.images[0]} />
-                                </div>
-                                <h6>{cat?.name.length > 17 ? cat?.name.substr(0,15) + '...' : cat?.name}</h6>
-                            </Link>
-                                    
+                                    <div className="homeCatBoxWrapper">
+                                        <div className="homeCatImgWrapper">
+                                            <img src={cat.images[0]} />
+                                        </div>
+                                        <h6>{cat?.name.length > 17 ? cat?.name.substr(0, 15) + '...' : cat?.name}</h6>
+                                    </div>
+                                </Link>
+
                             )
                         })
                     }
-                    </div>
+                </div>
             </div>
         </section>
     )

@@ -1,0 +1,161 @@
+.saleCards{
+    height: auto;
+    width: 100%;
+    margin: 30px auto;
+}
+.saleCardsWrapper{
+    padding: 60px 30px;
+    background: #fff;
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.cardBoxContainer{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+}
+.cardBoxContainer a{
+    width: 350px;
+    height: 250px;
+    border-radius: 25px;
+}
+.cardBoxContainer a .cardBox{
+    width: 100%;
+    height: 100%;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 350px;
+    height: 250px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper img{
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+}
+.cardBoxContainer a .cardBox h6{
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 6px;
+    color: #000;
+}
+
+@media screen and (max-width: 1220px) {
+    
+.cardBoxContainer a{
+    width: 300px;
+    height: 250px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 300px;
+    height: 250px;
+}
+}
+@media screen and (max-width: 1024px) {
+    
+.cardBoxContainer a{
+    width: 250px;
+    height: 200px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 250px;
+    height: 200px;
+}
+.cardBoxContainer{
+    gap: 15px;
+}
+.saleCardsWrapper{
+    padding: 40px 10px;
+}
+}
+@media screen and (max-width: 850px) {
+    
+.cardBoxContainer a{
+    width: 200px;
+    height: 150px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 200px;
+    height: 150px;
+}
+.cardBoxContainer{
+    gap: 15px;
+}
+}
+@media screen and (max-width: 700px) {
+    
+.cardBoxContainer a{
+    width: 170px;
+    height: 120px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper img{
+    border-radius: 10px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 170px;
+    height: 120px;
+}
+.cardBoxContainer{
+    gap: 15px;
+}
+}
+@media screen and (max-width: 600px) {
+    
+.cardBoxContainer a{
+    width: 140px;
+    height: 100px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 140px;
+    height: 100px;
+}
+.cardBoxContainer{
+    gap: 10px;
+}
+}
+@media screen and (max-width: 500px) {
+    
+.cardBoxContainer a{
+    width: 115px;
+    height: 80px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 115px;
+    height: 80px;
+}
+.cardBoxContainer{
+    gap: 10px;
+}
+}
+@media screen and (max-width: 400px) {
+    
+.cardBoxContainer a{
+    width: 100px;
+    height: 75px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 100px;
+    height: 75px;
+}
+.cardBoxContainer{
+    gap: 10px;
+}
+}
+@media screen and (max-width: 352px) {
+    
+.cardBoxContainer a{
+    width: 85px;
+    height: 75px;
+}
+.cardBoxContainer a .cardBox .cardImgWrapper{
+    width: 85px;
+    height: 75px;
+}
+.cardBoxContainer{
+    gap: 8px;
+}
+}

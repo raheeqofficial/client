@@ -1,0 +1,94 @@
+.homeCat{
+    height: auto;
+    width: 100%;
+    margin: 30px auto;
+}
+.homeCatWrapper{
+    padding: 60px 30px;
+    background: #fff;
+    width: 95%;
+    margin: 20px auto;
+    border-radius: 8px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.homeCatBox{
+    width: 80%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    /* padding: 0; */
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+    row-gap: 50px;
+}
+.homeCatBox a{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.homeCatBox a .homeCatBoxWrapper{
+    width: 100%;
+    height: 100%;
+}
+.homeCatBox a .homeCatBoxWrapper h6{
+    text-align: center;
+    color: #000;
+    margin-top: 4px;
+}
+.homeCatBoxWrapper .homeCatImgWrapper{
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+}
+.homeCatBoxWrapper .homeCatImgWrapper img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
+    object-position: top;
+}
+
+@media screen and (max-width: 768px) {
+    .homeCatBox{
+        width: 100%;
+    }
+    .homeCatBox a{
+        width: 120px;
+        height: 120px;
+        border-radius: 50%;
+    }
+}
+@media screen and (max-width: 650px) {
+    .homeCatBox a{
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+    }
+    .homeCatBox{
+        column-gap: 20px;
+        row-gap: 60px;
+    }
+    .homeCatBoxWrapper .homeCatImgWrapper{
+        width: 90px;
+        height: 90px;
+        border-radius: 50%;
+    }
+}
+@media screen and (max-width: 510px) {
+    .homeCatBox a{
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+    .homeCatBox{
+        column-gap: 15px;
+        row-gap: 75px;
+    }
+    .homeCatBoxWrapper .homeCatImgWrapper{
+        width: 75px;
+        height: 75px;
+        border-radius: 50%;
+    }
+}
