@@ -374,9 +374,12 @@ button {
 }
 .logoWrapper{
   gap: 30px;
+  max-width: 100px;
+  max-height: 100px;
 }
 .logoWrapper img {
   width: 100%;
+  height: 100%;
   background-position: center;
   background-size: cover;
   object-fit: cover;
@@ -463,16 +466,13 @@ button {
   width: 40px !important;
   border-radius: 50% !important;
   color: #000;
+  display: none !important;
 }
 .headerSearch button svg,
 header .part3 .circle svg {
   font-size: 25px;
   opacity: 0.8;
   color: #000 !important;
-}
-.headerSearch button .MuiCircularProgress-root {
-  width: 25px !important;
-  height: 25px !important;
 }
 .headerSearch .css-ptiqhd-MuiSvgIcon-root{
   margin-bottom: 50px !important;
@@ -606,7 +606,7 @@ header .part3 .circle svg {
   top: -3px !important;
   box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
   background: #075eb4;
-  z-index: 1999;
+  z-index: 1000;
 }
 nav .navPart1 {
   max-width: 20%;
@@ -984,7 +984,7 @@ nav .navPart2 ul li:hover .submenu {
   height: 100%;
   top: 20px;
   right: 0%;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -997,7 +997,7 @@ nav .navPart2 ul li:hover .submenu {
   height: 100%;
   top: 60px;
   right: 0%;
-  z-index: 1000;
+  z-index: 100;
   display: flex;
   flex-direction: column;
   gap: 10px;

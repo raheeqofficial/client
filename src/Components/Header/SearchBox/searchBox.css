@@ -1,0 +1,20 @@
+.searchWrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+}
+.searchIconBox{
+    background: rgb(45, 45, 245);
+    height: 55px;
+    border-radius: 5px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+.searchWrapper svg{
+    font-size: 22px;
+    color: #fff;
+}

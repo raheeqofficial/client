@@ -6,6 +6,8 @@ import Autocomplete from '@mui/material/Autocomplete';
 import { fetchDataFromApi } from '../../../utils/api';
 import { MyContext } from '../../../App';
 import { useNavigate } from 'react-router-dom';
+import { IoSearch } from 'react-icons/io5';
+import './searchBox.css'
 
 const SearchBox = (props) => {
     const [searchFields, setSearchFields] = useState("");
@@ -76,7 +78,8 @@ const SearchBox = (props) => {
                     onInputChange={onChangeValue}
                     onChange={handleOptionChange}
                     renderInput={(params) => (
-                        <TextField
+                        <div className='searchWrapper'>
+                            <TextField
                             {...params}
                             placeholder='Search for products...'
                             variant='outlined'
@@ -92,6 +95,10 @@ const SearchBox = (props) => {
                                 ),
                             }}
                         />
+                        <div className='searchIconBox' onClick={searchProducts}>
+                            <IoSearch/>
+                        </div>
+                        </div>
                     )}
                 />
                 {/* <Button onClick={searchProducts}>

@@ -29,7 +29,7 @@ const RelatedProducts = (props) => {
                 modules={[Navigation]}
                 className="mySwiper"
                 breakpoints={{
-                    350: {
+                    300: {
                         slidesPerView: 1,
                         spaceBetween: 5,
                     },
