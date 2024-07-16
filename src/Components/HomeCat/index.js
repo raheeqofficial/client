@@ -14,7 +14,7 @@ const HomeCat = (props) => {
     return (
         <section className="homeCat">
             <div className="homeCatWrapper">
-                <h3 className="mb-5 hd text-center">Featured Categories</h3>
+                <h3 className="hd text-center">Featured Categories</h3>
                 <div className="homeCatBox">
 
                     {

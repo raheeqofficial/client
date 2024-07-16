@@ -141,6 +141,7 @@ const Home = () => {
 
             <SaleCards/>
             <FiftyPerSaleCard/>
+            <DealOfDay/>
 
             <section className="homeProducts">
                 <div className="container">
@@ -220,7 +221,6 @@ const Home = () => {
                                 }
                             </div>
                             </div>
-                            {/* <DealOfDay/> */}
                             <div className="popularProducts">
                             <div className="catTabs mt-4">
                                 <div className="tabsHd">
