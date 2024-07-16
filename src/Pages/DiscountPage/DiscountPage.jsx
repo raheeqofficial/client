@@ -45,7 +45,7 @@ const DiscountPage = () => {
         window.scrollTo(0, 0);
 
         let minDiscount = 20;
-        let maxDiscount = 40;
+        let maxDiscount = 50;
         fetchDataFromApi(`/api/products?discount=${maxDiscount}`).then((res) => {
             // const products = res?.products
             // const filteredProducts = products.filter(product => product.discount >= minDiscount && product.discount <= maxDiscount);

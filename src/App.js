@@ -40,6 +40,7 @@ import Login from "./Pages/Login/Login";
 import OtpVerification from "./Pages/VerifyCode/VerifyCode";
 import OrderReceipt from "./Components/OrderReceipt/OrderReceipt";
 import CancelOrder from "./Pages/Help center/CancelOrder";
+import FlashSale from "./Pages/FlashSale/FlashSale";
 
 const MyContext = createContext();
 
@@ -264,6 +265,7 @@ function App() {
           <Route path="/" exact={true} element={<Home />} />
           <Route path="/products/category/:id" exact={true} element={<Listing />} />
           <Route path="/products/subCat/:id" exact={true} element={<Listing />} />
+          <Route path="/products/flash-sale/:id" exact={true} element={<FlashSale />} />
           <Route exact={true} path="/product/:id" element={<ProductDetails />} />
           <Route exact={true} path="/products/all" element={<DiscountPage />} />
           <Route exact={true} path="/product/error" element={<Error />} />
