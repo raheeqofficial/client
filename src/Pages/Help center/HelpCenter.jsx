@@ -5,7 +5,6 @@ import { questionData } from "../../data/customerQuestion";
 import { GrMapLocation } from "react-icons/gr";
 
 const HelpCenter = () => {
-  
   return (
     <section className="helpCenter">
       <div className="helpCenterWrapper">
@@ -44,7 +43,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"/help-center/cancel-order"}>
+          <Link to={"/help-center/cancel-order"}>
               <img
                 width="48"
                 height="48"

@@ -3,19 +3,20 @@ import ProductItem from "../../Components/ProductItem";
 import { fetchDataFromApi } from "../../utils/api";
 import CircularProgress from "@mui/material/CircularProgress";
 import img from "../../assets/images/Banner-flash sale.jpg";
-import './flashSale.css'
+import './Fashion.css'
 
-const FlashSale = () => {
+const Fashion = () => {
   const [productView, setProductView] = useState("four");
   const [productData, setProductData] = useState([]);
   const [isLoading, setisLoading] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    fetchDataFromApi(`/api/products?discount=50`)
+    fetchDataFromApi(`/api/products?catName=Fashion`)
       .then((res) => {
         setProductData(res);
         setisLoading(false);
+        console.log(res)
       })
       .catch((error) => {
         console.error("Error fetching products:", error);
@@ -42,8 +43,6 @@ const FlashSale = () => {
       <section className="product_Listing_Page">
         <div className="container">
           <div className="productListing w-100">
-            {/* <Sidebar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating} isOpenFilter={isOpenFilter} /> */}
-
             <div className="content_right">
               <div className="productListing-data">
                 {isLoading === true ? (
@@ -72,4 +71,4 @@ const FlashSale = () => {
   );
 };
 
-export default FlashSale;
+export default Fashion;

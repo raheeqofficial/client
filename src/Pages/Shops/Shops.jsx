@@ -39,7 +39,7 @@ const Shops = () => {
                       alt="shop"
                     />
                   </div>
-                  <h6>
+                  <h6 className="text-center">
                     {shop?.name.length > 17
                       ? shop?.name.substr(0, 15) + "..."
                       : shop?.name}

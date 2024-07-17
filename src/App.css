@@ -71,6 +71,15 @@ body {
   --main-grey: #ccc;
   --sub-grey: #d9d9d9;
 }
+.btn-disabled {
+  cursor: not-allowed !important;
+  opacity: 0.65;
+  pointer-events: none;
+}
+.btn-disabled:hover {
+  cursor: not-allowed !important;
+}
+
 
 .bg-blue {
   background: #113ebb;
@@ -1777,13 +1786,14 @@ footer .linksWrap ul li a:hover {
   color: #000;
   font-size: 14px !important;
   transition: all 0.1s ease-in-out;
-  border-radius: 4px !important;
+  border-radius: 8px !important;
 }
 .productSize ul li a:hover {
   background: #ececec;
 }
 .productSize ul li a.active {
-  background: #113ebb !important;
+  background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,60,121,1) 28%, rgba(0,212,255,1) 100%);
+
   color: #fff !important;
 }
 .productSize ul.error li a {
@@ -2786,7 +2796,7 @@ a.more-link {
   font-size: 12px !important;
 }
 .shopDetailCatTab .css-1aquho2-MuiTabs-indicator {
-  position: static !important;
+  position: inherit  !important;
   height: 2px;
   bottom: 0;
   width: 100%;

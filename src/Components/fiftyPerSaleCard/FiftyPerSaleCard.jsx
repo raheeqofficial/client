@@ -8,9 +8,12 @@ const FiftyPerSaleCard = () => {
   const [id, setId] = useState('')
   const navigate = useNavigate();
   useEffect(() => {
-    const newId = `${uuidv4()}${uuidv4()}`;
+    const fetchId = () => {
+      const newId = `${uuidv4()}${uuidv4()}`;
         setId(newId);
-  }, [id])
+    }
+    fetchId()
+  }, [])
   const handleDiscountClick = () => {
     navigate(`/products/flash-sale/${id}`)
 }

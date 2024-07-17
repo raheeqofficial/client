@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import axios from "axios";
 import "./OrderDetails.css";
 
@@ -11,42 +11,89 @@ const OrderDetails = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [error, setError] = useState('');
   const { id } = useParams();
+  const [isLoading, setIsLoading] = useState(false)
+ 
+  // const downloadImage = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
+  //       { responseType: "blob" }
+  //     );
+  //     const url = window.URL.createObjectURL(new Blob([response.data]));
+  //     const link = document.createElement("a");
+  //     link.href = url;
+  //     link.setAttribute("download", "order-receipt.jpg");
+  //     document.body.appendChild(link);
+  //     link.click();
+  //   } catch (error) {
+  //     setError('Failed to download image');
+  //   }
+  // };
 
   const downloadImage = async () => {
     try {
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
-        { responseType: "blob" }
-      );
-      const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
-      link.href = url;
-      link.setAttribute("download", "order-receipt.jpg");
-      document.body.appendChild(link);
-      link.click();
+      setIsLoading(true)
+        const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
+            { responseType: "blob" }
+        );
+        setIsLoading(false)
+        const url = window.URL.createObjectURL(new Blob([response.data]));
+        const link = document.createElement("a");
+        link.href = url;
+        link.setAttribute("download", "order-receipt.jpg");
+        document.body.appendChild(link);
+        link.click();
+        link.remove(); // Remove the link after clicking
+        window.URL.revokeObjectURL(url); // Release the object URL
     } catch (error) {
-      setError('Failed to download image');
+        setError('Failed to download image');
     }
-  };
+};
+
+
+  // const shareImage = async () => {
+  //   try {
+  //     const response = await axios.get(
+  //       `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
+  //       { responseType: "blob" }
+  //     );
+  //     const file = new File([response.data], "order-receipt.jpg", {
+  //       type: "image/jpeg",
+  //     });
+
+  //     if (navigator.canShare && navigator.canShare({ files: [file] })) {
+  //       navigator.share({
+  //         files: [file],
+  //         title: "Order Receipt",
+  //         text: "Here is your order receipt",
+  //       });
+  //     } else {
+  //       alert("Sharing not supported on this browser");
+  //     }
+  //   } catch (error) {
+  //     setError('Failed to share image');
+  //   }
+  // };
 
   const shareImage = async () => {
     try {
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
-        { responseType: "blob" }
+        { responseType: 'blob' }
       );
-      const file = new File([response.data], "order-receipt.jpg", {
-        type: "image/jpeg",
+      const file = new File([response.data], 'order-receipt.jpg', {
+        type: 'image/jpeg',
       });
 
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        navigator.share({
+        await navigator.share({
           files: [file],
-          title: "Order Receipt",
-          text: "Here is your order receipt",
+          title: 'Order Receipt',
+          text: 'Here is your order receipt',
         });
       } else {
-        alert("Sharing not supported on this browser");
+        alert('Sharing not supported on this browser');
       }
     } catch (error) {
       setError('Failed to share image');
@@ -154,8 +201,9 @@ const OrderDetails = () => {
                   </div>
                 </div>
               ))}
-            <Button onClick={downloadImage}>Save to Gallery</Button>
-            <Button onClick={shareImage}>Share</Button>
+            <Button className="btn btn-blue btn-lg mr-2" onClick={downloadImage}>{isLoading ? <CircularProgress/> : "Save to Gallery"}</Button>
+            <Button className="btn btn-blue btn-lg" onClick={shareImage}>Share</Button>
+            {error && <p>{error}</p>}
           </div>
         </div>
       </div>

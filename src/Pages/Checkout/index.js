@@ -6,10 +6,10 @@ import { MyContext } from '../../App';
 import { fetchDataFromApi, postData } from '../../utils/api';
 
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
-import { CircularProgress } from '@mui/material';
+import { CircularProgress, MenuItem, Select } from '@mui/material';
 
 const Checkout = () => {
-    const {id} = useParams()
+    const { id } = useParams()
     const [formFields, setFormFields] = useState({
         fullName: "",
         country: "",
@@ -33,16 +33,15 @@ const Checkout = () => {
 
     useEffect(() => {
         if (!userId) {
-            // Redirect to cart page if userId is not present in state
             goto('/');
         }
     }, [userId, goto]);
     useEffect(() => {
         setLoading(true)
-        window.scrollTo(0,0);
-       
+        window.scrollTo(0, 0);
+
         const user = JSON.parse(localStorage.getItem("user"));
-        
+
         fetchDataFromApi(`/api/cart?userId=${user?.userId}`).then((res) => {
             setLoading(false)
             setCartData(res);
@@ -50,17 +49,11 @@ const Checkout = () => {
             setTotalAmount(res.length !== 0 &&
                 res.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0))
         })
-        
+
 
     }, []);
 
-    // useEffect(() => {
-    //         fetchDataFromApi(`/api/products/staticId/${id}`).then((res) => {
-    //             setProductData(res?.data);
-    //         console.log(res)
-    //         })
-            
-    // }, [id])
+    const SHIPPING_RATE = 150; // Fixed shipping rate
 
     const onChangeInput = (e) => {
         setFormFields(() => ({
@@ -69,11 +62,29 @@ const Checkout = () => {
         }))
     }
 
+    const calculateSubtotal = () => {
+        if (cartData?.length) {
+            const subTotal = cartData
+            .map(item => parseInt(item.price) * item.quantity)
+            .reduce((total, value) => total + value, 0);
+            return subTotal
+        } else {
+            return 0;
+        }
+    };
+
+    const calculateTotal = () => {
+        const subtotal = cartData?.length
+            ? cartData.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)
+            : 0;
+        return subtotal + SHIPPING_RATE;
+    }
+
     const context = useContext(MyContext);
     const checkout = (e) => {
 
         e.preventDefault();
-        if(!userId) return
+        if (!userId) return
         if (formFields.fullName === "") {
             context.setAlertBox({
                 open: true,
@@ -194,178 +205,198 @@ const Checkout = () => {
         setTimeout(() => {
             setLoading(false);
             context.setAlertBox({
-                open:true,
+                open: true,
                 error: false,
-                msg:"Your order placed successfully"
+                msg: "Your order placed successfully"
             })
-        },1000)
+        }, 1000)
     }
 
     return (
         <>
-        <section className='section'>
-            <div className='container'>
-                <form className='checkoutForm' onSubmit={checkout}>
-                    <div className='row'>
-                        <div className='col-md-8'>
-                            <h2 className='hd'>BILLING DETAILS</h2>
+            <section className='section'>
+                <div className='container'>
+                    <form className='checkoutForm' onSubmit={checkout}>
+                        <div className='row'>
+                            <div className='col-md-8'>
+                                <h2 className='hd'>BILLING DETAILS</h2>
 
-                            <div className='row mt-3'>
-                                <div className='col-md-6'>
-                                    <div className='form-group'>
-                                        <TextField label="Full Name *" variant="outlined" className='w-100' size="small" name="fullName" onChange={onChangeInput} />
+                                <div className='row mt-3'>
+                                    <div className='col-md-6'>
+                                        <div className='form-group'>
+                                            <TextField label="Full Name *" variant="outlined" className='w-100' size="small" name="fullName" onChange={onChangeInput} />
+                                        </div>
+                                    </div>
+
+                                    <div className='col-md-6'>
+                                        <div className='form-group'>
+                                            <TextField label="Country *" variant="outlined" className='w-100' size="small" name="country" onChange={onChangeInput} />
+                                        </div>
+                                    </div>
+
+
+                                </div>
+
+
+                                <h6>Street address *</h6>
+
+                                <div className='row'>
+                                    <div className='col-md-12'>
+                                        <div className='form-group'>
+                                            <TextField label="House number and street name" variant="outlined" className='w-100' size="small" name="streetAddressLine1" onChange={onChangeInput} />
+                                        </div>
+
+                                        <div className='form-group'>
+                                            <TextField label="Apartment, suite, unit, etc. (optional)" variant="outlined" className='w-100' size="small" name="streetAddressLine2" onChange={onChangeInput} />
+                                        </div>
+
                                     </div>
                                 </div>
 
-                                <div className='col-md-6'>
-                                    <div className='form-group'>
-                                        <TextField label="Country *" variant="outlined" className='w-100' size="small" name="country" onChange={onChangeInput} />
+
+
+                                <h6>Town / City *</h6>
+
+                                <div className='row'>
+                                    <div className='col-md-12'>
+                                        <div className='form-group'>
+                                            <TextField label="City" variant="outlined" className='w-100' size="small" name="city" onChange={onChangeInput} />
+                                        </div>
+
                                     </div>
+                                </div>
+
+                                <h6>State / County *</h6>
+
+                                <div className='row'>
+                                    <div className='col-md-12'>
+                                        <div className='form-group'>
+                                            <TextField label="State" variant="outlined" className='w-100' size="small" name="state" onChange={onChangeInput} />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <h6>Postcode / ZIP *</h6>
+
+                                <div className='row'>
+                                    <div className='col-md-12'>
+                                        <div className='form-group'>
+                                            <TextField label="ZIP Code" variant="outlined" className='w-100' size="small" name="zipCode" onChange={onChangeInput} />
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                                <div className='row'>
+                                    <div className='col-md-6'>
+                                        <div className='form-group'>
+                                            <TextField label="Phone Number" variant="outlined" className='w-100' size="small" name="phoneNumber" onChange={onChangeInput} />
+                                        </div>
+                                    </div>
+
+                                    <div className='col-md-6'>
+                                        <div className='form-group'>
+                                            <TextField label="Email Address" variant="outlined" className='w-100' size="small" name="email" onChange={onChangeInput} />
+                                        </div>
+                                    </div>
+
                                 </div>
 
 
                             </div>
 
+                            <div className='col-md-4'>
+                                <div className='card orderInfo'>
+                                    <h4 className='hd'>YOUR ORDER</h4>
+                                    <div className='table-responsive mt-3'>
+                                        <table className='table table-borderless'>
+                                            <thead>
+                                                <tr>
+                                                    <th>Product</th>
+                                                    <th>Subtotal</th>
+                                                </tr>
+                                            </thead>
 
-                            <h6>Street address *</h6>
-
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <div className='form-group'>
-                                        <TextField label="House number and street name" variant="outlined" className='w-100' size="small" name="streetAddressLine1" onChange={onChangeInput} />
-                                    </div>
-
-                                    <div className='form-group'>
-                                        <TextField label="Apartment, suite, unit, etc. (optional)" variant="outlined" className='w-100' size="small" name="streetAddressLine2" onChange={onChangeInput} />
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-
-                            <h6>Town / City *</h6>
-
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <div className='form-group'>
-                                        <TextField label="City" variant="outlined" className='w-100' size="small" name="city" onChange={onChangeInput} />
-                                    </div>
-
-                                </div>
-                            </div>
-
-                            <h6>State / County *</h6>
-
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <div className='form-group'>
-                                        <TextField label="State" variant="outlined" className='w-100' size="small" name="state" onChange={onChangeInput} />
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            <h6>Postcode / ZIP *</h6>
-
-                            <div className='row'>
-                                <div className='col-md-12'>
-                                    <div className='form-group'>
-                                        <TextField label="ZIP Code" variant="outlined" className='w-100' size="small" name="zipCode" onChange={onChangeInput} />
-                                    </div>
-
-                                </div>
-                            </div>
-
-
-                            <div className='row'>
-                                <div className='col-md-6'>
-                                    <div className='form-group'>
-                                        <TextField label="Phone Number" variant="outlined" className='w-100' size="small" name="phoneNumber" onChange={onChangeInput} />
-                                    </div>
-                                </div>
-
-                                <div className='col-md-6'>
-                                    <div className='form-group'>
-                                        <TextField label="Email Address" variant="outlined" className='w-100' size="small" name="email" onChange={onChangeInput} />
-                                    </div>
-                                </div>
-
-                            </div>
-
-
-                        </div>
-
-                        <div className='col-md-4'>
-                            <div className='card orderInfo'>
-                                <h4 className='hd'>YOUR ORDER</h4>
-                                <div className='table-responsive mt-3'>
-                                    <table className='table table-borderless'>
-                                        <thead>
-                                            <tr>
-                                                <th>Product</th>
-                                                <th>Subtotal</th>
-                                            </tr>
-                                        </thead>
-
-                                        <tbody>
-                                            {
-                                                cartData?.length !== 0 && cartData?.map((item, index) => {
-                                                    return (
-                                                        <tr>
-                                                            <td>{item?.productTitle?.substr(0, 20) + '...'}  <b>× {item?.quantity}</b></td>
-
-                                                            <td> 
-                                                            
-                                                            {
-                                                                item?.subTotal
-                                                            }
-                                                            
-                                                         </td>
-                                                        </tr>
-
-                                                    )
-                                                })
-                                            }
-
-
-
-                                            <tr>
-                                                <td>Subtotal </td>
-
-                                                <td>
-
+                                            <tbody>
                                                 {
-                                                    (cartData?.length !== 0 ?
-                                                        cartData?.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0) : 0)
+                                                    cartData?.length !== 0 && cartData?.map((item, index) => {
+                                                        return (
+                                                            <tr>
+                                                                <td>{item?.productTitle?.substr(0, 20) + '...'}  <b>× {item?.quantity}</b></td>
+
+                                                                <td>
+
+                                                                    {
+                                                                        item?.subTotal
+                                                                    }
+
+                                                                </td>
+                                                            </tr>
+
+                                                        )
+                                                    })
                                                 }
 
-                                                  
-                                                </td>
-                                            </tr>
 
 
-                                        </tbody>
-                                    </table>
-                                </div>
-                                                
-                                        {loading === true ? <div className="loadingOverlay"></div> :
+                                                <tr>
+                                                    <td>Subtotal </td>
+
+                                                    <td>
+
+                                                        {/* {
+                                                            (cartData?.length !== 0 ?
+                                                                cartData?.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0) : 0)
+                                                        } */}
+                                                        {calculateSubtotal()}
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shipping </td>
+
+                                                    <td>
+
+                                                        
+                                                        {SHIPPING_RATE}
+
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total </td>
+
+                                                    <td>
+
+                                                        
+                                                        {calculateTotal()}
+
+                                                    </td>
+                                                </tr>
+
+
+                                            </tbody>
+                                        </table>
+                                    </div>
+
+                                    {loading === true ? <div className="loadingOverlay"></div> :
                                         <Button type="submit" className='btn-blue bg-red btn-lg btn-big'
-                                        >{loading === true ? <CircularProgress/> :  "Place Order"}</Button>
-                                        }
-                                
+                                        >{loading === true ? <CircularProgress /> : "Place Order"}</Button>
+                                    }
 
+
+                                </div>
                             </div>
+
+
                         </div>
+                    </form>
+                </div>
+            </section>
 
-
-                    </div>
-                </form>
-            </div>
-        </section>
-        
-        {loading === true && <div className="loadingOverlay"></div>}
+            {loading === true && <div className="loadingOverlay"></div>}
         </>
     )
 }

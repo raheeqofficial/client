@@ -113,7 +113,7 @@ const ProductModal = (props) => {
         const hasWeight = props?.data?.productWeight?.length > 0;
         const hasColor = props?.data?.color?.length > 0;
     
-        if (((hasSize && activeSize !== null) && (hasColor && activeColor !== null) ) || (hasWeight && activeWeight !== null)  || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
+        if (((hasSize && activeSize !== null) ) || (hasWeight && activeWeight !== null)  || ((hasRam && activeRam !== null))) {
             const user = JSON.parse(localStorage.getItem("user"));
             const selectedSize = props?.data?.size?.length !== 0 ? props?.data.size[activeSize] : null
             const selectedWeight = props?.data?.productWeight?.length !== 0 ? props?.data.productWeight[activeWeight] : null

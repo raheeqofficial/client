@@ -244,14 +244,12 @@ const ProductDetails = () => {
         const hasWeight = productData?.productWeight?.length > 0;
         const hasColor = productData?.color?.length > 0;
     
-        if (((hasSize && activeSize !== null) && (hasColor && activeColor !== null) ) || (hasWeight && activeWeight !== null)  || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
+        if (((hasSize && activeSize !== null) ) || (hasWeight && activeWeight !== null)  || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
             const user = JSON.parse(localStorage.getItem("user"));
             const selectedSize = productData?.size?.length !== 0 ? productData.size[activeSize] : null
             const selectedWeight = productData?.productWeight?.length !== 0 ? productData.productWeight[activeWeight] : null
             const selectedColor = productData?.color?.length !== 0 ? productData.color[activeColor] : null
             const selectedRam = productData?.productRam?.length !== 0 ? productData.productRam[activeRam] : null
-
-
             cartFields.productTitle = productData?.name
             cartFields.shop = productData?.shop
             cartFields.staticId = productData?.staticId
@@ -467,9 +465,10 @@ const ProductDetails = () => {
 
                             <div className="d-flex align-items-center mt-3 actions_">
                                 <QuantityBox quantity={quantity} item={productData} selectedItem={selectedItem} />
+                                
 
                                 <div className="d-flex align-items-center btnActions">
-                                <Button className="btn-blue btn-lg btn-big btn-round bg-red" onClick={() => addtoCart()}>
+                                <Button className={`btn-blue btn-lg btn-big btn-round bg-red ${productData?.countInStock === 0 && 'btn-disabled'}`} disabled={productData?.countInStock === 0} onClick={() => addtoCart()}>
                                     <BsCartFill /> &nbsp;
                                     {
                                         context.addingInCart === true ? "adding..." : " Add to cart"

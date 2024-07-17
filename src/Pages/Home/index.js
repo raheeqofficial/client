@@ -205,15 +205,15 @@ const Home = () => {
                             <div className="newProducts">
                             <div className="d-flex align-items-center mt-3">
                                 <div className="info w-75">
-                                    <h3 className="mb-0 hd">NEW PRODUCTS</h3>
-                                    <p className="text-light text-sml mb-0">New products with updated stocks.</p>
+                                    <h3 className="mb-0 hd">All PRODUCTS</h3>
+                                    <p className="text-light text-sml mb-0">All products with updated stocks.</p>
                                 </div>
 
                             </div>
 
                             <div className="product_row productRow2 w-100 mt-4">
                                 {
-                                    productsData?.products?.length !== 0 && productsData?.products?.slice(0).reverse().map((item, index) => {
+                                    productsData?.products?.length !== 0 && productsData?.products?.map((item, index) => {
                                         return (
                                             <ProductItem key={index} item={item} />
                                         )

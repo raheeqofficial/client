@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Button, Rating } from "@mui/material";
 import "./dealOfDay.css";
 import { fetchDataFromApi } from "../../utils/api";
@@ -6,9 +6,14 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
+import { Link } from "react-router-dom";
 
 const DealOfDay = () => {
   const [productsData, setProductsData] = useState([]);
+  const [days, setDays] = useState(2);
+  const [hours, setHours] = useState(0);
+  const [minutes, setMinutes] = useState(0);
+  const [seconds, setSeconds] = useState(0);
 
   const discount = 80;
   useEffect(() => {
@@ -17,6 +22,35 @@ const DealOfDay = () => {
       console.log(res?.products);
     });
   }, []);
+
+  useEffect(() => {
+    const intervalId = setInterval(() => {
+      const targetDate = new Date();
+      targetDate.setDate(targetDate.getDate() + 2); // Add 2 days to the current date
+      targetDate.setHours(0, 0, 0, 0); // Set target time to midnight
+
+      const now = new Date();
+      const distance = targetDate.getTime() - now.getTime();
+
+      // Calculate remaining days, hours, minutes, and seconds
+      setDays(Math.floor(distance / (1000 * 60 * 60 * 24)));
+      setHours(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)));
+      setMinutes(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60)));
+      setSeconds(Math.floor((distance % (1000 * 60)) / 1000));
+
+      if (distance < 0) {
+        clearInterval(intervalId);
+        setDays(0);
+        setHours(0);
+        setMinutes(0);
+        setSeconds(0);
+      }
+    }, 1000);
+
+    return () => clearInterval(intervalId);
+  }, []);
+
+  const leadingZero = (num) => (num < 10 ? `0${num}` : num);
   return (
     <div className="product-featured">
       <div className="productFeaturedWrapper">
@@ -34,7 +68,8 @@ const DealOfDay = () => {
           productsData?.map((data, index) => {
             return (
               <SwiperSlide key={index}>
-                <div className="showcase-wrapper has-scrollbar">
+                  <Link to={`product/${data?.staticId}`}>
+                  <div className="showcase-wrapper has-scrollbar">
                 <div className="showcase-container">
                   <div className="showcase d-flex">
                     <div className="showcase-banner">
@@ -80,31 +115,32 @@ const DealOfDay = () => {
                         </p>
                         <div className="countdown">
                           <div className="countdown-content">
-                            <p className="display-number">360</p>
+                            <p className="display-number">{days}</p>
                             <p className="display-text">Days</p>
                           </div>
                           <div className="countdown-content">
-                            <p className="display-number">24</p>
+                            <p className="display-number">{leadingZero(hours)}</p>
                             <p className="display-text">hours</p>
                           </div>
                           <div className="countdown-content">
-                            <p className="display-number">59</p>
+                            <p className="display-number">{leadingZero(minutes)}</p>
                             <p className="display-text">Min</p>
                           </div>
                           <div className="countdown-content">
-                            <p className="display-number">03</p>
+                            <p className="display-number">{leadingZero(seconds)}</p>
                             <p className="display-text">Sec</p>
                           </div>
                         </div>
                       </div>
 
                       <Button className="btn btn-blue btn-lg w-100">
-                        add to cart
+                        See more details
                       </Button>
                     </div>
                   </div>
                 </div>
               </div>
+                  </Link>
               </SwiperSlide>
             );
           })}

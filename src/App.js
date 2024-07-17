@@ -41,6 +41,10 @@ import OtpVerification from "./Pages/VerifyCode/VerifyCode";
 import OrderReceipt from "./Components/OrderReceipt/OrderReceipt";
 import CancelOrder from "./Pages/Help center/CancelOrder";
 import FlashSale from "./Pages/FlashSale/FlashSale";
+import PopularProducts from "./Pages/PopularProducts/PopularProducts";
+import Fashion from "./Pages/Fashion/Fashion";
+import NewProducts from "./Pages/NewProducts/NewProducts";
+import Contact from "./Pages/Contact/Contact";
 
 const MyContext = createContext();
 
@@ -263,9 +267,13 @@ function App() {
 
         <Routes>
           <Route path="/" exact={true} element={<Home />} />
+          <Route path="/contact" exact={true} element={<Contact />} />
           <Route path="/products/category/:id" exact={true} element={<Listing />} />
           <Route path="/products/subCat/:id" exact={true} element={<Listing />} />
           <Route path="/products/flash-sale/:id" exact={true} element={<FlashSale />} />
+          <Route path="/products/popular-products/:id" exact={true} element={<PopularProducts />} />
+          <Route path="/products/fashion/:id" exact={true} element={<Fashion />} />
+          <Route path="/products/new/:id" exact={true} element={<NewProducts />} />
           <Route exact={true} path="/product/:id" element={<ProductDetails />} />
           <Route exact={true} path="/products/all" element={<DiscountPage />} />
           <Route exact={true} path="/product/error" element={<Error />} />

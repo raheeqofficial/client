@@ -93,8 +93,8 @@ const Cart = () => {
     }
     
     const calculateSubtotal = () => {
-        if (context.cartData?.length) {
-            const subTotal = context.cartData
+        if (cartData?.length) {
+            const subTotal = cartData
             .map(item => parseInt(item.price) * item.quantity)
             .reduce((total, value) => total + value, 0);
             return subTotal
@@ -104,8 +104,8 @@ const Cart = () => {
     };
 
     const calculateTotal = () => {
-        const subtotal = context.cartData?.length
-            ? context.cartData.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)
+        const subtotal = cartData?.length
+            ? cartData.map(item => parseInt(item.price) * item.quantity).reduce((total, value) => total + value, 0)
             : 0;
         return subtotal + SHIPPING_RATE;
     }

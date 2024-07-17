@@ -8,33 +8,37 @@ import { MyContext } from "../../../App";
 const ShopDetails = () => {
   const { id } = useParams();
   const [data, setData] = useState([]);
-  const [selectedCat, setselectedCat] = useState();
+  const [selectedCat, setSelectedCat] = useState();
   const [filterData, setFilterData] = useState([]);
   const [subCat, setSubCat] = useState([]);
   const context = useContext(MyContext);
   const [isLoading, setIsLoading] = useState(false);
-  const [value, setValue] = useState(0);
+  const [value, setValue] = useState();
+
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
+
   const selectCat = (cat) => {
     const decodedCat = decodeURIComponent(cat);
-    setselectedCat(decodedCat);
+    setSelectedCat(decodedCat);
   };
+
   useEffect(() => {
     window.scrollTo(0, 0);
-    console.log(context.subCat);
     setIsLoading(true);
     fetchDataFromApi(`/api/products?shop=${id}`).then((res) => {
-      setData(res);
+      setData(res.products);
+      setFilterData(res.products); // Initially show all products
       setIsLoading(false);
     });
-    setIsLoading(true);
+
     fetchDataFromApi(`/api/subCat?shop=${id}`).then((res) => {
       setSubCat(res.subCatList);
       setIsLoading(false);
     });
   }, [id]);
+
   useEffect(() => {
     if (selectedCat !== undefined) {
       const encodedCategory = encodeURIComponent(selectedCat);
@@ -47,17 +51,15 @@ const ShopDetails = () => {
       });
     }
   }, [selectedCat, id]);
-  //   useEffect(() => {
-  //     if (context.categoryData[0] !== undefined)
-  //         setselectedCat(context.categoryData[0].name)
-  // }, [context.categoryData]);
+
   if (isLoading) {
     return (
       <div className="loaderContainer">
-        <span class="loader"></span>
+        <span className="loader"></span>
       </div>
     );
   }
+
   return (
     <div className="shopDetailPage">
       <div className="topImage">
@@ -112,13 +114,19 @@ const ShopDetails = () => {
           </div>
 
           <div className="product_row productRow2 w-100 mt-4 mb-3">
-            {filterData?.length !== 0 &&
-              filterData
-                ?.slice(0)
-                ?.reverse()
-                ?.map((item, index) => {
-                  return <ProductItem key={index} item={item} />;
-                })}
+            {filterData?.length !== 0
+              ? filterData
+                  ?.slice(0)
+                  ?.reverse()
+                  ?.map((item, index) => {
+                    return <ProductItem key={index} item={item} />;
+                  })
+              : data
+                  ?.slice(0)
+                  ?.reverse()
+                  ?.map((item, index) => {
+                    return <ProductItem key={index} item={item} />;
+                  })}
           </div>
         </div>
       </div>
