@@ -104,7 +104,7 @@ const DealOfDay = () => {
                             already sold: <b>20</b>
                           </p>
                           <p>
-                            Avaliable: <b>40</b>
+                            Avaliable: <b>{data?.countInStock}</b>
                           </p>
                         </div>
                         <div className="showcase-status-bar"></div>

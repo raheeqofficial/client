@@ -118,6 +118,13 @@
 .cardBoxContainer{
     gap: 10px;
 }
+.cardBox h6{
+    font-size: 15px !important;
+    font-weight: 500 !important;
+}
+.cardBox .cardBoxhd{
+    font-size: 10px !important;
+}
 }
 @media screen and (max-width: 500px) {
     

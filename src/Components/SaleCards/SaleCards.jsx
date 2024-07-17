@@ -24,7 +24,7 @@ const SaleCards = () => {
               <div className="cardImgWrapper">
                 <img src={menImg} alt="Man image" />
               </div>
-              <h6>Popular Products</h6>
+              <h6 className="cardBoxhd">Popular Products</h6>
             </div>
           </Link>
           <Link to={`/products/fashion/${id}`}>
