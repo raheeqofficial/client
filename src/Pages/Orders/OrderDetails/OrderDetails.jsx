@@ -12,23 +12,8 @@ const OrderDetails = () => {
   const [error, setError] = useState('');
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false)
+  const [shareLoading, setShareLoading] = useState(false)
  
-  // const downloadImage = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
-  //       { responseType: "blob" }
-  //     );
-  //     const url = window.URL.createObjectURL(new Blob([response.data]));
-  //     const link = document.createElement("a");
-  //     link.href = url;
-  //     link.setAttribute("download", "order-receipt.jpg");
-  //     document.body.appendChild(link);
-  //     link.click();
-  //   } catch (error) {
-  //     setError('Failed to download image');
-  //   }
-  // };
 
   const downloadImage = async () => {
     try {
@@ -47,6 +32,7 @@ const OrderDetails = () => {
         link.remove(); // Remove the link after clicking
         window.URL.revokeObjectURL(url); // Release the object URL
     } catch (error) {
+      setIsLoading(false)
         setError('Failed to download image');
     }
 };
@@ -78,10 +64,12 @@ const OrderDetails = () => {
 
   const shareImage = async () => {
     try {
+      setShareLoading(true)
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
         { responseType: 'blob' }
       );
+      setShareLoading(false)
       const file = new File([response.data], 'order-receipt.jpg', {
         type: 'image/jpeg',
       });
@@ -93,9 +81,11 @@ const OrderDetails = () => {
           text: 'Here is your order receipt',
         });
       } else {
+        setShareLoading(false)
         alert('Sharing not supported on this browser');
       }
     } catch (error) {
+      setShareLoading(false)
       setError('Failed to share image');
     }
   };
@@ -201,8 +191,8 @@ const OrderDetails = () => {
                   </div>
                 </div>
               ))}
-            <Button className="btn btn-blue btn-lg mr-2" onClick={downloadImage}>{isLoading ? <CircularProgress/> : "Save to Gallery"}</Button>
-            <Button className="btn btn-blue btn-lg" onClick={shareImage}>Share</Button>
+            <Button className="btn btn-blue btn-lg mr-2" onClick={downloadImage}>{isLoading ? "downloading.." : "Save to Gallery"}</Button>
+            <Button className="btn btn-blue btn-lg" onClick={shareImage}>{shareLoading ? <CircularProgress/> : "Share"}</Button>
             {error && <p>{error}</p>}
           </div>
         </div>
