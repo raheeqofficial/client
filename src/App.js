@@ -1,55 +1,54 @@
 import "bootstrap/dist/css/bootstrap.min.css";
+import React, { createContext, lazy, Suspense, useEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, useParams } from 'react-router-dom';
 import './App.css';
 import './responsive.css';
-import { BrowserRouter, Route, Router, Routes, json, useParams } from "react-router-dom";
-import Home from "./Pages/Home";
-import Listing from "./Pages/Listing";
-import ProductDetails from "./Pages/ProductDetails";
-import Header from "./Components/Header";
-import { createContext, useEffect, useState } from "react";
-import axios from 'axios';
-import Footer from "./Components/Footer";
-import ProductModal from "./Components/ProductModal";
-import Cart from "./Pages/Cart";
-import SignIn from "./Pages/SignIn";
-import SignUp from "./Pages/SignUp";
-import MyList from "./Pages/MyList";
-import Checkout from './Pages/Checkout';
-import Orders from './Pages/Orders';
-import MyAccount from './Pages/MyAccount';
-import SearchPage from './Pages/Search';
-
-import { fetchDataFromApi, postData } from "./utils/api";
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
-import Success from "./Pages/success/Success";
-import HelpCenterApp from "./Pages/Help center";
-import ShippingAndDelivery from "./Pages/Help center/ShippingAndDelivery";
-import PageNotFound from "./Pages/PageNotFound/PageNotFound";
-import BecomeSeller from "./Pages/BecomeAseller/BecomeSeller";
-import BottomHeader from "./Components/BottomHeader/BottomMenu";
-import MobileAccount from "./Pages/MobileAccount/MobileAccount";
-import Categories from "./Pages/Categories/Categories";
-import OrderDetails from "./Pages/Orders/OrderDetails/OrderDetails";
-import TrackOrder from "./Pages/TrackOrder/TrackOrder";
-import Error from "./Pages/productError/Error";
-import Shops from "./Pages/Shops/Shops";
-import ShopDetails from "./Pages/Shops/ShopsDetails/ShopDetails";
-import DiscountPage from "./Pages/DiscountPage/DiscountPage";
-import Login from "./Pages/Login/Login";
-import OtpVerification from "./Pages/VerifyCode/VerifyCode";
-import OrderReceipt from "./Components/OrderReceipt/OrderReceipt";
-import CancelOrder from "./Pages/Help center/CancelOrder";
-import FlashSale from "./Pages/FlashSale/FlashSale";
-import PopularProducts from "./Pages/PopularProducts/PopularProducts";
-import Fashion from "./Pages/Fashion/Fashion";
-import NewProducts from "./Pages/NewProducts/NewProducts";
-import Contact from "./Pages/Contact/Contact";
+import Header from './Components/Header/index';
+import Footer from './Components/Footer/index';
+import BottomHeader from './Components/BottomHeader/BottomMenu';
+import ProductModal from './Components/ProductModal/index';
+import axios from 'axios';
+import { fetchDataFromApi, postData } from "./utils/api";
 
+// Lazy imports
+const Home = lazy(() => import('./Pages/Home/index'));
+const Contact = lazy(() => import('./Pages/Contact/Contact'));
+const Listing = lazy(() => import('./Pages/Listing/index'));
+const FlashSale = lazy(() => import('./Pages/FlashSale/FlashSale'));
+const PopularProducts = lazy(() => import('./Pages/PopularProducts/PopularProducts'));
+const Fashion = lazy(() => import('./Pages/Fashion/Fashion'));
+const NewProducts = lazy(() => import('./Pages/NewProducts/NewProducts'));
+const ProductDetails = lazy(() => import('./Pages/ProductDetails/index'));
+const DiscountPage = lazy(() => import('./Pages/DiscountPage/DiscountPage'));
+const Error = lazy(() => import('./Pages/productError/Error'));
+const Cart = lazy(() => import('./Pages/Cart/index'));
+const SignIn = lazy(() => import('./Pages/SignIn/index'));
+const Login = lazy(() => import('./Pages/Login/Login'));
+const SignUp = lazy(() => import('./Pages/SignUp'));
+const MyList = lazy(() => import('./Pages/MyList/index'));
+const Checkout = lazy(() => import('./Pages/Checkout/index'));
+const Orders = lazy(() => import('./Pages/Orders/index'));
+const OrderDetails = lazy(() => import('./Pages/Orders/OrderDetails/OrderDetails'));
+const PageNotFound = lazy(() => import('./Pages/PageNotFound/PageNotFound'));
+const MyAccount = lazy(() => import('./Pages/MyAccount/index'));
+const MobileAccount = lazy(() => import('./Pages/MobileAccount/MobileAccount'));
+const SearchPage = lazy(() => import('./Pages/Search/index'));
+const Success = lazy(() => import('./Pages/success/Success'));
+const BecomeSeller = lazy(() => import('./Pages/BecomeAseller/BecomeSeller'));
+const HelpCenterApp = lazy(() => import('./Pages/Help center/HelpCenter'));
+const CancelOrder = lazy(() => import('./Pages/Help center/CancelOrder'));
+const TrackOrder = lazy(() => import('./Pages/Help center/ShippingAndDelivery'));
+const Categories = lazy(() => import('./Pages/Categories/Categories'));
+const ShippingAndDelivery = lazy(() => import('./Pages/Help center/ShippingAndDelivery'));
+const Shops = lazy(() => import('./Pages/Shops/Shops'));
+const ShopDetails = lazy(() => import('./Pages/Shops/ShopsDetails/ShopDetails'));
+const OtpVerification = lazy(() => import('./Pages/VerifyCode/VerifyCode'));
 const MyContext = createContext();
 
 function App() {
-
+  
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setselectedCountry] = useState('');
   const [isOpenProductModal, setisOpenProductModal] = useState(false);
@@ -240,12 +239,9 @@ function App() {
     setIsOpenNav,
     productData
   }
-
   return (
     <BrowserRouter>
       <MyContext.Provider value={values}>
-
-
         <Snackbar open={alertBox.open} autoHideDuration={6000} onClose={handleClose} className="snackbar">
           <Alert
             onClose={handleClose}
@@ -258,67 +254,121 @@ function App() {
           </Alert>
         </Snackbar>
 
-
-        {
-          isHeaderFooterShow === true && <Header />
-        }
-
-
+        {isHeaderFooterShow && <Header />}
 
         <Routes>
-          <Route path="/" exact={true} element={<Home />} />
-          <Route path="/contact" exact={true} element={<Contact />} />
-          <Route path="/products/category/:id" exact={true} element={<Listing />} />
-          <Route path="/products/subCat/:id" exact={true} element={<Listing />} />
-          <Route path="/products/flash-sale/:id" exact={true} element={<FlashSale />} />
-          <Route path="/products/popular-products/:id" exact={true} element={<PopularProducts />} />
-          <Route path="/products/fashion/:id" exact={true} element={<Fashion />} />
-          <Route path="/products/new/:id" exact={true} element={<NewProducts />} />
-          <Route exact={true} path="/product/:id" element={<ProductDetails />} />
-          <Route exact={true} path="/products/all" element={<DiscountPage />} />
-          <Route exact={true} path="/product/error" element={<Error />} />
-          <Route exact={true} path="/cart" element={<Cart />} />
-          <Route exact={true} path="/signIn" element={<SignIn />} />
-          <Route exact={true} path="/login" element={<Login />} />
-          <Route exact={true} path="/signUp" element={<SignUp />} />
-          <Route exact={true} path="/my-list" element={<MyList />} />
-          <Route exact={true} path="/checkout" element={<Checkout />} />
-          <Route exact={true} path="/orders" element={<Orders />} />
-          <Route exact={true} path="/order/details/:id" element={<OrderDetails />} />
-          <Route exact={true} path="/*" element={<PageNotFound />} />
-          <Route exact={true} path="/page-not-found" element={<PageNotFound />} />
-          <Route exact={true} path="/account-setting" element={<MyAccount />} />
-          <Route exact={true} path="/account" element={<MobileAccount />} />
-          <Route exact={true} path="/search" element={<SearchPage />} />
-          <Route exact={true} path="/success" element={<Success />} />
-          <Route exact={true} path="/become-seller" element={<BecomeSeller />} />
-          <Route exact={true} path="/help-center" element={<HelpCenterApp />} />
-          <Route exact={true} path="/help-center/cancel-order" element={<CancelOrder />} />
-          <Route exact={true} path="/help-center/track-order" element={<TrackOrder />} />
-          <Route exact={true} path="/categories" element={<Categories />} />
-          <Route exact={true} path="/help-center/shipping-delivery" element={<ShippingAndDelivery />} />
-          <Route exact={true} path="/shops" element={<Shops />} />
-          {/* <Route exact={true} path="/order-recepient" element={<OrderReceipt />} /> */}
-          <Route exact={true} path="/shops/:id" element={<ShopDetails />} />
-          <Route exact={true} path="/verify/:id" element={<OtpVerification />} />
+          <Route path="/" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Home /></Suspense>} />
+          <Route path="/contact" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Contact /></Suspense>} />
+          <Route path="/products/category/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Listing /></Suspense>} />
+          <Route path="/products/subCat/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Listing /></Suspense>} />
+          <Route path="/products/flash-sale/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><FlashSale /></Suspense>} />
+          <Route path="/products/popular-products/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><PopularProducts /></Suspense>} />
+          <Route path="/products/fashion/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Fashion /></Suspense>} />
+          <Route path="/products/new/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><NewProducts /></Suspense>} />
+          <Route path="/product/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><ProductDetails /></Suspense>} />
+          <Route path="/products/all" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><DiscountPage /></Suspense>} />
+          <Route path="/product/error" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Error /></Suspense>} />
+          <Route path="/cart" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Cart /></Suspense>} />
+          <Route path="/signIn" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><SignIn /></Suspense>} />
+          <Route path="/login" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Login /></Suspense>} />
+          <Route path="/signUp" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><SignUp /></Suspense>} />
+          <Route path="/my-list" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><MyList /></Suspense>} />
+          <Route path="/checkout" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Checkout /></Suspense>} />
+          <Route path="/orders" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Orders /></Suspense>} />
+          <Route path="/order/details/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><OrderDetails /></Suspense>} />
+          <Route path="/*" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><PageNotFound /></Suspense>} />
+          <Route path="/page-not-found" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><PageNotFound /></Suspense>} />
+          <Route path="/account-setting" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><MyAccount /></Suspense>} />
+          <Route path="/account" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><MobileAccount /></Suspense>} />
+          <Route path="/search" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><SearchPage /></Suspense>} />
+          <Route path="/success" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Success /></Suspense>} />
+          <Route path="/become-seller" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><BecomeSeller /></Suspense>} />
+          <Route path="/help-center" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><HelpCenterApp /></Suspense>} />
+          <Route path="/help-center/cancel-order" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><CancelOrder /></Suspense>} />
+          <Route path="/help-center/track-order" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><TrackOrder /></Suspense>} />
+          <Route path="/categories" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Categories /></Suspense>} />
+          <Route path="/help-center/shipping-delivery" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><ShippingAndDelivery /></Suspense>} />
+          <Route path="/shops" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Shops /></Suspense>} />
+          <Route path="/shops/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><ShopDetails /></Suspense>} />
+          <Route path="/verify/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><OtpVerification /></Suspense>} />
         </Routes>
-        {
-          isHeaderFooterShow === true && <Footer />
-        }
-        <BottomHeader/>
 
+        {isHeaderFooterShow && <Footer />}
+        <BottomHeader />
 
-
-        {
-          isOpenProductModal === true && <ProductModal data={productData} />
-        }
-
-
+        {isOpenProductModal && <ProductModal data={productData} />}
       </MyContext.Provider>
     </BrowserRouter>
   );
 }
 
 export default App;
-
 export { MyContext }

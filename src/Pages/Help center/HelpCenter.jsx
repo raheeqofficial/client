@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { questionData } from "../../data/customerQuestion";
-import { GrMapLocation } from "react-icons/gr";
 
 const HelpCenter = () => {
   return (
@@ -43,7 +42,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-          <Link to={"/help-center/cancel-order"}>
+            <Link to={"/help-center/cancel-order"}>
               <img
                 width="48"
                 height="48"
@@ -88,8 +87,8 @@ const HelpCenter = () => {
               <h5>Shipping and Delivery</h5>
             </Link>
           </div>
-          <Link to={"/track-order"}>
           <div>
+            <Link to={"#"}>
               <img
                 width="48"
                 height="48"
@@ -97,8 +96,9 @@ const HelpCenter = () => {
                 alt="place-marker--v1"
               />
               <h5>Track My Order</h5>
+            </Link>
           </div>
-          </Link>
+
           <div>
             <Link to={"#"}>
               <img
