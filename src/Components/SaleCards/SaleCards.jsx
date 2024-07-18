@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import "./saleCards.css";
-import menImg from "../../assets/images/Men_2.webp";
-import girlImg from "../../assets/images/Girls-Summer.webp";
-import salelImg from "../../assets/images/sale.webp";
+import menImg from "../../assets/images/popular_products-banner-eliphstore.jpg";
+import fashion from "../../assets/images/fashion-banner-eliphstore.jpg";
+import salelImg from "../../assets/images/sale-banner-eliphstore.jpg";
 import { Link } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 
@@ -30,7 +30,7 @@ const SaleCards = () => {
           <Link to={`/products/fashion/${id}`}>
             <div className="cardBox">
               <div className="cardImgWrapper">
-                <img src={girlImg} alt="Girl image" />
+                <img src={fashion} alt="Fashion image" />
               </div>
               <h6>Fashion</h6>
             </div>
