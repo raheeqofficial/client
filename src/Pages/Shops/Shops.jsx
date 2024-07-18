@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchDataFromApi } from "../../utils/api";
 import { Link } from "react-router-dom";
 import ContinuousSnowfall from "../../Components/continuesSnowFall/ContinuesSnowfall";
+import './Shop.css'
 
 const Shops = () => {
   const [shopData, setShopData] = useState([]);
@@ -22,13 +23,13 @@ const Shops = () => {
     );
   }
   return (
-    <section className="homeCat shopPage">
+    <section className="shopPage">
     <div className="topImage">
     <ContinuousSnowfall/>
     <h3 className="mb-3 hd text-center">Welcome to Raheeq Vender Stores</h3>
     </div>
       <div className="container">
-        <div className="homeCatBox">
+        <div className="shopPageWrapper">
           {shopData?.length !== 0 &&
             shopData?.map((shop, index) => {
               return (

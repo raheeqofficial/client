@@ -96,7 +96,6 @@ const Header = () => {
                             <div className="row">
                                 <div className="logoWrapper d-flex align-items-center">
                                     <Link to={'/'}><img src={logo} alt='Logo' /></Link>
-                                    {/* <Link to={'/'}><h1>Raheeq</h1></Link> */}
                                 </div>
 
                                 <div className=' d-flex align-items-center part2'>

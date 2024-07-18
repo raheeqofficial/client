@@ -31,7 +31,7 @@ const Footer = () => {
         <>
 
             <footer>
-                <div className="topInfo row">
+                {/* <div className="topInfo row">
                     <div className="col d-flex align-items-center">
                         <span><LuShirt /></span>
                         <span className="ml-2">Everyday fresh products</span>
@@ -51,7 +51,7 @@ const Footer = () => {
                         <span><CiBadgeDollar /></span>
                         <span className="ml-2">Best price on the market</span>
                     </div>
-                </div>
+                </div> */}
 
 
 
@@ -61,8 +61,8 @@ const Footer = () => {
                         <ul>
                             <li><Link to={'/help-center'}>Help Center</Link></li>
                             <li><Link to={'#'}>Returns & Refunds</Link></li>
-                            <li><Link to={'#'}>Contact Us</Link></li>
-                            <li><Link to={'#'}>Become a Seller</Link></li>
+                            <li><Link to={'/contact'}>Contact Us</Link></li>
+                            <li><a target="_blank" href="https://seller-nu.vercel.app">Become a Seller</a></li>
                         </ul>
                     </div>
 

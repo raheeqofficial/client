@@ -5,7 +5,7 @@
 }
 .saleCardsWrapper{
     padding: 60px 30px;
-    background: #fff;
+    background: #4657f3;
     width: 95%;
     margin: 20px auto;
     border-radius: 8px;
@@ -41,7 +41,7 @@
     font-size: 18px;
     font-weight: bold;
     margin-top: 6px;
-    color: #000;
+    color: #fff;
 }
 
 @media screen and (max-width: 1220px) {

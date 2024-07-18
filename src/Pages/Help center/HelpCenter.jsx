@@ -2,8 +2,18 @@ import { Link } from "react-router-dom";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { questionData } from "../../data/customerQuestion";
+import { useContext } from "react";
+import { MyContext } from "../../App";
 
 const HelpCenter = () => {
+  const context = useContext(MyContext)
+  const onClickHandle = () => {
+    context.setAlertBox({
+      open: true,
+      error: false,
+      msg: "This will be available soon."
+  })
+  }
   return (
     <section className="helpCenter">
       <div className="helpCenterWrapper">
@@ -20,7 +30,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"#"}>
+            <Link to={"#"} onClick={onClickHandle}>
               <img
                 width="48"
                 height="48"
@@ -31,7 +41,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"#"}>
+            <Link to={"#"} onClick={onClickHandle}>
               <img
                 width="48"
                 height="48"
@@ -64,7 +74,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"#"}>
+            <Link to={"#"} onClick={onClickHandle}>
               <img
                 width="48"
                 height="48"
@@ -88,7 +98,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"#"}>
+            <Link to={"#"} onClick={onClickHandle}>
               <img
                 width="48"
                 height="48"
@@ -100,7 +110,7 @@ const HelpCenter = () => {
           </div>
 
           <div>
-            <Link to={"#"}>
+            <Link to={"#"} onClick={onClickHandle}>
               <img
                 width="48"
                 height="48"
@@ -111,7 +121,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"/help-center/shipping-delivery"}>
+            <Link to={"/help-center/cancel-order"}>
               <img
                 width="48"
                 height="48"
@@ -122,7 +132,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"#"}>
+            <Link to={"#"} onClick={onClickHandle}>
               <img
                 width="48"
                 height="48"
@@ -133,7 +143,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"#"}>
+            <Link to={"#"} onClick={onClickHandle}>
               <img
                 width="48"
                 height="48"

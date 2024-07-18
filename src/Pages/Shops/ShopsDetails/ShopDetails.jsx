@@ -83,7 +83,7 @@ const ShopDetails = () => {
       <div className="container">
         <div className="popularProducts">
           <div className="catTabs mt-4">
-            <div className="shopDetailCatTab">
+            <div className="catTabsName">
               <Box
                 sx={{
                   maxWidth: { xs: 350, sm: 680 },

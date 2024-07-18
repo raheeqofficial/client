@@ -23,13 +23,7 @@ const PopularProducts = () => {
       });
   }, []);
 
-  if (isLoading) {
-    return (
-      <div className="loaderContainer">
-        <span class="loader"></span>
-      </div>
-    );
-  }
+  
   return (
     <>
      <div className="flashTopBanner">

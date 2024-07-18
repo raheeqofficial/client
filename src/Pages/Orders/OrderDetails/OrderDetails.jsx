@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, CircularProgress } from "@mui/material";
+import { FaCopy } from "react-icons/fa"; // Import react-icon for the copy icon
 import axios from "axios";
 import "./OrderDetails.css";
+import { MyContext } from "../../../App";
 
 const OrderDetails = () => {
   const [orders, setOrders] = useState([]);
@@ -11,65 +13,40 @@ const OrderDetails = () => {
   const [isLogin, setIsLogin] = useState(false);
   const [error, setError] = useState('');
   const { id } = useParams();
-  const [isLoading, setIsLoading] = useState(false)
-  const [shareLoading, setShareLoading] = useState(false)
- 
+  const [isLoading, setIsLoading] = useState(false);
+  const [shareLoading, setShareLoading] = useState(false);
+  const context = useContext(MyContext)
 
   const downloadImage = async () => {
     try {
-      setIsLoading(true)
-        const response = await axios.get(
-            `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
-            { responseType: "blob" }
-        );
-        setIsLoading(false)
-        const url = window.URL.createObjectURL(new Blob([response.data]));
-        const link = document.createElement("a");
-        link.href = url;
-        link.setAttribute("download", "order-receipt.jpg");
-        document.body.appendChild(link);
-        link.click();
-        link.remove(); // Remove the link after clicking
-        window.URL.revokeObjectURL(url); // Release the object URL
+      setIsLoading(true);
+      const response = await axios.get(
+        `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
+        { responseType: "blob" }
+      );
+      setIsLoading(false);
+      const url = window.URL.createObjectURL(new Blob([response.data]));
+      const link = document.createElement("a");
+      link.href = url;
+      link.setAttribute("download", "order-receipt.jpg");
+      document.body.appendChild(link);
+      link.click();
+      link.remove(); // Remove the link after clicking
+      window.URL.revokeObjectURL(url); // Release the object URL
     } catch (error) {
-      setIsLoading(false)
-        setError('Failed to download image');
+      setIsLoading(false);
+      setError('Failed to download image');
     }
-};
-
-
-  // const shareImage = async () => {
-  //   try {
-  //     const response = await axios.get(
-  //       `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
-  //       { responseType: "blob" }
-  //     );
-  //     const file = new File([response.data], "order-receipt.jpg", {
-  //       type: "image/jpeg",
-  //     });
-
-  //     if (navigator.canShare && navigator.canShare({ files: [file] })) {
-  //       navigator.share({
-  //         files: [file],
-  //         title: "Order Receipt",
-  //         text: "Here is your order receipt",
-  //       });
-  //     } else {
-  //       alert("Sharing not supported on this browser");
-  //     }
-  //   } catch (error) {
-  //     setError('Failed to share image');
-  //   }
-  // };
+  };
 
   const shareImage = async () => {
     try {
-      setShareLoading(true)
+      setShareLoading(true);
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
         { responseType: 'blob' }
       );
-      setShareLoading(false)
+      setShareLoading(false);
       const file = new File([response.data], 'order-receipt.jpg', {
         type: 'image/jpeg',
       });
@@ -81,13 +58,29 @@ const OrderDetails = () => {
           text: 'Here is your order receipt',
         });
       } else {
-        setShareLoading(false)
+        setShareLoading(false);
         alert('Sharing not supported on this browser');
       }
     } catch (error) {
-      setShareLoading(false)
+      setShareLoading(false);
       setError('Failed to share image');
     }
+  };
+
+  const copyToClipboard = () => {
+    navigator.clipboard.writeText(orders?.id).then(() => {
+      context.setAlertBox({
+        open: true,
+        error: false,
+        msg: "Order ID copied to clipboard"
+    })
+    }).catch(() => {
+      context.setAlertBox({
+        open: true,
+        error: false,
+        msg: "Failed to copy order ID"
+    })
+    });
   };
 
   useEffect(() => {
@@ -133,28 +126,28 @@ const OrderDetails = () => {
           <div className="od-card-container">
             <h1>ORDER INFO</h1>
             <div>
-              <h6>Order Id :</h6>
-              <p>{orders?.id}</p>
+              <h6><b>Order Id </b>:</h6>
+              <p>{orders?.id} <Button onClick={copyToClipboard} className="btn-blue"><FaCopy style={{fontSize: "16px"}} /></Button></p>
             </div>
             <div className="details">
               <h5>User Info</h5>
-              <p>Name: {orders?.name}</p>
-              <p>Contact: {orders?.phoneNumber}</p>
-              <p>Address: {orders?.address}</p>
-              <p>Zip: {orders?.pincode}</p>
+              <p><b>Name</b>: {orders?.name}</p>
+              <p><b>Contact</b>: {orders?.phoneNumber}</p>
+              <p><b>Address</b>: {orders?.address}</p>
+              <p><b>Zip</b>: {orders?.pincode}</p>
             </div>
             <div className="details">
               <h5>Amount Info</h5>
-              <p>Subtotal: {orders?.amount}</p>
-              <p>Shipping Charges: 0</p>
-              <p>Tax: 0</p>
-              <p>Discount: 0</p>
-              <p>Total: {orders?.amount}</p>
+              <p><b>Subtotal</b>: {orders?.amount}</p>
+              <p><b>Shipping Charges</b>: 150</p>
+              <p><b>Tax</b>: 0</p>
+              <p><b>Discount</b>: 0</p>
+              <p><b>Total</b>: {orders?.amount}</p>
             </div>
             <div className="details">
               <h5>Status Info</h5>
               <p>
-                Status:{" "}
+                <b>Status</b>:{" "}
                 <span
                   className={
                     orders?.status === "pending"
@@ -191,8 +184,8 @@ const OrderDetails = () => {
                   </div>
                 </div>
               ))}
-            <Button className="btn btn-blue btn-lg mr-2" onClick={downloadImage}>{isLoading ? "downloading.." : "Save to Gallery"}</Button>
-            <Button className="btn btn-blue btn-lg" onClick={shareImage}>{shareLoading ? <CircularProgress/> : "Share"}</Button>
+            <Button className="btn btn-blue btn-lg mr-2" onClick={downloadImage}>{isLoading ? "Downloading.." : "Save to Gallery"}</Button>
+            <Button className="btn btn-blue btn-lg" onClick={shareImage}>{shareLoading ? <CircularProgress /> : "Share"}</Button>
             {error && <p>{error}</p>}
           </div>
         </div>

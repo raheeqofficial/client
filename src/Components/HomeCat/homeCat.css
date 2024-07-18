@@ -6,7 +6,7 @@
 .homeCatWrapper{
     padding: 60px 30px;
     padding-top: 30px;
-    background: #fff;
+    background: #4657f3;
     width: 95%;
     margin: 20px auto;
     margin-top: 10px;
@@ -15,6 +15,7 @@
 }
 .homeCatWrapper .hd{
     margin-bottom: 20px;
+    color: #fff;
 }
 .homeCatBox{
     width: 80%;
@@ -39,7 +40,7 @@
 }
 .homeCatBox a .homeCatBoxWrapper h6{
     text-align: center;
-    color: #000;
+    color: #fff;
     margin-top: 4px;
 }
 .homeCatBoxWrapper .homeCatImgWrapper{

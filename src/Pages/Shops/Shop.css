@@ -1,0 +1,13 @@
+.shopPage .container{
+    width: 100%;
+    margin: 10px auto;
+}
+.shopPage .shopPageWrapper{
+    width: 90%;
+    margin: 10px auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 30px;
+}
