@@ -1,11 +1,11 @@
 import { LuShirt } from "react-icons/lu";
 import { TbTruckDelivery } from "react-icons/tb";
-import { TbDiscount2 } from "react-icons/tb";
 import { CiBadgeDollar } from "react-icons/ci";
 import { Link } from "react-router-dom";
 import { FaFacebookF } from "react-icons/fa";
 import { FaTwitter } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
+import { TbDiscount } from "react-icons/tb";
 import { useState } from "react";
 import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { FaSquareFacebook, FaSquareInstagram, FaSquareXTwitter } from "react-icons/fa6";
@@ -43,7 +43,7 @@ const Footer = () => {
                     </div>
 
                     <div className="col d-flex align-items-center">
-                        <span><TbDiscount2 /></span>
+                        <span><TbDiscount /></span>
                         <span className="ml-2">Daily Mega Discounts</span>
                     </div>
 
