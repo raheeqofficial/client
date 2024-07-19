@@ -84,7 +84,7 @@ const Header = () => {
         <>
         <div className='header-top'>
             <ul>
-                <li><a target='_blank' href='https://seller-nu.vercel.app'>Become a seller</a></li>
+                <li><a target='_blank' href='https://sellercenter.eliphstore.com'>Become a seller</a></li>
                 <li><Link>Become a investor</Link></li>
                 <li><Link>Faq</Link></li>
             </ul>
