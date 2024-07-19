@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ProductItem from "../../Components/ProductItem";
 import { fetchDataFromApi } from "../../utils/api";
 import CircularProgress from "@mui/material/CircularProgress";
-import img from "../../assets/images/Banner-flash sale.jpg";
+import img from "../../assets/images/sale-banner-top.jpg";
 import './NewProducts.css'
 
 const NewProducts = () => {
