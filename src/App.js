@@ -14,6 +14,7 @@ import { fetchDataFromApi, postData } from "./utils/api";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
+const Recepient = lazy(() => import('./Pages/ReceiptGenerator/ReceiptGenerator'));
 const Contact = lazy(() => import('./Pages/Contact/Contact'));
 const Listing = lazy(() => import('./Pages/Listing/index'));
 const FlashSale = lazy(() => import('./Pages/FlashSale/FlashSale'));
@@ -260,6 +261,9 @@ function App() {
           <Route path="/" element={<Suspense fallback={<div className="loaderContainer">
           <span class="loader"></span>
         </div>}><Home /></Suspense>} />
+          <Route path="/recipient" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><Recepient /></Suspense>} />
           <Route path="/contact" element={<Suspense fallback={<div className="loaderContainer">
           <span class="loader"></span>
         </div>}><Contact /></Suspense>} />

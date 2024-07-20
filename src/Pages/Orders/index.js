@@ -82,7 +82,7 @@ const Orders = () => {
                         <table className='table table-striped table-bordered'>
                             <thead className='thead-light'>
                                 <tr>
-                                    <th>Product Id</th>
+                                    <th>Order Id</th>
                                     <th>Products</th>
                                     <th>Order Details</th>
                                     <th>Order Status</th>
@@ -103,7 +103,11 @@ const Orders = () => {
                                                     <td><Link to={`/order/details/${order?._id}`}>
                                                         See details
                                                     </Link></td>
-                                                    <td className={`${(order.status === "Cancelled" ||  order.status === "Pending") ? "text text-danger":"text text-success"}`}>{order?.status}</td>
+                                                    <td
+                                                     className={`${order.status === "Cancelled" ||  order.status === "Pending" ? "text text-danger":
+                                                         order.status === "Confirm" ? "text text-secondary" : order.status === "Shippied" ? "text text-primary" : order.status === "Delivered" ? "text text-success" : "text text-default"}`}
+                                                    
+                                                    >{order?.status}</td>
                                                     <td>{formattedDate}</td>
                                                 </tr>
 

@@ -8,79 +8,91 @@ import { MyContext } from "../../../App";
 
 const OrderDetails = () => {
   const [orders, setOrders] = useState([]);
+  const [receiptUrl, setReceiptUrl] = useState('');
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
-  const [error, setError] = useState('');
+  const [error, setError] = useState("");
   const { id } = useParams();
   const [isLoading, setIsLoading] = useState(false);
   const [shareLoading, setShareLoading] = useState(false);
-  const context = useContext(MyContext)
+  const context = useContext(MyContext);
 
-  const downloadImage = async () => {
+  // const generateReceipt = async () => {
+  //   try {
+  //     setIsLoading(true)
+  //     const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`);
+  //     setReceiptUrl(response.data.receiptUrl);
+  //     setIsLoading(false)
+  //     console.log(response)
+  //   } catch (error) {
+  //     setError('Error generating receipt.');
+  //   }
+  // };
+  const downloadReceipt = async () => {
     try {
-      setIsLoading(true);
-      const response = await axios.get(
-        `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
-        { responseType: "blob" }
-      );
-      setIsLoading(false);
+      setIsLoading(true)
+      const response = await axios({
+        url: `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
+        method: 'GET',
+        responseType: 'blob', // important
+      });
+      setIsLoading(false)
       const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement("a");
+      const link = document.createElement('a');
       link.href = url;
-      link.setAttribute("download", "order-receipt.jpg");
+      link.setAttribute('download', `receipt_${id}.pdf`);
       document.body.appendChild(link);
       link.click();
-      link.remove(); // Remove the link after clicking
-      window.URL.revokeObjectURL(url); // Release the object URL
     } catch (error) {
-      setIsLoading(false);
-      setError('Failed to download image');
+      setError('Error generating receipt.');
     }
   };
-
   const shareImage = async () => {
     try {
       setShareLoading(true);
       const response = await axios.get(
         `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
-        { responseType: 'blob' }
+        { responseType: "blob" }
       );
       setShareLoading(false);
-      const file = new File([response.data], 'order-receipt.jpg', {
-        type: 'image/jpeg',
+      const file = new File([response.data], "order-receipt.jpg", {
+        type: "image/jpeg",
       });
 
       if (navigator.canShare && navigator.canShare({ files: [file] })) {
         await navigator.share({
           files: [file],
-          title: 'Order Receipt',
-          text: 'Here is your order receipt',
+          title: "Order Receipt",
+          text: "Here is your order receipt",
         });
       } else {
         setShareLoading(false);
-        alert('Sharing not supported on this browser');
+        alert("Sharing not supported on this browser");
       }
     } catch (error) {
       setShareLoading(false);
-      setError('Failed to share image');
+      setError("Failed to share image");
     }
   };
 
   const copyToClipboard = () => {
-    navigator.clipboard.writeText(orders?.id).then(() => {
-      context.setAlertBox({
-        open: true,
-        error: false,
-        msg: "Order ID copied to clipboard"
-    })
-    }).catch(() => {
-      context.setAlertBox({
-        open: true,
-        error: false,
-        msg: "Failed to copy order ID"
-    })
-    });
+    navigator.clipboard
+      .writeText(orders?.id)
+      .then(() => {
+        context.setAlertBox({
+          open: true,
+          error: false,
+          msg: "Order ID copied to clipboard",
+        });
+      })
+      .catch(() => {
+        context.setAlertBox({
+          open: true,
+          error: false,
+          msg: "Failed to copy order ID",
+        });
+      });
   };
 
   useEffect(() => {
@@ -95,24 +107,26 @@ const OrderDetails = () => {
 
     const fetchProducts = async () => {
       try {
-        const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders/${id}`);
+        const res = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/orders/${id}`
+        );
         setProducts(res?.data?.products);
         setOrders(res?.data);
       } catch (err) {
         if (axios.isAxiosError(err)) {
           if (err.response) {
             if (err.response.status === 404) {
-              navigate('/page-not-found');
+              navigate("/page-not-found");
             } else if (err.response.status === 400) {
-              navigate('/page-not-found');
+              navigate("/page-not-found");
             } else {
-              setError('An unexpected error occurred');
+              setError("An unexpected error occurred");
             }
           } else {
-            setError('An unexpected error occurred');
+            setError("An unexpected error occurred");
           }
         } else {
-          setError('An unexpected error occurred');
+          setError("An unexpected error occurred");
         }
       }
     };
@@ -126,23 +140,48 @@ const OrderDetails = () => {
           <div className="od-card-container">
             <h1>ORDER INFO</h1>
             <div>
-              <h6><b>Order Id </b>:</h6>
-              <p>{orders?.id} <Button onClick={copyToClipboard} className="btn-blue"><FaCopy style={{fontSize: "16px"}} /></Button></p>
+              <h6>
+                <b>Order Id </b>:
+              </h6>
+              <p>
+                {orders?.id}{" "}
+                <Button onClick={copyToClipboard} className="btn-blue">
+                  <FaCopy style={{ fontSize: "16px" }} />
+                </Button>
+              </p>
             </div>
             <div className="details">
               <h5>User Info</h5>
-              <p><b>Name</b>: {orders?.name}</p>
-              <p><b>Contact</b>: {orders?.phoneNumber}</p>
-              <p><b>Address</b>: {orders?.address}</p>
-              <p><b>Zip</b>: {orders?.pincode}</p>
+              <p>
+                <b>Name</b>: {orders?.name}
+              </p>
+              <p>
+                <b>Contact</b>: {orders?.phoneNumber}
+              </p>
+              <p>
+                <b>Address</b>: {orders?.address}
+              </p>
+              <p>
+                <b>Zip</b>: {orders?.pincode}
+              </p>
             </div>
             <div className="details">
               <h5>Amount Info</h5>
-              <p><b>Subtotal</b>: {orders?.amount}</p>
-              <p><b>Shipping Charges</b>: 150</p>
-              <p><b>Tax</b>: 0</p>
-              <p><b>Discount</b>: 0</p>
-              <p><b>Total</b>: {orders?.amount}</p>
+              <p>
+                <b>Subtotal</b>: {orders?.amount}
+              </p>
+              <p>
+                <b>Shipping Charges</b>: 150
+              </p>
+              <p>
+                <b>Tax</b>: 0
+              </p>
+              <p>
+                <b>Discount</b>: 0
+              </p>
+              <p>
+                <b>Total</b>: {orders?.amount}
+              </p>
             </div>
             <div className="details">
               <h5>Status Info</h5>
@@ -150,15 +189,33 @@ const OrderDetails = () => {
                 <b>Status</b>:{" "}
                 <span
                   className={
-                    orders?.status === "pending"
+                    orders?.status === "Pending" ||
+                    orders?.status === "Cancelled"
                       ? "badge badge-danger"
-                      : "badge badge-success"
+                      : orders?.status === "Confirm"
+                      ? "badge badge-secondary"
+                      : orders?.status === "Shipped"
+                      ? "badge badge-primary"
+                      : orders?.status === "Delivered"
+                      ? "badge badge-success"
+                      : "badge badge-default"
                   }
                 >
                   {orders?.status}
                 </span>
               </p>
             </div>
+            {/* {receiptUrl && ( */}
+            {/* <div className="mt-4">
+              <a
+                href={receiptUrl}
+                download={`receipt_${orders._id}.pdf`}
+                className="hd"
+              >
+                Download Receipt
+              </a>
+            </div> */}
+           {/* )}  */}
           </div>
         </div>
         <div className="od-card p-3 mt-2">
@@ -184,8 +241,13 @@ const OrderDetails = () => {
                   </div>
                 </div>
               ))}
-            <Button className="btn btn-blue btn-lg mr-2" onClick={downloadImage}>{isLoading ? "Downloading.." : "Save to Gallery"}</Button>
-            <Button className="btn btn-blue btn-lg" onClick={shareImage}>{shareLoading ? <CircularProgress /> : "Share"}</Button>
+            <Button
+              className="btn btn-blue btn-lg mr-2"
+              onClick={downloadReceipt}
+            >
+              {isLoading ? "Downloading.." : "Save to Gallery"}
+            </Button>
+            
             {error && <p>{error}</p>}
           </div>
         </div>
