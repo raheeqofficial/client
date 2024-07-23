@@ -161,9 +161,9 @@ const SignUp = () => {
 
             <div className="container">
                 <div className="box card p-3 shadow border-0">
-                    <div className="text-center">
+                    {/* <div className="text-center">
                         <img src={Logo} alt="Logo" />
-                    </div>
+                    </div> */}
 
                     <form className="mt-2" onSubmit={register}>
                         <h2 className="mb-3">Sign Up</h2>

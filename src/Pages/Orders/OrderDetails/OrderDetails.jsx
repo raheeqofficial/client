@@ -241,14 +241,7 @@ const OrderDetails = () => {
                   </div>
                 </div>
               ))}
-            <Button
-              className="btn btn-blue btn-lg mr-2"
-              onClick={downloadReceipt}
-            >
-              {isLoading ? "Downloading.." : "Save to Gallery"}
-            </Button>
             
-            {error && <p>{error}</p>}
           </div>
         </div>
       </div>

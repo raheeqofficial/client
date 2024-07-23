@@ -102,10 +102,10 @@ const SignIn = () => {
 
             <div className="container">
                 <div className="box card p-3 shadow border-0">
-                    <div className="text-center">
-                        {/* <img src={Logo} /> */}
+                    {/* <div className="text-center">
+                        <img src={Logo} />
                         <h1 className="mb-0">Raheeq</h1>
-                    </div>
+                    </div> */}
 
 
                     <form className="mt-3" onSubmit={login}>

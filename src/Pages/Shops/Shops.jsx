@@ -3,6 +3,7 @@ import { fetchDataFromApi } from "../../utils/api";
 import { Link } from "react-router-dom";
 import ContinuousSnowfall from "../../Components/continuesSnowFall/ContinuesSnowfall";
 import './Shop.css'
+import shopImg from '../../assets/images/shops.jpg'
 
 const Shops = () => {
   const [shopData, setShopData] = useState([]);
@@ -26,7 +27,7 @@ const Shops = () => {
     <section className="shopPage">
     <div className="topImage">
     <ContinuousSnowfall/>
-    <h3 className="mb-3 hd text-center">Welcome to Raheeq Vender Stores</h3>
+    <h3 className="mb-3 hd text-center">Welcome to Vender Stores</h3>
     </div>
       <div className="container">
         <div className="shopPageWrapper">
@@ -36,7 +37,9 @@ const Shops = () => {
                 <Link to={`/shops/${shop._id}`} key={index}>
                   <div className="item text-center cursor">
                     <img
-                      src="https://img.icons8.com/officel/80/shop.png"
+                      src={shopImg}
+                      width={100}
+                      height={100}
                       alt="shop"
                     />
                   </div>

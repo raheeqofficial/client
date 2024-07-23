@@ -11,6 +11,7 @@ import { deleteData, editData, fetchDataFromApi } from "../../utils/api";
 import { IoBagCheckOutline } from "react-icons/io5";
 import { FaHome } from "react-icons/fa";
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet-async';
 
 const Cart = () => {
     const [cartData, setCartData] = useState([]);
@@ -123,6 +124,11 @@ const Cart = () => {
     //   }
     return (
         <>
+        <Helmet>
+        <title>Cart - EliphStore</title>
+        <meta name="description" content="Get in touch with us through our contact page." />
+        <meta name="keywords" content="contact, my website, ecommerce" />
+      </Helmet>
             <section className="section cartPage">
                 <div className="container">
                     <h2 className="hd mb-1">Your Cart</h2>

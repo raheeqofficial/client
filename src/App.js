@@ -11,6 +11,7 @@ import BottomHeader from './Components/BottomHeader/BottomMenu';
 import ProductModal from './Components/ProductModal/index';
 import axios from 'axios';
 import { fetchDataFromApi, postData } from "./utils/api";
+import { HelmetProvider } from 'react-helmet-async';
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -241,6 +242,7 @@ function App() {
     productData
   }
   return (
+    <HelmetProvider>
     <BrowserRouter>
       <MyContext.Provider value={values}>
         <Snackbar open={alertBox.open} autoHideDuration={6000} onClose={handleClose} className="snackbar">
@@ -371,6 +373,7 @@ function App() {
         {isOpenProductModal && <ProductModal data={productData} />}
       </MyContext.Provider>
     </BrowserRouter>
+    </HelmetProvider>
   );
 }
 
