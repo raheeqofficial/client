@@ -1,17 +1,11 @@
-import { LuShirt } from "react-icons/lu";
-import { TbTruckDelivery } from "react-icons/tb";
-import { CiBadgeDollar } from "react-icons/ci";
+
 import { Link } from "react-router-dom";
-import { FaFacebookF } from "react-icons/fa";
-import { FaTwitter } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
-import { TbDiscount } from "react-icons/tb";
 import { useState } from "react";
-import { Accordion, AccordionDetails, AccordionSummary, Typography } from "@mui/material";
 import { FaSquareFacebook, FaSquareInstagram, FaSquareXTwitter } from "react-icons/fa6";
-import Fade from '@mui/material/Fade';
-import AddIcon from '@mui/icons-material/Add';
-import { BiMinus } from "react-icons/bi";
+import { FaPhoneAlt } from "react-icons/fa";
+import { FiMapPin } from "react-icons/fi";
+import { FaRegEnvelope } from "react-icons/fa";
+import './footer.css'
 
 const Footer = () => {
     const [expanded, setExpanded] = useState(false);
@@ -55,7 +49,7 @@ const Footer = () => {
 
 
 
-                <div className="mt-5 linksWrap">
+                <div className="linksWrap">
                     <div className="col">
                         <h5>Customer Care</h5>
                         <ul>
@@ -69,12 +63,31 @@ const Footer = () => {
                     <div className="col">
                         <h5>About Us</h5>
                         <ul>
-                            <li><Link to={'#'}>About Us</Link></li>
+                            <li><Link to={'/about'}>About Us</Link></li>
                             <li><Link to={'#'}>Privacy Statement</Link></li>
                             <li><Link to={'#'}>Terms & Conditions</Link></li>
                         </ul>
                     </div>
 
+                    <div className="col">
+                        <h5>Contact Us</h5>
+                        <div class="footer-nav-list">
+                            <div class="footer-nav-item d-flex">
+                                    <FiMapPin/>
+                                <p class="footer-nav-link">
+                                    Model town Lahore Pakistan
+                                </p>
+                            </div>
+                            <div class="footer-nav-item d-flex">
+                                    <FaPhoneAlt/>
+                                <a href="tel: +92 3144363910" class="footer-nav-link">+92 3144363910</a>
+                            </div>
+                            <div class="footer-nav-item d-flex">
+                                    <FaRegEnvelope/>
+                                <a href="mailto: support@eliphstore.com" class="footer-nav-link">support@eliphstore.com</a>
+                            </div>
+                        </div>
+                    </div>
                     <div className="col">
                         <h5>Follow Us</h5>
                         <div className="socials">
@@ -84,10 +97,6 @@ const Footer = () => {
                         </div>
                     </div>
 
-                    <div className="col">
-                        <h5>Shipping</h5>
-                        <p>We are only provide shipping services for <b>Pakistan</b></p>
-                    </div>
                 </div>
             </footer>
             <div className="copyright">

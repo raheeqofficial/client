@@ -11,7 +11,8 @@ import BottomHeader from './Components/BottomHeader/BottomMenu';
 import ProductModal from './Components/ProductModal/index';
 import axios from 'axios';
 import { fetchDataFromApi, postData } from "./utils/api";
-import { HelmetProvider } from 'react-helmet-async';
+import { Helmet, HelmetProvider } from 'react-helmet-async';
+import About from "./Pages/About/About";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -27,7 +28,6 @@ const DiscountPage = lazy(() => import('./Pages/DiscountPage/DiscountPage'));
 const Error = lazy(() => import('./Pages/productError/Error'));
 const Cart = lazy(() => import('./Pages/Cart/index'));
 const SignIn = lazy(() => import('./Pages/SignIn/index'));
-const Login = lazy(() => import('./Pages/Login/Login'));
 const SignUp = lazy(() => import('./Pages/SignUp'));
 const MyList = lazy(() => import('./Pages/MyList/index'));
 const Checkout = lazy(() => import('./Pages/Checkout/index'));
@@ -243,6 +243,18 @@ function App() {
   }
   return (
     <HelmetProvider>
+      <Helmet>
+    <title>EliphStore - Your Online Shopping Destination</title>
+    <meta
+      name="description"
+      content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!"
+    />
+    <meta
+      name="keywords"
+      content="Eliphstore, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
+       designer collections, seamless online shopping experience "
+    />
+  </Helmet>
     <BrowserRouter>
       <MyContext.Provider value={values}>
         <Snackbar open={alertBox.open} autoHideDuration={6000} onClose={handleClose} className="snackbar">
@@ -263,6 +275,9 @@ function App() {
           <Route path="/" element={<Suspense fallback={<div className="loaderContainer">
           <span class="loader"></span>
         </div>}><Home /></Suspense>} />
+          <Route path="/about" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><About /></Suspense>} />
           <Route path="/recipient" element={<Suspense fallback={<div className="loaderContainer">
           <span class="loader"></span>
         </div>}><Recepient /></Suspense>} />
@@ -302,9 +317,7 @@ function App() {
           <Route path="/signIn" element={<Suspense fallback={<div className="loaderContainer">
           <span class="loader"></span>
         </div>}><SignIn /></Suspense>} />
-          <Route path="/login" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
-        </div>}><Login /></Suspense>} />
+          
           <Route path="/signUp" element={<Suspense fallback={<div className="loaderContainer">
           <span class="loader"></span>
         </div>}><SignUp /></Suspense>} />

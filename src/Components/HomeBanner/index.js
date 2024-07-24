@@ -4,6 +4,7 @@ import 'swiper/css/navigation';
 import { MyContext } from "../../App";
 import Slider from "react-slick";
 import './homeBanner.css'
+import mutedVideo from '../../assets/videos/homeBanner.mp4'
 
 const HomeBanner = (props) => {
 
@@ -16,11 +17,11 @@ const HomeBanner = (props) => {
         slidesToScroll: 1,
         autoplay: true,
         autoplaySpeed: 2000
-      };
+    };
 
     return (
         <div className="homeBanner">
-         <Slider {...settings}>
+            {/* <Slider {...settings}>
             {
                         props?.data?.length !== 0 && props?.data?.map((item, index) => {
                             return (
@@ -30,7 +31,13 @@ const HomeBanner = (props) => {
                             )
                         })
                     }
-            </Slider>
+            </Slider> */}
+            <div className="item">
+                <video autoPlay muted loop>
+                    <source src={mutedVideo} />
+                </video>
+
+            </div>
         </div>
     )
 }

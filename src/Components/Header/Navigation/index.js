@@ -67,6 +67,10 @@ const Navigation = () => {
                                 <Link to={`/contact`}><Button>Contact Us</Button></Link>
 
                             </li>
+                            <li className={`list-inline-item ${selected === 3 && 'selected'}`} onClick={() => setSelected(3)}>
+                                <Link to={`/about`}><Button>About Us</Button></Link>
+
+                            </li>
                         </ul>
                     </div>
 

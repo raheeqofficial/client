@@ -64,7 +64,9 @@ body {
   font-size: 15px;
   padding-bottom: 0px !important;
 }
-
+p{
+  font-size: 15px;
+}
 :root {
   --main-blue: #71b7e6;
   --main-purple: #9b59b6;
@@ -1330,10 +1332,9 @@ nav .navPart2 ul li:hover .submenu {
 footer {
   width: 100%;
   height: auto;
-  background: #fff;
+  background: #1a1919;
   padding: 0px 25px;
   padding-top: 25px;
-  margin-top: 40px;
 }
 footer .topInfo {
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
@@ -1370,7 +1371,7 @@ footer .linksWrap ul li {
   margin-bottom: 10px;
 }
 footer .linksWrap ul li a {
-  color: #4e556e;
+  color: #887f7f;
   font-size: 13px;
 }
 footer .linksWrap ul li a:hover {
@@ -1403,11 +1404,11 @@ footer .linksWrap ul li a:hover {
   width: 35px;
   height: 35px;
   border-radius: 50%;
-  border: 1px solid rgba(0, 0, 0, 0.2);
+  border: 1px solid #887f7f;
 }
 .socials span a svg {
   font-size: 16px;
-  color: #363131;
+  color: #887f7f;
 }
 
 .productModal .actions button {
@@ -2263,6 +2264,7 @@ a:hover {
 button.loginUser {
   background-color: #075eb4 !important;
   color: #fff !important;
+  font-size: 16px;
   font-weight: bold;
 }
 

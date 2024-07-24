@@ -1,0 +1,15 @@
+.footer-nav-item{
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+.footer-nav-item li{
+    margin-bottom: 0px !important;
+}
+.footer-nav-link{
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+.footer-nav-item *{
+    color: #887f7f;
+}

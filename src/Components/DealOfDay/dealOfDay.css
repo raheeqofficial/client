@@ -48,7 +48,7 @@
   margin-bottom: 15px;
 }
 .product-featured .showcase-title {
-  font-size: var(--fsl-7);
+  font-size: 16px;
   color: var(--eerie-black);
   overflow: hidden;
   white-space: nowrap;
@@ -58,7 +58,7 @@
 }
 .product-featured .showcase-desc {
   color: var(--sonic-silver);
-  font-size: var(--fsl-7);
+  font-size: 15px;
   font-weight: var(--weight-300);
   margin-bottom: 10px;
 }
@@ -74,6 +74,7 @@
 }
 .product-featured del {
   color: var(--sonic-silver);
+  font-size: 16px;
   font-weight: var(--weight-300);
 }
 .product-featured .add-cart-btn {
@@ -122,7 +123,7 @@
 }
 .product-featured .countdown-desc {
   color: var(--eerie-black);
-  font-size: var(--fsl-9);
+  font-size: 17px;
   font-weight: var(--weight-600);
   text-transform: uppercase;
   margin-bottom: 10px;
@@ -144,16 +145,18 @@
 }
 .product-featured .display-number {
   color: var(--eerie-black);
-  font-size: var(--fsl-5);
+  font-size: 16px;
   font-weight: var(--weight-500);
   margin-bottom: 0px;
 }
 .product-featured .display-text {
   color: var(--davys-gray);
-  font-size: var(--fsl-11);
+  font-size: 14px;
+  margin-bottom: 0px;
 }
 .showcase-content button{
     margin-top: 50px;
+    font-size: 16px;
 }
 .product-featured .showcase-wrapper .showcase{
     align-items: center;
