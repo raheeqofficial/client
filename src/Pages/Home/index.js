@@ -23,6 +23,7 @@ import { Link, useNavigate } from "react-router-dom";
 import SaleCards from "../../Components/SaleCards/SaleCards";
 import FiftyPerSaleCard from "../../Components/fiftyPerSaleCard/FiftyPerSaleCard";
 import { Helmet } from "react-helmet-async";
+import TopBanners from "../../Components/topBanners/TopBanners";
 
 
 
@@ -148,9 +149,10 @@ const Home = () => {
             }
 
 
-            {
+            {/* {
                 context.categoryData?.length !== 0 && <HomeCat catData={context.categoryData} />
-            }
+            } */}
+            <TopBanners/>
 
             <SaleCards/>
             <FiftyPerSaleCard/>
@@ -198,23 +200,6 @@ const Home = () => {
 
 
 
-                            <div className="d-flex mt-4 mb-4 bannerSec">
-                                <div className="banner" onClick={() => handleDiscountClick(40)}>
-                                    <img src={banner3} className="cursor w-100" />
-                                </div>
-
-                                <div className="banner">
-                                    <img src={banner4} className="cursor w-100" />
-                                </div>
-
-                                <div className="banner">
-                                    <img src={banner4} className="cursor w-100" />
-                                </div>
-
-                            </div>
-
-
-
                             <div className="newProducts">
                             <div className="d-flex align-items-center mt-3">
                                 <div className="info w-75">
@@ -237,7 +222,7 @@ const Home = () => {
                             <div className="popularProducts">
                             <div className="catTabs mt-4">
                                 <div className="tabsHd">
-                                    <h3 className="mb-0">#Popular Products</h3>
+                                    <h3 className="mb-0">#Trending Products</h3>
                                     <p className="mb-0">Do not miss the current offers until the end of March.</p>
                                 </div>
 
@@ -289,11 +274,11 @@ const Home = () => {
                 </div>
 
             </section>
-            <section className="newsLetterSection mt-3 mb-3 d-flex align-items-center">
+            {/* <section className="newsLetterSection mt-3 mb-3 d-flex align-items-center">
                 <div className="container">
                     <div className="row">
                         <div className="col-md-6">
-                            {/* <p className="text-white mb-1">$20 discount for your first order</p> */}
+                            <p className="text-white mb-1">$20 discount for your first order</p>
                             <h3 className="text-white">Join our newsletter and get...</h3>
                             <p className="text-light">Join our email subscription now to get updates on<br /> promotions and coupons.</p>
 
@@ -311,7 +296,7 @@ const Home = () => {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section> */}
             <div className="seoContent">
                 <div className="seoContentWrapper">
                     <div className="seoItem">

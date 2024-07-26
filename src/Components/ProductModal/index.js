@@ -14,6 +14,7 @@ import { FaHeart } from "react-icons/fa";
 import { AiOutlineShoppingCart } from "react-icons/ai";
 
 
+
 const ProductModal = (props) => {
 
     const [productQuantity, setProductQuantity] = useState();
@@ -154,6 +155,7 @@ const ProductModal = (props) => {
             const data = {
                 staticId: props?.data?.staticId,
                 productTitle: props?.data?.name,
+                countInStock: props?.data?.countInStock,
                 shop: props?.data?.shop,
                 productSize: props?.data?.size,
                 productWeight: props?.data?.productWeight,

@@ -92,6 +92,7 @@ const ProductDetails = () => {
           try {
             const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/staticId/${id}`);
             setProductData(res?.data);
+            console.log(res.data)
             if (res?.data?.productRam?.length === 0 && res?.data?.productWeight?.length === 0 && res?.data?.size?.length === 0 && res?.data?.color?.length === 0) {
                 setActiveSize(1);
                 setActiveRam(1);
@@ -296,6 +297,7 @@ const ProductDetails = () => {
         if (user !== undefined && user !== null && user !== "") {
             const data = {
                 productTitle: productData?.name,
+                countInStock: productData?.countInStock,
                 shop: productData?.shop,
                 productSize: productData?.size,
                 staticId: productData?.staticId,

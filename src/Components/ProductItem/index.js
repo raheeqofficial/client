@@ -7,11 +7,14 @@ import { MyContext } from '../../App';
 import { Link } from 'react-router-dom';
 
 import Slider from "react-slick";
-import Skeleton from '@mui/material/Skeleton';
 import { IoIosImages } from "react-icons/io";
 import { fetchDataFromApi, postData } from '../../utils/api';
 import { FaHeart } from "react-icons/fa";
 
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const ProductItem = (props) => {
 
@@ -82,6 +85,7 @@ const ProductItem = (props) => {
         if (user !== undefined && user !== null && user !== "") {
             const data = {
                 productTitle: props?.item?.name,
+                countInStock: props?.item?.countInStock,
                 shop: props?.item?.shop,
                 staticId: props?.item?.staticId,
                 productSize: props?.item?.size,
@@ -132,7 +136,16 @@ const ProductItem = (props) => {
 
     return (
         <>
-            <div className={`productItem ${props.itemView}`}
+            {
+                isLoading ?  (
+                    <div className="product-skeleton">
+                        <Skeleton height={300} width={200} />
+                        <Skeleton height={20} width={150} />
+                        <Skeleton height={20} width={100} />
+                        <Skeleton height={20} width={50} />
+                    </div>
+                ) : (
+                    <div className={`productItem ${props.itemView}`}
                 onMouseEnter={() => handleMouseEnter(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}
                 onMouseLeave={handleMouseLeave}
             >
@@ -212,6 +225,8 @@ const ProductItem = (props) => {
                 </div>
 
             </div>
+                )
+            }
 
 
 

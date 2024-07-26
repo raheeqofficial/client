@@ -19,10 +19,12 @@ const FiftyPerSaleCard = () => {
 }
   return (
     <section className='fiftyPerSaleCard'>
+        <div className="container">
         <div className="fiftyPerSaleCardWrapper">
             <div className="fiftyPerSaleCardImg" onClick={() => handleDiscountClick()}>
                 <img src={img} alt="sale banner" />
             </div>
+        </div>
         </div>
     </section>
   )

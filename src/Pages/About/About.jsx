@@ -1,5 +1,5 @@
 import React from 'react'
-import './css/About.css'
+import './About.css'
 import './css/style.css'
 import about1 from '../../assets/images/about/img-1.jpg'
 import about2 from '../../assets/images/about/img-2.jpg'

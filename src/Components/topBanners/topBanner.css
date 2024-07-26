@@ -1,0 +1,35 @@
+.icon-boxes-container {
+    padding-top: 0.5rem;
+    padding-bottom: 2.8rem;
+    background-color: #fff !important;
+    margin-bottom: 20px;
+  }
+  .icon-boxes {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .icon-box-side {
+    font-size: 1.4rem;
+  }
+  .icon-box-side .icon-box-icon {
+    color: #333;
+    font-size: 3.4rem;
+  }
+  .icon-box-side .icon-box-title {
+    text-transform: uppercase;
+    font-weight: 400;
+    font-size: 1.6rem;
+    letter-spacing: 0.1em;
+    color: #333;
+  }
+
+@media screen and (max-width: 992px) {
+    .topBanner{
+        margin-top: 40px;
+    }
+}
+@media screen and (max-width: 768px) {
+    .topBanner{
+        margin-top: 10px;
+    }
+}

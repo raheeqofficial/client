@@ -1,15 +1,14 @@
-.footer-nav-item{
-    align-items: center;
-    gap: 10px;
-    margin-bottom: 10px;
+
+.eliphFooter .btn-primary{
+    background-color: #113ebb !important;
+    color: #fff !important;
 }
-.footer-nav-item li{
-    margin-bottom: 0px !important;
+.footer-newsletter{
+    background-image: url('../../assets/images/newsletter.jfif');
 }
-.footer-nav-link{
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-}
-.footer-nav-item *{
-    color: #887f7f;
+
+@media screen and (max-width: 768px) {
+    footer{
+        margin-bottom: 50px;
+    }
 }
