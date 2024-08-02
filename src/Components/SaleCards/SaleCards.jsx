@@ -4,9 +4,6 @@ import menImg from "../../assets/images/popular_products-banner-eliphstore.jpg";
 import fashion from "../../assets/images/fashion-banner-eliphstore.jpg";
 import newImg from "../../assets/images/New_product-front_banner-eliphstore.jpg";
 import { Link } from "react-router-dom";
-import banner1 from '../../assets/images/banners/banner-1.jpg'
-import banner2 from '../../assets/images/banners/banner-2.jpg'
-import banner3 from '../../assets/images/banners/banner-3.jpg'
 import { v4 as uuid } from "uuid";
 
 const SaleCards = () => {

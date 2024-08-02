@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import './About.css'
 import './css/style.css'
 import about1 from '../../assets/images/about/img-1.jpg'
@@ -19,6 +19,9 @@ import user1 from '../../assets/images/testimonials/user-1.jpg'
 import user2 from '../../assets/images/testimonials/user-2.jpg'
 
 const About = () => {
+    useEffect(() => {
+        window.scrollTo(0,0)
+    },[])
   return (
     <div className='page-wrapper'>
         <main className="main">

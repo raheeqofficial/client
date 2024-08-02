@@ -73,6 +73,25 @@ p{
   --main-grey: #ccc;
   --sub-grey: #d9d9d9;
 }
+.css-1n4twyu-MuiInputBase-input-MuiOutlinedInput-input {
+  height: 25px !important;
+  font-size: 16px !important;
+}
+.css-1pysi21-MuiFormLabel-root-MuiInputLabel-root {
+  font-size: 15px !important;
+}
+.css-1jy569b-MuiFormLabel-root-MuiInputLabel-root{
+  font-size: 16px !important;
+}
+.css-1yk1gt9-MuiInputBase-root-MuiOutlinedInput-root-MuiSelect-root{
+  font-size: 16px !important;
+}
+.css-kk1bwy-MuiButtonBase-root-MuiMenuItem-root, .css-ka7ti6-MuiAutocomplete-root .MuiOutlinedInput-root.MuiInputBase-sizeSmall .MuiAutocomplete-input{
+  font-size: 16px !important;
+}
+.css-1nbsiwm-MuiRating-root{
+  font-size: 18px;
+}
 .btn-disabled {
   cursor: not-allowed !important;
   opacity: 0.65;
@@ -86,7 +105,9 @@ p{
 .bg-blue {
   background: #113ebb;
 }
-
+.css-1pxa9xg-MuiAlert-message{
+  font-size: 15px;
+}
 @media (min-width: 1300px) {
   .container,
   .container-lg,
@@ -198,6 +219,12 @@ p{
 button .MuiCircularProgress-root {
   width: 30px !important;
   height: 30px !important;
+}
+.auto-c-i button svg{
+  color: #000 !important;
+}
+.table-bg .table{
+  background: #fafafa !important;
 }
 button svg {
   color: #fff;
@@ -1329,7 +1356,15 @@ nav .navPart2 ul li:hover .submenu {
   font-weight: 600 !important;
 }
 
-
+ul.list-style{
+  list-style-type: square !important;
+  margin-bottom: 0px;
+}
+.show-more{
+  color: #0858f7;
+  font-size: 12px;
+  cursor: pointer;
+}
 .socials {
   display: flex;
 }
@@ -1766,8 +1801,7 @@ nav .navPart2 ul li:hover .submenu {
 }
 
 .detailsPageTabs {
-  border-radius: 25px !important;
-  background: #fff;
+  background: #ffffff;
 }
 
 .customTabs ul li {

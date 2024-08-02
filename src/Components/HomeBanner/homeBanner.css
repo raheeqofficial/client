@@ -23,6 +23,41 @@
   display: flex;
   align-items: center;
 }
+.homeBanner-left{
+  background-color: #ffffff;
+  padding: 10px 20px;
+  box-shadow: rgba(0, 0, 0, 0.05) 0px 0px 0px 1px;
+  border-radius: 8px;
+}
+.homeBannerLeft a{
+  display: flex;
+  gap: 10px;
+  padding-bottom: 10px;
+}
+.homeBannerLeft a p{
+  margin-bottom: 0px;
+  color: #424040;
+  transition: all 0.3s ease-in-out;
+}
+.homeBannerLeft a p:hover{
+  color: #113ebb;
+}
+.arrowMenuWrapper{
+  display: flex;
+  gap: 10px;
+}
+.arrowMenuWrapper p{
+  margin-bottom: 0px;
+  color: #424040;
+}
+.arrowMenu img{
+  width: 20px;
+  height: 20px;
+}
+.homeBannerLeft a img{
+  width: 20px;
+  height: 20px;
+}
 .homeBannerItem{
   position: absolute;
   top: 0;
@@ -59,10 +94,10 @@
 .intro-slider .slide-image:before {
   padding-top: 42.3728813559%;
 }
-@media screen and (max-width: 479px) {
+@media screen and (max-width: 679px) {
   .intro-slider-container:before,
   .intro-slider .slide-image:before {
-    padding-top: 83.3333333333%;
+    padding-top: 53.3333333333%;
   }
 }
 .intro-slide .intro-content {
@@ -702,6 +737,30 @@
 .footer-bottom .container-fluid::before {
   left: 1rem;
   right: 1rem;
+}
+@media screen and (max-width: 892px) {
+  .homeBanner-left{
+    padding: 10px;
+  }
+  .homeBannerLeft a{
+    gap: 8px;
+    padding-bottom: 6px;
+  }
+  .homeBannerLeft a p{
+    margin-bottom: 0px;
+    color: #424040;
+    font-weight: 100;
+    font-size: 11px;
+  }
+  .homeBannerLeft a img{
+    width: 15px;
+    height: 15px;
+  }
+}
+@media screen and (max-width: 768px) {
+  .homeBannerLeftWrapper{
+    display: none;
+  }
 }
 @media screen and (min-width: 481px) and (max-width: 767px) {
   .intro-title {

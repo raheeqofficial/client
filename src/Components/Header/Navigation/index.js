@@ -1,18 +1,10 @@
-import Button from '@mui/material/Button';
-import { IoIosMenu } from "react-icons/io";
-import { FaAngleDown } from "react-icons/fa6";
+
 import { Link } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
-import { FaAngleRight } from "react-icons/fa6";
 import { MyContext } from '../../../App';
 import { fetchDataFromApi } from '../../../utils/api';
-
-
-
 const Navigation = () => {
 
-    const [isopenSidebarVal, setisopenSidebarVal] = useState(false);
-    const [isOpenNav, setIsOpenNav] = useState(false);
     const [selected, setSelected] = useState(0)
     const [catData, setCatData] = useState([])
     const [isShow, setIsShow] = useState(true)
@@ -27,36 +19,12 @@ const Navigation = () => {
 
 
     return (
-        // <nav className='navigation-nav'>
-
-        //             <div className={`navPart2 d-flex align-items-center`}>
-        //                 <div className="res-nav-overlay"></div>
-        //                 <ul className='list list-inline mb-0'>
-        //                     <li className={`list-inline-item ${selected === 0 && 'selected'}`} onClick={() => setSelected(0)}><Link to="/"><Button>Home</Button></Link></li>
-        //                     <li className={`list-inline-item ${selected === 1 && 'selected'}`} onClick={() => setSelected(1)}>
-        //                         <Link to={`/shops`} ><Button>Shops</Button></Link>
-
-        //                     </li>
-        //                     <li className={`list-inline-item ${selected === 2 && 'selected'}`} onClick={() => setSelected(2)}>
-        //                         <Link to={`/contact`}><Button>Contact Us</Button></Link>
-
-        //                     </li>
-        //                     <li className={`list-inline-item ${selected === 3 && 'selected'}`} onClick={() => setSelected(3)}>
-        //                         <Link to={`/about`}><Button>About Us</Button></Link>
-
-        //                     </li>
-        //                 </ul>
-        //             </div>
-
-        //         {/* </div>
-        //     </div> */}
-        // </nav >
         <div className='page-wrapper'>
             <header className='header header-14'>
             <div className="header-bottom sticky-header">
                 <div className="container-fluid">
                     <div className="row">
-                        <div className="col-auto col-lg-3 col-xl-3 col-xxl-2 header-left" onClick={() => setIsShow(!isShow)}>
+                        {/* <div className="col-auto col-lg-3 col-xl-3 col-xxl-2 header-left" onClick={() => setIsShow(!isShow)}>
                             <div className={`dropdown category-dropdown is-on ${isShow && 'show'}`} data-visible="true">
                                 <a href="#" className="dropdown-toggle text-white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-display="static" title="Browse Categories">
                                     Browse Categories
@@ -65,7 +33,7 @@ const Navigation = () => {
                                 <div className={`dropdown-menu ${isShow && 'show'}`}>
                                     <nav className="side-nav">
                                         <ul className="menu-vertical sf-arrows">
-                                            {/* <li className="megamenu-container">
+                                            <li className="megamenu-container">
                                                 <a className="sf-with-ul" href="#"><i className="icon-laptop"></i>Electronics</a>
 
                                                 <div className="megamenu">
@@ -349,40 +317,40 @@ const Navigation = () => {
                                                         </div>
                                                     </div>
                                                 </div>
-                                            </li> */}
+                                            </li>
                                             {
                                                 catData?.length !== 0 && catData?.map((cat, index) =>(
                                                     <li key={index}><Link to={`/products/category/${cat.id}`}><i className="icon-blender"></i>{cat?.name}</Link></li>
                                                 ))
                                             }
                                             
-                                            {/* <li><a href="#"><i className="icon-heartbeat"></i>Healthy & Beauty</a></li>
+                                            <li><a href="#"><i className="icon-heartbeat"></i>Healthy & Beauty</a></li>
                                             <li><a href="#"><i className="icon-shoe-prints"></i>Shoes & Boots</a></li>
                                             <li><a href="#"><i className="icon-map-signs"></i>Travel & Outdoor</a></li>
                                             <li><a href="#"><i className="icon-mobile-alt"></i>Smart Phones</a></li>
                                             <li><a href="#"><i className="icon-tv"></i>TV & Audio</a></li>
                                             <li><a href="#"><i className="icon-shopping-bag"></i>Backpack & Bag</a></li>
                                             <li><a href="#"><i className="icon-music"></i>Musical Instruments</a></li>
-                                            <li><a href="#"><i className="icon-gift"></i>Gift Ideas</a></li> */}
+                                            <li><a href="#"><i className="icon-gift"></i>Gift Ideas</a></li>
                                         </ul>
                                     </nav>
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
                         <div className="headerMenu col-6 ">
                             <nav className="main-nav">
                                 <ul className="menu sf-arrows">
-                                    <li className="megamenu-container active">
+                                    <li className={`megamenu-container ${selected === 0 && 'active'}`} onClick={()=>setSelected(0)}>
                                         <Link to="/">Home</Link>
                                     </li>
-                                    <li className="megamenu-container">
+                                    <li className={`${selected === 1 && 'active'}`} onClick={()=>setSelected(1)}>
                                         <Link to="/shops">Shops</Link>
                                     </li>
-                                    <li>
+                                    <li className={`${selected === 2 && 'active'}`} onClick={()=>setSelected(2)}>
                                         <Link to="/about">About Us</Link>
                                     </li>
-                                    <li>
+                                    <li className={`${selected === 3 && 'active'}`} onClick={()=>setSelected(3)}>
                                         <Link to={'/contact'}>Contact Us</Link>
                                     </li>
                                     {/* <li>

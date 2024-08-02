@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './contact.css';
 import axios from 'axios'; 
 import Confetti from 'react-confetti';
@@ -17,6 +17,9 @@ const Contact = () => {
   const [message, setMessage] = useState('');
   const [showConfetti, setShowConfetti] = useState(false);
   const context = useContext(MyContext)
+  useEffect(() => {
+    window.scrollTo(0,0)
+},[])
   const handleSubmit = async (e) => {
     e.preventDefault();
 

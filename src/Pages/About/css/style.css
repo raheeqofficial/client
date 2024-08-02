@@ -5388,7 +5388,7 @@ a {
   border-radius: 0;
   margin-bottom: 0;
   border: none;
-  border-top: 0.1rem solid #ebebeb;
+  border: 0.1rem solid #ebebeb;
 }
 .card:last-child {
   border-bottom: 0.1rem solid #ebebeb;

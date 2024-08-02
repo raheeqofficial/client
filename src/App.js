@@ -14,6 +14,8 @@ import { fetchDataFromApi, postData } from "./utils/api";
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import About from "./Pages/About/About";
 import Wishlist from "./Pages/MyList/Wishlist";
+import TermsOfUse from "./Pages/TermsOfUse/TermsOfUse";
+import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -394,6 +396,12 @@ function App() {
           <Route path="/verify/:id" element={<Suspense fallback={<div className="loaderContainer">
           <span class="loader"></span>
         </div>}><OtpVerification /></Suspense>} />
+          <Route path="/terms-of-use/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><TermsOfUse /></Suspense>} />
+          <Route path="/privacy-policy/:id" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><PrivacyPolicy /></Suspense>} />
         </Routes>
 
         {isHeaderFooterShow && <Footer />}

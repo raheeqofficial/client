@@ -1,10 +1,13 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { MyContext } from "../../App";
 import HomeCat from "../../Components/HomeCat";
 import { Helmet } from "react-helmet-async";
 
 const Categories = () => {
   const context = useContext(MyContext);
+  useEffect(() => {
+    window.scrollTo(0,0)
+},[])
   return (
     <>
       <Helmet>

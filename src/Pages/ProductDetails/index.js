@@ -20,14 +20,14 @@ import axios from "axios";
 import { Helmet } from "react-helmet-async";
 
 const formatDate = (isoDate) => {
-  return moment(isoDate).format('DD/MM/YYYY hh:mm A');
+    return moment(isoDate).format('DD/MM/YYYY hh:mm A');
 };
 
 const ProductDetails = () => {
     const history = useNavigate();
     const [activeSize, setActiveSize] = useState(null);
     const [activeWeight, setActiveWeight] = useState(null);
-    const [activeColor, setActiveColor] = useState(null);
+    const [activeColor, setActiveColor] = useState(0);
     const [activeRam, setActiveRam] = useState(null);
     const [activeTabs, setActiveTabs] = useState(0);
     const [productData, setProductData] = useState([]);
@@ -48,6 +48,8 @@ const ProductDetails = () => {
 
     const context = useContext(MyContext);
     const [error, setError] = useState(null);
+    const [showAllDetails, setShowAllDetails] = useState(false);
+    const detailsToShow = 4;
 
     const isActiveSize = (index) => {
         setActiveSize(index);
@@ -65,22 +67,11 @@ const ProductDetails = () => {
         setActiveRam(index)
         setRamTabError(false);
     }
-    const { staticId } = useParams();
-
-    // useEffect(() => {
-    //     const fetchData = async () => {
-    //         try {
-    //             const url = `/api/products/staticId/${staticId}`;
-    //             console.log('Fetching URL:', url); 
-    //             const response = await axios.get(url);
-    //             console.log('Response:', response.data);
-    //         } catch (error) {
-    //             console.error('Error fetching product:', error.response?.data || error.message);
-    //         }
-    //     };
-
-    //     fetchData();
-    // }, [staticId]);
+    useEffect(() => {
+        if (productData?.color?.length > 0) {
+            setActiveColor(0);
+        }
+    }, [productData]);
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -89,41 +80,41 @@ const ProductDetails = () => {
         setActiveWeight(null);
         setActiveWeight(null);
         const fetchProduct = async () => {
-          try {
-            const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/staticId/${id}`);
-            setProductData(res?.data);
-            console.log(res.data)
-            if (res?.data?.productRam?.length === 0 && res?.data?.productWeight?.length === 0 && res?.data?.size?.length === 0 && res?.data?.color?.length === 0) {
-                setActiveSize(1);
-                setActiveRam(1);
-                setActiveWeight(1);
-                setActiveColor(1);
-            }
-            fetchDataFromApi(`/api/products?subCatId=${res?.data?.subCatId}`)
-                .then((res) => {
-                    const filteredData = res?.products?.filter(item => item.id !== id);
-                    setRelatedProductData(filteredData)
+            try {
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/staticId/${id}`);
+                setProductData(res?.data);
+                console.log(res.data)
+                if (res?.data?.productRam?.length === 0 && res?.data?.productWeight?.length === 0 && res?.data?.size?.length === 0 && res?.data?.color?.length === 0) {
+                    setActiveSize(1);
+                    setActiveRam(1);
+                    setActiveWeight(1);
+                    setActiveColor(1);
+                }
+                fetchDataFromApi(`/api/products?subCatId=${res?.data?.subCatId}`)
+                    .then((res) => {
+                        const filteredData = res?.products?.filter(item => item.id !== id);
+                        setRelatedProductData(filteredData)
+                    })
+                fetchDataFromApi(`/api/products/recentlyViewd`).then((response) => {
+                    setRecentlyViewdProducts(response);
+                    console.log(response)
                 })
-            fetchDataFromApi(`/api/products/recentlyViewd`).then((response) => {
-                setRecentlyViewdProducts(response);
-                console.log(response)
-            })
-            postData(`/api/products/recentlyViewd`, res?.data);
-          } catch (err) {
-            if (axios.isAxiosError(err)) {
-              if (err.response && err.response.status === 404) {
-                history('/product/error');
-              } else {
-                setError('An unexpected error occurred');
-              }
-            } else {
-              setError('An unexpected error occurred');
+                postData(`/api/products/recentlyViewd`, res?.data);
+            } catch (err) {
+                if (axios.isAxiosError(err)) {
+                    if (err.response && err.response.status === 404) {
+                        history('/product/error');
+                    } else {
+                        setError('An unexpected error occurred');
+                    }
+                } else {
+                    setError('An unexpected error occurred');
+                }
+            } finally {
+                setIsLoading(false);
             }
-          } finally {
-            setIsLoading(false);
-          }
         };
-    
+
         fetchProduct();
         fetchDataFromApi(`/api/productReviews?productId=${id}`).then((res) => {
             setreviewsData(res)
@@ -137,49 +128,8 @@ const ProductDetails = () => {
                 setSsAddedToMyList(true);
             }
         })
-      }, [id, history]);
+    }, [id, history]);
 
-    useEffect(() => {
-        
-        
-        // fetchDataFromApi(`/api/products/staticId/${id}`).then((res) => {
-        //     try {
-        //        if(res.eroor !== true){
-        //         setProductData(res);
-                // if (res?.productRam?.length === 0 && res?.productWeight?.length === 0 && res?.size?.length === 0 && res?.color?.length === 0) {
-                //     setActiveSize(1);
-                //     setActiveRam(1);
-                //     setActiveWeight(1);
-                //     setActiveColor(1);
-                // }
-                // fetchDataFromApi(`/api/products?subCatId=${res?.subCatId}`)
-                //     .then((res) => {
-                //         const filteredData = res?.products?.filter(item => item.id !== id);
-                //         setRelatedProductData(filteredData)
-                //     })
-                // fetchDataFromApi(`/api/products/recentlyViewd`).then((response) => {
-                //     setRecentlyViewdProducts(response);
-                //     console.log(response)
-                // })
-                // postData(`/api/products/recentlyViewd`, res);
-        //        }else{
-        //         context.setAlertBox({
-        //             open: true,
-        //             error: true,
-        //             msg: res.msg
-        //         }
-        //     );
-        //         setIsLoading(false)
-        //        }
-        //     } catch (err) {
-        //         console.log(err)
-        //     }
-        // })
-
-
-        
-
-    }, [id]);
 
 
     const [rating, setRating] = useState(1);
@@ -188,8 +138,8 @@ const ProductDetails = () => {
         customerName: "",
         customerId: "",
         review: "",
-        shop:"",
-        staticId:"",
+        shop: "",
+        staticId: "",
         customerRating: 0
     });
 
@@ -241,12 +191,12 @@ const ProductDetails = () => {
     }
 
     const addtoCart = () => {
-        const hasSize = productData?.size?.length > 0 
+        const hasSize = productData?.size?.length > 0
         const hasRam = productData?.productRam?.length > 0;
         const hasWeight = productData?.productWeight?.length > 0;
         const hasColor = productData?.color?.length > 0;
-    
-        if (((hasSize && activeSize !== null) ) || (hasWeight && activeWeight !== null)  || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
+
+        if (((hasSize && activeSize !== null)) || (hasWeight && activeWeight !== null) || (hasColor && activeColor !== null) || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
             const user = JSON.parse(localStorage.getItem("user"));
             const selectedSize = productData?.size?.length !== 0 ? productData.size[activeSize] : null
             const selectedWeight = productData?.productWeight?.length !== 0 ? productData.productWeight[activeWeight] : null
@@ -318,7 +268,7 @@ const ProductDetails = () => {
                         msg: "the product added in my list"
                     })
 
-            
+
                     fetchDataFromApi(`/api/my-list?productId=${id}&userId=${user?.userId}`).then((res) => {
                         if (res.length !== 0) {
                             setSsAddedToMyList(true);
@@ -349,20 +299,20 @@ const ProductDetails = () => {
 
     return (
         <>
-        
-    <Helmet>
-    <title>{productData?.name ? `${productData.name} - EliphStore` : 'EliphStore'}</title>
-    
-      <meta
-        name="description"
-        content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!."
-      />
-      <meta
-        name="keywords"
-        content="Product details, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
-      />
-    </Helmet>
+
+            <Helmet>
+                <title>{productData?.name ? `${productData.name} - EliphStore` : 'EliphStore'}</title>
+
+                <meta
+                    name="description"
+                    content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!."
+                />
+                <meta
+                    name="keywords"
+                    content="Product details, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
+                    designer collections, seamless online shopping experience "
+                />
+            </Helmet>
             <section className="productDetails section">
                 <div className="container">
                     <div className="row">
@@ -392,7 +342,7 @@ const ProductDetails = () => {
 
 
 
-                            <div className="d-flex info mb-3">
+                            <div className="d-flex info mb-2">
                                 <span className="oldPrice">Rs: {productData?.oldPrice}</span>
                                 <span className="netPrice text-danger ml-2">Rs: {productData?.price}</span>
                             </div>
@@ -404,10 +354,26 @@ const ProductDetails = () => {
                                     <span className="badge badge-danger">OUT OF STOCK</span>
                             }
 
-
-
-                            <p className="mt-3">Rs: {productData?.description}
+                            <p className="mt-2">{productData?.description}
                             </p>
+                            {productData?.detail?.length > 0 && (
+                                <div>
+                                    <span>Details:</span>
+                                    {productData.detail.slice(0, showAllDetails ? productData.detail.length : detailsToShow).map((item, index) => (
+                                        <ul key={index} className="list-style">
+                                            <li className='list-inline-item ml-3'>
+                                                {index + 1}. {item}
+                                            </li>
+                                        </ul>
+                                    ))}
+
+                                    {productData.detail.length > detailsToShow && (
+                                        <p className="show-more" onClick={() => setShowAllDetails(!showAllDetails)}>
+                                            {showAllDetails ? 'Show less' : 'Show more'}
+                                        </p>
+                                    )}
+                                </div>
+                            )}
 
 
                             {
@@ -482,34 +448,34 @@ const ProductDetails = () => {
 
                             <div className="d-flex align-items-center mt-3 actions_">
                                 <QuantityBox quantity={quantity} item={productData} selectedItem={selectedItem} />
-                                
+
 
                                 <div className="d-flex align-items-center btnActions">
-                                <Button className={`btn-blue btn-lg btn-big btn-round bg-red ${productData?.countInStock === 0 && 'btn-disabled'}`} disabled={productData?.countInStock === 0} onClick={() => addtoCart()}>
-                                    <BsCartFill /> &nbsp;
-                                    {
-                                        context.addingInCart === true ? "adding..." : " Add to cart"
-                                    }
-
-                                </Button>
-
-                                <Tooltip title={`${isAddedToMyList === true ? 'Added to Wishlist' : 'Add to Wishlist'}`} placement="top">
-                                    <Button className={`btn-blue btn-lg btn-big btn-circle ml-4 ${isAddedToMyList === true && 'active'}`} onClick={() => addToMyList(id)}>
+                                    <Button className={`btn-blue btn-lg btn-big btn-round bg-red ${productData?.countInStock === 0 && 'btn-disabled'}`} disabled={productData?.countInStock === 0} onClick={() => addtoCart()}>
+                                        <BsCartFill /> &nbsp;
                                         {
-                                            isAddedToMyList === true ? <FaHeart className="text-danger" />
-
-                                                :
-                                                <FaRegHeart />
+                                            context.addingInCart === true ? "adding..." : " Add to cart"
                                         }
 
                                     </Button>
-                                </Tooltip>
 
-                                <Tooltip title="Add to Compare" placement="top">
-                                    <Button className="btn-blue btn-lg btn-big btn-circle ml-2">
-                                        <MdOutlineCompareArrows />
-                                    </Button>
-                                </Tooltip>
+                                    <Tooltip title={`${isAddedToMyList === true ? 'Added to Wishlist' : 'Add to Wishlist'}`} placement="top">
+                                        <Button className={`btn-blue btn-lg btn-big btn-circle ml-4 ${isAddedToMyList === true && 'active'}`} onClick={() => addToMyList(id)}>
+                                            {
+                                                isAddedToMyList === true ? <FaHeart className="text-danger" />
+
+                                                    :
+                                                    <FaRegHeart />
+                                            }
+
+                                        </Button>
+                                    </Tooltip>
+
+                                    <Tooltip title="Add to Compare" placement="top">
+                                        <Button className="btn-blue btn-lg btn-big btn-circle ml-2">
+                                            <MdOutlineCompareArrows />
+                                        </Button>
+                                    </Tooltip>
 
                                 </div>
 
@@ -527,13 +493,13 @@ const ProductDetails = () => {
                     <div className='card mt-5 p-5 detailsPageTabs'>
                         <div className='customTabs'>
                             <ul className='list list-inline'>
-                                <li className='list-inline-item'>
+                                {/* <li className='list-inline-item'>
                                     <Button className={`${activeTabs === 0 && 'active'}`}
                                         onClick={() => {
                                             setActiveTabs(0)
                                         }}
                                     >Description</Button>
-                                </li>
+                                </li> */}
                                 <li className='list-inline-item'>
                                     <Button className={`${activeTabs === 1 && 'active'}`}
                                         onClick={() => {
@@ -555,31 +521,31 @@ const ProductDetails = () => {
 
 
                             <br />
-
+{/* 
                             {
                                 activeTabs === 0 &&
                                 <div className='tabContent'>
                                     {productData?.description}
                                 </div>
 
-                            }
+                            } */}
 
 
                             {
                                 activeTabs === 1 &&
 
                                 <div className='tabContent'>
-                                    <div className='table-responsive'>
+                                    {/* <div className='table-responsive'>
                                         <table className='table table-bordered'>
                                             <tbody>
                                                 <tr className="stand-up">
-                                                    <th>Stand Up</th>
+                                                    <th>Information</th>
                                                     <td>
-                                                        <p>35″L x 24″W x 37-45″H(front to back wheel)</p>
+                                                        <p>{productData?.description}</p>
                                                     </td>
                                                 </tr>
                                                 <tr className="folded-wo-wheels">
-                                                    <th>Folded (w/o wheels)</th>
+                                                    <th>Details</th>
                                                     <td>
                                                         <p>32.5″L x 18.5″W x 16.5″H</p>
                                                     </td>
@@ -658,7 +624,93 @@ const ProductDetails = () => {
                                                 </tr>
                                             </tbody>
                                         </table>
-                                    </div>
+                                    </div> */}
+                                    <h2>
+                                    Information
+                                    </h2>
+                                    <p className="mt-2">{productData?.description}</p>
+                                    {productData?.detail?.length > 0 && (
+                                <div>
+                                    <span className="mb-3">Details:</span>
+                                    {productData.detail.slice(0, showAllDetails ? productData.detail.length : detailsToShow).map((item, index) => (
+                                        <ul key={index} className="list-style">
+                                            <li className='list-inline-item ml-3'>
+                                                {index + 1}. {item}
+                                            </li>
+                                        </ul>
+                                    ))}
+                                </div>
+                                
+                            )}
+                                {
+                                productData?.color?.length !== 0 &&
+                                <div className='productSize'>
+                                    <span>Color:</span>
+                                    <ul className={`list list-inline pl-4`}>
+                                        {
+                                            productData?.color?.map((item, index) => {
+                                                return (
+                                                    <li className='list-inline-item'><a>{item}</a></li>
+                                                )
+                                            })
+                                        }
+
+                                    </ul>
+                                </div>
+                            }
+                            
+                            {
+                                productData?.productRam?.length !== 0 &&
+                                <div className='productSize d-flex align-items-center'>
+                                    <span>RAM:</span>
+                                    <ul className={`list list-inline mb-0 pl-4 ${ramTabError === true && 'error'}`}>
+                                        {
+                                            productData?.productRam?.map((item, index) => {
+                                                return (
+                                                    <li className='list-inline-item'><a className={`tag ${activeRam === index ? 'active' : ''}`} onClick={() => isActiveRam(index)}>{item}</a></li>
+                                                )
+                                            })
+                                        }
+
+                                    </ul>
+                                </div>
+                            }
+
+
+                            {
+                                productData?.size?.length !== 0 &&
+                                <div className='productSize d-flex align-items-center'>
+                                    <span>Size:</span>
+                                    <ul className={`list list-inline mb-0 pl-4`}>
+                                        {
+                                            productData?.size?.map((item, index) => {
+                                                return (
+                                                    <li className='list-inline-item'><a>{item}</a></li>
+                                                )
+                                            })
+                                        }
+
+                                    </ul>
+                                </div>
+                            }
+
+
+                            {
+                                productData?.productWeight?.length !== 0 &&
+                                <div className='productSize d-flex align-items-center'>
+                                    <span>Weight:</span>
+                                    <ul className={`list list-inline mb-0 pl-4`}>
+                                        {
+                                            productData?.productWeight?.map((item, index) => {
+                                                return (
+                                                    <li className='list-inline-item'><a>{item}</a></li>
+                                                )
+                                            })
+                                        }
+
+                                    </ul>
+                                </div>
+                            }
                                 </div>
 
                             }
@@ -676,15 +728,15 @@ const ProductDetails = () => {
 
                                             {
                                                 reviewsData?.length !== 0 && reviewsData?.slice(0)?.reverse()?.map((item, index) => {
-                                                    const formattedDate = formatDate(item?.dateCreated); 
+                                                    const formattedDate = formatDate(item?.dateCreated);
                                                     return (
                                                         <div className='reviewBox mb-4 border-bottom' key={index}>
 
                                                             <div className='info'>
                                                                 <div className='d-flex align-items-center w-100'>
                                                                     <div className="d-flex align-items-center w-100">
-                                                                    <img width="40" height="40" src="https://img.icons8.com/fluency/48/user-male-circle--v1.png" alt="user-male-circle--v1" className="mr-1"/>
-                                                                    <h5>{item?.customerName}</h5>
+                                                                        <img width="40" height="40" src="https://img.icons8.com/fluency/48/user-male-circle--v1.png" alt="user-male-circle--v1" className="mr-1" />
+                                                                        <h5>{item?.customerName}</h5>
                                                                     </div>
 
                                                                     <div className='ml-auto'>
@@ -713,34 +765,34 @@ const ProductDetails = () => {
                                                 context.isLogin === true && (
                                                     <form className='reviewForm' onSubmit={addReview}>
 
-                                                <h4>Add a review</h4>
-                                                <div className='form-group'>
-                                                    <textarea className='form-control shadow' placeholder='Write a Review'
-                                                        name='review' value={reviews.review} onChange={onChangeInput} ></textarea>
-                                                </div>
-
-                                                <div className='row'>
-
-                                                    <div className='col-md-6'>
+                                                        <h4>Add a review</h4>
                                                         <div className='form-group'>
-                                                            <Rating name="rating" value={rating} precision={0.5}
-                                                                onChange={changeRating}
-                                                            />
+                                                            <textarea className='form-control shadow' placeholder='Write a Review'
+                                                                name='review' value={reviews.review} onChange={onChangeInput} ></textarea>
                                                         </div>
-                                                    </div>
 
-                                                </div>
+                                                        <div className='row'>
+
+                                                            <div className='col-md-6'>
+                                                                <div className='form-group'>
+                                                                    <Rating name="rating" value={rating} precision={0.5}
+                                                                        onChange={changeRating}
+                                                                    />
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
 
 
-                                                <br />
-                                                <div className='form-group'>
-                                                    <Button type='submit' className='btn-blue btn-lg btn-big btn-round'>
-                                                        {isLoading === true ? <CircularProgress color="inherit" className="loader" /> : 'Submit Review'}
+                                                        <br />
+                                                        <div className='form-group'>
+                                                            <Button type='submit' className='btn-blue btn-lg btn-big btn-round'>
+                                                                {isLoading === true ? <CircularProgress color="inherit" className="loader" /> : 'Submit Review'}
 
-                                                    </Button>
-                                                </div>
+                                                            </Button>
+                                                        </div>
 
-                                            </form>
+                                                    </form>
                                                 )
                                             }
 
