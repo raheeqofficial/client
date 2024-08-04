@@ -9,13 +9,12 @@ import { BiSupport } from "react-icons/bi";
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { FaClipboardCheck } from "react-icons/fa";
-import { FaHeart } from "react-icons/fa";
-import { RiLogoutCircleRFill } from "react-icons/ri";
-import { FaUserAlt } from "react-icons/fa";
-import { IoIosSearch } from "react-icons/io";
+import { LuUser2 } from "react-icons/lu";
+import { IoIosHeartEmpty, IoIosSearch } from "react-icons/io";
 import { FaAngleLeft, FaUser } from "react-icons/fa6";
 import { Tooltip } from '@mui/material';
+import { SlDrawer } from "react-icons/sl";
+import { CiLogin, CiShop } from "react-icons/ci";
 import Navigation from './Navigation';
 import logo from '../../assets/images/eliph stores-7.png'
 
@@ -82,14 +81,14 @@ const Header = () => {
 
     return (
         <>
-        <div className='header-top'>
-            <ul>
-                <li><a target='_blank' href='https://sellercenter.eliphstore.com'>Become a seller</a></li>
-                <li><Link>Become a investor</Link></li>
-                <li><Link>Faq</Link></li>
-            </ul>
-        </div>
-            <div  ref={headerRef}>
+            <div className='header-top'>
+                <ul>
+                    <li><a target='_blank' href='https://sellercenter.eliphstore.com'>Become a seller</a></li>
+                    <li><Link>Become a investor</Link></li>
+                    <li><Link>Faq</Link></li>
+                </ul>
+            </div>
+            <div ref={headerRef}>
                 <div className="headerWrapper">
                     <header className="header">
                         <div className="container">
@@ -102,7 +101,7 @@ const Header = () => {
                                     {/* {
                                         context.countryList.length !== 0 && context.windowWidth > 992 && <CountryDropdown />
                                     } */}
-                                    
+
 
                                     <div className={`headerSearchWrapper ${isOpenSearch === true && 'open'}`}>
                                         <div className=' d-flex align-items-center'>
@@ -116,74 +115,82 @@ const Header = () => {
                                         {
                                             context.windowWidth < 992 && <Button className="circle mr-3 toggleNav" onClick={openSearch}><IoIosSearch /></Button>
                                         }
-                                        
+
                                         <Link to={'/help-center'}><Button className='circle mr-3'><BiSupport /></Button></Link>
-                                        
-                                        { context.windowWidth > 768 && (
+
+                                        {context.windowWidth > 768 && (
                                             <>
                                                 {
-                                            context.isLogin !== true ? <Link to="/signIn"><Button className="circle mr-3"><FaUser /></Button></Link> :
-                                                <>
-                                                    <Tooltip placement="top" title="Account Setting">
-                                                        <Button className='circle loginUser mr-3' onClick={handleClick}>{context.user?.name?.charAt(0)}</Button>
-                                                    </Tooltip>
-                                                    <Menu
-                                                        anchorEl={anchorEl}
-                                                        id="accDrop"
-                                                        open={open}
-                                                        onClose={handleClose}
-                                                        onClick={handleClose}
+                                                    context.isLogin !== true ? <Link to="/signIn"><Button className="circle mr-3"><FaUser /></Button></Link> :
+                                                        <>
+                                                            <Tooltip placement="top" title="Account Setting">
+                                                                <Button className='circle loginUser mr-3' onClick={handleClick}>{context.user?.name?.charAt(0)}</Button>
+                                                            </Tooltip>
+                                                            <Menu
+                                                                anchorEl={anchorEl}
+                                                                id="accDrop"
+                                                                open={open}
+                                                                onClose={handleClose}
+                                                                onClick={handleClose}
 
-                                                        transformOrigin={{ horizontal: 'right', vertical: 'top' }}
-                                                        anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
-                                                    >
-                                                        <Link to="/account-setting">
-                                                            <MenuItem onClick={handleClose}>
-                                                                <ListItemIcon>
-                                                                    <FaUserAlt fontSize="small" />
-                                                                </ListItemIcon>
-                                                                My Account
-                                                            </MenuItem>
-                                                        </Link>
-                                                        <Link to="/orders">
-                                                            <MenuItem onClick={handleClose}>
-                                                                <ListItemIcon>
-                                                                    <FaClipboardCheck fontSize="small" />
-                                                                </ListItemIcon>
-                                                                Orders
-                                                            </MenuItem>
-                                                        </Link>
-                                                        <Link to="/my-list">
-                                                            <MenuItem onClick={handleClose}>
-                                                                <ListItemIcon>
-                                                                    <FaHeart fontSize="small" />
-                                                                </ListItemIcon>
-                                                                My List
-                                                            </MenuItem>
-                                                        </Link>
-                                                        <MenuItem onClick={logout}>
-                                                            <ListItemIcon>
-                                                                <RiLogoutCircleRFill fontSize="small" />
-                                                            </ListItemIcon>
-                                                            Logout
-                                                        </MenuItem>
-                                                    </Menu>
-                                                </>
-                                        }
+                                                                transformOrigin={{ horizontal: 'right', vertical: 'top' }}
+                                                                anchorOrigin={{ horizontal: 'right', vertical: 'bottom' }}
+                                                            >
+                                                                <Link to="/account-setting">
+                                                                    <MenuItem onClick={handleClose}>
+                                                                        <ListItemIcon>
+                                                                            <LuUser2 fontSize="small" />
+                                                                        </ListItemIcon>
+                                                                        My Account
+                                                                    </MenuItem>
+                                                                </Link>
+                                                                <Link to="/orders">
+                                                                    <MenuItem onClick={handleClose}>
+                                                                        <ListItemIcon>
+                                                                            <SlDrawer fontSize="small" />
+                                                                        </ListItemIcon>
+                                                                        Orders
+                                                                    </MenuItem>
+                                                                </Link>
+                                                                <Link to="/my-list">
+                                                                    <MenuItem onClick={handleClose}>
+                                                                        <ListItemIcon>
+                                                                            <IoIosHeartEmpty fontSize="small" />
+                                                                        </ListItemIcon>
+                                                                        My List
+                                                                    </MenuItem>
+                                                                </Link>
+                                                                <Link to="/my-account/followed-shops">
+                                                                    <MenuItem onClick={handleClose}>
+                                                                        <ListItemIcon>
+                                                                            <CiShop fontSize="small" />
+                                                                        </ListItemIcon>
+                                                                        Followed Shops
+                                                                    </MenuItem>
+                                                                </Link>
+                                                                <MenuItem onClick={logout}>
+                                                                    <ListItemIcon>
+                                                                        <CiLogin fontSize="small" />
+                                                                    </ListItemIcon>
+                                                                    Logout
+                                                                </MenuItem>
+                                                            </Menu>
+                                                        </>
+                                                }
                                             </>
-                                        ) }
-                                        
+                                        )}
+
 
 
                                         <div className='ml-auto cartTab d-flex align-items-center'>
-                                           {
-                                            context.windowWidth > 768 &&  <div className='position-relative ml-2'>
-                                            <Link to="/cart">
-                                                <Button className='circle'><IoBagOutline /></Button>
-                                                <span className='count d-flex align-items-center justify-content-center'>{context.cartData?.length}</span>
-                                            </Link>
-                                        </div>
-                                           }
+                                            {
+                                                context.windowWidth > 768 && <div className='position-relative ml-2'>
+                                                    <Link to="/cart">
+                                                        <Button className='circle'><IoBagOutline /></Button>
+                                                        <span className='count d-flex align-items-center justify-content-center'>{context.cartData?.length}</span>
+                                                    </Link>
+                                                </div>
+                                            }
 
                                             {/* {
                                                 context.windowWidth < 992 &&
@@ -200,7 +207,7 @@ const Header = () => {
                     </header>
                 </div>
             </div>
-            <Navigation/>
+            <Navigation />
         </>
     )
 }

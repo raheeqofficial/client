@@ -57,6 +57,15 @@ const MobileAccount = () => {
                     <p>My Wishlist</p>
                   </div>
                 </Link>
+                <hr />
+                <Link to={"/my-account/followed-shops"}>
+                  <div className="mb-box">
+                    <p>
+                      <IoIosHeartEmpty />
+                    </p>
+                    <p>Followed Shops</p>
+                  </div>
+                </Link>
                 <hr className="w-100" />
                 <Link to={"/help-center"}>
                   <div className="mb-box">

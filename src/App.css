@@ -92,6 +92,9 @@ p{
 .css-1nbsiwm-MuiRating-root{
   font-size: 18px;
 }
+.css-10hburv-MuiTypography-root{
+  font-size: 16px !important;
+}
 .btn-disabled {
   cursor: not-allowed !important;
   opacity: 0.65;
@@ -352,6 +355,7 @@ button {
 .headerWrapper {
   /* box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px; */
   background: #fff;
+  border-bottom: 1px solid #0858f7;
 }
 .headerWrapperFixed {
   background: #fff;

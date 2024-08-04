@@ -30,7 +30,7 @@ const TopBanners = () => {
 
                     <div class="icon-box-content">
                       <h3 class="icon-box-title">Payment & Delivery</h3>
-                      <p>Free shipping for orders over $50</p>
+                      <p>Free shipping for orders over Rs 50</p>
                     </div>
                   </div>
                 </div>

@@ -16,6 +16,7 @@ import About from "./Pages/About/About";
 import Wishlist from "./Pages/MyList/Wishlist";
 import TermsOfUse from "./Pages/TermsOfUse/TermsOfUse";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
+import FollowedShops from "./Pages/FollowedShops/FollowedShops";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -402,6 +403,9 @@ function App() {
           <Route path="/privacy-policy/:id" element={<Suspense fallback={<div className="loaderContainer">
           <span class="loader"></span>
         </div>}><PrivacyPolicy /></Suspense>} />
+          <Route path="/my-account/followed-shops" element={<Suspense fallback={<div className="loaderContainer">
+          <span class="loader"></span>
+        </div>}><FollowedShops /></Suspense>} />
         </Routes>
 
         {isHeaderFooterShow && <Footer />}

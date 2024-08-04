@@ -6,17 +6,12 @@ import React, { useContext, useEffect, useState } from "react";
 import 'swiper/css';
 import 'swiper/css/navigation';
 import ProductItem from "../../Components/ProductItem";
-import HomeCat from "../../Components/HomeCat";
 import './home.css'
-import banner3 from '../../assets/images/banner3.jpg';
-import banner4 from '../../assets/images/banner4.jpg';
 
 import { MyContext } from "../../App";
 import { fetchDataFromApi } from "../../utils/api";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import newsLetterImg from '../../assets/images/newsletter.png';
-import { IoMailOutline } from "react-icons/io5";
 import { Box } from "@mui/material";
 import DealOfDay from "../../Components/DealOfDay/DealOfDay";
 import { Link, useNavigate } from "react-router-dom";
@@ -133,16 +128,17 @@ const Home = () => {
     return (
         <div className="homeBox">
         <Helmet>
-          <title>EliphStore online shop</title>
+          <title>EliphStore multi-vendor online shop</title>
           <meta
             name="description"
             content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!."
           />
           <meta
             name="keywords"
-            content="EliphStore online shop, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
+            content="EliphStore multi-vendor online shop, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
            designer collections, seamless online shopping experience "
           />
+          <meta itemprop="priceCurrency" content="PKR"/>
         </Helmet>
             {
                 homeSlides?.length !== 0 && <HomeBanner data={homeSlides} />
@@ -161,7 +157,7 @@ const Home = () => {
             <section className="homeProducts">
                 <div className="container">
                     <div className="row homeProductsRow">
-                        <div className="col-md-3">
+                        {/* <div className="col-md-3">
                             <div className="sticky">
                                 <div className="banner">
                                     <img src={banner1} className="cursor w-100" />
@@ -171,9 +167,9 @@ const Home = () => {
                                     <img src={banner2} className="cursor w-100" />
                                 </div>
                             </div>
-                        </div>
+                        </div> */}
 
-                        <div className="col-md-9 productRow">
+                        <div className="col-md-12 productRow">
 
                             <div className="featuredProducts">
                             <div className="d-flex align-items-center mt-4">
@@ -255,12 +251,11 @@ const Home = () => {
 
                             <div className="product_row productRow2 w-100 mt-4 mb-3">
                                 {
-                                    filterData?.length !== 0 && filterData?.slice(0)?.reverse()?.map((item, index) => {
+                                    filterData?.length !== 0 ? filterData?.slice(0)?.reverse()?.map((item, index) => {
                                         return (
-
                                             <ProductItem key={index} item={item} />
                                         )
-                                    })
+                                    }) : <div><p>No Products for display</p></div>
                                 }
                             </div>
                             </div>

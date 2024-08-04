@@ -2,6 +2,7 @@
     width: 100%;
     margin: 10px auto;
 }
+
 .shopPage .shopPageWrapper{
     width: 90%;
     margin: 10px auto;
@@ -10,4 +11,48 @@
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
+}
+.topImgWrapper{
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0px 20px;
+}
+.shopPage h6{
+    color: #000 ;
+    font-size: 12px !important;
+}
+.whatsApp svg{
+    font-size: 47px;
+}
+.follow{
+    background: #ffffff;
+    color: rgb(45, 45, 241);
+    font-weight: bold;
+    font-size: 15px;
+    padding: 6px 12px;
+}
+.unfollow{
+    color: #ffffff;
+    background-color: rgb(45, 45, 241);
+    font-weight: bold;
+    font-size: 15px;
+    padding: 6px 12px;
+}
+.follow:hover{
+    background: #ffffff;
+}
+.unfollow:hover{
+    background: #ffffff;
+    color: rgb(45, 45, 241);
+}
+@media screen and (max-width: 560px) {
+    .topImage{
+        height: 250px;
+    }
+    .topImgWrapper{
+        flex-direction: column;
+        justify-content: center;
+    }
 }

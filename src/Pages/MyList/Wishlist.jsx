@@ -161,7 +161,7 @@ const Wishlist = () => {
 										</h3>
 									</div>
 								</td>
-								<td className="price-col">$52.00</td>
+								<td className="price-col">Rs 52.00</td>
 								<td className="action-col">
 									<button className="btn btn-block btn-outline-primary-2 disabled">Out of Stock</button>
 								</td>

@@ -1,0 +1,7 @@
+.followedShops a:hover,
+.followedShops a:focus{
+    color: rgb(67, 67, 243);
+}
+.followedShops{
+    padding: 25px 10px;
+}
