@@ -6,6 +6,18 @@
 .footer-newsletter{
     background-image: url('../../assets/images/newsletter.jfif');
 }
+.icon-box-container{
+    padding: 0.5rem 0px;
+    background-color: #fff !important;
+}
+.f-icon-box-content{
+    text-align: center;
+}
+.f-widget-title{
+    font-size: 20px;
+    font-weight: bold;
+    color: black;
+}
 
 @media screen and (max-width: 768px) {
     footer{

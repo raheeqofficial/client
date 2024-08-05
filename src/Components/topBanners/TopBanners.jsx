@@ -5,6 +5,7 @@ import banner3 from "../../assets/images/banners/top-banner-3.jpg";
 import "./topBanner.css";
 import { v4 as uuid } from "uuid";
 import { Link } from "react-router-dom";
+import topImg from '../../assets/images/Payment & Delivery.png'
 
 const TopBanners = () => {
   const [id, setId] = useState("");
@@ -18,51 +19,8 @@ const TopBanners = () => {
   return (
     <div className="page-wrapper topBanner">
       <main className="main">
-        <div class="icon-boxes-container bg-transparent">
-          <div class="container">
-            <div class="row justify-content-center">
-              <div class="col-lg-8 col-12 icon-boxes">
-                <div class="col-sm-6 col-lg-4">
-                  <div class="icon-box icon-box-side">
-                    <span class="icon-box-icon">
-                      <i class="icon-truck"></i>
-                    </span>
-
-                    <div class="icon-box-content">
-                      <h3 class="icon-box-title">Payment & Delivery</h3>
-                      <p>Free shipping for orders over Rs 50</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4">
-                  <div class="icon-box icon-box-side">
-                    <span class="icon-box-icon">
-                      <i class="icon-rotate-left"></i>
-                    </span>
-
-                    <div class="icon-box-content">
-                      <h3 class="icon-box-title">Return & Refund</h3>
-                      <p>Free 100% money back guarantee</p>
-                    </div>
-                  </div>
-                </div>
-
-                <div class="col-sm-6 col-lg-4">
-                  <div class="icon-box icon-box-side">
-                    <span class="icon-box-icon">
-                      <i class="icon-headphones"></i>
-                    </span>
-
-                    <div class="icon-box-content">
-                      <h3 class="icon-box-title">Quality Support</h3>
-                      <p>Alway online feedback 24/7</p>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <div class="bg-transparent mb-2">
+            <img src={topImg} alt="banner bottom img"/>
         </div>
         <div className="container">
           <div className="row justify-content-center">
@@ -74,18 +32,17 @@ const TopBanners = () => {
 
                 <div className="banner-content banner-content-right">
                   <h4 className="banner-subtitle">
-                    <Link to={``}>Men's</Link>
                   </h4>
-                  <h3 className="banner-title">
+                  <h3 className="top-banner-title">
                     <Link to={``}>
-                      Summer
+                      Mens wear
                       <br />
                       sale -70% off
                     </Link>
                   </h3>
                   <Link
                     to={``}
-                    className="btn underline btn-outline-white-3 banner-link"
+                    className="topBannerBtn"
                   >
                     Shop Now
                   </Link>
@@ -100,17 +57,15 @@ const TopBanners = () => {
                 </Link>
 
                 <div className="banner-content">
-                  <h4 className="banner-subtitle">
-                    <Link to={``}>Kid's</Link>
-                  </h4>
-                  <h3 className="banner-title">
+                  
+                  <h3 className="top-banner-title">
                     <Link to={``}>
-                      2024 Winter
+                      Kids wear
                       <br />
                       up to 50% off
                     </Link>
                   </h3>
-                  <Link to={``} className="btn underline banner-link">
+                  <Link to={``} className="topBannerBtn">
                     Shop Now
                   </Link>
                 </div>
@@ -124,10 +79,7 @@ const TopBanners = () => {
                 </Link>
 
                 <div className="banner-content banner-content-right mr">
-                  <h4 className="banner-subtitle">
-                    <Link to={``}>New in</Link>
-                  </h4>
-                  <h3 className="banner-title">
+                  <h3 className="top-banner-title">
                     <Link to={``}>
                       Women’s
                       <br />
@@ -136,7 +88,7 @@ const TopBanners = () => {
                   </h3>
                   <Link
                     to={``}
-                    className="btn underline btn-outline-white-3 banner-link"
+                    className="topBannerBtn"
                   >
                     Shop Now
                   </Link>

@@ -265,7 +265,7 @@
 }
 .banner-link:hover,
 .banner-link:focus {
-  color: #333;
+  color: #fff;
   text-decoration: none !important;
   background-color: #113ebb;
 }

@@ -153,7 +153,7 @@ const DealOfDay = () => {
     // </div>
     <div className="page-wrapper dealDay">
       <main className="main">
-        <div className="bg-light deal-container pt-5 pb-3 mb-5">
+        <div className="bg-light deal-container pt-3">
           <div className="container">
             <div className="row">
               {/* <div className="col-lg-9">

@@ -6,12 +6,34 @@ import './footer.css'
 import payments from '../../assets/images/payments.png'
 import logo from '../../assets/images/eliph stores-7.png'
 import { v4 as uuidv4 } from 'uuid';
+import axios from "axios";
+import Confetti from 'react-confetti';
+import footerImg from '../../assets/images/Payment & Delivery.png'
 
 const Footer = () => {
     const [expanded, setExpanded] = useState(false);
     const [expanded1, setExpanded1] = useState(false);
     const [expanded2, setExpanded2] = useState(false);
     const [id, setId] = useState('')
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
+    const [showConfetti, setShowConfetti] = useState(false);
+
+    const handleSubmit = async (e) => {
+        e.preventDefault();
+
+        try {
+            const response = await axios.post(`${process.env.REACT_APP_API_URL}/api/subscription/create`, { email });
+            setMessage(response.data.message);
+            setEmail(''); // Clear the form
+            setShowConfetti(true);
+            setTimeout(() => {
+                setShowConfetti(false);
+              }, 5000);
+        } catch (error) {
+            setMessage(error.response ? error.response.data.message : 'Error occurred.');
+        }
+    };
     useEffect(() => {
         const fetchId = () => {
             const newId = `${uuidv4()}${uuidv4()}`;
@@ -33,79 +55,40 @@ const Footer = () => {
         <>
             <div className="page-wrapper eliphFooter">
                 <footer className="footer footer-2">
-                    <div className="icon-boxes-container">
-                        <div className="container">
-                            <div className="row">
-                                <div className="col-sm-6 col-lg-3">
-                                    <div className="icon-box icon-box-side">
-                                        <span className="icon-box-icon text-dark">
-                                            <i className="icon-rocket"></i>
-                                        </span>
-                                        <div className="icon-box-content">
-                                            <h3 className="icon-box-title">Free Shipping</h3>
-                                            <p>orders $50 or more</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-6 col-lg-3">
-                                    <div className="icon-box icon-box-side">
-                                        <span className="icon-box-icon text-dark">
-                                            <i className="icon-rotate-left"></i>
-                                        </span>
-
-                                        <div className="icon-box-content">
-                                            <h3 className="icon-box-title">Free Returns</h3>
-                                            <p>within 30 days</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-6 col-lg-3">
-                                    <div className="icon-box icon-box-side">
-                                        <span className="icon-box-icon text-dark">
-                                            <i className="icon-info-circle"></i>
-                                        </span>
-
-                                        <div className="icon-box-content">
-                                            <h3 className="icon-box-title">Get 20% Off 1 Item</h3>
-                                            <p>When you sign up</p>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div className="col-sm-6 col-lg-3">
-                                    <div className="icon-box icon-box-side">
-                                        <span className="icon-box-icon text-dark">
-                                            <i className="icon-life-ring"></i>
-                                        </span>
-
-                                        <div className="icon-box-content">
-                                            <h3 className="icon-box-title">We Support</h3>
-                                            <p>24/7 amazing services</p>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    <div className="icon-box-container">
+                            <img src={footerImg} alt="footer banner"/>
                     </div>
 
                     <div className="footer-newsletter bg-image">
+                        {showConfetti && <Confetti />}
                         <div className="container">
                             <div className="heading text-center">
                                 <h3 className="title">Get The Latest Deals</h3>
-                                <p className="title-desc">and receive <span>$20 coupon</span> for first shopping</p>
+                                <p className="title-desc">Subscribe our newslette and get latest product prices</p>
                             </div>
 
                             <div className="row">
                                 <div className="col-sm-10 offset-sm-1 col-md-8 offset-md-2 col-lg-6 offset-lg-3">
-                                    <form action="#">
+                                    <form onSubmit={handleSubmit}>
                                         <div className="input-group">
-                                            <input type="email" className="form-control" placeholder="Enter your Email Address" aria-label="Email Adress" aria-describedby="newsletter-btn" required />
+                                            <input
+                                                type="email"
+                                                className="form-control"
+                                                placeholder="Enter your Email Address"
+                                                aria-label="Email Address"
+                                                aria-describedby="newsletter-btn"
+                                                value={email}
+                                                onChange={(e) => setEmail(e.target.value)}
+                                                required
+                                            />
                                             <div className="input-group-append">
-                                                <button className="btn btn-primary" type="submit" id="newsletter-btn"><span>Subscribe</span><i className="icon-long-arrow-right"></i></button>
+                                                <button className="btn btn-primary" type="submit" id="newsletter-btn">
+                                                    <span>Subscribe</span>
+                                                    <i className="icon-long-arrow-right"></i>
+                                                </button>
                                             </div>
                                         </div>
+                                        {message && <p>{message}</p>}
                                     </form>
                                 </div>
                             </div>
@@ -139,7 +122,7 @@ const Footer = () => {
 
                                 <div className="col-sm-4 col-lg-2">
                                     <div className="widget">
-                                        <h4 className="widget-title">Information</h4>
+                                        <h4 className="f-widget-title">Information</h4>
 
                                         <ul className="widget-list">
                                             <li><Link to={'/about'}>About Eliph</Link></li>
@@ -153,7 +136,7 @@ const Footer = () => {
 
                                 <div className="col-sm-4 col-lg-2">
                                     <div className="widget">
-                                        <h4 className="widget-title">Customer Service</h4>
+                                        <h4 className="f-widget-title">Customer Service</h4>
 
                                         <ul className="widget-list">
                                             <li><Link to={'/help-center'}>Help Center</Link></li>
@@ -168,7 +151,7 @@ const Footer = () => {
 
                                 <div className="col-sm-4 col-lg-2">
                                     <div className="widget">
-                                        <h4 className="widget-title">My Account</h4>
+                                        <h4 className="f-widget-title">My Account</h4>
 
                                         <ul className="widget-list">
                                             <li><Link to={'/signIn'}>Sign In</Link></li>

@@ -3,26 +3,47 @@
     padding-bottom: 2.8rem;
     background-color: #fff !important;
     margin-bottom: 20px;
-  }
-  .icon-boxes {
+}
+.icon-boxes {
     display: flex;
     flex-wrap: wrap;
-  }
-  .icon-box-side {
+}
+.icon-box-side {
     font-size: 1.4rem;
-  }
-  .icon-box-side .icon-box-icon {
+}
+
+.f-icon-box-icon{
+    font-size: 30px;
     color: #333;
-    font-size: 3.4rem;
-  }
-  .icon-box-side .icon-box-title {
-    text-transform: uppercase;
-    font-weight: 400;
-    font-size: 1.6rem;
+}
+.icon-box-side .icon-box-title {
+    text-transform: capitalize;
+    font-weight: bold;
+    font-size: 18px;
     letter-spacing: 0.1em;
     color: #333;
-  }
+}
+.topBannerBtn{
+  font-size: 15px;
+  background-color: #ffffff;
+  padding: 7px 10px;
+  border-radius: 2px;
+  color: #333;
+}
+.topBannerBtn:hover{
+  opacity: 0.7;
+  color: #464444;
+  text-decoration: none !important;
+}
 
+.top-banner-title a{
+  color: #333 !important;
+  font-size: 20px;
+  line-height: 20px;
+}
+.top-banner-title a:hover{
+  text-decoration: none;
+}
 @media screen and (max-width: 992px) {
     .topBanner{
         margin-top: 40px;

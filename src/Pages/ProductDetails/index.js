@@ -25,10 +25,10 @@ const formatDate = (isoDate) => {
 
 const ProductDetails = () => {
     const history = useNavigate();
-    const [activeSize, setActiveSize] = useState(null);
-    const [activeWeight, setActiveWeight] = useState(null);
+    const [activeSize, setActiveSize] = useState(0);
+    const [activeWeight, setActiveWeight] = useState(0);
     const [activeColor, setActiveColor] = useState(0);
-    const [activeRam, setActiveRam] = useState(null);
+    const [activeRam, setActiveRam] = useState(0);
     const [activeTabs, setActiveTabs] = useState(0);
     const [productData, setProductData] = useState([]);
     const [relatedProductData, setRelatedProductData] = useState([]);
@@ -70,6 +70,15 @@ const ProductDetails = () => {
     useEffect(() => {
         if (productData?.color?.length > 0) {
             setActiveColor(0);
+        }
+        if (productData?.size?.length > 0) {
+            setActiveSize(0);
+        }
+        if (productData?.productRam?.length > 0) {
+            setActiveRam(0);
+        }
+        if (productData?.productWeight?.length > 0) {
+            setActiveWeight(0);
         }
     }, [productData]);
 

@@ -1,6 +1,5 @@
 ﻿@import url("https://fonts.googleapis.com/css?family=Poppins:200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800");
 html {
-  font-size: 62.5%;
   -webkit-text-size-adjust: 100%;
   -ms-text-size-adjust: 100%;
   font-size-adjust: 100%;
@@ -1283,7 +1282,7 @@ blockquote.text-white cite span {
   margin-left: auto;
 }
 .header-intro-clearance .header-bottom .menu > li > a {
-  font-size: 1.4rem;
+  font-size: 16px;
   letter-spacing: -0.01em;
   text-transform: none;
 }
@@ -4185,7 +4184,7 @@ a {
     margin-right: 1rem;
   }
   .header-12 .header-bottom .menu > li > a {
-    font-size: 1.3rem;
+    font-size: 16px;
   }
   .header-12 .dropdown.category-dropdown .dropdown-toggle {
     font-size: 1.3rem;
@@ -4477,6 +4476,7 @@ a {
   padding-left: 0;
   padding-top: 1.6rem;
   padding-bottom: 1.6rem;
+  font-size: 16px;
 }
 .header-14 .header-bottom .menu > li > a::before {
   content: "";
@@ -4737,7 +4737,7 @@ a {
 .footer {
   width: 100%;
   font-weight: 300;
-  font-size: 1.4rem;
+  font-size: 15px;
   color: #777;
   background-color: #fff;
 }
@@ -4749,7 +4749,7 @@ a {
   color: #113ebb;
 }
 .footer .widget {
-  margin-bottom: 4rem;
+  margin-bottom: 20px;
 }
 .footer .widget-title {
   color: #333333;
@@ -4774,7 +4774,7 @@ a {
   max-width: 540px;
 }
 .widget-about p:last-of-type {
-  margin-bottom: 3.2rem;
+  margin-bottom: 0.2rem;
 }
 .widget-list {
   margin-bottom: 0;
@@ -4824,7 +4824,8 @@ a {
   background-color: #ebebeb;
 }
 .footer-copyright {
-  margin-bottom: 1rem;
+  margin-bottom: 0px;
+  font-size: 16px;
   text-align: center;
 }
 .footer-payments {
@@ -4956,7 +4957,7 @@ a {
 .widget-about-title {
   display: block;
   font-weight: 300;
-  font-size: 1.3rem;
+  font-size: 18px;
   color: #333333;
   letter-spacing: 0;
   margin-bottom: 0.4rem;
@@ -4975,7 +4976,7 @@ a {
   padding-bottom: 5.5rem;
 }
 .footer-newsletter .heading {
-  margin-bottom: 2.4rem;
+  margin-bottom: 12px;
 }
 .footer-newsletter .title {
   color: #fff;
@@ -4983,8 +4984,8 @@ a {
 }
 .footer-newsletter .title-desc {
   color: inherit;
-  font-size: 1.6rem;
-  margin-top: 0.7rem;
+  font-size: 17px;
+  margin-top: 8px;
 }
 .footer-newsletter .title-desc span {
   color: #fff;
@@ -4992,8 +4993,8 @@ a {
 }
 .footer-newsletter .form-control {
   height: 46px;
-  padding: 1.25rem 2rem;
-  font-size: 1.4rem;
+  padding: 8px 12px;
+  font-size: 15px;
   line-height: 1.5;
   font-weight: 300;
   color: #999999;
@@ -5035,6 +5036,7 @@ a {
 }
 .footer-menu a {
   box-shadow: 0 1px 0 #b5b5b5;
+  font-size: 14px;
 }
 @media screen and (min-width: 992px) {
   .footer-2 .footer-bottom .container,
@@ -5711,9 +5713,9 @@ a {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: 0.85rem 1.5rem;
+  padding: 7px 1.5rem;
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 16px;
   line-height: 1.5;
   letter-spacing: -0.01em;
   min-width: 170px;
@@ -8934,7 +8936,7 @@ small.form-text {
 }
 .table th {
   font-weight: 400;
-  font-size: 1.4rem;
+  font-size: 16px;
   line-height: 1.5;
   color: #999;
 }
@@ -8946,10 +8948,7 @@ small.form-text {
 }
 .table th,
 .table td {
-  padding-left: 0;
-  padding-right: 0;
-  padding-top: 1.4rem;
-  padding-bottom: 1.4rem;
+  padding: 10px 5px;
 }
 .table td {
   vertical-align: middle;
@@ -13385,8 +13384,8 @@ button:focus {
   }
 }
 .table td {
-  padding-top: 3rem;
-  padding-bottom: 3rem;
+  padding-top: 15px;
+  padding-bottom: 15px;
 }
 .table .price-col {
   width: 180px;
