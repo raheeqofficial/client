@@ -16,7 +16,10 @@
     margin-bottom: 20px;
     text-align: center;
 }
-
+.sml-hd{
+    font-size: 16px;
+    font-weight: 400;
+}
 .cancelOrderPage .form-group {
     margin-bottom: 15px;
 }

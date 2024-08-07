@@ -1,0 +1,93 @@
+.returnPage{
+    background: rgba(121, 113, 113, 0.5);
+}
+.returnPage .container{
+    max-width: 1380px;
+    min-height: 70vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.returnDialog{
+    max-width: 400px;
+    border-radius: 20px;
+    margin: 30px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+}
+.returnDialog div{
+    display: flex;
+    flex-direction: column;
+}
+.returnDialog div label{
+    margin-bottom: 5px;
+    font-size: 16px;
+}
+.returnDialog div input{
+    width: 340px;
+    border-radius: 4px;
+    outline: none;
+    padding: 8px;
+    border: 1px solid grey;
+}
+.returnDialog div input:focus {
+    border-color: #2d2df5;
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25);
+}
+.select-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.select-box {
+    appearance: none;
+    background-color: #ffffff;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    font-size: 16px;
+    width: 100%;
+    cursor: pointer;
+    outline: none; 
+}
+
+.select-box::-ms-expand {
+    display: none;
+}
+
+.select-box option {
+    background-color: #ffffff;
+    color: #333;
+}
+
+.select-box-container::after {
+    content: '▼'; 
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%); 
+    color: #333;
+    pointer-events: none; 
+}
+.select-container {
+    position: relative;
+    display: inline-block;
+    width: 100%;
+}
+
+.select-box:focus {
+    border-color: #2d2df5; /* Change border color on focus */
+    box-shadow: 0 0 0 0.2rem rgba(38, 143, 255, 0.25); /* Add shadow on focus */
+}
+
+.select-box:hover {
+    border-color: #2d2df5; /* Change border color on hover */
+}
+
+.select-box:disabled {
+    background-color: #e9ecef; /* Light grey background for disabled state */
+    border-color: #ced4da; /* Grey border for disabled state */
+    cursor: not-allowed; /* Not-allowed cursor for disabled state */
+}

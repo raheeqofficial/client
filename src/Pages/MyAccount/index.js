@@ -13,6 +13,7 @@ import { deleteData, deleteImages, editData, fetchDataFromApi, postData, uploadI
 
 import { MyContext } from '../../App';
 import { Helmet } from 'react-helmet-async';
+import EligibleProducts from '../EligibleProducts';
 
 
 function CustomTabPanel(props) {
@@ -52,24 +53,17 @@ function a11yProps(index) {
 const MyAccount = () => {
     const [isLogin, setIsLogin] = useState(false);
     const history = useNavigate();
-
     const [value, setValue] = React.useState(0);
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
-
+    const {userId} = JSON.parse(localStorage.getItem("user"));
     const context = useContext(MyContext)
-
     const [isLoading, setIsLoading] = useState(false);
     const [uploading, setUploading] = useState(false);
-
     const [previews, setPreviews] = useState([]);
     const [userData, setUserData] = useState([]);
-
     const formdata = new FormData();
-
-
     const [formFields, setFormFields] = useState({
         name: '',
         email: '',
@@ -85,7 +79,6 @@ const MyAccount = () => {
 
     useEffect(() => {
         window.scrollTo(0,0)
-        
         const token = localStorage.getItem("token");
         if (token !== "" && token !== undefined && token !== null) {
             setIsLogin(true);
@@ -93,28 +86,18 @@ const MyAccount = () => {
         else {
             history("/signIn");
         }
-
-
-
-
         deleteData("/api/imageUpload/deleteAllImages");
         const user = JSON.parse(localStorage.getItem("user"));
-
         fetchDataFromApi(`/api/user/${user?.userId}`).then((res) => {
             setUserData(res);
             setPreviews(res.images);
-
             setFormFields({
                 name: res.name,
                 email: res.email,
                 phone: res.phone
             })
         });
-
-
-
     }, []);
-
 
     const changeInput = (e) => {
         setFormFields(() => (
@@ -218,8 +201,6 @@ const MyAccount = () => {
 
 
     }
-
-
     const edituser = (e) => {
         e.preventDefault();
 
@@ -252,25 +233,6 @@ const MyAccount = () => {
             });
 
         }
-        // if (formFields.name !== "" && formFields.email !== "" && formFields.phone !== "" && previews.length !== 0) {
-        //     setIsLoading(true);
-        //     const user = JSON.parse(localStorage.getItem("user"));
-
-        //     editData(`/api/user/${user?.userId}`, formFields).then((res) => {
-        //         // console.log(res);
-        //         setIsLoading(false);
-               
-        //         deleteData("/api/imageUpload/deleteAllImages");
-
-        //         context.setAlertBox({
-        //             open: true,
-        //             error: false,
-        //             msg: "user updated"
-        //         })
-        //     });
-
-        // }
-
         else {
             context.setAlertBox({
                 open: true,
@@ -281,8 +243,6 @@ const MyAccount = () => {
         }
 
     }
-
-
     const changePassword=(e)=>{
         e.preventDefault();
         formdata.append('password', fields.password);
@@ -319,9 +279,6 @@ const MyAccount = () => {
                    
                 })
             }
-           
-    
-
         } else {
             context.setAlertBox({
                 open: true,
@@ -331,8 +288,6 @@ const MyAccount = () => {
             return false;
         }
     }
-
-
     return (
         <>
         <Helmet>
@@ -356,6 +311,7 @@ const MyAccount = () => {
                         <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
                             <Tab label="Edit Profile" {...a11yProps(0)} />
                             <Tab label="Change Password" {...a11yProps(1)} />
+                            <Tab label="Review Product" {...a11yProps(2)} />
                         </Tabs>
                     </Box>
                     <CustomTabPanel value={value} index={0}>
@@ -461,6 +417,9 @@ const MyAccount = () => {
 
                             </div>
                         </form>
+                    </CustomTabPanel>
+                    <CustomTabPanel value={value} index={2}>
+                        <EligibleProducts customerId={userId}/>
                     </CustomTabPanel>
 
                 </Box>

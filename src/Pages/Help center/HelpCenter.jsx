@@ -55,7 +55,7 @@ const HelpCenter = () => {
             </Link>
           </div>
           <div>
-            <Link to={"#"} onClick={onClickHandle}>
+            <Link to={"/help-center/return-order"}>
               <img
                 width="48"
                 height="48"
@@ -124,7 +124,7 @@ const HelpCenter = () => {
           </div>
 
           <div>
-            <Link to={"#"} onClick={onClickHandle}>
+            <Link to={"/help-center/return-order"}>
               <img
                 width="48"
                 height="48"

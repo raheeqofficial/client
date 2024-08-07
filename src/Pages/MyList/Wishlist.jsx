@@ -3,10 +3,10 @@ import Button from "@mui/material/Button";
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import emprtCart from "../../assets/images/myList.png";
+import { FaHome } from "react-icons/fa";
 import { MyContext } from "../../App";
 import { useContext, useEffect, useState } from "react";
 import { deleteData, editData, fetchDataFromApi } from "../../utils/api";
-import { FaHome } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
@@ -20,14 +20,12 @@ const Wishlist = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-
     const token = localStorage.getItem("token");
     if (token !== "" && token !== undefined && token !== null) {
       setIsLogin(true);
     } else {
       history("/signIn");
     }
-
     const user = JSON.parse(localStorage.getItem("user"));
     fetchDataFromApi(`/api/my-list?userId=${user?.userId}`).then((res) => {
       setmyListData(res);
@@ -146,33 +144,12 @@ const Wishlist = () => {
                         </tr>
                       );
                     })}
-
-                  {/* <tr>
-								<td className="product-col">
-									<div className="product">
-										<figure className="product-media">
-											<a href="#">
-												<img src="assets/images/products/table/product-3.jpg" alt="Product image"/>
-											</a>
-										</figure>
-
-										<h3 className="product-title">
-											<a href="#">Orange saddle lock front chain cross body bag</a>
-										</h3>
-									</div>
-								</td>
-								<td className="price-col">Rs 52.00</td>
-								<td className="action-col">
-									<button className="btn btn-block btn-outline-primary-2 disabled">Out of Stock</button>
-								</td>
-								<td className="remove-col"><button className="btn-remove"><i className="icon-close"></i></button></td>
-							</tr> */}
                 </tbody>
               </table>
             ) : (
               <div className="empty d-flex align-items-center justify-content-center flex-column">
                 <img src={emprtCart} width="150" />
-                <h3>Wishlist is currently empty</h3>
+                <h3 className="emptyPageMsg">Wishlist is currently empty</h3>
                 <br />
                 <Link to="/">
                   {" "}
@@ -182,7 +159,7 @@ const Wishlist = () => {
                 </Link>
               </div>
             )}
-            <div className="wishlist-share">
+            <div className="wishlist-share mt-2">
               <div className="social-icons social-icons-sm mb-2">
                 <label className="social-label">Follow on:</label>
                 <a

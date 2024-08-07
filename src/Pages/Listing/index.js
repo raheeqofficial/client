@@ -107,14 +107,13 @@ const Listing = () => {
             setisLoading(false);
         })
     };
-
-
     const openFilters = () => {
         setIsOpenFilter(!isOpenFilter)
     }
+
     if (isLoading) {
         return <div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>;
     }
     return (
@@ -125,48 +124,14 @@ const Listing = () => {
                         {/* <Sidebar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating} isOpenFilter={isOpenFilter} /> */}
 
                         <div className="content_right">
-
-                            <div className="showBy mt-0 mb-3 d-flex align-items-center">
-                                <div className="d-flex align-items-center btnWrapper">
-                                    {/* <Button className={productView === 'one' && 'act'} onClick={() => setProductView('one')}><IoIosMenu />
-                                    </Button> */}
-                                    <Button className={'act'}><IoIosMenu />
-                                    </Button>
-
-                                    {/* <Button className={productView === 'three' && 'act'} onClick={() => setProductView('three')}>
-                                        <CgMenuGridR /></Button> */}
-                                    <Button className={'act'}>
-                                        <CgMenuGridR /></Button>
-                                    <Button className={'act'}><TfiLayoutGrid4Alt /></Button>
-                                </div>
-
-                                <div className="ml-auto showByFilter">
-                                    <Button onClick={handleClick}>Show 9 <FaAngleDown /></Button>
-                                    <Menu
-                                        className="w-100 showPerPageDropdown"
-                                        id="basic-menu"
-                                        anchorEl={anchorEl}
-                                        open={openDropdown}
-                                        onClose={handleClose}
-                                        MenuListProps={{
-                                            'aria-labelledby': 'basic-button',
-                                        }}
-                                    >
-                                        <MenuItem onClick={handleClose}>10</MenuItem>
-                                        <MenuItem onClick={handleClose}>20</MenuItem>
-                                        <MenuItem onClick={handleClose}>30</MenuItem>
-                                        <MenuItem onClick={handleClose}>40</MenuItem>
-                                        <MenuItem onClick={handleClose}>50</MenuItem>
-                                        <MenuItem onClick={handleClose}>60</MenuItem>
-                                    </Menu>
-                                </div>
+                            <div className="showBy mt-0 mb-3 d-flex align-items-center ">
+                                <p>Showing result for</p>
                             </div>
-
 
                             <div className="productListing-data">
                                 {
                                     isLoading === true ?
-                                        <div className="loading d-flex align-items-center justify-content-center">
+                                        <div className="d-flex align-items-center justify-content-center">
                                             <CircularProgress color="inherit" />
                                         </div>
                                         :
@@ -186,10 +151,6 @@ const Listing = () => {
 
 
                             </div>
-
-
-
-
                         </div>
                     </div>
                 </div>

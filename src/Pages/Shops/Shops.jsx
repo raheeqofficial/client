@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 import { IoIosImages } from "react-icons/io";
+import { CircularProgress } from "@mui/material";
 
 const Shops = () => {
   const [shopData, setShopData] = useState([]);
@@ -22,7 +23,7 @@ const Shops = () => {
   if (isLoading) {
     return (
       <div className="loaderContainer">
-        <span class="loader"></span>
+        <CircularProgress color="inherit" />
       </div>
     );
   }
@@ -44,7 +45,7 @@ const Shops = () => {
       <section className="shopPage">
         <div className="topImage">
           <ContinuousSnowfall />
-          <h3 className="mb-3 hd text-center">Welcome to Vender Stores</h3>
+          <h3 className="hd text-center">Welcome to Vender Stores</h3>
         </div>
         <div className="container">
           <div className="shopPageWrapper">

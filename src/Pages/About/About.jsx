@@ -25,15 +25,6 @@ const About = () => {
   return (
     <div className='page-wrapper'>
         <main className="main">
-        <nav aria-label="breadcrumb" class="breadcrumb-nav border-0 mb-0">
-                <div class="container">
-                    <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="index.html">Home</a></li>
-                        <li class="breadcrumb-item"><a href="#">Pages</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">About us</li>
-                    </ol>
-                </div>
-        </nav>
         <div class="container">
 	        	<div class="page-header page-header-big text-center">
         			<h1 class="page-title text-white">About us<span class="text-white">Who we are</span></h1>
@@ -172,7 +163,7 @@ const About = () => {
                                     </figcaption>
                                 </figure>
                                 <div class="member-content">
-                                    <h3 class="member-title">Samanta Grey<span>Founder & CEO</span></h3>
+                                    <h3 class="member-title">Raheeq Gill<span>Founder & CEO</span></h3>
                                 </div>
                             </div>
                         </div>
@@ -184,7 +175,7 @@ const About = () => {
 
                                     <figcaption class="member-overlay">
                                         <div class="member-overlay-content">
-                                            <h3 class="member-title">Basit Ali<span>Sales & Finance Manager</span></h3>
+                                            <h3 class="member-title">Basit Ali<span>CFO & BUSINESS PARTNER</span></h3>
                                             <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p> 
                                             <div class="social-icons social-icons-simple">
                                                 <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
@@ -195,7 +186,7 @@ const About = () => {
                                     </figcaption>
                                 </figure>
                                 <div class="member-content">
-                                    <h3 class="member-title">Bruce Sutton<span>Sales & Finance Manager</span></h3>
+                                    <h3 class="member-title">Basit Ali<span>CFO & Business Partner</span></h3>
                                 </div>
                             </div>
                         </div>
@@ -207,7 +198,7 @@ const About = () => {
 
                                     <figcaption class="member-overlay">
                                         <div class="member-overlay-content">
-                                            <h3 class="member-title">Moin Haider<span>Product & Marketing Manager</span></h3>
+                                            <h3 class="member-title">Moin Haider<span>SALES & MEDIA PARTNER</span></h3>
                                             <p>Sed pretium, ligula sollicitudin viverra, tortor libero sodales leo, eget blandit nunc.</p> 
                                             <div class="social-icons social-icons-simple">
                                                 <a href="#" class="social-icon" title="Facebook" target="_blank"><i class="icon-facebook-f"></i></a>
@@ -218,7 +209,7 @@ const About = () => {
                                     </figcaption>
                                 </figure>
                                 <div class="member-content">
-                                    <h3 class="member-title">Janet Joy<span>Product Manager</span></h3>
+                                    <h3 class="member-title">Moin Haider<span>Media Partner</span></h3>
                                 </div>
                             </div>
                         </div>

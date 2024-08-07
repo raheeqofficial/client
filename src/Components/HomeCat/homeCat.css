@@ -23,7 +23,6 @@
     display: flex;
     align-items: center;
     align-content: center;
-    /* padding: 0; */
     justify-content: center;
     flex-wrap: wrap;
     gap: 30px;
@@ -32,28 +31,27 @@
 .homeCatBox a{
     width: 120px;
     height: 120px;
-    border-radius: 50%;
 }
 .homeCatBox a .homeCatBoxWrapper{
     width: 100%;
     height: 100%;
+    background: #ffffff;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
 }
 .homeCatBox a .homeCatBoxWrapper h6{
     text-align: center;
-    font-size: 14px;
-    color: #000;
+    font-size: 10px;
+    color: #222121;
     margin-top: 4px;
 }
 .homeCatBoxWrapper .homeCatImgWrapper{
     width: 120px;
     height: 120px;
-    border-radius: 50%;
 }
 .homeCatBoxWrapper .homeCatImgWrapper img{
     width: 100%;
     height: 100%;
     object-fit: cover;
-    border-radius: 50%;
     object-position: top;
 }
 

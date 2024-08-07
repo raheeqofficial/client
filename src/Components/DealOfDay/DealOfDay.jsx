@@ -248,7 +248,7 @@ const DealOfDay = () => {
                       </div>
                     </div>
 
-                    <Link to="#" class="btn btn-outline-gray banner-link">
+                    <Link to="#" class="btn-blue btn-big">
                       <span>Shop Now</span>
                       <i class="icon-long-arrow-right"></i>
                     </Link>
@@ -271,8 +271,8 @@ const DealOfDay = () => {
                     <h4 className="banner-subtitle">The Best Choice</h4>
                     <h3 className="banner-title">Wicker Loom Chair</h3>
                     <div className="banner-text text-primary">Rs 1149.99</div>
-                    <Link to="#" className="btn btn-outline-gray banner-link">
-                      Shop Now<i className="icon-long-arrow-right"></i>
+                    <Link to="#" className="btn-blue btn-big">
+                      Shop Now &nbsp;<i className="icon-long-arrow-right"></i>
                     </Link>
                   </div>
                 </div>

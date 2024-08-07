@@ -29,7 +29,7 @@ const ProductDetails = () => {
     const [activeWeight, setActiveWeight] = useState(0);
     const [activeColor, setActiveColor] = useState(0);
     const [activeRam, setActiveRam] = useState(0);
-    const [activeTabs, setActiveTabs] = useState(0);
+    const [activeTabs, setActiveTabs] = useState(1);
     const [productData, setProductData] = useState([]);
     const [relatedProductData, setRelatedProductData] = useState([]);
     const [recentlyViewdProducts, setRecentlyViewdProducts] = useState([]);
@@ -90,8 +90,10 @@ const ProductDetails = () => {
         setActiveWeight(null);
         const fetchProduct = async () => {
             try {
+                setIsLoading(true)
                 const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/products/staticId/${id}`);
                 setProductData(res?.data);
+                setIsLoading(false)
                 console.log(res.data)
                 if (res?.data?.productRam?.length === 0 && res?.data?.productWeight?.length === 0 && res?.data?.size?.length === 0 && res?.data?.color?.length === 0) {
                     setActiveSize(1);
@@ -127,6 +129,7 @@ const ProductDetails = () => {
         fetchProduct();
         fetchDataFromApi(`/api/productReviews?productId=${id}`).then((res) => {
             setreviewsData(res)
+            console.log("reviews", res)
         })
 
 
@@ -204,9 +207,7 @@ const ProductDetails = () => {
         const hasRam = productData?.productRam?.length > 0;
         const hasWeight = productData?.productWeight?.length > 0;
         const hasColor = productData?.color?.length > 0;
-
-        if (((hasSize && activeSize !== null)) || (hasWeight && activeWeight !== null) || (hasColor && activeColor !== null) || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
-            const user = JSON.parse(localStorage.getItem("user"));
+        const user = JSON.parse(localStorage.getItem("user"));
             const selectedSize = productData?.size?.length !== 0 ? productData.size[activeSize] : null
             const selectedWeight = productData?.productWeight?.length !== 0 ? productData.productWeight[activeWeight] : null
             const selectedColor = productData?.color?.length !== 0 ? productData.color[activeColor] : null
@@ -228,12 +229,14 @@ const ProductDetails = () => {
 
 
             context.addToCart(cartFields);
-        } else {
-            setTabError(!hasSize || activeSize === null);
-            setColorTabError(!hasColor || activeColor === null);
-            setWeightTabError(!hasWeight || activeWeight === null);
-            setRamTabError(!hasRam || activeRam === null);
-        }
+        // if (((hasSize && activeSize !== null)) || (hasWeight && activeWeight !== null) || (hasColor && activeColor !== null) || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
+            
+        // } else {
+        //     setTabError(!hasSize || activeSize === null);
+        //     setColorTabError(!hasColor || activeColor === null);
+        //     setWeightTabError(!hasWeight || activeWeight === null);
+        //     setRamTabError(!hasRam || activeRam === null);
+        // }
 
     }
 
@@ -305,7 +308,6 @@ const ProductDetails = () => {
     }
 
 
-
     return (
         <>
 
@@ -324,7 +326,11 @@ const ProductDetails = () => {
             </Helmet>
             <section className="productDetails section">
                 <div className="container">
-                    <div className="row">
+                    {
+                        isLoading ? <div className="loaderContainer">
+                        <CircularProgress color="inherit" />
+                      </div> : 
+                        <div className="row">
                         <div className="col-md-4 pl-5 part1">
                             <ProductZoom images={productData?.images} discount={productData?.discount} />
                         </div>
@@ -493,6 +499,7 @@ const ProductDetails = () => {
 
                         </div>
                     </div>
+                    }
 
 
                     <br />
@@ -544,96 +551,6 @@ const ProductDetails = () => {
                                 activeTabs === 1 &&
 
                                 <div className='tabContent'>
-                                    {/* <div className='table-responsive'>
-                                        <table className='table table-bordered'>
-                                            <tbody>
-                                                <tr className="stand-up">
-                                                    <th>Information</th>
-                                                    <td>
-                                                        <p>{productData?.description}</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="folded-wo-wheels">
-                                                    <th>Details</th>
-                                                    <td>
-                                                        <p>32.5″L x 18.5″W x 16.5″H</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="folded-w-wheels">
-                                                    <th>Folded (w/ wheels)</th>
-                                                    <td>
-                                                        <p>32.5″L x 24″W x 18.5″H</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="door-pass-through">
-                                                    <th>Door Pass Through</th>
-                                                    <td>
-                                                        <p>24</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="frame">
-                                                    <th>Frame</th>
-                                                    <td>
-                                                        <p>Aluminum</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="weight-wo-wheels">
-                                                    <th>Weight (w/o wheels)</th>
-                                                    <td>
-                                                        <p>20 LBS</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="weight-capacity">
-                                                    <th>Weight Capacity</th>
-                                                    <td>
-                                                        <p>60 LBS</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="width">
-                                                    <th>Width</th>
-                                                    <td>
-                                                        <p>24″</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="handle-height-ground-to-handle">
-                                                    <th>Handle height (ground to handle)</th>
-                                                    <td>
-                                                        <p>37-45″</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="wheels">
-                                                    <th>Wheels</th>
-                                                    <td>
-                                                        <p>12″ air / wide track slick tread</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="seat-back-height">
-                                                    <th>Seat back height</th>
-                                                    <td>
-                                                        <p>21.5″</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="head-room-inside-canopy">
-                                                    <th>Head room (inside canopy)</th>
-                                                    <td>
-                                                        <p>25″</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="pa_color">
-                                                    <th>Color</th>
-                                                    <td>
-                                                        <p>Black, Blue, Red, White</p>
-                                                    </td>
-                                                </tr>
-                                                <tr className="pa_size">
-                                                    <th>Size</th>
-                                                    <td>
-                                                        <p>M, S</p>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div> */}
                                     <h2>
                                     Information
                                     </h2>
@@ -781,7 +698,6 @@ const ProductDetails = () => {
                                                         </div>
 
                                                         <div className='row'>
-
                                                             <div className='col-md-6'>
                                                                 <div className='form-group'>
                                                                     <Rating name="rating" value={rating} precision={0.5}

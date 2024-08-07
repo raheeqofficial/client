@@ -2,30 +2,27 @@ import React, { useEffect, useState } from 'react';
 import { fetchDataFromApi } from '../../utils/api';
 import Dialog from '@mui/material/Dialog';
 import { MdClose } from "react-icons/md";
+import axios from 'axios';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
-import moment from 'moment';
-import axios from 'axios';
 import { Helmet } from 'react-helmet-async';
 
+import moment from 'moment';
 const formatDate = (isoDate) => {
   return moment(isoDate).format('DD/MM/YYYY hh:mm A');
 };
 
 const Orders = () => {
 
+    const [page, setPage] = useState(1);
+    const [isLogin,setIsLogin]  = useState(false);
     const [orders, setOrders] = useState([]);
     const [products, setproducts] = useState([]);
-    const [page, setPage] = useState(1);
-
-    const [isOpenModal, setIsOpenModal] = useState(false);
-    const [isLogin,setIsLogin]  = useState(false);
     const [error, setError] = useState(null);
-
+    const [isOpenModal, setIsOpenModal] = useState(false);
     const history = useNavigate();
     useEffect(() => {
         window.scrollTo(0, 0);
-
         const token = localStorage.getItem("token");
         if(token!=="" && token!==undefined  && token!==null){
           setIsLogin(true);
@@ -33,14 +30,7 @@ const Orders = () => {
         else{
           history("/signIn");
         }
-
         const user = JSON.parse(localStorage.getItem("user"));
-        // fetchDataFromApi(`/api/orders?userid=${user?.userId}`).then((res) => {
-        //     setOrders(res);
-        // }).catch((error) => {
-        //     console.error("Error fetching orders:", error);
-        //     history('/pageNotFound');
-        // });
         const fetchProduct = async () => {
             try {
               const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders?userid=${user?.userId}`);
@@ -59,20 +49,13 @@ const Orders = () => {
           };
       
           fetchProduct();
-
     }, [history]);
-
-
-
-
     const showProducts = (id) => {
         fetchDataFromApi(`/api/orders/${id}`).then((res) => {
             setIsOpenModal(true);
             setproducts(res.products);
         })
     }
-
-
     return (
         <>
         <Helmet>

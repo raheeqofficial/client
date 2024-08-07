@@ -4,6 +4,8 @@ import "./OrderCancellationForm.css";
 import HelpNav from "./HelpNav";
 import { MyContext } from "../../App";
 import { Helmet } from "react-helmet-async";
+import { TbShoppingCartCancel } from "react-icons/tb";
+import { Button } from "@mui/material";
 
 const OrderCancellationForm = () => {
   const [orderId, setOrderId] = useState("");
@@ -55,9 +57,9 @@ const OrderCancellationForm = () => {
       <HelpNav />
       <div className="form-container cancelOrderPage">
         <form className="cancellation-form" onSubmit={handleCancelOrder}>
-          <h2>Cancel Order</h2>
+          <h2 className="hd">Cancel Order</h2>
           <div className="form-group">
-            <label htmlFor="orderId">Order ID</label>
+            <label htmlFor="orderId" className="sml-hd">Order ID</label>
             <input
               type="text"
               id="orderId"
@@ -67,7 +69,7 @@ const OrderCancellationForm = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="reason">Reason for Cancellation</label>
+            <label htmlFor="reason" className="sml-hd">Reason for Cancellation</label>
             <textarea
               id="reason"
               value={reason}
@@ -75,9 +77,9 @@ const OrderCancellationForm = () => {
               required
             ></textarea>
           </div>
-          <button type="submit" className="btn btn-primary">
-            Cancel Order
-          </button>
+          <Button type="submit" className="btn btn-blue btn-big w-100 mt-1">
+            Cancel Order &nbsp; <TbShoppingCartCancel/>
+          </Button>
         </form>
         {message && <p className="message">{message}</p>}
       </div>

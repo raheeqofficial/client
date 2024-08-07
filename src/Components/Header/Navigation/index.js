@@ -338,7 +338,7 @@ const Navigation = () => {
                             </div>
                         </div> */}
 
-                        <div className="headerMenu col-6 ">
+                        <div className="headerMenu col ">
                             <nav className="main-nav">
                                 <ul className="menu sf-arrows">
                                     <li className={`megamenu-container ${selected === 0 && 'active'}`} onClick={()=>setSelected(0)}>

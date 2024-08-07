@@ -26,7 +26,7 @@ const HomeCat = (props) => {
                                         <div className="homeCatImgWrapper">
                                             <img src={cat.images[0]} />
                                         </div>
-                                        <h6>{cat?.name.length > 17 ? cat?.name.substr(0, 15) + '...' : cat?.name}</h6>
+                                        <h6>{cat?.name.length > 15 ? cat?.name.substr(0, 15) + '...' : cat?.name}</h6>
                                     </div>
                                 </Link>
 

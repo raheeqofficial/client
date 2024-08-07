@@ -1,28 +1,63 @@
-import React from 'react'
-import { Helmet } from 'react-helmet-async'
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchDataFromApi } from '../../utils/api';
+ 
+
+const OrderStatus = ({ status }) => {
+  const statusStyles = {
+    Pending: 'bg-yellow-100 text-yellow-800',
+    Confirmed: 'bg-blue-100 text-blue-800',
+    Shipped: 'bg-orange-100 text-orange-800',
+    Delivered: 'bg-green-100 text-green-800',
+  };
+
+  return (
+    <div className={`p-4 rounded-lg ${statusStyles[status]}`}>
+      <h2 className="text-xl font-semibold">{status}</h2>
+    </div>
+  );
+};
 
 const TrackOrder = () => {
-  return (
-    <>
-    <Helmet>
-    <title>Track order - EliphStore</title>
-    
-      <meta
-        name="description"
-        content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!."
-      />
-      <meta
-        name="keywords"
-        content="Track order, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
-      />
-    </Helmet>
-      <div className='trackOrderContainer'>
-        <div className="overlay"></div>
-        
-    </div>
-    </>
-  )
-}
+  const { orderId } = useParams();
+  const [orderDetails, setOrderDetails] = useState(null);
 
-export default TrackOrder
+
+  React.useEffect(() => {
+    const getOrderDetails = async () => {
+      try {
+        const data = await fetchDataFromApi(`/api/orders/${orderId}`);
+        setOrderDetails(data);
+      } catch (error) {
+        console.error('Error fetching order details:', error);
+      }
+    };
+
+    getOrderDetails();
+  }, [orderId]);
+
+  if (!orderDetails) return <p>Loading...</p>;
+
+  return (
+    <div className="max-w-lg mx-auto p-6 bg-white shadow-md rounded-lg">
+      <h1 className="text-2xl font-bold mb-4">Track Your Order</h1>
+      <div className="mb-6">
+        <h2 className="text-xl font-semibold mb-2">Order ID: {orderDetails.id}</h2>
+        <p className="text-gray-700">Order Date: {new Date(orderDetails.date).toLocaleDateString()}</p>
+      </div>
+      <OrderStatus status={orderDetails.status} />
+      <div className="mt-6">
+        <h3 className="text-lg font-semibold">Order Details:</h3>
+        <ul className="list-disc list-inside mt-2">
+          {orderDetails.items.map((item) => (
+            <li key={item.id}>
+              {item.name} - {item.quantity} x ${item.price}
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+};
+
+export default TrackOrder;

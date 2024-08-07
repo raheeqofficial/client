@@ -28,7 +28,7 @@ const Fashion = () => {
   if (isLoading) {
     return (
       <div className="loaderContainer">
-        <span class="loader"></span>
+        <CircularProgress color="inherit" />
       </div>
     );
   }

@@ -13,6 +13,7 @@ const PopularProducts = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setisLoading(true)
     fetchDataFromApi(`/api/products?isFeatured=${true}`)
       .then((res) => {
         setProductData(res);
@@ -24,7 +25,13 @@ const PopularProducts = () => {
       });
   }, []);
 
-  
+  if (isLoading) {
+    return (
+      <div className="loaderContainer">
+        <CircularProgress color="inherit" />
+      </div>
+    );
+  }
   return (
     <>
     <Helmet>

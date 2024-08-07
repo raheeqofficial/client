@@ -16,6 +16,11 @@ html,
   color: #fff;
   background-color: #113ebb;
 }
+.emptyPageMsg{
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+}
 .headerMenu{
   display: block;
 }
@@ -42,7 +47,7 @@ i {
 hr {
   border: none;
   border-top: 1px solid #ebebeb;
-  margin: 3rem auto 2.5rem;
+  margin: 8px auto 8px;
 }
 sub,
 sup {
@@ -4378,16 +4383,6 @@ a {
 .header-14 .header-bottom .container-fluid {
   display: block;
 }
-.header-14 .header-bottom .container::after,
-.header-14 .header-bottom .container-fluid::after {
-  content: "";
-  position: absolute;
-  top: 1.95rem;
-  bottom: 1.95rem;
-  right: 16%;
-  width: 0.1rem;
-  background-color: #fff;
-}
 .header-14 .header-dropdown {
   padding-top: 0.8rem;
   padding-bottom: 0.8rem;
@@ -4474,8 +4469,8 @@ a {
 }
 .header-14 .header-bottom .menu > li > a {
   padding-left: 0;
-  padding-top: 1.6rem;
-  padding-bottom: 1.6rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
   font-size: 16px;
 }
 .header-14 .header-bottom .menu > li > a::before {
@@ -8362,9 +8357,9 @@ a {
   margin-right: 2rem;
 }
 .social-icons-sm .social-icon {
-  font-size: 1.2rem;
-  width: 3rem;
-  height: 3rem;
+  font-size: 16px;
+  width: 2rem;
+  height: 2rem;
 }
 .social-icons-sm .social-icon:not(:last-child) {
   margin-right: 0.5rem;
@@ -13391,12 +13386,12 @@ button:focus {
   width: 180px;
   color: #333;
   font-weight: 400;
-  font-size: 1.6rem;
+  font-size: 16px;
 }
 .table .stock-col {
   width: 160px;
   font-weight: 400;
-  font-size: 1.6rem;
+  font-size: 16px;
 }
 .table .action-col {
   width: 202px;
@@ -13448,7 +13443,7 @@ button:focus {
   display: inline-block;
   color: #333;
   font-weight: 400;
-  font-size: 1.6rem;
+  font-size: 16px;
   line-height: 1.25;
   margin: 0;
 }
@@ -13515,8 +13510,7 @@ button:focus {
   }
   .table-mobile tr {
     position: relative;
-    padding-top: 4.2rem;
-    padding-bottom: 4rem;
+    padding: 20px 0px;
   }
   .table-mobile .remove-col {
     position: absolute;
@@ -13780,7 +13774,7 @@ button:focus {
   font-weight: 300;
   font-size: 1.4rem;
   line-height: 1.5;
-  padding: 1.4rem 0;
+  padding: 8px 0;
   color: #333;
   border-bottom: 0.1rem solid #ebebeb;
 }

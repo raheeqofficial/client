@@ -8,7 +8,7 @@ import logo from '../../assets/images/eliph stores-7.png'
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import Confetti from 'react-confetti';
-import footerImg from '../../assets/images/Payment & Delivery.png'
+import footerImg from '../../assets/images/Footer_Payment & Delivery.png'
 
 const Footer = () => {
     const [expanded, setExpanded] = useState(false);

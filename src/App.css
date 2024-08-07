@@ -280,11 +280,11 @@ button {
   color: #ed174a !important;
 }
 .text-blue {
-  color: #53348c !important;
+  color: #075eb4 !important;
 }
 
 .btn-blue:hover {
-  background: #53348c !important;
+  background: #0858f7 !important;
 }
 .btn-big {
   font-size: 15px !important;
@@ -1620,7 +1620,7 @@ ul.list-style{
 }
 
 .loading {
-  width: 100%;
+  max-width: 1380px;
   height: 300px;
 }
 
@@ -2095,6 +2095,8 @@ a:hover {
   cursor: pointer;
   transition: all 0.2s;
   font-size: 13px;
+  margin-left: 5px;
+  border: 1px solid #4070f4;
   font-weight: 700 !important;
 }
 
@@ -2759,14 +2761,13 @@ a.more-link {
 }
 
 
-.shopDetailCatTab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
-  border: 1px solid rgba(0, 0, 0, 0.09) !important;
-  border-radius: 100px !important;
+.shopDetailPage .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
   font-size: 12px !important;
   background: #0858f7;
   color: #fff !important;
+  /* margin-right: 4px; */
 }
-.shopDetailCatTab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+.shopDetailPage .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
   padding: 2px 18px !important;
 }
 .shopDetailCatTab .MuiButtonBase-root{
@@ -3007,6 +3008,16 @@ a.more-link {
   footer .linksWrap {
     grid-template-columns: repeat(2, 1fr);
     row-gap: 20px;
+  }
+  .filterTabs .item{
+    font-size: 10px !important;
+    padding: 4px 8px !important;
+  }
+  .shopDetailPage .css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+   
+    max-width: 300px;
+    min-width: 90px;
+    min-height: 30px;
   }
   .right-content{
     padding: 20px 10px;

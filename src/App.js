@@ -17,6 +17,9 @@ import Wishlist from "./Pages/MyList/Wishlist";
 import TermsOfUse from "./Pages/TermsOfUse/TermsOfUse";
 import PrivacyPolicy from "./Pages/PrivacyPolicy/PrivacyPolicy";
 import FollowedShops from "./Pages/FollowedShops/FollowedShops";
+import { CircularProgress } from "@mui/material";
+import ReturnOrder from "./Pages/Help center/ReturnOrder";
+import ManageAccount from "./Pages/MyAccount/MyAccount";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -292,120 +295,126 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Home /></Suspense>} />
           <Route path="/about" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><About /></Suspense>} />
           <Route path="/recipient" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Recepient /></Suspense>} />
           <Route path="/contact" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Contact /></Suspense>} />
           <Route path="/products/category/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Listing /></Suspense>} />
           <Route path="/products/subCat/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Listing /></Suspense>} />
           <Route path="/products/flash-sale/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><FlashSale /></Suspense>} />
           <Route path="/products/popular-products/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><PopularProducts /></Suspense>} />
           <Route path="/products/fashion/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Fashion /></Suspense>} />
           <Route path="/products/new/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><NewProducts /></Suspense>} />
           <Route path="/product/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><ProductDetails /></Suspense>} />
           <Route path="/products/all" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><DiscountPage /></Suspense>} />
           <Route path="/product/error" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Error /></Suspense>} />
           <Route path="/cart" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Cart /></Suspense>} />
           <Route path="/signIn" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><SignIn /></Suspense>} />
           
           <Route path="/signUp" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><SignUp /></Suspense>} />
           <Route path="/my-list" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Wishlist /></Suspense>} />
           <Route path="/checkout" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Checkout /></Suspense>} />
           <Route path="/orders" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Orders /></Suspense>} />
           <Route path="/order/details/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><OrderDetails /></Suspense>} />
           <Route path="/*" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><PageNotFound /></Suspense>} />
           <Route path="/page-not-found" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><PageNotFound /></Suspense>} />
           <Route path="/account-setting" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><MyAccount /></Suspense>} />
           <Route path="/account" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><MobileAccount /></Suspense>} />
           <Route path="/search" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><SearchPage /></Suspense>} />
           <Route path="/success" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Success /></Suspense>} />
           <Route path="/become-seller" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><BecomeSeller /></Suspense>} />
           <Route path="/help-center" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><HelpCenterApp /></Suspense>} />
           <Route path="/help-center/cancel-order" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><CancelOrder /></Suspense>} />
           <Route path="/help-center/track-order" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><TrackOrder /></Suspense>} />
+          <Route path="/help-center/return-order" element={<Suspense fallback={<div className="loaderContainer">
+          <CircularProgress color="inherit" />
+        </div>}><ReturnOrder /></Suspense>} />
           <Route path="/categories" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Categories /></Suspense>} />
           <Route path="/help-center/shipping-delivery" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><ShippingAndDelivery /></Suspense>} />
           <Route path="/shops" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><Shops /></Suspense>} />
           <Route path="/shops/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><ShopDetails /></Suspense>} />
           <Route path="/verify/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><OtpVerification /></Suspense>} />
           <Route path="/terms-of-use/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><TermsOfUse /></Suspense>} />
           <Route path="/privacy-policy/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><PrivacyPolicy /></Suspense>} />
           <Route path="/my-account/followed-shops" element={<Suspense fallback={<div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>}><FollowedShops /></Suspense>} />
+          <Route path="/user/manage-account" element={<Suspense fallback={<div className="loaderContainer">
+          <CircularProgress color="inherit" />
+        </div>}><ManageAccount /></Suspense>} />
         </Routes>
 
         {isHeaderFooterShow && <Footer />}

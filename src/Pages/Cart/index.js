@@ -198,19 +198,19 @@ const Cart = () => {
                                 <div className="card border p-3 cartDetails">
                                     <h4>CART TOTALS</h4>
 
-                                    <div className="d-flex align-items-center mb-3">
+                                    <div className="d-flex align-items-center mb-1">
                                         <span>Subtotal</span>
                                         <span className="ml-auto text-red font-weight-bold">
                                             {calculateSubtotal()}
                                         </span>
                                     </div>
 
-                                    <div className="d-flex align-items-center mb-3">
+                                    <div className="d-flex align-items-center mb-1">
                                         <span>Shipping</span>
                                         <span className="ml-auto"><b>Rs {SHIPPING_RATE}</b></span>
                                     </div>
 
-                                    <div className="d-flex align-items-center mb-3">
+                                    <div className="d-flex align-items-center mb-1">
                                         <span>Estimate for</span>
                                         <span className="ml-auto"><b>Pakistan</b></span>
                                     </div>
@@ -224,7 +224,7 @@ const Cart = () => {
 
                                     <br />
                                     {isLoading ? <div className="loadingOverlay"></div> : (
-                                        <Button className='btn-blue bg-red btn-lg btn-big w-100' onClick={navigateToCheckout}><IoBagCheckOutline /> &nbsp; Checkout</Button>
+                                        <Button className='btn-blue btn-lg btn-big w-100' onClick={navigateToCheckout}><IoBagCheckOutline /> &nbsp; Checkout</Button>
                                     )}
                                 </div>
                             </div>
@@ -232,7 +232,7 @@ const Cart = () => {
                     ) : (
                         <div className="empty d-flex align-items-center justify-content-center flex-column">
                             <img src={emprtCart} width="150" />
-                            <h3>Your Cart is currently empty</h3>
+                            <h3 className="emptyPageMsg">Your Cart is currently empty</h3>
                             <br />
                             <Link to="/"> <Button className='btn-blue bg-red btn-lg btn-big btn-round'><FaHome /> &nbsp; Continue Shopping</Button></Link>
                         </div>

@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from "react";
 import { fetchDataFromApi } from "../../../utils/api";
 import { useParams } from "react-router-dom";
 import ProductItem from "../../../Components/ProductItem";
-import { Box, Button, Tab, Tabs } from "@mui/material";
+import { Box, Button, CircularProgress, Tab, Tabs } from "@mui/material";
 import { MyContext } from "../../../App";
 import { FaSquareWhatsapp } from "react-icons/fa6";
 import axios from "axios";
@@ -142,7 +142,7 @@ const ShopDetails = () => {
   if (isLoading) {
     return (
       <div className="loaderContainer">
-        <span className="loader"></span>
+        <CircularProgress color="inherit" />
       </div>
     );
   }
@@ -192,7 +192,7 @@ const ShopDetails = () => {
             <div className="catTabsName">
               <Box
                 sx={{
-                  maxWidth: { xs: 350, sm: 680 },
+                  maxWidth: { xs: 420, sm: 680 },
                   bgcolor: "background.paper",
                 }}
               >
@@ -219,7 +219,7 @@ const ShopDetails = () => {
             </div>
           </div>
 
-          <div className="product_row productRow2 w-100 mt-4 mb-3">
+          <div className="product_row productRow2 w-100 mt-2 mb-3">
             {filterData.length > 0 ? (
               filterData.slice(0).reverse().map((item, index) => (
                 <ProductItem key={index} item={item} />

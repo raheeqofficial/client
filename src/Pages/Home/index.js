@@ -12,7 +12,7 @@ import { MyContext } from "../../App";
 import { fetchDataFromApi } from "../../utils/api";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Box } from "@mui/material";
+import { Box, CircularProgress } from "@mui/material";
 import DealOfDay from "../../Components/DealOfDay/DealOfDay";
 import { Link, useNavigate } from "react-router-dom";
 import SaleCards from "../../Components/SaleCards/SaleCards";
@@ -122,7 +122,7 @@ const Home = () => {
     }, [selectedCat]);
     if (isLoading) {
         return <div className="loaderContainer">
-          <span class="loader"></span>
+          <CircularProgress color="inherit" />
         </div>;
     }
     return (
