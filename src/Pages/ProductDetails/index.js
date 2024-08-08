@@ -649,11 +649,13 @@ const ProductDetails = () => {
                                 <div className='tabContent'>
                                     <div className='row'>
                                         <div className='col-md-8'>
-                                            <h3>Customer questions & answers</h3>
+                                            {
+                                                reviewsData?.length !== 0 && <h3>Customer questions & answers</h3>
+                                            }
                                             <br />
 
                                             {
-                                                reviewsData?.length !== 0 && reviewsData?.slice(0)?.reverse()?.map((item, index) => {
+                                                reviewsData?.length !== 0 ? reviewsData?.slice(0)?.reverse()?.map((item, index) => {
                                                     const formattedDate = formatDate(item?.dateCreated);
                                                     return (
                                                         <div className='reviewBox mb-4 border-bottom' key={index}>
@@ -679,48 +681,16 @@ const ProductDetails = () => {
                                                         </div>
 
                                                     )
-                                                })
+                                                }) : (
+                                                    <div>
+                                                        <p>This product has no reviews yet.</p>
+                                                    </div>
+                                                )
                                             }
 
 
 
                                             <br className='res-hide' />
-
-
-                                            {
-                                                context.isLogin === true && (
-                                                    <form className='reviewForm' onSubmit={addReview}>
-
-                                                        <h4>Add a review</h4>
-                                                        <div className='form-group'>
-                                                            <textarea className='form-control shadow' placeholder='Write a Review'
-                                                                name='review' value={reviews.review} onChange={onChangeInput} ></textarea>
-                                                        </div>
-
-                                                        <div className='row'>
-                                                            <div className='col-md-6'>
-                                                                <div className='form-group'>
-                                                                    <Rating name="rating" value={rating} precision={0.5}
-                                                                        onChange={changeRating}
-                                                                    />
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-
-
-                                                        <br />
-                                                        <div className='form-group'>
-                                                            <Button type='submit' className='btn-blue btn-lg btn-big btn-round'>
-                                                                {isLoading === true ? <CircularProgress color="inherit" className="loader" /> : 'Submit Review'}
-
-                                                            </Button>
-                                                        </div>
-
-                                                    </form>
-                                                )
-                                            }
-
                                         </div>
 
 

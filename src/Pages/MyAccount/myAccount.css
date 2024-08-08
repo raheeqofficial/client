@@ -1,3 +1,9 @@
 .myAccountTopBg{
     background: url('../../assets/images/about-header-bg.jpg');
 }
+.myAccount .css-19kzrtu{
+    padding-top: 5px !important;
+}
+.myAccount .myAccBox{
+    padding-top: 0px;
+}

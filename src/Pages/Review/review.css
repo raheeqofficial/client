@@ -1,0 +1,11 @@
+.reviewWrapper{
+    margin: 30px;
+}
+.review-hd{
+    font-size: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+.backBtn{
+    text-align: center;
+}

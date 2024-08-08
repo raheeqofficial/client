@@ -1,13 +1,15 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import { Rating } from "@mui/material";
+import { MyContext } from "../../App";
 // import toast from 'react-hot-toast';
 
 const ReviewForm = ({ productId, staticId, shop }) => {
   const [review, setReview] = useState("");
-  const [rating, setRating] = useState(1);
+  const [rating, setRating] = useState(3);
   const [name, setName] = useState("");
   const [error, setError] = useState("");
+  const context = useContext(MyContext)
   const changeRating = (e) => {
     setRating(e.target.value)
 }
@@ -28,31 +30,28 @@ const ReviewForm = ({ productId, staticId, shop }) => {
           shop: shop,
         }
       );
-      // toast.success('Review submitted successfully!');
+      context.setAlertBox({
+        open: true,
+        error: false,
+        msg: "Review submitted successfully!"
+      })
       setReview("");
       setRating(1);
       setName("");
     } catch (err) {
       setError("Failed to submit review.");
-      // toast.error('Failed to submit review.');
+      context.setAlertBox({
+        open: true,
+        error: true,
+        msg: "Failed to submit review."
+      })
     }
   };
 
   return (
     <form onSubmit={handleSubmit}>
-      <h4>Submit a Review</h4>
-      {/* <div>
-                <label>Rating:</label>
-                <select value={rating} onChange={(e) => setRating(Number(e.target.value))}>
-                    {[1, 2, 3, 4, 5].map((star) => (
-                        <option key={star} value={star}>
-                            {star}
-                        </option>
-                    ))}
-                </select>
-            </div> */}
       <div className="col-md-6">
-        <div className="form-group">
+        <div className="">
           <Rating
             name="rating"
             value={rating}

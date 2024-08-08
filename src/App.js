@@ -20,6 +20,7 @@ import FollowedShops from "./Pages/FollowedShops/FollowedShops";
 import { CircularProgress } from "@mui/material";
 import ReturnOrder from "./Pages/Help center/ReturnOrder";
 import ManageAccount from "./Pages/MyAccount/MyAccount";
+import ReviewPage from "./Pages/Review/ReviewPage";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -57,7 +58,7 @@ const OtpVerification = lazy(() => import('./Pages/VerifyCode/VerifyCode'));
 const MyContext = createContext();
 
 function App() {
-  
+
   const [countryList, setCountryList] = useState([]);
   const [selectedCountry, setselectedCountry] = useState('');
   const [isOpenProductModal, setisOpenProductModal] = useState(false);
@@ -88,7 +89,7 @@ function App() {
   })
 
 
-  const {id} = useParams()
+  const { id } = useParams()
   useEffect(() => {
     getCountry("https://countriesnow.space/api/v0.1/countries/");
 
@@ -120,7 +121,7 @@ function App() {
   }, []);
 
   // useEffect(() => {
-    
+
   //   fetchDataFromApi(`/api/subCat?shop=${id}`).then((res) => {
   //     setSubCat(res.subCatList);
   //     console.log(res)
@@ -177,7 +178,7 @@ function App() {
 
   const addToCart = (data) => {
 
-    if(isLogin===true){
+    if (isLogin === true) {
       setAddingInCart(true);
       postData(`/api/cart/add`, data).then((res) => {
         if (res.status !== false) {
@@ -186,13 +187,13 @@ function App() {
             error: false,
             msg: "Item is added in the cart"
           })
-  
+
           setTimeout(() => {
             setAddingInCart(false);
           }, 1000);
-  
+
           getCartData();
-  
+
         }
         else {
           setAlertBox({
@@ -202,17 +203,17 @@ function App() {
           })
           setAddingInCart(false);
         }
-  
+
       })
     }
-    else{
+    else {
       setAlertBox({
-        open:true,
-        error:true,
-        msg:"Please login first"
+        open: true,
+        error: true,
+        msg: "Please login first"
       })
     }
-   
+
   }
 
   const values = {
@@ -251,18 +252,18 @@ function App() {
   return (
     <HelmetProvider>
       <Helmet>
-    <title>EliphStore - Your Online Shopping Destination</title>
-    <meta
-      name="description"
-      content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!"
-    />
-    <meta
-      name="keywords"
-      content="Eliphstore, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
+        <title>EliphStore - Your Online Shopping Destination</title>
+        <meta
+          name="description"
+          content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!"
+        />
+        <meta
+          name="keywords"
+          content="Eliphstore, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
        designer collections, seamless online shopping experience "
-    />
-    <script type="application/ld+json">
-        {`
+        />
+        <script type="application/ld+json">
+          {`
         {
           "@context": "https://schema.org",
           "@type": "Organization",
@@ -275,154 +276,170 @@ function App() {
           ]
         }
         `}
-      </script>
-  </Helmet>
-    <BrowserRouter>
-      <MyContext.Provider value={values}>
-        <Snackbar open={alertBox.open} autoHideDuration={6000} onClose={handleClose} className="snackbar">
-          <Alert
-            onClose={handleClose}
-            autoHideDuration={6000}
-            severity={alertBox.error === false ? "success" : 'error'}
-            variant="filled"
-            sx={{ width: '100%' }}
-          >
-            {alertBox.msg}
-          </Alert>
-        </Snackbar>
+        </script>
+      </Helmet>
+      <BrowserRouter>
+        <MyContext.Provider value={values}>
+          <Snackbar open={alertBox.open} autoHideDuration={6000} onClose={handleClose} className="snackbar">
+            <Alert
+              onClose={handleClose}
+              autoHideDuration={6000}
+              severity={alertBox.error === false ? "success" : 'error'}
+              variant="filled"
+              sx={{ width: '100%' }}
+            >
+              {alertBox.msg}
+            </Alert>
+          </Snackbar>
 
-        {isHeaderFooterShow && <Header />}
+          {isHeaderFooterShow && <Header />}
 
-        <Routes>
-          <Route path="/" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Home /></Suspense>} />
-          <Route path="/about" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><About /></Suspense>} />
-          <Route path="/recipient" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Recepient /></Suspense>} />
-          <Route path="/contact" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Contact /></Suspense>} />
-          <Route path="/products/category/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Listing /></Suspense>} />
-          <Route path="/products/subCat/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Listing /></Suspense>} />
-          <Route path="/products/flash-sale/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><FlashSale /></Suspense>} />
-          <Route path="/products/popular-products/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><PopularProducts /></Suspense>} />
-          <Route path="/products/fashion/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Fashion /></Suspense>} />
-          <Route path="/products/new/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><NewProducts /></Suspense>} />
-          <Route path="/product/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><ProductDetails /></Suspense>} />
-          <Route path="/products/all" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><DiscountPage /></Suspense>} />
-          <Route path="/product/error" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Error /></Suspense>} />
-          <Route path="/cart" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Cart /></Suspense>} />
-          <Route path="/signIn" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><SignIn /></Suspense>} />
-          
-          <Route path="/signUp" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><SignUp /></Suspense>} />
-          <Route path="/my-list" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Wishlist /></Suspense>} />
-          <Route path="/checkout" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Checkout /></Suspense>} />
-          <Route path="/orders" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Orders /></Suspense>} />
-          <Route path="/order/details/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><OrderDetails /></Suspense>} />
-          <Route path="/*" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><PageNotFound /></Suspense>} />
-          <Route path="/page-not-found" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><PageNotFound /></Suspense>} />
-          <Route path="/account-setting" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><MyAccount /></Suspense>} />
-          <Route path="/account" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><MobileAccount /></Suspense>} />
-          <Route path="/search" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><SearchPage /></Suspense>} />
-          <Route path="/success" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Success /></Suspense>} />
-          <Route path="/become-seller" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><BecomeSeller /></Suspense>} />
-          <Route path="/help-center" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><HelpCenterApp /></Suspense>} />
-          <Route path="/help-center/cancel-order" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><CancelOrder /></Suspense>} />
-          <Route path="/help-center/track-order" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><TrackOrder /></Suspense>} />
-          <Route path="/help-center/return-order" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><ReturnOrder /></Suspense>} />
-          <Route path="/categories" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Categories /></Suspense>} />
-          <Route path="/help-center/shipping-delivery" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><ShippingAndDelivery /></Suspense>} />
-          <Route path="/shops" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><Shops /></Suspense>} />
-          <Route path="/shops/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><ShopDetails /></Suspense>} />
-          <Route path="/verify/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><OtpVerification /></Suspense>} />
-          <Route path="/terms-of-use/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><TermsOfUse /></Suspense>} />
-          <Route path="/privacy-policy/:id" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><PrivacyPolicy /></Suspense>} />
-          <Route path="/my-account/followed-shops" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><FollowedShops /></Suspense>} />
-          <Route path="/user/manage-account" element={<Suspense fallback={<div className="loaderContainer">
-          <CircularProgress color="inherit" />
-        </div>}><ManageAccount /></Suspense>} />
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Home /></Suspense>} />
+            <Route path="/about" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><About /></Suspense>} />
+            <Route path="/recipient" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Recepient /></Suspense>} />
+            <Route path="/contact" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Contact /></Suspense>} />
+            <Route path="/products/category/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Listing /></Suspense>} />
+            <Route path="/products/subCat/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Listing /></Suspense>} />
+            <Route path="/products/flash-sale/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><FlashSale /></Suspense>} />
+            <Route path="/products/popular-products/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><PopularProducts /></Suspense>} />
+            <Route path="/products/fashion/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Fashion /></Suspense>} />
+            <Route path="/products/new/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><NewProducts /></Suspense>} />
+            <Route path="/product/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><ProductDetails /></Suspense>} />
+            <Route path="/products/all" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><DiscountPage /></Suspense>} />
+            <Route path="/product/error" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Error /></Suspense>} />
+            <Route path="/cart" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Cart /></Suspense>} />
+            <Route path="/signIn" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><SignIn /></Suspense>} />
 
-        {isHeaderFooterShow && <Footer />}
-        <BottomHeader />
+            <Route path="/signUp" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><SignUp /></Suspense>} />
+            <Route path="/my-list" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Wishlist /></Suspense>} />
+            <Route path="/checkout" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Checkout /></Suspense>} />
+            <Route path="/orders" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Orders /></Suspense>} />
+            <Route path="/order/details/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><OrderDetails /></Suspense>} />
+            <Route path="/*" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><PageNotFound /></Suspense>} />
+            <Route path="/page-not-found" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><PageNotFound /></Suspense>} />
+            <Route path="/account-setting" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><MyAccount /></Suspense>} />
+            <Route path="/account" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><MobileAccount /></Suspense>} />
+            <Route path="/search" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><SearchPage /></Suspense>} />
+            <Route path="/success" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Success /></Suspense>} />
+            <Route path="/become-seller" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><BecomeSeller /></Suspense>} />
+            <Route path="/help-center" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><HelpCenterApp /></Suspense>} />
+            <Route path="/help-center/cancel-order" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><CancelOrder /></Suspense>} />
+            <Route path="/help-center/track-order" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><TrackOrder /></Suspense>} />
+            <Route path="/help-center/return-order" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><ReturnOrder /></Suspense>} />
+            <Route path="/categories" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Categories /></Suspense>} />
+            <Route path="/help-center/shipping-delivery" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><ShippingAndDelivery /></Suspense>} />
+            <Route path="/shops" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Shops /></Suspense>} />
+            <Route path="/shops/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><ShopDetails /></Suspense>} />
+            <Route path="/verify/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><OtpVerification /></Suspense>} />
+            <Route path="/terms-of-use/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><TermsOfUse /></Suspense>} />
+            <Route path="/privacy-policy/:id" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><PrivacyPolicy /></Suspense>} />
+            <Route path="/my-account/followed-shops" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><FollowedShops /></Suspense>} />
+            {windowWidth >= 768 && (
+              <Route
+                path="/user/manage-account"
+                element={
+                  <Suspense
+                    fallback={
+                      <div className="loaderContainer">
+                        <CircularProgress color="inherit" />
+                      </div>
+                    }
+                  >
+                    <ManageAccount />
+                  </Suspense>
+                }
+              />
+            )}
+            <Route path="/review/:productId" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><ReviewPage /></Suspense>} />
+          </Routes>
 
-        {isOpenProductModal && <ProductModal data={productData} />}
-      </MyContext.Provider>
-    </BrowserRouter>
+          {isHeaderFooterShow && <Footer />}
+          <BottomHeader />
+
+          {isOpenProductModal && <ProductModal data={productData} />}
+        </MyContext.Provider>
+      </BrowserRouter>
     </HelmetProvider>
   );
 }
