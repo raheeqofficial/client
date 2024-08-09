@@ -200,7 +200,6 @@ const ShopDetails = () => {
                   value={value}
                   onChange={handleChange}
                   variant="scrollable"
-                  scrollButtons="auto"
                   className="filterTabs"
                 >
                   {subCat?.map((item, index) => {

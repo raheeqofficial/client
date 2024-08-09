@@ -147,7 +147,12 @@ const Orders = () => {
 
                     <Box sx={{ width: '100%' }} className="myAccBox card border-0">
                         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                            <Tabs
+                                variant="scrollable"
+                                scrollButtons
+                                allowScrollButtonsMobile
+                                value={value} onChange={handleChange}
+                                aria-label="basic tabs example">
                                 <Tab label="All" {...a11yProps(0)} />
                                 <Tab label="Pending" {...a11yProps(1)} />
                                 <Tab label="Confirm" {...a11yProps(2)} />

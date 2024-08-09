@@ -383,6 +383,22 @@ button {
   top: -123px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 6%), 0 1px 2px rgb(0 0 0 / 12%);
 } */
+ .not-ava-msg{
+  max-width: 1280px;
+  height: 50vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+ }
+ .not-ava-msg h6{
+  font-weight: bold;
+  opacity: 0.7;
+ }
+ .not-ava-msg svg{
+  font-size: 25px;
+  opacity: 0.7;
+ }
 .MuiDialog-root {
   z-index: 100000 !important;
 }

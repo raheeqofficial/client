@@ -14,7 +14,6 @@ const ReviewPage = () => {
     return (
         <div className='container'>
             <div className="reviewPage">
-            <p className='text-center mt-2'><Link to={'/user/manage-account'} className='badge badge-primary'>back</Link></p>
             <h2 className='review-hd'>Leave a Review for {product.name}</h2>
             <div className='reviewWrapper'>
             <ReviewForm

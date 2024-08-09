@@ -68,7 +68,7 @@ const EligibleProducts = ({ customerId }) => {
                   </td>
                   <td className="price-col">Rs {product?.price}</td>
                   <td className="remove-col">
-                    <button className="btn btn-blue" onClick={() => handleReviewClick(product)}>
+                    <button className="badge badge-primary" onClick={() => handleReviewClick(product)}>
                         Review
                     </button>
                   </td>

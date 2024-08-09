@@ -5,6 +5,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import img from "../../assets/images/fashion-top-banner.jpg";
 import './Fashion.css'
 import { Helmet } from "react-helmet-async";
+import { BsEmojiExpressionless } from "react-icons/bs";
 
 const Fashion = () => {
   const [productView, setProductView] = useState("four");
@@ -13,6 +14,7 @@ const Fashion = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
+    setisLoading(true)
     fetchDataFromApi(`/api/products?catName=Fashion`)
       .then((res) => {
         setProductData(res);
@@ -29,6 +31,17 @@ const Fashion = () => {
     return (
       <div className="loaderContainer">
         <CircularProgress color="inherit" />
+      </div>
+    );
+  }
+  if (productData?.products?.length === 0) {
+    return (
+      <div className="not-ava-msg">
+        <h6>
+          Sorry, there are no products available in this category at the moment.
+          Please check back later or explore other categories.
+        </h6>
+        <BsEmojiExpressionless/>
       </div>
     );
   }
