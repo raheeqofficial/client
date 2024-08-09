@@ -208,29 +208,29 @@ const ProductDetails = () => {
         const hasWeight = productData?.productWeight?.length > 0;
         const hasColor = productData?.color?.length > 0;
         const user = JSON.parse(localStorage.getItem("user"));
-            const selectedSize = productData?.size?.length !== 0 ? productData.size[activeSize] : null
-            const selectedWeight = productData?.productWeight?.length !== 0 ? productData.productWeight[activeWeight] : null
-            const selectedColor = productData?.color?.length !== 0 ? productData.color[activeColor] : null
-            const selectedRam = productData?.productRam?.length !== 0 ? productData.productRam[activeRam] : null
-            cartFields.productTitle = productData?.name
-            cartFields.shop = productData?.shop
-            cartFields.staticId = productData?.staticId
-            cartFields.productSize = selectedSize
-            cartFields.productWeight = selectedWeight
-            cartFields.productRam = selectedRam
-            cartFields.productColor = selectedColor
-            cartFields.image = productData?.images[0]
-            cartFields.rating = productData?.rating
-            cartFields.price = productData?.price
-            cartFields.quantity = productQuantity
-            cartFields.subTotal = parseInt(productData?.price * productQuantity)
-            cartFields.productId = productData?.id
-            cartFields.userId = user?.userId
+        const selectedSize = productData?.size?.length !== 0 ? productData.size[activeSize] : null
+        const selectedWeight = productData?.productWeight?.length !== 0 ? productData.productWeight[activeWeight] : null
+        const selectedColor = productData?.color?.length !== 0 ? productData.color[activeColor] : null
+        const selectedRam = productData?.productRam?.length !== 0 ? productData.productRam[activeRam] : null
+        cartFields.productTitle = productData?.name
+        cartFields.shop = productData?.shop
+        cartFields.staticId = productData?.staticId
+        cartFields.productSize = selectedSize
+        cartFields.productWeight = selectedWeight
+        cartFields.productRam = selectedRam
+        cartFields.productColor = selectedColor
+        cartFields.image = productData?.images[0]
+        cartFields.rating = productData?.rating
+        cartFields.price = productData?.price
+        cartFields.quantity = productQuantity
+        cartFields.subTotal = parseInt(productData?.price * productQuantity)
+        cartFields.productId = productData?.id
+        cartFields.userId = user?.userId
 
 
-            context.addToCart(cartFields);
+        context.addToCart(cartFields);
         // if (((hasSize && activeSize !== null)) || (hasWeight && activeWeight !== null) || (hasColor && activeColor !== null) || ((hasRam && activeRam !== null) && (hasColor && activeColor !== null))) {
-            
+
         // } else {
         //     setTabError(!hasSize || activeSize === null);
         //     setColorTabError(!hasColor || activeColor === null);
@@ -328,177 +328,177 @@ const ProductDetails = () => {
                 <div className="container">
                     {
                         isLoading ? <div className="loaderContainer">
-                        <CircularProgress color="inherit" />
-                      </div> : 
-                        <div className="row">
-                        <div className="col-md-4 pl-5 part1">
-                            <ProductZoom images={productData?.images} discount={productData?.discount} />
-                        </div>
+                            <CircularProgress color="inherit" />
+                        </div> :
+                            <div className="row">
+                                <div className="col-md-4 pl-5 part1">
+                                    <ProductZoom images={productData?.images} discount={productData?.discount} />
+                                </div>
 
-                        <div className="col-md-7 pl-5 pr-5 part2">
-                            <h2 className="hd text-capitalize">{productData?.name}</h2>
-                            <ul className="list list-inline d-flex align-items-center">
-                                <li className="list-inline-item">
-                                    <div className="d-flex align-items-center">
-                                        <span className="text-light mr-2">Brands : </span>
-                                        <span>{productData?.brand}</span>
+                                <div className="col-md-7 pl-5 pr-5 part2">
+                                    <h2 className="hd text-capitalize">{productData?.name}</h2>
+                                    <ul className="list list-inline d-flex align-items-center">
+                                        <li className="list-inline-item">
+                                            <div className="d-flex align-items-center">
+                                                <span className="text-light mr-2">Brands : </span>
+                                                <span>{productData?.brand}</span>
+                                            </div>
+                                        </li>
+
+                                        <li className="list-inline-item">
+                                            <div className="d-flex align-items-center">
+                                                <Rating name="read-only" value={parseInt(productData?.rating)} precision={0.5} readOnly size="small" />
+
+                                                <span className="text-light cursor ml-2" onClick={gotoReviews}>{reviewsData?.length} Review</span>
+                                            </div>
+                                        </li>
+
+                                    </ul>
+
+
+
+                                    <div className="d-flex info mb-2">
+                                        <span className="oldPrice">Rs: {productData?.oldPrice}</span>
+                                        <span className="netPrice text-danger ml-2">Rs: {productData?.price}</span>
                                     </div>
-                                </li>
 
-                                <li className="list-inline-item">
-                                    <div className="d-flex align-items-center">
-                                        <Rating name="read-only" value={parseInt(productData?.rating)} precision={0.5} readOnly size="small" />
+                                    {
+                                        productData?.countInStock >= 1 ?
+                                            <span className="badge badge-success">IN STOCK</span>
+                                            :
+                                            <span className="badge badge-danger">OUT OF STOCK</span>
+                                    }
 
-                                        <span className="text-light cursor ml-2" onClick={gotoReviews}>{reviewsData?.length} Review</span>
-                                    </div>
-                                </li>
+                                    <p className="mt-2">{productData?.description}
+                                    </p>
+                                    {productData?.detail?.length > 0 && (
+                                        <div>
+                                            <span>Details:</span>
+                                            {productData.detail.slice(0, showAllDetails ? productData.detail.length : detailsToShow).map((item, index) => (
+                                                <ul key={index} className="list-style">
+                                                    <li className='list-inline-item ml-3'>
+                                                        {index + 1}. {item}
+                                                    </li>
+                                                </ul>
+                                            ))}
 
-                            </ul>
-
-
-
-                            <div className="d-flex info mb-2">
-                                <span className="oldPrice">Rs: {productData?.oldPrice}</span>
-                                <span className="netPrice text-danger ml-2">Rs: {productData?.price}</span>
-                            </div>
-
-                            {
-                                productData?.countInStock >= 1 ?
-                                    <span className="badge badge-success">IN STOCK</span>
-                                    :
-                                    <span className="badge badge-danger">OUT OF STOCK</span>
-                            }
-
-                            <p className="mt-2">{productData?.description}
-                            </p>
-                            {productData?.detail?.length > 0 && (
-                                <div>
-                                    <span>Details:</span>
-                                    {productData.detail.slice(0, showAllDetails ? productData.detail.length : detailsToShow).map((item, index) => (
-                                        <ul key={index} className="list-style">
-                                            <li className='list-inline-item ml-3'>
-                                                {index + 1}. {item}
-                                            </li>
-                                        </ul>
-                                    ))}
-
-                                    {productData.detail.length > detailsToShow && (
-                                        <p className="show-more" onClick={() => setShowAllDetails(!showAllDetails)}>
-                                            {showAllDetails ? 'Show less' : 'Show more'}
-                                        </p>
+                                            {productData.detail.length > detailsToShow && (
+                                                <p className="show-more" onClick={() => setShowAllDetails(!showAllDetails)}>
+                                                    {showAllDetails ? 'Show less' : 'Show more'}
+                                                </p>
+                                            )}
+                                        </div>
                                     )}
+
+
+                                    {
+                                        productData?.productRam?.length !== 0 &&
+                                        <div className='productSize d-flex align-items-center'>
+                                            <span>RAM:</span>
+                                            <ul className={`list list-inline mb-0 pl-4 ${ramTabError === true && 'error'}`}>
+                                                {
+                                                    productData?.productRam?.map((item, index) => {
+                                                        return (
+                                                            <li className='list-inline-item'><a className={`tag ${activeRam === index ? 'active' : ''}`} onClick={() => isActiveRam(index)}>{item}</a></li>
+                                                        )
+                                                    })
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    }
+
+
+                                    {
+                                        productData?.size?.length !== 0 &&
+                                        <div className='productSize d-flex align-items-center'>
+                                            <span>Size:</span>
+                                            <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
+                                                {
+                                                    productData?.size?.map((item, index) => {
+                                                        return (
+                                                            <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActiveSize(index)}>{item}</a></li>
+                                                        )
+                                                    })
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    }
+
+
+                                    {
+                                        productData?.productWeight?.length !== 0 &&
+                                        <div className='productSize d-flex align-items-center'>
+                                            <span>Weight:</span>
+                                            <ul className={`list list-inline mb-0 pl-4 ${weightTabError === true && 'error'}`}>
+                                                {
+                                                    productData?.productWeight?.map((item, index) => {
+                                                        return (
+                                                            <li className='list-inline-item'><a className={`tag ${activeWeight === index ? 'active' : ''}`} onClick={() => isActiveWeight(index)}>{item}</a></li>
+                                                        )
+                                                    })
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    }
+                                    {
+                                        productData?.color?.length !== 0 &&
+                                        <div className='productSize d-flex align-items-center'>
+                                            <span>Color:</span>
+                                            <ul className={`list list-inline mb-0 pl-4 ${colorTabError === true && 'error'}`}>
+                                                {
+                                                    productData?.color?.map((item, index) => {
+                                                        return (
+                                                            <li className='list-inline-item'><a className={`tag ${activeColor === index ? 'active' : ''}`} onClick={() => isActiveColor(index)}>{item}</a></li>
+                                                        )
+                                                    })
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    }
+
+
+                                    <div className="d-flex align-items-center mt-3 actions_">
+                                        <QuantityBox quantity={quantity} item={productData} selectedItem={selectedItem} />
+
+
+                                        <div className="d-flex align-items-center btnActions">
+                                            <Button className={`btn-blue btn-lg btn-big btn-round bg-red ${productData?.countInStock === 0 && 'btn-disabled'}`} disabled={productData?.countInStock === 0} onClick={() => addtoCart()}>
+                                                <BsCartFill /> &nbsp;
+                                                {
+                                                    context.addingInCart === true ? "adding..." : " Add to cart"
+                                                }
+
+                                            </Button>
+
+                                            <Tooltip title={`${isAddedToMyList === true ? 'Added to Wishlist' : 'Add to Wishlist'}`} placement="top">
+                                                <Button className={`btn-blue btn-lg btn-big btn-circle ml-4 ${isAddedToMyList === true && 'active'}`} onClick={() => addToMyList(id)}>
+                                                    {
+                                                        isAddedToMyList === true ? <FaHeart className="text-danger" />
+
+                                                            :
+                                                            <FaRegHeart />
+                                                    }
+
+                                                </Button>
+                                            </Tooltip>
+
+                                            <Tooltip title="Add to Compare" placement="top">
+                                                <Button className="btn-blue btn-lg btn-big btn-circle ml-2">
+                                                    <MdOutlineCompareArrows />
+                                                </Button>
+                                            </Tooltip>
+
+                                        </div>
+
+                                    </div>
+
+
                                 </div>
-                            )}
-
-
-                            {
-                                productData?.productRam?.length !== 0 &&
-                                <div className='productSize d-flex align-items-center'>
-                                    <span>RAM:</span>
-                                    <ul className={`list list-inline mb-0 pl-4 ${ramTabError === true && 'error'}`}>
-                                        {
-                                            productData?.productRam?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a className={`tag ${activeRam === index ? 'active' : ''}`} onClick={() => isActiveRam(index)}>{item}</a></li>
-                                                )
-                                            })
-                                        }
-
-                                    </ul>
-                                </div>
-                            }
-
-
-                            {
-                                productData?.size?.length !== 0 &&
-                                <div className='productSize d-flex align-items-center'>
-                                    <span>Size:</span>
-                                    <ul className={`list list-inline mb-0 pl-4 ${tabError === true && 'error'}`}>
-                                        {
-                                            productData?.size?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a className={`tag ${activeSize === index ? 'active' : ''}`} onClick={() => isActiveSize(index)}>{item}</a></li>
-                                                )
-                                            })
-                                        }
-
-                                    </ul>
-                                </div>
-                            }
-
-
-                            {
-                                productData?.productWeight?.length !== 0 &&
-                                <div className='productSize d-flex align-items-center'>
-                                    <span>Weight:</span>
-                                    <ul className={`list list-inline mb-0 pl-4 ${weightTabError === true && 'error'}`}>
-                                        {
-                                            productData?.productWeight?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a className={`tag ${activeWeight === index ? 'active' : ''}`} onClick={() => isActiveWeight(index)}>{item}</a></li>
-                                                )
-                                            })
-                                        }
-
-                                    </ul>
-                                </div>
-                            }
-                            {
-                                productData?.color?.length !== 0 &&
-                                <div className='productSize d-flex align-items-center'>
-                                    <span>Color:</span>
-                                    <ul className={`list list-inline mb-0 pl-4 ${colorTabError === true && 'error'}`}>
-                                        {
-                                            productData?.color?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a className={`tag ${activeColor === index ? 'active' : ''}`} onClick={() => isActiveColor(index)}>{item}</a></li>
-                                                )
-                                            })
-                                        }
-
-                                    </ul>
-                                </div>
-                            }
-
-
-                            <div className="d-flex align-items-center mt-3 actions_">
-                                <QuantityBox quantity={quantity} item={productData} selectedItem={selectedItem} />
-
-
-                                <div className="d-flex align-items-center btnActions">
-                                    <Button className={`btn-blue btn-lg btn-big btn-round bg-red ${productData?.countInStock === 0 && 'btn-disabled'}`} disabled={productData?.countInStock === 0} onClick={() => addtoCart()}>
-                                        <BsCartFill /> &nbsp;
-                                        {
-                                            context.addingInCart === true ? "adding..." : " Add to cart"
-                                        }
-
-                                    </Button>
-
-                                    <Tooltip title={`${isAddedToMyList === true ? 'Added to Wishlist' : 'Add to Wishlist'}`} placement="top">
-                                        <Button className={`btn-blue btn-lg btn-big btn-circle ml-4 ${isAddedToMyList === true && 'active'}`} onClick={() => addToMyList(id)}>
-                                            {
-                                                isAddedToMyList === true ? <FaHeart className="text-danger" />
-
-                                                    :
-                                                    <FaRegHeart />
-                                            }
-
-                                        </Button>
-                                    </Tooltip>
-
-                                    <Tooltip title="Add to Compare" placement="top">
-                                        <Button className="btn-blue btn-lg btn-big btn-circle ml-2">
-                                            <MdOutlineCompareArrows />
-                                        </Button>
-                                    </Tooltip>
-
-                                </div>
-
                             </div>
-
-
-                        </div>
-                    </div>
                     }
 
 
@@ -537,7 +537,7 @@ const ProductDetails = () => {
 
 
                             <br />
-{/* 
+                            {/* 
                             {
                                 activeTabs === 0 &&
                                 <div className='tabContent'>
@@ -552,91 +552,91 @@ const ProductDetails = () => {
 
                                 <div className='tabContent'>
                                     <h2>
-                                    Information
+                                        Information
                                     </h2>
                                     <p className="mt-2">{productData?.description}</p>
                                     {productData?.detail?.length > 0 && (
-                                <div>
-                                    <span className="mb-3">Details:</span>
-                                    {productData.detail.slice(0, showAllDetails ? productData.detail.length : detailsToShow).map((item, index) => (
-                                        <ul key={index} className="list-style">
-                                            <li className='list-inline-item ml-3'>
-                                                {index + 1}. {item}
-                                            </li>
-                                        </ul>
-                                    ))}
-                                </div>
-                                
-                            )}
-                                {
-                                productData?.color?.length !== 0 &&
-                                <div className='productSize'>
-                                    <span>Color:</span>
-                                    <ul className={`list list-inline pl-4`}>
-                                        {
-                                            productData?.color?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a>{item}</a></li>
-                                                )
-                                            })
-                                        }
+                                        <div>
+                                            <span className="mb-3">Details:</span>
+                                            {productData.detail.slice(0, showAllDetails ? productData.detail.length : detailsToShow).map((item, index) => (
+                                                <ul key={index} className="list-style">
+                                                    <li className='list-inline-item ml-3'>
+                                                        {index + 1}. {item}
+                                                    </li>
+                                                </ul>
+                                            ))}
+                                        </div>
 
-                                    </ul>
-                                </div>
-                            }
-                            
-                            {
-                                productData?.productRam?.length !== 0 &&
-                                <div className='productSize d-flex align-items-center'>
-                                    <span>RAM:</span>
-                                    <ul className={`list list-inline mb-0 pl-4 ${ramTabError === true && 'error'}`}>
-                                        {
-                                            productData?.productRam?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a className={`tag ${activeRam === index ? 'active' : ''}`} onClick={() => isActiveRam(index)}>{item}</a></li>
-                                                )
-                                            })
-                                        }
+                                    )}
+                                    {
+                                        productData?.color?.length !== 0 &&
+                                        <div className='productSize'>
+                                            <span>Color:</span>
+                                            <ul className={`list list-inline pl-4`}>
+                                                {
+                                                    productData?.color?.map((item, index) => {
+                                                        return (
+                                                            <li className='list-inline-item'><a>{item}</a></li>
+                                                        )
+                                                    })
+                                                }
 
-                                    </ul>
-                                </div>
-                            }
+                                            </ul>
+                                        </div>
+                                    }
 
+                                    {
+                                        productData?.productRam?.length !== 0 &&
+                                        <div className='productSize d-flex align-items-center'>
+                                            <span>RAM:</span>
+                                            <ul className={`list list-inline mb-0 pl-4 ${ramTabError === true && 'error'}`}>
+                                                {
+                                                    productData?.productRam?.map((item, index) => {
+                                                        return (
+                                                            <li className='list-inline-item'><a className={`tag ${activeRam === index ? 'active' : ''}`} onClick={() => isActiveRam(index)}>{item}</a></li>
+                                                        )
+                                                    })
+                                                }
 
-                            {
-                                productData?.size?.length !== 0 &&
-                                <div className='productSize d-flex align-items-center'>
-                                    <span>Size:</span>
-                                    <ul className={`list list-inline mb-0 pl-4`}>
-                                        {
-                                            productData?.size?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a>{item}</a></li>
-                                                )
-                                            })
-                                        }
-
-                                    </ul>
-                                </div>
-                            }
+                                            </ul>
+                                        </div>
+                                    }
 
 
-                            {
-                                productData?.productWeight?.length !== 0 &&
-                                <div className='productSize d-flex align-items-center'>
-                                    <span>Weight:</span>
-                                    <ul className={`list list-inline mb-0 pl-4`}>
-                                        {
-                                            productData?.productWeight?.map((item, index) => {
-                                                return (
-                                                    <li className='list-inline-item'><a>{item}</a></li>
-                                                )
-                                            })
-                                        }
+                                    {
+                                        productData?.size?.length !== 0 &&
+                                        <div className='productSize d-flex align-items-center'>
+                                            <span>Size:</span>
+                                            <ul className={`list list-inline mb-0 pl-4`}>
+                                                {
+                                                    productData?.size?.map((item, index) => {
+                                                        return (
+                                                            <li className='list-inline-item'><a>{item}</a></li>
+                                                        )
+                                                    })
+                                                }
 
-                                    </ul>
-                                </div>
-                            }
+                                            </ul>
+                                        </div>
+                                    }
+
+
+                                    {
+                                        productData?.productWeight?.length !== 0 &&
+                                        <div className='productSize d-flex align-items-center'>
+                                            <span>Weight:</span>
+                                            <ul className={`list list-inline mb-0 pl-4`}>
+                                                {
+                                                    productData?.productWeight?.map((item, index) => {
+                                                        return (
+                                                            <li className='list-inline-item'><a>{item}</a></li>
+                                                        )
+                                                    })
+                                                }
+
+                                            </ul>
+                                        </div>
+                                    }
                                 </div>
 
                             }

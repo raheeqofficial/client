@@ -37,7 +37,7 @@ const EligibleProducts = ({ customerId }) => {
 
   return (
     <div>
-      <h2>Products Eligible for Review</h2>
+      <h6 className="hd mt-1">Products Eligible for Review</h6>
       {products.length === 0 ? (
         <p>No products available for review.</p>
       ) : (

@@ -1189,8 +1189,10 @@ const ManageAccount = () => {
                     )}
                   </div>
                 </TabPanel>
-                <TabPanel value={orderValue} index={6}>
-                  Item Seven
+                <TabPanel value={value} index={6}>
+                  <div className="followContent">
+                     if you want to become a seller on our website <Link to={'#'}><b>Click Here</b></Link>
+                  </div>
                 </TabPanel>
               </Box>
             </div>

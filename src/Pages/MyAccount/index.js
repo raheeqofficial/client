@@ -98,7 +98,6 @@ const MyAccount = () => {
             })
         });
     }, []);
-
     const changeInput = (e) => {
         setFormFields(() => (
             {
@@ -107,7 +106,6 @@ const MyAccount = () => {
             }
         ))
     }
-
     const changeInput2 = (e) => {
         setFields(() => (
             {
@@ -116,9 +114,6 @@ const MyAccount = () => {
             }
         ))
     }
-
-
-
     let img_arr = [];
     let uniqueArray = [];
     let selectedImages = [];

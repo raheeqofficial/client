@@ -6,49 +6,120 @@ import axios from 'axios';
 import Button from '@mui/material/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
-
+import Typography from '@mui/material/Typography';
+import PropTypes from 'prop-types';
 import moment from 'moment';
+import { Box, Tab, Tabs } from '@mui/material';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
+import emprtCart from "../../assets/images/myList.png";
+import { FaHome } from "react-icons/fa";
+import EligibleProducts from '../EligibleProducts';
 const formatDate = (isoDate) => {
-  return moment(isoDate).format('DD/MM/YYYY hh:mm A');
+    return moment(isoDate).format('DD/MM/YYYY hh:mm A');
 };
+
+function CustomTabPanel(props) {
+    const { children, value, index, ...other } = props;
+
+    return (
+        <div
+            role="tabpanel"
+            hidden={value !== index}
+            id={`simple-tabpanel-${index}`}
+            aria-labelledby={`simple-tab-${index}`}
+            {...other}
+        >
+            {value === index && (
+                <Box sx={{ p: 3 }}>
+                    <Typography>{children}</Typography>
+                </Box>
+            )}
+        </div>
+    );
+}
+
+CustomTabPanel.propTypes = {
+    children: PropTypes.node,
+    index: PropTypes.number.isRequired,
+    value: PropTypes.number.isRequired,
+};
+
+function a11yProps(index) {
+    return {
+        id: `simple-tab-${index}`,
+        'aria-controls': `simple-tabpanel-${index}`,
+    };
+}
+
 
 const Orders = () => {
 
     const [page, setPage] = useState(1);
-    const [isLogin,setIsLogin]  = useState(false);
+    const [isLogin, setIsLogin] = useState(false);
     const [orders, setOrders] = useState([]);
     const [products, setproducts] = useState([]);
     const [error, setError] = useState(null);
     const [isOpenModal, setIsOpenModal] = useState(false);
     const history = useNavigate();
+    const { userId } = JSON.parse(localStorage.getItem("user"));
+    const [pendOrders, setPendOrders] = useState([]);
+    const [confOrders, setConfOrders] = useState([]);
+    const [shipOrders, setShipOrders] = useState([]);
+    const [deliverOrders, setDeliverOrders] = useState([]);
+    const [value, setValue] = useState(0);
+    const handleChange = (event, newValue) => {
+        setValue(newValue);
+    };
+
     useEffect(() => {
         window.scrollTo(0, 0);
         const token = localStorage.getItem("token");
-        if(token!=="" && token!==undefined  && token!==null){
-          setIsLogin(true);
+        if (token !== "" && token !== undefined && token !== null) {
+            setIsLogin(true);
         }
-        else{
-          history("/signIn");
+        else {
+            history("/signIn");
         }
         const user = JSON.parse(localStorage.getItem("user"));
         const fetchProduct = async () => {
             try {
-              const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders?userid=${user?.userId}`);
-              setOrders(res?.data);
+                const res = await axios.get(`${process.env.REACT_APP_API_URL}/api/orders?userid=${user?.userId}`);
+                setOrders(res?.data);
             } catch (err) {
-              if (axios.isAxiosError(err)) {
-                if (err.response && err.response.status === 404) {
-                  history('/product/error');
+                if (axios.isAxiosError(err)) {
+                    if (err.response && err.response.status === 404) {
+                        history('/product/error');
+                    } else {
+                        setError('An unexpected error occurred');
+                    }
                 } else {
-                  setError('An unexpected error occurred');
+                    setError('An unexpected error occurred');
                 }
-              } else {
-                setError('An unexpected error occurred');
-              }
             }
-          };
-      
-          fetchProduct();
+        };
+        fetchProduct();
+
+        fetchDataFromApi(`/api/orders?status=Pending&userid=${user?.userId}`).then(
+            (res) => {
+                setPendOrders(res);
+            }
+        );
+        fetchDataFromApi(`/api/orders?status=Confirm&userid=${user?.userId}`).then(
+            (res) => {
+                setConfOrders(res);
+            }
+        );
+        fetchDataFromApi(`/api/orders?status=Shipped&userid=${user?.userId}`).then(
+            (res) => {
+                setShipOrders(res);
+            }
+        );
+        fetchDataFromApi(
+            `/api/orders?status=Delivered&userid=${user?.userId}`
+        ).then((res) => {
+            setDeliverOrders(res);
+        });
     }, [history]);
     const showProducts = (id) => {
         fetchDataFromApi(`/api/orders/${id}`).then((res) => {
@@ -58,69 +129,366 @@ const Orders = () => {
     }
     return (
         <>
-        <Helmet>
-          <title>Orders - EliphStore</title>
-          <meta
-            name="description"
-            content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!."
-          />
-          <meta
-            name="keywords"
-            content="Orders, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
+            <Helmet>
+                <title>Orders - EliphStore</title>
+                <meta
+                    name="description"
+                    content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!."
+                />
+                <meta
+                    name="keywords"
+                    content="Orders, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
            designer collections, seamless online shopping experience "
-          />
-        </Helmet>
+                />
+            </Helmet>
             <section className="section">
                 <div className='container'>
                     <h2 className='hd'>Orders</h2>
 
-                    <div className='table-responsive orderTable'>
-                        <table className='table table-striped table-bordered'>
-                            <thead className='thead-light'>
-                                <tr>
-                                    <th>Order Id</th>
-                                    <th>Products</th>
-                                    <th>Order Details</th>
-                                    <th>Order Status</th>
-                                    <th>Date</th>
-                                </tr>
-                            </thead>
+                    <Box sx={{ width: '100%' }} className="myAccBox card border-0">
+                        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+                            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
+                                <Tab label="All" {...a11yProps(0)} />
+                                <Tab label="Pending" {...a11yProps(1)} />
+                                <Tab label="Confirm" {...a11yProps(2)} />
+                                <Tab label="Shipped" {...a11yProps(3)} />
+                                <Tab label="Delivered" {...a11yProps(4)} />
+                                <Tab label="To Review" {...a11yProps(5)} />
+                            </Tabs>
+                        </Box>
+                        <CustomTabPanel value={value} index={0}>
+                            <div className='table-responsive orderTable'>
+                                <table className='table table-striped table-bordered'>
+                                    <thead className='thead-light'>
+                                        <tr>
+                                            <th>Order Id</th>
+                                            <th>Products</th>
+                                            <th>Order Details</th>
+                                            <th>Order Status</th>
+                                            <th>Date</th>
+                                        </tr>
+                                    </thead>
 
-                            <tbody>
-                                {
-                                    orders?.length !== 0 && orders?.map((order, index) => {
-                                        const formattedDate = formatDate(order?.date); 
+                                    <tbody>
+                                        {
+                                            orders?.length !== 0 && orders?.map((order, index) => {
+                                                const formattedDate = formatDate(order?.date);
+                                                return (
+                                                    <>
+                                                        <tr key={index}>
+                                                            <td><span className='text-blue fonmt-weight-bold'>{order?.id}</span></td>
+                                                            <td><span className='text-blue fonmt-weight-bold cursor' onClick={() => showProducts(order?._id)}>Click here to view</span>
+                                                            </td>
+                                                            <td><Link to={`/order/details/${order?._id}`}>
+                                                                See details
+                                                            </Link></td>
+                                                            <td
+                                                                className={`${order.status === "Cancelled" || order.status === "Pending" ? "text text-danger" :
+                                                                    order.status === "Confirm" ? "text text-secondary" : order.status === "Shippied" ? "text text-primary" : order.status === "Delivered" ? "text text-success" : "text text-default"}`}
+
+                                                            >{order?.status}</td>
+                                                            <td>{formattedDate}</td>
+                                                        </tr>
+
+                                                    </>
+
+                                                )
+                                            })
+                                        }
+
+                                    </tbody>
+
+
+                                </table>
+                            </div>
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={1}>
+
+                            <table className="table table-wishlist table-mobile">
+                                {pendOrders?.length !== 0 ? (
+                                    pendOrders?.map((item, index) => {
                                         return (
-                                            <>
+                                            <tbody>
                                                 <tr key={index}>
-                                                    <td><span className='text-blue fonmt-weight-bold'>{order?.id}</span></td>
-                                                    <td><span className='text-blue fonmt-weight-bold cursor' onClick={() => showProducts(order?._id)}>Click here to view</span>
+                                                    {item?.products.map((data) => (
+                                                        <>
+                                                            <td className="product-col">
+                                                                <div className="product">
+                                                                    <figure className="product-media">
+                                                                        <Link
+                                                                            to={`/product/${data?.staticId}`}
+                                                                        >
+                                                                            <LazyLoadImage
+                                                                                src={data.image}
+                                                                                alt={data.productTitle}
+                                                                                effect="blur"
+                                                                                placeholderSrc="path_to_placeholder_image"
+                                                                            />
+                                                                        </Link>
+                                                                    </figure>
+
+                                                                    <h3 className="product-title">
+                                                                        <Link
+                                                                            to={`/product/${data?.staticId}`}
+                                                                        >
+                                                                            {data?.productTitle?.substr(
+                                                                                0,
+                                                                                30
+                                                                            ) + "..."}
+                                                                        </Link>
+                                                                    </h3>
+                                                                </div>
+                                                            </td>
+                                                            <td className="price-col">
+                                                                Rs {data?.price}
+                                                            </td>
+                                                            <td className="stock-col">
+                                                                Qty <b>:</b> {data?.quantity}
+                                                            </td>
+                                                        </>
+                                                    ))}
+                                                    <td className="remove-col">
+                                                        <button className="badge badge-danger">
+                                                            {item.status}
+                                                        </button>
                                                     </td>
-                                                    <td><Link to={`/order/details/${order?._id}`}>
-                                                        See details
-                                                    </Link></td>
-                                                    <td
-                                                     className={`${order.status === "Cancelled" ||  order.status === "Pending" ? "text text-danger":
-                                                         order.status === "Confirm" ? "text text-secondary" : order.status === "Shippied" ? "text text-primary" : order.status === "Delivered" ? "text text-success" : "text text-default"}`}
-                                                    
-                                                    >{order?.status}</td>
-                                                    <td>{formattedDate}</td>
                                                 </tr>
-
-                                            </>
-
-                                        )
+                                            </tbody>
+                                        );
                                     })
-                                }
+                                ) : (
+                                    <div className="empty d-flex align-items-center justify-content-center flex-column">
+                                        <img src={emprtCart} width="150" />
+                                        <h3 className="emptyPageMsg">
+                                            No any Pending order yet
+                                        </h3>
+                                        <br />
+                                        <Link to="/">
+                                            {" "}
+                                            <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                                                <FaHome /> &nbsp; Continue Shopping
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                )}
+                            </table>
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={2}>
 
-                            </tbody>
+                            <table className="table table-wishlist table-mobile">
+                                {confOrders?.length !== 0 ? (
+                                    confOrders?.map((item, index) => {
+                                        return (
+                                            <tbody>
+                                                <tr key={index}>
+                                                    {item?.products.map((data) => (
+                                                        <>
+                                                            <td className="product-col">
+                                                                <div className="product">
+                                                                    <figure className="product-media">
+                                                                        <Link
+                                                                            to={`/product/${data?.staticId}`}
+                                                                        >
+                                                                            <LazyLoadImage
+                                                                                src={data.image}
+                                                                                alt={data.productTitle}
+                                                                                effect="blur"
+                                                                                placeholderSrc="path_to_placeholder_image"
+                                                                            />
+                                                                        </Link>
+                                                                    </figure>
 
+                                                                    <h3 className="product-title">
+                                                                        <Link
+                                                                            to={`/product/${data?.staticId}`}
+                                                                        >
+                                                                            {data?.productTitle?.substr(
+                                                                                0,
+                                                                                30
+                                                                            ) + "..."}
+                                                                        </Link>
+                                                                    </h3>
+                                                                </div>
+                                                            </td>
+                                                            <td className="price-col">
+                                                                Rs {data?.price}
+                                                            </td>
+                                                            <td className="stock-col">
+                                                                Qty <b>:</b> {data?.quantity}
+                                                            </td>
+                                                        </>
+                                                    ))}
+                                                    <td className="remove-col">
+                                                        <button className="badge badge-secondary">
+                                                            {item.status}
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        );
+                                    })
+                                ) : (
+                                    <div className="empty d-flex align-items-center justify-content-center flex-column">
+                                        <img src={emprtCart} width="150" />
+                                        <h3 className="emptyPageMsg">
+                                            No any Confirm order yet
+                                        </h3>
+                                        <br />
+                                        <Link to="/">
+                                            <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                                                <FaHome /> &nbsp; Continue Shopping
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                )}
+                            </table>
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={3}>
 
-                        </table>
-                    </div>
+                            <table className="table table-wishlist table-mobile">
+                                {shipOrders?.length !== 0 ? (
+                                    shipOrders?.map((item, index) => {
+                                        return (
+                                            <tbody>
+                                                <tr key={index}>
+                                                    {item?.products.map((data) => (
+                                                        <>
+                                                            <td className="product-col">
+                                                                <div className="product">
+                                                                    <figure className="product-media">
+                                                                        <Link
+                                                                            to={`/product/${data?.staticId}`}
+                                                                        >
+                                                                            <LazyLoadImage
+                                                                                src={data.image}
+                                                                                alt={data.productTitle}
+                                                                                effect="blur"
+                                                                                placeholderSrc="path_to_placeholder_image"
+                                                                            />
+                                                                        </Link>
+                                                                    </figure>
 
+                                                                    <h3 className="product-title">
+                                                                        <Link
+                                                                            to={`/product/${data?.staticId}`}
+                                                                        >
+                                                                            {data?.productTitle?.substr(
+                                                                                0,
+                                                                                30
+                                                                            ) + "..."}
+                                                                        </Link>
+                                                                    </h3>
+                                                                </div>
+                                                            </td>
+                                                            <td className="price-col">
+                                                                Rs {data?.price}
+                                                            </td>
+                                                            <td className="stock-col">
+                                                                Qty <b>:</b> {data?.quantity}
+                                                            </td>
+                                                        </>
+                                                    ))}
+                                                    <td className="remove-col">
+                                                        <button className="badge badge-primary">
+                                                            {item.status}
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        );
+                                    })
+                                ) : (
+                                    <div className="empty d-flex align-items-center justify-content-center flex-column">
+                                        <img src={emprtCart} width="150" />
+                                        <h3 className="emptyPageMsg">
+                                            No any Shipped order yet
+                                        </h3>
+                                        <br />
+                                        <Link to="/">
+                                            <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                                                <FaHome /> &nbsp; Continue Shopping
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                )}
+                            </table>
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={4}>
 
-                   
+                            <table className="table table-wishlist table-mobile">
+                                {deliverOrders?.length !== 0 ? (
+                                    deliverOrders?.map((item, index) => {
+                                        return (
+                                            <tbody>
+                                                <tr key={index}>
+                                                    {item?.products.map((data) => (
+                                                        <>
+                                                            <td className="product-col">
+                                                                <div className="product">
+                                                                    <figure className="product-media">
+                                                                        <Link
+                                                                            to={`/product/${data?.staticId}`}
+                                                                        >
+                                                                            <LazyLoadImage
+                                                                                src={data.image}
+                                                                                alt={data.productTitle}
+                                                                                effect="blur"
+                                                                                placeholderSrc="path_to_placeholder_image"
+                                                                            />
+                                                                        </Link>
+                                                                    </figure>
+
+                                                                    <h3 className="product-title">
+                                                                        <Link
+                                                                            to={`/product/${data?.staticId}`}
+                                                                        >
+                                                                            {data?.productTitle?.substr(
+                                                                                0,
+                                                                                30
+                                                                            ) + "..."}
+                                                                        </Link>
+                                                                    </h3>
+                                                                </div>
+                                                            </td>
+                                                            <td className="price-col">
+                                                                Rs {data?.price}
+                                                            </td>
+                                                            <td className="stock-col">
+                                                                Qty <b>:</b> {data?.quantity}
+                                                            </td>
+                                                        </>
+                                                    ))}
+                                                    <td className="remove-col">
+                                                        <button className="badge badge-success">
+                                                            {item.status}
+                                                        </button>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        );
+                                    })
+                                ) : (
+                                    <div className="empty d-flex align-items-center justify-content-center flex-column">
+                                        <img src={emprtCart} width="150" />
+                                        <h3 className="emptyPageMsg">
+                                            No any Delivered order yet
+                                        </h3>
+                                        <br />
+                                        <Link to="/">
+                                            <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                                                <FaHome /> &nbsp; Continue Shopping
+                                            </Button>
+                                        </Link>
+                                    </div>
+                                )}
+                            </table>
+                        </CustomTabPanel>
+                        <CustomTabPanel value={value} index={5}>
+
+                            <EligibleProducts customerId={userId} />
+                        </CustomTabPanel>
+
+                    </Box>
 
                 </div>
             </section>
@@ -149,14 +517,14 @@ const Orders = () => {
                                     return (
                                         <tr>
                                             <td>{item?.productId}</td>
-                                            <td  style={{whiteSpace:"inherit"}}>
+                                            <td style={{ whiteSpace: "inherit" }}>
                                                 {/* <Link to={`/product/${item?.productId}`}> */}
                                                 <span>
-                                                {item?.productTitle?.substr(0,30)+'...'}
+                                                    {item?.productTitle?.substr(0, 30) + '...'}
                                                 </span>
                                                 {/* </Link> */}
-                                                
-                                            </td>                                         
+
+                                            </td>
                                             <td>
                                                 <div className='img'>
                                                     <img src={item?.image} />
