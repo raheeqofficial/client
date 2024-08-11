@@ -21,6 +21,7 @@ import { CircularProgress } from "@mui/material";
 import ReturnOrder from "./Pages/Help center/ReturnOrder";
 import ManageAccount from "./Pages/MyAccount/MyAccount";
 import ReviewPage from "./Pages/Review/ReviewPage";
+import Faq from "./Pages/Faq/Faq";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -252,14 +253,14 @@ function App() {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>EliphStore - Your Online Shopping Destination</title>
+        <title>Hibuyshopping - Your Online Shopping Destination</title>
         <meta
           name="description"
-          content="Experience the future of online shopping at Eliphstore, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Eliphstore!"
+          content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!"
         />
         <meta
           name="keywords"
-          content="Eliphstore, Eliphstore.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Eliphstore.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
+          content="Hibuyshopping, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
        designer collections, seamless online shopping experience "
         />
         <script type="application/ld+json">
@@ -267,12 +268,12 @@ function App() {
         {
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "EliphStore",
-          "url": "https://www.eliphstore.com",
-          "logo": "https://www.eliphstore.com/logo.png",
+          "name": "Hibuyshopping",
+          "url": "https://www.Hibuyshopping.com",
+          "logo": "https://www.Hibuyshopping.com/logo.png",
           "sameAs": [
-            "https://www.facebook.com/eliphstore",
-            "https://www.instagram.com/eliphstore"
+            "https://www.facebook.com/Hibuyshopping",
+            "https://www.instagram.com/Hibuyshopping"
           ]
         }
         `}
@@ -413,6 +414,9 @@ function App() {
             <Route path="/my-account/followed-shops" element={<Suspense fallback={<div className="loaderContainer">
               <CircularProgress color="inherit" />
             </div>}><FollowedShops /></Suspense>} />
+            <Route path="/faq" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Faq /></Suspense>} />
             {windowWidth >= 768 && (
               <Route
                 path="/user/manage-account"

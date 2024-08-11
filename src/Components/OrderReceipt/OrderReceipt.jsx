@@ -5,11 +5,11 @@ const OrderReceipt = () => {
 
   return (
     <>
-      <div class="invoice-card">
+      <div className="invoice-card">
         <div className="imgBox">
           <img src="https://via.placeholder.com/100" alt="Logo" />
         </div>
-        <div class="invoice-title">
+        <div className="invoice-title">
           <div id="main-title">
             <h4>INVOICE</h4>
             <span>#89 292</span>
@@ -18,8 +18,8 @@ const OrderReceipt = () => {
           <span id="date">16/02/2019</span>
         </div>
 
-        <div class="invoice-details">
-          <table class="invoice-table">
+        <div className="invoice-details">
+          <table className="invoice-table">
             <thead>
               <tr>
                 <td>PRODUCT</td>
@@ -29,7 +29,7 @@ const OrderReceipt = () => {
             </thead>
 
             <tbody>
-              <tr class="row-data">
+              <tr className="row-data">
                 <td>
                   Espresso <span>(large)</span>
                 </td>
@@ -37,7 +37,7 @@ const OrderReceipt = () => {
                 <td>2.90</td>
               </tr>
 
-              <tr class="row-data">
+              <tr className="row-data">
                 <td>
                   Cappucino <span>(small)</span>
                 </td>
@@ -45,7 +45,7 @@ const OrderReceipt = () => {
                 <td>7.00</td>
               </tr>
 
-              <tr class="calc-row">
+              <tr className="calc-row">
                 <td colspan="2">Total</td>
                 <td>9.00</td>
               </tr>
@@ -53,11 +53,11 @@ const OrderReceipt = () => {
           </table>
         </div>
 
-        <div class="invoice-footer">
-          <button class="btn btn-secondary" id="later">
+        <div className="invoice-footer">
+          <button className="btn btn-secondary" id="later">
             LATER
           </button>
-          <button class="btn btn-primary">PAY NOW</button>
+          <button className="btn btn-primary">PAY NOW</button>
         </div>
       </div>
     </>

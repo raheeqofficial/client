@@ -1,172 +1,172 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://www.eliphstore.com/</loc>
+    <loc>https://www.hibuyshopping.com/</loc>
     <priority>1.0</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/about</loc>
+    <loc>https://www.hibuyshopping.com/about</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/recipient</loc>
+    <loc>https://www.hibuyshopping.com/recipient</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/contact</loc>
+    <loc>https://www.hibuyshopping.com/contact</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/products/category/:id</loc>
+    <loc>https://www.hibuyshopping.com/products/category/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/products/subCat/:id</loc>
+    <loc>https://www.hibuyshopping.com/products/subCat/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/products/flash-sale/:id</loc>
+    <loc>https://www.hibuyshopping.com/products/flash-sale/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/products/popular-products/:id</loc>
+    <loc>https://www.hibuyshopping.com/products/popular-products/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/products/fashion/:id</loc>
+    <loc>https://www.hibuyshopping.com/products/fashion/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/products/new/:id</loc>
+    <loc>https://www.hibuyshopping.com/products/new/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/product/:id</loc>
+    <loc>https://www.hibuyshopping.com/product/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/products/all</loc>
+    <loc>https://www.hibuyshopping.com/products/all</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/product/error</loc>
+    <loc>https://www.hibuyshopping.com/product/error</loc>
     <priority>0.5</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/cart</loc>
+    <loc>https://www.hibuyshopping.com/cart</loc>
     <priority>0.8</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/signIn</loc>
+    <loc>https://www.hibuyshopping.com/signIn</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/signUp</loc>
+    <loc>https://www.hibuyshopping.com/signUp</loc>
     <priority>0.8</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/my-list</loc>
+    <loc>https://www.hibuyshopping.com/my-list</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/checkout</loc>
+    <loc>https://www.hibuyshopping.com/checkout</loc>
     <priority>0.8</priority>
     <changefreq>daily</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/orders</loc>
+    <loc>https://www.hibuyshopping.com/orders</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/order/details/:id</loc>
+    <loc>https://www.hibuyshopping.com/order/details/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/page-not-found</loc>
+    <loc>https://www.hibuyshopping.com/page-not-found</loc>
     <priority>0.3</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/account-setting</loc>
+    <loc>https://www.hibuyshopping.com/account-setting</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/account</loc>
+    <loc>https://www.hibuyshopping.com/account</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/search</loc>
+    <loc>https://www.hibuyshopping.com/search</loc>
     <priority>0.8</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/success</loc>
+    <loc>https://www.hibuyshopping.com/success</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/become-seller</loc>
+    <loc>https://www.hibuyshopping.com/become-seller</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/help-center</loc>
+    <loc>https://www.hibuyshopping.com/help-center</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/help-center/cancel-order</loc>
+    <loc>https://www.hibuyshopping.com/help-center/cancel-order</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/help-center/track-order</loc>
+    <loc>https://www.hibuyshopping.com/help-center/track-order</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/categories</loc>
+    <loc>https://www.hibuyshopping.com/categories</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/help-center/shipping-delivery</loc>
+    <loc>https://www.hibuyshopping.com/help-center/shipping-delivery</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/shops</loc>
+    <loc>https://www.hibuyshopping.com/shops</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/shops/:id</loc>
+    <loc>https://www.hibuyshopping.com/shops/:id</loc>
     <priority>0.7</priority>
     <changefreq>weekly</changefreq>
   </url>
   <url>
-    <loc>https://www.eliphstore.com/verify/:id</loc>
+    <loc>https://www.hibuyshopping.com/verify/:id</loc>
     <priority>0.7</priority>
     <changefreq>monthly</changefreq>
   </url>

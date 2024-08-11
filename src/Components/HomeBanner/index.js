@@ -48,7 +48,7 @@ const HomeBanner = (props) => {
     return (
         <div className="page-wrapper homeBanner">
             <main className="main">
-                <div class="mt-2"></div>
+                <div className="mt-2"></div>
                 <div className="container-fluid">
                     <div className="row"> 
                     <div className="col-md-3 homeBannerLeftWrapper">

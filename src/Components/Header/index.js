@@ -85,7 +85,7 @@ const Header = () => {
                 <ul>
                     <li><a target='_blank' href='https://sellercenter.eliphstore.com'>Become a seller</a></li>
                     <li><Link>Become a investor</Link></li>
-                    <li><Link>Faq</Link></li>
+                    <li><Link to={'/faq'}>Faq</Link></li>
                 </ul>
             </div>
             <div ref={headerRef}>

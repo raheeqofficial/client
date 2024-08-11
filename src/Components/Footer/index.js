@@ -101,7 +101,7 @@ const Footer = () => {
                                 <div className="col-sm-12 col-lg-6">
                                     <div className="widget widget-about">
                                         <img src={logo} className="footer-logo" alt="Footer Logo" width="105" height="25" />
-                                        <p>Eliphstore is a cutting-edge multi-vendor e-commerce platform offering a seamless shopping experience. With a diverse range of products from various sellers, Eliphstore ensures quality, convenience, and competitive pricing, making it the go-to destination for all your shopping needs. </p>
+                                        <p>Hibuyshopping is a cutting-edge multi-vendor e-commerce platform offering a seamless shopping experience. With a diverse range of products from various sellers, Hibuyshopping ensures quality, convenience, and competitive pricing, making it the go-to destination for all your shopping needs. </p>
 
                                         <div className="widget-about-info">
                                             <div className="row">
@@ -176,11 +176,11 @@ const Footer = () => {
 
                             <div className="social-icons social-icons-color">
                                 <span className="social-label">Social Media</span>
-                                <a href="https://www.facebook.com/people/EliphStore/61562441211111/?mibextid=ZbWKwL" target="_blank" className="social-icon social-facebook" title="Facebook" ><i className="icon-facebook-f"></i></a>
+                                <a href="https://www.facebook.com/people/Hibuyshopping/61562441211111/?mibextid=ZbWKwL" target="_blank" className="social-icon social-facebook" title="Facebook" ><i className="icon-facebook-f"></i></a>
                                 <a to={'#'} className="social-icon social-twitter" title="Twitter" target="_blank"><i className="icon-twitter"></i></a>
                                 <a href="https://www.instagram.com/eliphstoreofficial/?utm_source=qr&igsh=MXdkZ3c4YjQ0OWRzag%3D%3D" className="social-icon social-instagram" title="Instagram" target="_blank"><i className="icon-instagram"></i></a>
                                 {/* <a to={'#'} className="social-icon social-youtube" title="Youtube" target="_blank"><i className="icon-youtube"></i></a> */}
-                                <a href="https://www.tiktok.com/@eliphstore?_t=8oNFf7Td5Qz&_r=1" className="social-icon social-pinterest" title="Tiktok" target="_blank"><IoLogoTiktok /></a>
+                                <a href="https://www.tiktok.com/@Hibuyshopping?_t=8oNFf7Td5Qz&_r=1" className="social-icon social-pinterest" title="Tiktok" target="_blank"><IoLogoTiktok /></a>
                             </div>
                         </div>
                     </div>
@@ -222,7 +222,7 @@ const Footer = () => {
                             </div>
                             <div className="footer-nav-item d-flex">
                                     <FaRegEnvelope/>
-                                <a href="mailto: support@eliphstore.com" className="footer-nav-link">support@eliphstore.com</a>
+                                <a href="mailto: support@Hibuyshopping.com" className="footer-nav-link">support@Hibuyshopping.com</a>
                             </div>
                         </div>
                     </div>

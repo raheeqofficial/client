@@ -19,7 +19,7 @@ const TopBanners = () => {
   return (
     <div className="page-wrapper topBanner">
       <main className="main">
-        <div class="bg-transparent mb-2">
+        <div className="bg-transparent mb-2">
             <img src={topImg} alt="banner bottom img"/>
         </div>
         <div className="container">

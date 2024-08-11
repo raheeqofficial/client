@@ -41,7 +41,7 @@ const links = [
 ];
 
 // Create a stream to write to
-const stream = new SitemapStream({ hostname: 'https://eliphstore.com' });
+const stream = new SitemapStream({ hostname: 'https://hibuyshopping.com' });
 
 // Generate the sitemap
 streamToPromise(Readable.from(links).pipe(stream)).then((data) =>

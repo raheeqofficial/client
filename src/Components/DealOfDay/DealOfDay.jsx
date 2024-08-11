@@ -208,22 +208,22 @@ const DealOfDay = () => {
                     })}
                 </Swiper>
               </div> */}
-              <div class="col-lg-9">
-                <div class="deal">
-                  <div class="deal-content">
+              <div className="col-lg-9">
+                <div className="deal">
+                  <div className="deal-content">
                     <h4 className="blue-color">Limited Quantities</h4>
                     <h2>Deal of the Day</h2>
 
-                    <h3 class="product-title">
+                    <h3 className="product-title">
                       <Link to="#">Rocking Chair</Link>
                     </h3>
 
-                    <div class="product-price">
-                      <span class="new-price">Rs 1949.00</span>
-                      <span class="old-price">Was Rs 5940.00</span>
+                    <div className="product-price">
+                      <span className="new-price">Rs 1949.00</span>
+                      <span className="old-price">Was Rs 5940.00</span>
                     </div>
 
-                    <div class="deal-countdown" data-until="+10h">
+                    <div className="deal-countdown" data-until="+10h">
                       <div className="countdown">
                         <div className="countdown-content">
                           <p className="display-number">{days}</p>
@@ -248,12 +248,12 @@ const DealOfDay = () => {
                       </div>
                     </div>
 
-                    <Link to="#" class="btn-blue btn-big">
+                    <Link to="#" className="btn-blue btn-big">
                       <span>Shop Now</span>
-                      <i class="icon-long-arrow-right"></i>
+                      <i className="icon-long-arrow-right"></i>
                     </Link>
                   </div>
-                  <div class="deal-image">
+                  <div className="deal-image">
                     <a href="product.html">
                       <img src={deal} alt="image" />
                     </a>

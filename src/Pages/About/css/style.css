@@ -5405,7 +5405,7 @@ a {
   content: "";
 }
 .card-title {
-  font-size: 1.8rem;
+  font-size: 1rem;
   line-height: 1.2;
   margin-bottom: 0;
 }
@@ -5417,6 +5417,7 @@ a {
   border: none;
   background-color: transparent;
   outline: none !important;
+  font-size: 16px;
 }
 .card-title a i {
   min-width: 17px;
@@ -5485,8 +5486,8 @@ a {
   letter-spacing: -0.01em;
 }
 .card.card-sm .card-title a {
-  padding-top: 2.1rem;
-  padding-bottom: 2.1rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
 }
 .card.card-sm .card-title a:before {
   right: 2rem;

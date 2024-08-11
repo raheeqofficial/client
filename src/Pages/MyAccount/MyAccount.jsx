@@ -668,8 +668,8 @@ const ManageAccount = () => {
                                       </span>
                                     </td>
                                   ) : (
-                                    <td class="stock-col">
-                                      <span class="in-stock">In stock</span>
+                                    <td className="stock-col">
+                                      <span className="in-stock">In stock</span>
                                     </td>
                                   )}
                                   <td className="remove-col">
@@ -794,7 +794,7 @@ const ManageAccount = () => {
                           >
                             <MdClose />
                           </Button>
-                          <h4 class="mb-1 font-weight-bold pr-5 mb-4">
+                          <h4 className="mb-1 font-weight-bold pr-5 mb-4">
                             Products
                           </h4>
 
