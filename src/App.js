@@ -22,6 +22,9 @@ import ReturnOrder from "./Pages/Help center/ReturnOrder";
 import ManageAccount from "./Pages/MyAccount/MyAccount";
 import ReviewPage from "./Pages/Review/ReviewPage";
 import Faq from "./Pages/Faq/Faq";
+import ForgotPassword from "./Pages/forgetPassword/ForgetPassword";
+import ResetPassword from "./Pages/ResetPassword/ResetPassword";
+import VerifyEmail from "./Pages/forgetPassword/VerifyEmail";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -417,6 +420,15 @@ function App() {
             <Route path="/faq" element={<Suspense fallback={<div className="loaderContainer">
               <CircularProgress color="inherit" />
             </div>}><Faq /></Suspense>} />
+            <Route path="/user/forget-password" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><ForgotPassword /></Suspense>} />
+            <Route path="/user/verify-email" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><VerifyEmail /></Suspense>} />
+            <Route path="/user/reset-password" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><ResetPassword /></Suspense>} />
             {windowWidth >= 768 && (
               <Route
                 path="/user/manage-account"

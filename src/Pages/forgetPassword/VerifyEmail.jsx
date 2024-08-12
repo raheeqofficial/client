@@ -1,23 +1,20 @@
+
+
 import React, { useContext, useEffect, useState } from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
-import './OtpVerification.css'
 import { MyContext } from '../../App';
 import { Helmet } from 'react-helmet-async';
 
-const VerifyPage = () => {
+const VerifyEmail = () => {
   const [code, setCode] = useState('');
   const [message, setMessage] = useState('');
   const history = useNavigate();
   const context = useContext(MyContext)
-  
-  useEffect(() => {
-      context.setisHeaderFooterShow(true)
-  },[])
 
   const handleVerify = async () => {
     
-    const email = localStorage.getItem('userEmail');
+    const email = localStorage.getItem('verify-email');
     if (!email) {
       setMessage('Email not found');
       return;
@@ -31,8 +28,7 @@ const VerifyPage = () => {
           error: false,
           msg: "User verified successfully!"
       });
-        // Redirect to another page or perform other actions
-        history('/signIn');
+        history(`/user/reset-password?email=${email}`);
       } else if (response.data.success === false)  {
         setMessage(response.data.message);
       }
@@ -60,7 +56,7 @@ const VerifyPage = () => {
       <div className="verify-container">
             <div className="verify-box">
                 <h1>Verify it's You</h1>
-                <p className="mb-4">Enter the verification code sent to your email</p>
+                <p className="mb-1">Enter the verification code sent to your email</p>
                 <input
                     type="text"
                     value={code}
@@ -68,7 +64,7 @@ const VerifyPage = () => {
                     placeholder="Enter verification code"
                     className="verify-input"
                 />
-                <button onClick={handleVerify} className="verify-button">Verify</button>
+                <button onClick={handleVerify} className="btn btn-blue w-100">Verify</button>
                 {message && <p className="verify-message">{message}</p>}
             </div>
         </div>
@@ -76,4 +72,5 @@ const VerifyPage = () => {
   );
 };
 
-export default VerifyPage;
+export default VerifyEmail;
+

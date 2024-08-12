@@ -57,7 +57,6 @@ const SignIn = () => {
 
                 if (res.error !== true) {
                     localStorage.setItem("token", res.token);
-
                     const user = {
                         name: res.user?.name,
                         email: res.user?.email,
@@ -135,7 +134,7 @@ const SignIn = () => {
 
 
 
-                        <a className="border-effect cursor txt">Forgot Password?</a>
+                        <Link to={'/user/forget-password'} className="border-effect cursor txt">Forgot Password?</Link>
 
                         <div className="d-flex align-items-center mt-3 mb-3 ">
                             <Button type="submit" className="btn-blue col btn-lg btn-big">
