@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import HelpNav from "./HelpNav";
-import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
+import { Accordion, AccordionDetails, AccordionSummary, Button } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { data } from '../../data/shippingAndDelivery'
 import { IoArrowBackSharp } from "react-icons/io5";
@@ -27,7 +27,7 @@ const ShippingAndDelivery = () => {
       <HelpNav />
       <section className="helpCenter">
       <div className="helpCenterWrapper">
-        <Link to={'/help-center'} onClick={() => context.setisHeaderFooterShow(true)}><IoArrowBackSharp/></Link>
+        <Link to={'/help-center'} className="mt-1 mb-1" onClick={() => context.setisHeaderFooterShow(true)}><Button className="btn btn-blue  mt-1 mb-1"><IoArrowBackSharp/></Button></Link>
         <div className="helpQuestions">
           <h1>Customers Questions</h1>
           <div className="accordianBox mb-3 mt-3">

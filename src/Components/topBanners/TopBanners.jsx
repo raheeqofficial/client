@@ -26,7 +26,7 @@ const TopBanners = () => {
           <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
               <div className="banner banner-overlay text-white">
-                <Link to={``}>
+                <Link to={`/products/listing?men`}>
                   <img src={banner1} alt="Banner" />
                 </Link>
               </div>
@@ -34,7 +34,7 @@ const TopBanners = () => {
 
             <div className="col-md-6 col-lg-4">
               <div className="banner banner-overlay color-grey">
-                <Link to={``}>
+                <Link to={`/products/listing?women`}>
                   <img src={banner2} alt="Banner" />
                 </Link>
               </div>
@@ -42,7 +42,7 @@ const TopBanners = () => {
 
             <div className="col-md-6 col-lg-4">
               <div className="banner banner-overlay text-white">
-                <Link to={``}>
+                <Link to={`/products/listing?kids`}>
                   <img src={banner3} alt="Banner" />
                 </Link>
               </div>

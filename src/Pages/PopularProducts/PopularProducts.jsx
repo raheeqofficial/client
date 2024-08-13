@@ -6,6 +6,8 @@ import img from "../../assets/images/Popular_products-toBanner-3-1726x381-eliphs
 import './PopularProducts.css'
 import { Helmet } from "react-helmet-async";
 import { BsEmojiExpressionless } from "react-icons/bs";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const PopularProducts = () => {
   const [productView, setProductView] = useState("four");
@@ -41,6 +43,7 @@ const PopularProducts = () => {
           Please check back later or explore other categories.
         </h6>
         <BsEmojiExpressionless/>
+        <Button className="btn btn-blue btn-lg mt-2"><Link to={'/'}>Back</Link></Button>
       </div>
     );
   }

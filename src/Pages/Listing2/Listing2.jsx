@@ -1,26 +1,15 @@
-import Sidebar from "../../Components/Sidebar";
-import Button from '@mui/material/Button';
-import { IoIosMenu } from "react-icons/io";
-import { CgMenuGridR } from "react-icons/cg";
-import { TfiLayoutGrid4Alt } from "react-icons/tfi";
-import { FaAngleDown } from "react-icons/fa6";
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
+
 import { useContext, useEffect, useState } from "react";
 import ProductItem from "../../Components/ProductItem";
-import Pagination from '@mui/material/Pagination';
-
 import { Link, useParams } from "react-router-dom";
 import { fetchDataFromApi } from "../../utils/api";
 import CircularProgress from '@mui/material/CircularProgress';
-import { FaFilter } from "react-icons/fa";
-
 import { MyContext } from "../../App";
 import axios from "axios";
 import { BsEmojiExpressionless } from "react-icons/bs";
+import { Button } from "@mui/material";
 
-const Listing = () => {
-
+const Listing2 = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [productView, setProductView] = useState('four');
     const [productData, setProductData] = useState([]);
@@ -48,11 +37,14 @@ const Listing = () => {
         let url = window.location.href;
         let apiEndPoint = "";
 
-        if (url.includes('subCat')) {
-            apiEndPoint = `/api/products?subCat=${id}`
+        if (url.includes('men')) {
+            apiEndPoint = `/api/products?productFor=men`
         }
-        if (url.includes('category')) {
-            apiEndPoint = `/api/products?category=${id}`
+        if (url.includes('women')) {
+            apiEndPoint = `/api/products?productFor=women`
+        }
+        if (url.includes('kids')) {
+            apiEndPoint = `/api/products?productFor=kids`
         }
 
         setisLoading(true);
@@ -138,7 +130,7 @@ const Listing = () => {
 
                         <div className="content_right">
                             <div className="showBy mt-0 mb-3 d-flex align-items-center ">
-                                <p>Showing result for</p>
+                                {/* <p>Showing result for </p> */}
                             </div>
 
                             <div className="productListing-data">
@@ -194,4 +186,4 @@ const Listing = () => {
     )
 }
 
-export default Listing;
+export default Listing2;

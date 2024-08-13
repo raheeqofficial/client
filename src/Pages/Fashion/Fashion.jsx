@@ -6,6 +6,8 @@ import img from "../../assets/images/fashion-top-banner.jpg";
 import './Fashion.css'
 import { Helmet } from "react-helmet-async";
 import { BsEmojiExpressionless } from "react-icons/bs";
+import { Button } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const Fashion = () => {
   const [productView, setProductView] = useState("four");
@@ -42,6 +44,7 @@ const Fashion = () => {
           Please check back later or explore other categories.
         </h6>
         <BsEmojiExpressionless/>
+        <Button className="btn btn-blue btn-lg mt-2"><Link to={'/'}>Back</Link></Button>
       </div>
     );
   }

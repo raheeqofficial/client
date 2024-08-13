@@ -10,7 +10,7 @@ import { useContext, useEffect, useState } from "react";
 import ProductItem from "../../Components/ProductItem";
 import Pagination from '@mui/material/Pagination';
 
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { fetchDataFromApi } from "../../utils/api";
 import CircularProgress from '@mui/material/CircularProgress';
 import { FaFilter } from "react-icons/fa";
@@ -18,6 +18,7 @@ import { FaFilter } from "react-icons/fa";
 import { MyContext } from "../../App";
 import axios from "axios";
 import { Helmet } from "react-helmet-async";
+import { BsEmojiExpressionless } from "react-icons/bs";
 
 const DiscountPage = () => {
 
@@ -46,9 +47,6 @@ const DiscountPage = () => {
         window.scrollTo(0, 0);
         let maxDiscount = 50;
         fetchDataFromApi(`/api/products?discount=${maxDiscount}`).then((res) => {
-            // const products = res?.products
-            // const filteredProducts = products.filter(product => product.discount >= minDiscount && product.discount <= maxDiscount);
-            // setTFDiscount(filteredProducts)
             setProductData(res)
             setisLoading(false);
         }).catch((error) => {
@@ -63,6 +61,18 @@ const DiscountPage = () => {
           <CircularProgress color="inherit" />
         </div>;
     }
+    if (productData?.products?.length === 0) {
+        return (
+          <div className="not-ava-msg">
+            <h6>
+              Sorry, there are no products available in this category at the moment.
+              Please check back later or explore other categories.
+            </h6>
+            <BsEmojiExpressionless/>
+            <Button className="btn btn-blue btn-lg mt-2"><Link to={'/'}>Back</Link></Button>
+          </div>
+        );
+      }
     return (
         <>
         <Helmet>

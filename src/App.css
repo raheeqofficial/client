@@ -273,11 +273,11 @@ button {
 }
 
 .bg-red {
-  background: #ed174a !important;
+  background: #075eb4 !important;
 }
 
 .text-red {
-  color: #ed174a !important;
+  color: #075eb4 !important;
 }
 .text-blue {
   color: #075eb4 !important;
@@ -398,6 +398,9 @@ button {
  .not-ava-msg svg{
   font-size: 25px;
   opacity: 0.7;
+ }
+ .not-ava-msg a{
+  color: #fff;
  }
 .MuiDialog-root {
   z-index: 100000 !important;
@@ -1013,7 +1016,7 @@ nav .navPart2 ul li:hover .submenu {
   transition: all 0.2s ease-in-out;
 }
 .productItem .info h4:hover {
-  color: #ed174a !important;
+  color: #075eb4 !important;
 }
 .productItem a:hover {
   text-decoration: none;
@@ -1084,8 +1087,8 @@ nav .navPart2 ul li:hover .submenu {
 }
 
 .productItem .actions button:hover {
-  background: #ed174a !important;
-  border: 1px solid #ed174a !important;
+  background: #075eb4 !important;
+  border: 1px solid #075eb4 !important;
 }
 .productItem .actions button:hover svg {
   color: #fff !important;
@@ -1093,8 +1096,8 @@ nav .navPart2 ul li:hover .submenu {
 }
 
 .productItem .actions button.active {
-  background: #ed174a !important;
-  border: 1px solid #ed174a !important;
+  background: #075eb4 !important;
+  border: 1px solid #075eb4 !important;
 }
 .productItem .actions button.active svg {
   color: #fff !important;
@@ -1422,8 +1425,8 @@ ul.list-style{
   pointer-events: none;
 }
 .productModal .actions button.active svg{
-  background: #ed174a !important;
-  border: 1px solid #ed174a !important;
+  background: #075eb4 !important;
+  border: 1px solid #075eb4 !important;
 }
 
 .productModal .MuiPaper-elevation {
@@ -1816,7 +1819,7 @@ ul.list-style{
 }
 
 .productDetails .btn-circle svg.text-danger {
-  color: #ed174a !important;
+  color: #075eb4 !important;
   opacity: 1 !important;
 }
 
@@ -1959,7 +1962,7 @@ a:hover {
   font-weight: bold;
 }
 .cartItemimgWrapper .info h6:hover {
-  color: #ed174a !important;
+  color: #075eb4 !important;
 }
 .remove {
   cursor: pointer;
@@ -1968,7 +1971,7 @@ a:hover {
   font-size: 30px;
 }
 .remove:hover svg {
-  color: #ed174a !important;
+  color: #075eb4 !important;
 }
 
 .cartPage .quantityDrop button {
@@ -2312,7 +2315,7 @@ button.loginUser {
 }
 .helpMsg {
   margin-top: 5px;
-  background-color: #ed174a;
+  background-color: #075eb4;
   padding: 20px;
 }
 .helpMsg h1 {

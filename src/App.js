@@ -25,6 +25,7 @@ import Faq from "./Pages/Faq/Faq";
 import ForgotPassword from "./Pages/forgetPassword/ForgetPassword";
 import ResetPassword from "./Pages/ResetPassword/ResetPassword";
 import VerifyEmail from "./Pages/forgetPassword/VerifyEmail";
+import Listing2 from "./Pages/Listing2/Listing2";
 
 // Lazy imports
 const Home = lazy(() => import('./Pages/Home/index'));
@@ -429,6 +430,9 @@ function App() {
             <Route path="/user/reset-password" element={<Suspense fallback={<div className="loaderContainer">
               <CircularProgress color="inherit" />
             </div>}><ResetPassword /></Suspense>} />
+            <Route path="/products/listing" element={<Suspense fallback={<div className="loaderContainer">
+              <CircularProgress color="inherit" />
+            </div>}><Listing2 /></Suspense>} />
             {windowWidth >= 768 && (
               <Route
                 path="/user/manage-account"
