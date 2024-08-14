@@ -20,11 +20,7 @@ import FiftyPerSaleCard from "../../Components/fiftyPerSaleCard/FiftyPerSaleCard
 import { Helmet } from "react-helmet-async";
 import TopBanners from "../../Components/topBanners/TopBanners";
 
-
-
 const Home = () => {
-
-
     const [featuredProducts, setFeaturedProducts] = useState([]);
     const [productsData, setProductsData] = useState([]);
     const [selectedCat, setselectedCat] = useState();
@@ -122,37 +118,36 @@ const Home = () => {
     }, [selectedCat]);
     if (isLoading) {
         return <div className="loaderContainer">
-          <CircularProgress color="inherit" />
+            <CircularProgress color="inherit" />
         </div>;
     }
     return (
         <div className="homeBox">
-        <Helmet>
-          <title>Hibuyshopping multi-vendor online shop</title>
-          <meta
-            name="description"
-            content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-          />
-          <meta
-            name="keywords"
-            content="Hibuyshopping multi-vendor online shop, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-           designer collections, seamless online shopping experience "
-          />
-          <meta itemprop="priceCurrency" content="PKR"/>
-        </Helmet>
+            <Helmet>
+                <title>Welcome to Hibuyshopping - Pakistan's Premier Multi-Vendor E-Commerce Store</title>
+                <meta name="title" content="Welcome to Hibuyshopping - Pakistan's Premier Multi-Vendor E-Commerce Store" />
+                <meta name="description" content="Explore Hibuyshopping, your ultimate multi-vendor e-commerce destination in Pakistan. Discover a wide range of products from top brands, exclusive deals, and unbeatable discounts across fashion, electronics, home goods, and more. Shop now and experience the best in online shopping!" />
+                <meta name="keywords" content="multi-vendor e-commerce store, online shopping Pakistan, buy electronics online, fashion shopping Pakistan, Pakistani online marketplace, online clothing store Pakistan, best online shopping sites, discount codes Pakistan, buy mobile phones Pakistan, online groceries Pakistan, electronics sale Pakistan, fashion trends Pakistan, mobile accessories Pakistan, online home appliances, buy laptops online Pakistan, online beauty products, Pakistani online clothing, latest gadgets Pakistan, online furniture store Pakistan, online shopping for men, online shopping for women, Pakistani fashion brands, health and wellness products, online kids clothing, best deals on electronics, Pakistani online retailers, buy jewelry online Pakistan" />
+                <meta name="author" content="Hibuyshopping Team" />
+                <meta property="og:title" content="Hibuyshopping - Pakistan's Premier Multi-Vendor E-Commerce Store" />
+                <meta property="og:description" content="Discover Hibuyshopping, Pakistan's top multi-vendor e-commerce platform. Shop a diverse range of products from fashion to electronics, enjoy exclusive deals, and find the best discounts. Join our community and start shopping now!" />
+                <meta property="og:image" content="https://hibuyshopping.com/" />
+                <meta property="og:url" content="https://hibuyshopping.com/" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Hibuyshopping - Pakistan's Premier Multi-Vendor E-Commerce Store" />
+                <meta name="twitter:description" content="Explore Hibuyshopping for the best in online shopping. From top brands and exclusive deals to a wide range of products, experience Pakistan's leading multi-vendor e-commerce platform today." />
+                <meta name="twitter:image" content="https://hibuyshopping.com/" />
+
+                <meta itemprop="priceCurrency" content="PKR" />
+            </Helmet>
             {
                 homeSlides?.length !== 0 && <HomeBanner data={homeSlides} />
             }
+            <TopBanners />
 
-
-            {/* {
-                context.categoryData?.length !== 0 && <HomeCat catData={context.categoryData} />
-            } */}
-            <TopBanners/>
-
-            <SaleCards/>
-            <FiftyPerSaleCard/>
-            <DealOfDay/>
+            <SaleCards />
+            <FiftyPerSaleCard />
+            <DealOfDay />
 
             <section className="homeProducts">
                 <div className="container">
@@ -172,92 +167,92 @@ const Home = () => {
                         <div className="col-md-12 productRow">
 
                             <div className="featuredProducts">
-                            <div className="d-flex align-items-center mt-4">
-                                <div className="info">
-                                    <h3 className="mb-0 hd">featured products</h3>
-                                    <p className="text-light text-sml mb-0">Do not miss the current offers until the end of March.</p>
+                                <div className="d-flex align-items-center mt-4">
+                                    <div className="info">
+                                        <h3 className="mb-0 hd">featured products</h3>
+                                        <p className="text-light text-sml mb-0">Do not miss the current offers until the end of March.</p>
+                                    </div>
+
+
                                 </div>
 
-
-                            </div>
-
-                            <div className="product_row productRow2 w-100 mt-4">
-                                {
-                                    featuredProducts?.length !== 0 && featuredProducts?.slice(0)?.reverse()?.map((item, index) => {
-                                        return (
-                                            <ProductItem key={index} item={item} />
-                                        )
-                                    })
-                                }
+                                <div className="product_row productRow2 w-100 mt-4">
+                                    {
+                                        featuredProducts?.length !== 0 && featuredProducts?.slice(0)?.reverse()?.map((item, index) => {
+                                            return (
+                                                <ProductItem key={index} item={item} />
+                                            )
+                                        })
+                                    }
 
 
-                            </div>
+                                </div>
                             </div>
 
 
 
                             <div className="newProducts">
-                            <div className="d-flex align-items-center mt-3">
-                                <div className="info w-75">
-                                    <h3 className="mb-0 hd">All PRODUCTS</h3>
-                                    <p className="text-light text-sml mb-0">All products with updated stocks.</p>
+                                <div className="d-flex align-items-center mt-3">
+                                    <div className="info w-75">
+                                        <h3 className="mb-0 hd">All PRODUCTS</h3>
+                                        <p className="text-light text-sml mb-0">All products with updated stocks.</p>
+                                    </div>
+
                                 </div>
 
-                            </div>
-
-                            <div className="product_row productRow2 w-100 mt-4">
-                                {
-                                    productsData?.products?.length !== 0 && productsData?.products?.map((item, index) => {
-                                        return (
-                                            <ProductItem key={index} item={item} />
-                                        )
-                                    })
-                                }
-                            </div>
+                                <div className="product_row productRow2 w-100 mt-4">
+                                    {
+                                        productsData?.products?.length !== 0 && productsData?.products?.map((item, index) => {
+                                            return (
+                                                <ProductItem key={index} item={item} />
+                                            )
+                                        })
+                                    }
+                                </div>
                             </div>
                             <div className="popularProducts">
-                            <div className="catTabs mt-4">
-                                <div className="tabsHd">
-                                    <h3 className="mb-0">#Trending Products</h3>
-                                    <p className="mb-0">Do not miss the current offers until the end of March.</p>
+                                <div className="catTabs mt-4">
+                                    <div className="tabsHd">
+                                        <h3 className="mb-0">#Trending Products</h3>
+                                        <p className="mb-0">Do not miss the current offers until the end of March.</p>
+                                    </div>
+
+                                    <div className="catTabsName">
+                                        <Box sx={{ maxWidth: { xs: 350, sm: 680 }, bgcolor: 'background.paper' }}>
+                                            <Tabs
+                                                value={value}
+                                                onChange={handleChange}
+                                                variant="scrollable"
+                                                scrollButtons="auto"
+                                                className="filterTabs"
+                                            >
+                                                {
+                                                    context.categoryData?.map((item, index) => {
+                                                        const decodedCat = decodeURIComponent(item?.name)
+                                                        const cleanedCatName = cleanCategoryName(item?.name);
+
+                                                        return (
+                                                            <Tab key={index} className="item" label={decodedCat}
+                                                                onClick={() => selectCat(decodedCat)} />
+                                                        )
+                                                    })
+                                                }
+                                            </Tabs>
+                                        </Box>
+                                    </div>
+
                                 </div>
 
-                                <div className="catTabsName">
-                                <Box sx={{ maxWidth: { xs: 350, sm: 680 }, bgcolor: 'background.paper' }}>
-                                    <Tabs
-                                        value={value}
-                                        onChange={handleChange}
-                                        variant="scrollable"
-                                        scrollButtons="auto"
-                                        className="filterTabs"
-                                    >
-                                        {
-                                            context.categoryData?.map((item, index) => {
-                                                const decodedCat = decodeURIComponent(item?.name)
-                                                const cleanedCatName = cleanCategoryName(item?.name);
 
-                                                return (
-                                                    <Tab key={index} className="item" label={decodedCat}
-                                                        onClick={() => selectCat(decodedCat)} />
-                                                )
-                                            })
-                                        }
-                                    </Tabs>
-                                </Box>
+                                <div className="product_row productRow2 w-100 mt-4 mb-3">
+                                    {
+                                        filterData?.length !== 0 ? filterData?.slice(0)?.reverse()?.map((item, index) => {
+                                            return (
+                                                <ProductItem key={index} item={item} />
+                                            )
+                                        }) : <div><p>No Products for display</p></div>
+                                    }
                                 </div>
-
-                            </div>
-
-
-                            <div className="product_row productRow2 w-100 mt-4 mb-3">
-                                {
-                                    filterData?.length !== 0 ? filterData?.slice(0)?.reverse()?.map((item, index) => {
-                                        return (
-                                            <ProductItem key={index} item={item} />
-                                        )
-                                    }) : <div><p>No Products for display</p></div>
-                                }
-                            </div>
                             </div>
 
 
@@ -274,17 +269,17 @@ const Home = () => {
                     <div className="seoItem">
                         <h2>Hibuyshopping.com: Your One-Stop Multivendor Online Store</h2>
                         <p>We are a comprehensive multivendor online store catering to all your shopping needs. Our platform brings together a diverse range of products from various vendors, offering an extensive selection of clothing, footwear, fashion and kitchen accessories, and more. Whether you’re searching for the latest fashion trends, home essentials, or unique gifts, our extensive catalog ensures you find everything in one convenient place. Enjoy a seamless shopping experience with top-notch customer service and a variety of choices that suit every style and budget. Shop with us and discover
-                        the convenience of a multivendor marketplace where quality and variety meet.</p>
+                            the convenience of a multivendor marketplace where quality and variety meet.</p>
                     </div>
                     <div className="seoItem">
                         <h2>Discover the Latest Trends at Hibuyshopping.com</h2>
-                        <p>In Pakistan, your ultimate destination for online shopping is Hibuyshopping. Browse and purchase the newest fashion trends from renowned brands in the country. We offer something for every family member—kids, men, and women. Explore the freshest seasonal collections to fulfill all your fashion desires. Whether preparing for the chilly winter or the scorching summer, you can find the latest offerings from genuine Pakistani brands. At Hibuyshopping, we meet your needs year-round. Shop for shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, 
-                        and chic accessories like jewelry, watches, scarves, hijabs, perfumes, and much more.</p>
+                        <p>In Pakistan, your ultimate destination for online shopping is Hibuyshopping. Browse and purchase the newest fashion trends from renowned brands in the country. We offer something for every family member—kids, men, and women. Explore the freshest seasonal collections to fulfill all your fashion desires. Whether preparing for the chilly winter or the scorching summer, you can find the latest offerings from genuine Pakistani brands. At Hibuyshopping, we meet your needs year-round. Shop for shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes,
+                            and chic accessories like jewelry, watches, scarves, hijabs, perfumes, and much more.</p>
                     </div>
                     <div className="seoItem">
                         <h2>Shop the Hottest New Arrivals at Hibuyshopping.com</h2>
                         <p>Experience the smart choice with Hibuyshopping, where timeless style meets modern trends. Explore our curated collection of high-quality fashion wear, footwear, kitchen accessories, and more. Whether you're looking for elegant dresses, stylish shoes,
-                        trendy handbags, or chic jewelry, we have something for everyone.</p>
+                            trendy handbags, or chic jewelry, we have something for everyone.</p>
                         <p>Ranked among Pakistan’s top 10 online branded shopping sites, Hibuyshopping is your go-to destination for staying ahead in fashion. Shop from the comfort of your home and keep your wardrobe updated with the latest styles at competitive prices. Our platform offers 24/7 service and fast delivery, ensuring that shopping is always a pleasure and fashion remains a statement for everyone.</p>
                         <p>No need to wait for the right moment or market hours. Browse, select, and buy anytime, from anywhere, with ease and affordability. Welcome to effortless shopping with Hibuyshopping!</p>
                     </div>

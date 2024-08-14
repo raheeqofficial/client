@@ -312,17 +312,18 @@ const ProductDetails = () => {
         <>
 
             <Helmet>
-                <title>{productData?.name ? `${productData.name} - Hibuyshopping` : 'Hibuyshopping'}</title>
-
-                <meta
-                    name="description"
-                    content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-                />
-                <meta
-                    name="keywords"
-                    content="Product details, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-                    designer collections, seamless online shopping experience "
-                />
+                <title>{`${productData.name} - Hibuyshopping | ${productData.name} - Explore Features and Reviews`}</title>
+                <meta name="description" content={`View detailed information about ${productData.name} on Hibuyshopping. Discover features, specifications, customer reviews, and pricing. Learn more about this product to make an informed purchase decision on Pakistan's leading e-commerce platform.`} />
+                <meta name="keywords" content="product details, Hibuyshopping, Product Name, product features, specifications, customer reviews, product pricing, multi-vendor store, e-commerce product, Pakistani e-commerce" />
+                <meta name="author" content="Hibuyshopping Team" />
+                <meta property="og:title" content="Product Details - Hibuyshopping | Shop Name - Product Name - Explore Features and Reviews" />
+                <meta property="og:description" content="Explore detailed information about Product Name on Hibuyshopping. Check out features, specifications, customer reviews, and pricing to make an informed decision. Find everything you need about this product on Pakistan's top e-commerce platform." />
+                <meta property="og:image" content="URL_TO_YOUR_PRODUCT_DETAILS_PAGE_IMAGE" />
+                <meta property="og:url" content="URL_TO_YOUR_PRODUCT_DETAILS_PAGE" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Product Details - Hibuyshopping | Shop Name - Product Name - Explore Features and Reviews" />
+                <meta name="twitter:description" content="Get detailed information about Product Name on Hibuyshopping. Discover its features, specs, reviews, and pricing to help you decide. Learn more about this product on Pakistan's leading e-commerce site." />
+                <meta name="twitter:image" content="URL_TO_YOUR_PRODUCT_DETAILS_PAGE_IMAGE" />
             </Helmet>
             <section className="productDetails section">
                 <div className="container">

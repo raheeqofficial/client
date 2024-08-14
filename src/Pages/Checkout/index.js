@@ -288,16 +288,20 @@ const Checkout = () => {
     return (
         <>
             <Helmet>
-                <title>Checkout - Hibuyshopping</title>
-                <meta
-                    name="description"
-                    content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-                />
-                <meta
-                    name="keywords"
-                    content="Checkout, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-           designer collections, seamless online shopping experience "
-                />
+                <title>Checkout - Hibuyshopping | Secure and Easy Checkout for Your Online Orders</title>
+                <meta name="title" content="Checkout - Hibuyshopping | Secure and Easy Checkout for Your Online Orders" />
+                <meta name="description" content="Complete your purchase at Hibuyshopping with our secure and easy checkout process. Review your order, enter shipping details, apply discount codes, and choose your payment method for a smooth transaction experience. Shop confidently with Pakistan's top e-commerce platform." />
+                <meta name="keywords" content="checkout, Hibuyshopping, secure checkout, online orders, payment options, shipping details, discount codes, e-commerce checkout, multi-vendor store, review order, seamless transaction" />
+                <meta name="author" content="Hibuyshopping Team" />
+                <meta property="og:title" content="Checkout - Hibuyshopping | Secure and Easy Checkout for Your Online Orders" />
+                <meta property="og:description" content="Experience a secure and easy checkout process at Hibuyshopping. Review your order, enter shipping information, apply discount codes, and choose your payment method with confidence. Enjoy a smooth transaction experience with Pakistan's leading multi-vendor e-commerce platform." />
+                <meta property="og:image" content="https://hibuyshopping.com/checkout" />
+                <meta property="og:url" content="https://hibuyshopping.com/checkout" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Checkout - Hibuyshopping | Secure and Easy Checkout for Your Online Orders" />
+                <meta name="twitter:description" content="Complete your order with ease at Hibuyshopping. Our secure checkout process lets you review your purchase, enter shipping details, apply discounts, and select your payment method seamlessly. Shop with confidence!" />
+                <meta name="twitter:image" content="https://hibuyshopping.com/checkout" />
+                <meta itemprop="priceCurrency" content="PKR" />
             </Helmet>
             <section className='section'>
                 <div className='container'>

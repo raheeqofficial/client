@@ -4,7 +4,7 @@ import { MyContext } from "../../App";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { Button } from "@mui/material";
-import '../VerifyCode/OtpVerification.css'
+import "../VerifyCode/OtpVerification.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
@@ -36,46 +36,75 @@ const ForgotPassword = () => {
   return (
     <>
       <Helmet>
-        <title>Forgot Password - Hibuyshopping</title>
+        <title>Forgot Password - Hibuyshopping | Reset Your Account Password</title>
 
         <meta
+          name="title"
+          content="Forgot Password - Hibuyshopping | Reset Your Account Password"
+        />
+        <meta
           name="description"
-          content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
+          content="Recover access to your Hibuyshopping account with our Forgot Password page. Enter your email to receive instructions for resetting your password and regain access to your account securely."
         />
         <meta
           name="keywords"
-          content="Forgot Password, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
+          content="forgot password, Hibuyshopping, password reset, account recovery, e-commerce, multi-vendor store, secure login, account access, password recovery, reset password instructions"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Forgot Password - Hibuyshopping | Reset Your Account Password"
+        />
+        <meta
+          property="og:description"
+          content="Use Hibuyshopping's Forgot Password page to securely reset your account password. Enter your email to get instructions on how to regain access to your account and continue shopping seamlessly."
+        />
+        <meta
+          property="og:image"
+          content="https://hibuyshopping.com/user/forget-password"
+        />
+        <meta property="og:url" content="https://hibuyshopping.com/user/forget-password" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Forgot Password - Hibuyshopping | Reset Your Account Password"
+        />
+        <meta
+          name="twitter:description"
+          content="Recover your Hibuyshopping account by resetting your password. Enter your email to receive detailed instructions and regain access securely."
+        />
+        <meta
+          name="twitter:image"
+          content="https://hibuyshopping.com/user/forget-password"
         />
       </Helmet>
       <div className="verify-container">
         <div className="verify-box">
-        <h1 className="">Forgot Password</h1>
-        <p>Please enter the account email that you want to reset the password.</p>
-        <form onSubmit={handleSubmit}>
-          <div>
-            <label
-              htmlFor="email"
-              className="block text-sm font-medium text-gray-700"
-            >
-              Email
-            </label>
-            <input
-              type="email"
-              id="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-              className="verify-input"
-            />
-          </div>
-          <Button
-            type="submit"
-            className="btn btn-blue w-100"
-          >
-            Send Code
-          </Button>
-        </form>
+          <h1 className="">Forgot Password</h1>
+          <p>
+            Please enter the account email that you want to reset the password.
+          </p>
+          <form onSubmit={handleSubmit}>
+            <div>
+              <label
+                htmlFor="email"
+                className="block text-sm font-medium text-gray-700"
+              >
+                Email
+              </label>
+              <input
+                type="email"
+                id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                required
+                className="verify-input"
+              />
+            </div>
+            <Button type="submit" className="btn btn-blue w-100">
+              Send Code
+            </Button>
+          </form>
         </div>
       </div>
     </>

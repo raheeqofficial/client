@@ -18,82 +18,124 @@ import team3 from "../../assets/images/team/member-3.jpg";
 import user1 from "../../assets/images/testimonials/user-1.jpg";
 import user2 from "../../assets/images/testimonials/user-2.jpg";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const About = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return (
-    <div className="page-wrapper">
-      <main className="main">
-        <div className="container">
-          <div className="page-header page-header-big text-center">
-            <h1 className="page-title text-white">
-              About us<span className="text-white">Who we are</span>
-            </h1>
-          </div>
-        </div>
-        <div className="page-content pb-0">
+    <>
+      <Helmet>
+        <title>
+          About Us - Hibuyshopping | Leading Multi-Vendor E-Commerce Store in
+          Pakistan
+        </title>
+        <meta
+          name="title"
+          content="About Us - Hibuyshopping | Leading Multi-Vendor E-Commerce Store in Pakistan"
+        />
+        <meta
+          name="description"
+          content="Learn more about Hibuyshopping, Pakistan's leading multi-vendor e-commerce store. Discover our mission, vision, and the dedicated team behind our platform. We are committed to providing the best online shopping experience in Pakistan."
+        />
+        <meta
+          name="keywords"
+          content="about us, Hibuyshopping, multi-vendor e-commerce store, online shopping Pakistan, e-commerce platform, our mission, our vision, online marketplace, Pakistani online store, team behind Hibuyshopping"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="About Us - Hibuyshopping | Leading Multi-Vendor E-Commerce Store in Pakistan"
+        />
+        <meta
+          property="og:description"
+          content="Discover Hibuyshopping's mission, vision, and the team behind Pakistan's premier multi-vendor e-commerce platform. Learn about our commitment to providing exceptional online shopping experiences."
+        />
+        <meta property="og:image" content="https://hibuyshopping.com/about" />
+        <meta property="og:url" content="https://hibuyshopping.com/about" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="About Us - Hibuyshopping | Leading Multi-Vendor E-Commerce Store in Pakistan"
+        />
+        <meta
+          name="twitter:description"
+          content="Learn about Hibuyshopping's mission and vision, and meet the team dedicated to offering the best online shopping experience in Pakistan. Explore our story and values."
+        />
+        <meta name="twitter:image" content="https://hibuyshopping.com/about" />
+        <meta itemprop="priceCurrency" content="PKR" />
+      </Helmet>
+      <div className="page-wrapper">
+        <main className="main">
           <div className="container">
-            <div className="row">
-              <div className="col-lg-6 mb-3 mb-lg-0">
-                <h2 className="title">Our Vision</h2>
-                <p>
-                  Our vision is to become the leading multi-vendor e-commerce
-                  platform, offering a diverse range of quality products at
-                  competitive prices while providing an exceptional shopping
-                  experience.{" "}
-                </p>
-              </div>
-
-              <div className="col-lg-6">
-                <h2 className="title">Our Mission</h2>
-                <p>
-                  Our mission is to empower sellers to reach a global audience
-                  and provide customers with a seamless shopping experience,
-                  featuring a wide selection of products, secure payment
-                  methods, and reliable customer service.
-                </p>
-              </div>
+            <div className="page-header page-header-big text-center">
+              <h1 className="page-title text-white">
+                About us<span className="text-white">Who we are</span>
+              </h1>
             </div>
-
-            <div className="mb-5"></div>
           </div>
-
-          <div className="bg-light-2 pt-6 pb-5 mb-4">
+          <div className="page-content pb-0">
             <div className="container">
               <div className="row">
-                <div className="col-lg-5 mb-3 mb-lg-0">
-                  <h2 className="title">Who We Are</h2>
-                  <p className="mb-2">
-                    Welcome to HiBuyShopping, your ultimate destination for a
-                    diverse and exciting online shopping experience. At
-                    HiBuyShopping, we are more than just an e-commerce platform;
-                    we are a community dedicated to bringing you the best
-                    products from a variety of vendors all in one place.
+                <div className="col-lg-6 mb-3 mb-lg-0">
+                  <h2 className="title">Our Vision</h2>
+                  <p>
+                    Our vision is to become the leading multi-vendor e-commerce
+                    platform, offering a diverse range of quality products at
+                    competitive prices while providing an exceptional shopping
+                    experience.{" "}
                   </p>
-
-                  <Link
-                    to={''}
-                    className="btn btn-sm btn-minwidth btn-outline-primary-2"
-                  >
-                    <span>VIEW OUR NEWS</span>
-                    <i className="icon-long-arrow-right"></i>
-                  </Link>
                 </div>
 
-                <div className="col-lg-6 offset-lg-1">
-                  <div className="about-images">
-                    <img src={about1} alt="" className="about-img-front" />
-                    <img src={about2} alt="" className="about-img-back" />
+                <div className="col-lg-6">
+                  <h2 className="title">Our Mission</h2>
+                  <p>
+                    Our mission is to empower sellers to reach a global audience
+                    and provide customers with a seamless shopping experience,
+                    featuring a wide selection of products, secure payment
+                    methods, and reliable customer service.
+                  </p>
+                </div>
+              </div>
+
+              <div className="mb-5"></div>
+            </div>
+
+            <div className="bg-light-2 pt-6 pb-5 mb-4">
+              <div className="container">
+                <div className="row">
+                  <div className="col-lg-5 mb-3 mb-lg-0">
+                    <h2 className="title">Who We Are</h2>
+                    <p className="mb-2">
+                      Welcome to HiBuyShopping, your ultimate destination for a
+                      diverse and exciting online shopping experience. At
+                      HiBuyShopping, we are more than just an e-commerce
+                      platform; we are a community dedicated to bringing you the
+                      best products from a variety of vendors all in one place.
+                    </p>
+
+                    <Link
+                      to={""}
+                      className="btn btn-sm btn-minwidth btn-outline-primary-2"
+                    >
+                      <span>VIEW OUR NEWS</span>
+                      <i className="icon-long-arrow-right"></i>
+                    </Link>
+                  </div>
+
+                  <div className="col-lg-6 offset-lg-1">
+                    <div className="about-images">
+                      <img src={about1} alt="" className="about-img-front" />
+                      <img src={about2} alt="" className="about-img-back" />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="container">
-            {/* <div className="row">
+            <div className="container">
+              {/* <div className="row">
               <div className="col-lg-5">
                 <div className="brands-text">
                   <h2 className="title">
@@ -166,63 +208,63 @@ const About = () => {
               </div>
             </div> */}
 
-            {/* <hr className="mt-4 mb-6" /> */}
+              {/* <hr className="mt-4 mb-6" /> */}
 
-            <h2 className="title text-center mb-4">Meet Our Team</h2>
+              <h2 className="title text-center mb-4">Meet Our Team</h2>
 
-            <div className="row">
-              <div className="col-md-4">
-                <div className="member member-anim text-center">
-                  <figure className="member-media">
-                    <img src={team2} alt="member photo" />
+              <div className="row">
+                <div className="col-md-4">
+                  <div className="member member-anim text-center">
+                    <figure className="member-media">
+                      <img src={team2} alt="member photo" />
 
-                    <figcaption className="member-overlay">
-                      <div className="member-overlay-content">
-                        <h3 className="member-title">
-                          Raheeq Gill<span>Founder & CEO</span>
-                        </h3>
-                        <p>
-                          Sed pretium, ligula sollicitudin viverra, tortor
-                          libero sodales leo, eget blandit nunc.
-                        </p>
-                        <div className="social-icons social-icons-simple">
-                          <a
-                            href="#"
-                            className="social-icon"
-                            title="Facebook"
-                            target="_blank"
-                          >
-                            <i className="icon-facebook-f"></i>
-                          </a>
-                          <a
-                            href="#"
-                            className="social-icon"
-                            title="Twitter"
-                            target="_blank"
-                          >
-                            <i className="icon-twitter"></i>
-                          </a>
-                          <a
-                            href="#"
-                            className="social-icon"
-                            title="Instagram"
-                            target="_blank"
-                          >
-                            <i className="icon-instagram"></i>
-                          </a>
+                      <figcaption className="member-overlay">
+                        <div className="member-overlay-content">
+                          <h3 className="member-title">
+                            Raheeq Gill<span>Founder & CEO</span>
+                          </h3>
+                          <p>
+                            Sed pretium, ligula sollicitudin viverra, tortor
+                            libero sodales leo, eget blandit nunc.
+                          </p>
+                          <div className="social-icons social-icons-simple">
+                            <a
+                              href="#"
+                              className="social-icon"
+                              title="Facebook"
+                              target="_blank"
+                            >
+                              <i className="icon-facebook-f"></i>
+                            </a>
+                            <a
+                              href="#"
+                              className="social-icon"
+                              title="Twitter"
+                              target="_blank"
+                            >
+                              <i className="icon-twitter"></i>
+                            </a>
+                            <a
+                              href="#"
+                              className="social-icon"
+                              title="Instagram"
+                              target="_blank"
+                            >
+                              <i className="icon-instagram"></i>
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                    </figcaption>
-                  </figure>
-                  <div className="member-content">
-                    <h3 className="member-title">
-                      Raheeq Gill<span>Founder & CEO</span>
-                    </h3>
+                      </figcaption>
+                    </figure>
+                    <div className="member-content">
+                      <h3 className="member-title">
+                        Raheeq Gill<span>Founder & CEO</span>
+                      </h3>
+                    </div>
                   </div>
                 </div>
-              </div>
 
-              {/* <div className="col-md-4">
+                {/* <div className="col-md-4">
                             <div className="member member-anim text-center">
                                 <figure className="member-media">
                                     <img src={team2} alt="member photo"/>
@@ -245,69 +287,71 @@ const About = () => {
                             </div>
                         </div> */}
 
-              <div className="col-md-4">
-                <div className="member member-anim text-center">
-                  <figure className="member-media">
-                    <img src={team2} alt="member photo" />
+                <div className="col-md-4">
+                  <div className="member member-anim text-center">
+                    <figure className="member-media">
+                      <img src={team2} alt="member photo" />
 
-                    <figcaption className="member-overlay">
-                      <div className="member-overlay-content">
-                        <h3 className="member-title">
-                          Moin Haider<span>SALES & MEDIA PARTNER</span>
-                        </h3>
-                        <p>
-                          Sed pretium, ligula sollicitudin viverra, tortor
-                          libero sodales leo, eget blandit nunc.
-                        </p>
-                        <div className="social-icons social-icons-simple">
-                          <a
-                            href="#"
-                            className="social-icon"
-                            title="Facebook"
-                            target="_blank"
-                          >
-                            <i className="icon-facebook-f"></i>
-                          </a>
-                          <a
-                            href="#"
-                            className="social-icon"
-                            title="Twitter"
-                            target="_blank"
-                          >
-                            <i className="icon-twitter"></i>
-                          </a>
-                          <a
-                            href="#"
-                            className="social-icon"
-                            title="Instagram"
-                            target="_blank"
-                          >
-                            <i className="icon-instagram"></i>
-                          </a>
+                      <figcaption className="member-overlay">
+                        <div className="member-overlay-content">
+                          <h3 className="member-title">
+                            Moin Haider<span>SALES & MEDIA PARTNER</span>
+                          </h3>
+                          <p>
+                            Sed pretium, ligula sollicitudin viverra, tortor
+                            libero sodales leo, eget blandit nunc.
+                          </p>
+                          <div className="social-icons social-icons-simple">
+                            <a
+                              href="#"
+                              className="social-icon"
+                              title="Facebook"
+                              target="_blank"
+                            >
+                              <i className="icon-facebook-f"></i>
+                            </a>
+                            <a
+                              href="#"
+                              className="social-icon"
+                              title="Twitter"
+                              target="_blank"
+                            >
+                              <i className="icon-twitter"></i>
+                            </a>
+                            <a
+                              href="#"
+                              className="social-icon"
+                              title="Instagram"
+                              target="_blank"
+                            >
+                              <i className="icon-instagram"></i>
+                            </a>
+                          </div>
                         </div>
-                      </div>
-                    </figcaption>
-                  </figure>
-                  <div className="member-content">
-                    <h3 className="member-title">
-                      Moin Haider<span>Media Partner</span>
-                    </h3>
+                      </figcaption>
+                    </figure>
+                    <div className="member-content">
+                      <h3 className="member-title">
+                        Moin Haider<span>Media Partner</span>
+                      </h3>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
 
-          <div className="mb-2"></div>
+            <div className="mb-2"></div>
 
-          <div className="about-testimonials bg-light-2 pt-6 pb-6">
-            <div className="container">
-              <h2 className="title text-center mb-3">What Customer Say About Us</h2>
+            <div className="about-testimonials bg-light-2 pt-6 pb-6">
+              <div className="container">
+                <h2 className="title text-center mb-3">
+                  What Customer Say About Us
+                </h2>
 
-              <div
-                className="owl-carousel owl-simple owl-testimonials-photo"
-                data-toggle="owl"
-                data-owl-options='{
+                <div
+                  className="owl-carousel owl-simple owl-testimonials-photo"
+                  data-toggle="owl"
+                  data-owl-options='{
                                 "nav": false, 
                                 "dots": true,
                                 "margin": 20,
@@ -318,44 +362,46 @@ const About = () => {
                                     }
                                 }
                             }'
-              >
-                <blockquote className="testimonial text-center">
-                  <img src={user1} alt="user" />
-                  <p>
-                    “ Lorem ipsum dolor sit amet, consectetuer adipiscing elit.
-                    Pellentesque aliquet nibh nec urna. <br />
-                    In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.
-                    Sed pretium, ligula sollicitudin laoreet viverra, tortor
-                    libero sodales leo, eget blandit nunc tortor eu nibh. Nullam
-                    mollis. Ut justo. Suspendisse potenti. ”
-                  </p>
-                  <cite>
-                    Jenson Gregory
-                    <span>Customer</span>
-                  </cite>
-                </blockquote>
+                >
+                  <blockquote className="testimonial text-center">
+                    <img src={user1} alt="user" />
+                    <p>
+                      “ Lorem ipsum dolor sit amet, consectetuer adipiscing
+                      elit. Pellentesque aliquet nibh nec urna. <br />
+                      In nisi neque, aliquet vel, dapibus id, mattis vel, nisi.
+                      Sed pretium, ligula sollicitudin laoreet viverra, tortor
+                      libero sodales leo, eget blandit nunc tortor eu nibh.
+                      Nullam mollis. Ut justo. Suspendisse potenti. ”
+                    </p>
+                    <cite>
+                      Jenson Gregory
+                      <span>Customer</span>
+                    </cite>
+                  </blockquote>
 
-                <blockquote className="testimonial text-center">
-                  <img src={user2} alt="user" />
-                  <p>
-                    “ Impedit, ratione sequi, sunt incidunt magnam et. Delectus
-                    obcaecati optio eius error libero perferendis nesciunt atque
-                    dolores magni recusandae! Doloremque quidem error eum quis
-                    similique doloribus natus qui ut ipsum.Velit quos ipsa
-                    exercitationem, vel unde obcaecati impedit eveniet non. ”
-                  </p>
+                  <blockquote className="testimonial text-center">
+                    <img src={user2} alt="user" />
+                    <p>
+                      “ Impedit, ratione sequi, sunt incidunt magnam et.
+                      Delectus obcaecati optio eius error libero perferendis
+                      nesciunt atque dolores magni recusandae! Doloremque quidem
+                      error eum quis similique doloribus natus qui ut
+                      ipsum.Velit quos ipsa exercitationem, vel unde obcaecati
+                      impedit eveniet non. ”
+                    </p>
 
-                  <cite>
-                    Victoria Ventura
-                    <span>Customer</span>
-                  </cite>
-                </blockquote>
+                    <cite>
+                      Victoria Ventura
+                      <span>Customer</span>
+                    </cite>
+                  </blockquote>
+                </div>
               </div>
             </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 };
 

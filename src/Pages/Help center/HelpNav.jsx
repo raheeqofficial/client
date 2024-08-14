@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from "react";
 import { MyContext } from "../../App";
 import { Link } from "react-router-dom";
-import logo from '../../assets/images/eliph stores-7.png'
+import logo from '../../assets/images/hibuylogo.png'
 
 const HelpNav = () => {
   const [user, setUser] = useState();

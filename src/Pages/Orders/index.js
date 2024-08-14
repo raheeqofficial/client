@@ -130,16 +130,19 @@ const Orders = () => {
     return (
         <>
             <Helmet>
-                <title>Orders - Hibuyshopping</title>
-                <meta
-                    name="description"
-                    content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-                />
-                <meta
-                    name="keywords"
-                    content="Orders, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-           designer collections, seamless online shopping experience "
-                />
+                <title>Orders - Hibuyshopping | View Your Order History and Status</title>
+                <meta name="title" content="Orders - Hibuyshopping | View Your Order History and Status" />
+                <meta name="description" content="Manage and view your order history and current order status on Hibuyshopping. Access details of past and recent orders, track your shipments, and stay updated on your purchases on Pakistan's leading e-commerce platform." />
+                <meta name="keywords" content="orders, Hibuyshopping, order history, order status, track orders, view orders, e-commerce orders, order management, Pakistani e-commerce, multi-vendor store" />
+                <meta name="author" content="Hibuyshopping Team" />
+                <meta property="og:title" content="Orders - Hibuyshopping | View Your Order History and Status" />
+                <meta property="og:description" content="Access your order history and track the status of your current orders on Hibuyshopping. View details of past and recent purchases and manage your orders efficiently on Pakistan's top e-commerce platform." />
+                <meta property="og:image" content="URL_TO_YOUR_ORDERS_PAGE_IMAGE" />
+                <meta property="og:url" content="URL_TO_YOUR_ORDERS_PAGE" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Orders - Hibuyshopping | View Your Order History and Status" />
+                <meta name="twitter:description" content="Check your order history and current order status on Hibuyshopping. Manage past and recent orders, track shipments, and stay updated on your purchases on Pakistan's leading e-commerce site." />
+                <meta name="twitter:image" content="URL_TO_YOUR_ORDERS_PAGE_IMAGE" />
             </Helmet>
             <section className="section">
                 <div className='container'>

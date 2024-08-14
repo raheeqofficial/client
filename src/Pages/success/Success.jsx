@@ -4,41 +4,82 @@ import { Link, useNavigate, useParams } from "react-router-dom";
 import { HiOutlineInboxStack } from "react-icons/hi2";
 import { Helmet } from "react-helmet-async";
 const Success = () => {
-    const [user, setUser] = useState()
+  const [user, setUser] = useState();
 
-    useEffect(() => {
-        const token = localStorage.getItem("token");
+  useEffect(() => {
+    const token = localStorage.getItem("token");
 
-        if (token !== "" && token !== undefined && token !== null) {
-          const userData = JSON.parse(localStorage.getItem("user"));    
-          setUser(userData);
-        }
-    }, [])
+    if (token !== "" && token !== undefined && token !== null) {
+      const userData = JSON.parse(localStorage.getItem("user"));
+      setUser(userData);
+    }
+  }, []);
 
   return (
     <>
-    <Helmet>
-    <title>Success - Hibuyshopping</title>
-    
-      <meta
-        name="description"
-        content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-      />
-      <meta
-        name="keywords"
-        content="Success, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
-      />
-    </Helmet>
+      <Helmet>
+        <title>
+          Order Placed Successfully - Hibuyshopping | Thank You for Your Order
+        </title>
+        <meta
+          name="title"
+          content="Order Placed Successfully - Hibuyshopping | Thank You for Your Order"
+        />
+        <meta
+          name="description"
+          content="Your order has been successfully placed on Hibuyshopping! Thank you for shopping with us. You will receive a confirmation email shortly with the details of your order and tracking information. Enjoy your shopping experience on Pakistan's leading e-commerce platform."
+        />
+        <meta
+          name="keywords"
+          content="order placed successfully, Hibuyshopping, order confirmation, thank you for your order, e-commerce order, shopping experience, order details, tracking information, Pakistani e-commerce, multi-vendor store"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Order Placed Successfully - Hibuyshopping | Thank You for Your Order"
+        />
+        <meta
+          property="og:description"
+          content="Your order has been placed successfully at Hibuyshopping! We appreciate your purchase. Check your email for confirmation and tracking details. Continue enjoying a seamless shopping experience on Pakistan's top e-commerce platform."
+        />
+        <meta
+          property="og:image"
+          content="URL_TO_YOUR_ORDER_PLACED_SUCCESSFULLY_PAGE_IMAGE"
+        />
+        <meta
+          property="og:url"
+          content="URL_TO_YOUR_ORDER_PLACED_SUCCESSFULLY_PAGE"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Order Placed Successfully - Hibuyshopping | Thank You for Your Order"
+        />
+        <meta
+          name="twitter:description"
+          content="Thank you for placing your order with Hibuyshopping! Your order has been successfully processed. Look out for a confirmation email with your order details and tracking information. Enjoy shopping on Pakistan's top e-commerce site."
+        />
+        <meta
+          name="twitter:image"
+          content="URL_TO_YOUR_ORDER_PLACED_SUCCESSFULLY_PAGE_IMAGE"
+        />
+      </Helmet>
       <div className="successPage">
-      <h1 className="hd">Thank you for your order</h1>
+        <h1 className="hd">Thank you for your order</h1>
         <div className="successBox">
-            <h5>ORDER CONFIRMATION</h5>
-            <p>{user?.name} your order has been sucessful!</p>
-            <p>Thank you for choosing <b>RG store</b>. You can check your order from here.</p>
-            <Link to={'/orders'}><Button className=" btn-blue btn-lg"><HiOutlineInboxStack/> &nbsp; My Orders</Button></Link>
+          <h5>ORDER CONFIRMATION</h5>
+          <p>{user?.name} your order has been sucessful!</p>
+          <p>
+            Thank you for choosing <b>RG store</b>. You can check your order
+            from here.
+          </p>
+          <Link to={"/orders"}>
+            <Button className=" btn-blue btn-lg">
+              <HiOutlineInboxStack /> &nbsp; My Orders
+            </Button>
+          </Link>
         </div>
-    </div>
+      </div>
     </>
   );
 };

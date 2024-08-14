@@ -86,12 +86,6 @@ const Listing = () => {
 
         setisLoading(true);
         const result = await axios.get(`http://localhost:4000/api/products?rating=${rating}&subCatId=${subCatId}`)
-        // console.log(result?.data?.products)
-        // fetchDataFromApi(`/api/products?rating=${rating}&subCatId=${subCatId}`).then((res) => {
-        //     setProductData(res)
-        //     console.log(res)
-        //     setisLoading(false);
-        // })
         setProductData(result?.data)
         setisLoading(false)
     }

@@ -3,7 +3,7 @@ import ProductItem from "../../Components/ProductItem";
 import { fetchDataFromApi } from "../../utils/api";
 import CircularProgress from "@mui/material/CircularProgress";
 import img from "../../assets/images/Popular_products-toBanner-3-1726x381-eliphstore.jpg";
-import './PopularProducts.css'
+import "./PopularProducts.css";
 import { Helmet } from "react-helmet-async";
 import { BsEmojiExpressionless } from "react-icons/bs";
 import { Button } from "@mui/material";
@@ -16,7 +16,7 @@ const PopularProducts = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setisLoading(true)
+    setisLoading(true);
     fetchDataFromApi(`/api/products?isFeatured=${true}`)
       .then((res) => {
         setProductData(res);
@@ -42,32 +42,67 @@ const PopularProducts = () => {
           Sorry, there are no products available in this category at the moment.
           Please check back later or explore other categories.
         </h6>
-        <BsEmojiExpressionless/>
-        <Button className="btn btn-blue btn-lg mt-2"><Link to={'/'}>Back</Link></Button>
+        <BsEmojiExpressionless />
+        <Button className="btn btn-blue btn-lg mt-2">
+          <Link to={"/"}>Back</Link>
+        </Button>
       </div>
     );
   }
   return (
     <>
-    <Helmet>
-      <title>Popular products - Hibuyshopping</title>
-      <meta
-        name="description"
-        content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-      />
-      <meta
-        name="keywords"
-        content="Popular products, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
-      />
-    </Helmet>
-     <div className="flashTopBanner">
-      <div className="flashTopBannerWrapper">
-        <div className="flashTopBannerImg">
-        <img src={img} alt="flash sale banner" />
+      <Helmet>
+        <title>
+          Popular Products - Hibuyshopping | Top-Selling Items and Trending
+          Products
+        </title>
+        <meta
+          name="title"
+          content="Popular Products - Hibuyshopping | Top-Selling Items and Trending Products"
+        />
+        <meta
+          name="description"
+          content="Discover the most popular products on Hibuyshopping. Explore top-selling items, trending products, and customer favorites. Find the best deals and must-have products on Pakistan's leading e-commerce platform."
+        />
+        <meta
+          name="keywords"
+          content="popular products, Hibuyshopping, top-selling items, trending products, best deals, customer favorites, e-commerce products, Pakistani e-commerce, multi-vendor store"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Popular Products - Hibuyshopping | Top-Selling Items and Trending Products"
+        />
+        <meta
+          property="og:description"
+          content="Explore Hibuyshopping's popular products. Browse top-selling items, trending products, and customer favorites to find the best deals and must-have items on Pakistan's top e-commerce platform."
+        />
+        <meta
+          property="og:image"
+          content="URL_TO_YOUR_POPULAR_PRODUCTS_PAGE_IMAGE"
+        />
+        <meta property="og:url" content="URL_TO_YOUR_POPULAR_PRODUCTS_PAGE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Popular Products - Hibuyshopping | Top-Selling Items and Trending Products"
+        />
+        <meta
+          name="twitter:description"
+          content="Check out the most popular products on Hibuyshopping. Find top-selling items, trending products, and customer favorites to get the best deals on Pakistan's leading e-commerce site."
+        />
+        <meta
+          name="twitter:image"
+          content="URL_TO_YOUR_POPULAR_PRODUCTS_PAGE_IMAGE"
+        />
+      </Helmet>
+      <div className="flashTopBanner">
+        <div className="flashTopBannerWrapper">
+          <div className="flashTopBannerImg">
+            <img src={img} alt="flash sale banner" />
+          </div>
         </div>
       </div>
-    </div>
       <section className="product_Listing_Page">
         <div className="container">
           <div className="productListing w-100">

@@ -154,159 +154,143 @@ const SignUp = () => {
 
     return (
         <>
-        <Helmet>
-        <title>SignUp - </title>
-        
-          <meta
-            name="description"
-            content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-          />
-          <meta
-            name="keywords"
-            content="SignUp, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-           designer collections, seamless online shopping experience "
-          />
-          <meta property="og:title" content="SignUp - Hibuyshopping" />
-        <meta property="og:description" content="This is the signup page of my website." />
-        <script type="application/ld+json">
-        {`
-        {
-          "@context": "https://schema.org",
-          "@type": "Organization",
-          "name": "Hibuyshopping",
-          "url": "https://www.hibuyshopping.com/signUp",
-          "logo": "https://www.hibuyshopping.com/logo.png",
-          "sameAs": [
-            "https://www.facebook.com/hibuyshopping",
-            "https://www.instagram.com/hibuyshopping"
-          ]
-        }
-        `}
-      </script>
-        </Helmet>
-            <section className="section signInPage signUpPage">
-            <div className="shape-bottom">
-                <svg fill="#fff" id="Layer_1" x="0px" y="0px" viewBox="0 0 1921 819.8" style={{ enableBackground: 'new 0 0 1921 819.8' }}>
-                    <path className="st0" d="M1921,413.1v406.7H0V0.5h0.4l228.1,598.3c30,74.4,80.8,130.6,152.5,168.6c107.6,57,212.1,40.7,245.7,34.4c22.4-4.2,54.9-13.1,97.5-26.6L1921,400.5V413.1z"></path>
-                </svg>
-            </div>
+            <Helmet>
+                <title>Sign Up for Hibuyshopping - Join Now for Exclusive Deals and Offers</title>
+                <meta name="title" content="Sign Up for Hibuyshopping - Join Now for Exclusive Deals and Offers" />
+                <meta name="description" content="Create an account on Hibuyshopping to access exclusive discounts, personalized recommendations, early access to new arrivals, and more. Sign up today and start enjoying amazing shopping benefits!" />
+                <meta name="keywords" content="online shopping Pakistan, buy electronics online, Pakistan e-commerce, fashion shopping Pakistan, online clothing store Pakistan, buy mobile phones Pakistan, online shopping deals, Pakistan online store, best online shopping sites, discount codes Pakistan, online groceries Pakistan, buy shoes online Pakistan, Pakistani online marketplace, electronics sale Pakistan, fashion trends Pakistan, mobile accessories Pakistan, e-commerce websites Pakistan, Pakistani fashion brands, online home appliances, buy laptops online Pakistan, online beauty products, Pakistani online clothing, latest gadgets Pakistan, online book store Pakistan, health and wellness products, Pakistani e-commerce platform, online kids clothing, best deals on electronics, online furniture store Pakistan, Pakistani online retailers, online shopping for women, discount electronics Pakistan, online shopping for men, buy jewelry online Pakistan" />
+                <meta name="author" content="Hibuyshopping Team" />
+                <meta property="og:title" content="Sign Up for Hibuyshopping" />
+                <meta property="og:description" content="Join Hibuyshopping now and get exclusive access to discounts, early notifications about sales, and personalized shopping recommendations. Create your account today!" />
+                <meta property="og:image" content="https://hibuyshopping.com/signUp" />
+                <meta property="og:url" content="https://hibuyshopping.com/signUp" />
+                <meta name="twitter:card" content="summary_large_image" />
+                <meta name="twitter:title" content="Sign Up for Hibuyshopping" />
+                <meta name="twitter:description" content="Sign up today at Hibuyshopping to enjoy exclusive deals, early access to new products, and personalized recommendations. Join us and start shopping smarter!" />
+                <meta name="twitter:image" content="https://hibuyshopping.com/signUp" />
 
-            <div className="container">
-                <div className="box card p-3 shadow border-0">
-                    {/* <div className="text-center">
+            </Helmet>
+            <section className="section signInPage signUpPage">
+                <div className="shape-bottom">
+                    <svg fill="#fff" id="Layer_1" x="0px" y="0px" viewBox="0 0 1921 819.8" style={{ enableBackground: 'new 0 0 1921 819.8' }}>
+                        <path className="st0" d="M1921,413.1v406.7H0V0.5h0.4l228.1,598.3c30,74.4,80.8,130.6,152.5,168.6c107.6,57,212.1,40.7,245.7,34.4c22.4-4.2,54.9-13.1,97.5-26.6L1921,400.5V413.1z"></path>
+                    </svg>
+                </div>
+
+                <div className="container">
+                    <div className="box card p-3 shadow border-0">
+                        {/* <div className="text-center">
                         <img src={Logo} alt="Logo" />
                     </div> */}
 
-                    <form className="mt-2" onSubmit={register}>
-                        <h2 className="mb-3">Sign Up</h2>
+                        <form className="mt-2" onSubmit={register}>
+                            <h2 className="mb-3">Sign Up</h2>
 
-                        <div className="row">
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <TextField
-                                        label="Name"
-                                        name="name"
-                                        onChange={onchangeInput}
-                                        type="text"
-                                        variant="standard"
-                                        className="w-100"
-                                        error={!!errors.name}
-                                        helperText={errors.name}
-                                    />
-                                </div>
-                            </div>
-
-                            <div className="col-md-6">
-                                <div className="form-group">
-                                    <TextField
-                                        label="Phone No."
-                                        name="phone"
-                                        onChange={onchangeInput}
-                                        type="text"
-                                        variant="standard"
-                                        className="w-100"
-                                        error={!!errors.phone}
-                                        helperText={errors.phone}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="form-group">
-                            <TextField
-                                id="standard-basic"
-                                label="Email"
-                                type="email"
-                                name="email"
-                                onChange={onchangeInput}
-                                variant="standard"
-                                className="w-100"
-                                error={!!errors.email}
-                                helperText={errors.email}
-                            />
-                        </div>
-                        <div className="form-group">
-                            <TextField
-                                id="standard-basic"
-                                label="Password"
-                                name="password"
-                                onChange={onchangeInput}
-                                type="password"
-                                variant="standard"
-                                className="w-100"
-                                error={!!errors.password}
-                                helperText={errors.password}
-                            />
-                        </div>
-
-                        <div className="password-criteria mt-3">
-                            <p className={`password-criteria-item ${passwordStatus.startsWithLetter ? 'valid' : 'invalid'}`}>
-                                {passwordStatus.startsWithLetter ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password starts with a letter
-                            </p>
-                            <p className={`password-criteria-item ${passwordStatus.minLength ? 'valid' : 'invalid'}`}>
-                                {passwordStatus.minLength ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password is at least 8 characters long
-                            </p>
-                            <p className={`password-criteria-item ${passwordStatus.specialChar ? 'valid' : 'invalid'}`}>
-                                {passwordStatus.specialChar ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password contains a special character
-                            </p>
-                        </div>
-
-                        <a className="border-effect cursor txt">Forgot Password?</a>
-
-                        <div className="d-flex align-items-center mt-3 mb-3">
-                            <div className="row w-100">
+                            <div className="row">
                                 <div className="col-md-6">
-                                    <Button type="submit" disabled={isLoading} className="btn-blue w-100 btn-lg btn-big">
-                                        {isLoading ? <CircularProgress /> : 'Sign Up'}
-                                    </Button>
+                                    <div className="form-group">
+                                        <TextField
+                                            label="Name"
+                                            name="name"
+                                            onChange={onchangeInput}
+                                            type="text"
+                                            variant="standard"
+                                            className="w-100"
+                                            error={!!errors.name}
+                                            helperText={errors.name}
+                                        />
+                                    </div>
                                 </div>
-                                <div className="col-md-6 pr-0">
-                                    <Link to="/" className="d-block w-100">
-                                        <Button className="btn-lg btn-big w-100" variant="outlined" onClick={() => context.setisHeaderFooterShow(true)}>Cancel</Button>
-                                    </Link>
+
+                                <div className="col-md-6">
+                                    <div className="form-group">
+                                        <TextField
+                                            label="Phone No."
+                                            name="phone"
+                                            onChange={onchangeInput}
+                                            type="text"
+                                            variant="standard"
+                                            className="w-100"
+                                            error={!!errors.phone}
+                                            helperText={errors.phone}
+                                        />
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <p className="txt">Not Registered? <Link to="/signIn" className="border-effect">Sign In</Link></p>
+                            <div className="form-group">
+                                <TextField
+                                    id="standard-basic"
+                                    label="Email"
+                                    type="email"
+                                    name="email"
+                                    onChange={onchangeInput}
+                                    variant="standard"
+                                    className="w-100"
+                                    error={!!errors.email}
+                                    helperText={errors.email}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <TextField
+                                    id="standard-basic"
+                                    label="Password"
+                                    name="password"
+                                    onChange={onchangeInput}
+                                    type="password"
+                                    variant="standard"
+                                    className="w-100"
+                                    error={!!errors.password}
+                                    helperText={errors.password}
+                                />
+                            </div>
 
-                        <h6 className="mt-4 text-center font-weight-bold">Or continue with social account</h6>
+                            <div className="password-criteria mt-3">
+                                <p className={`password-criteria-item ${passwordStatus.startsWithLetter ? 'valid' : 'invalid'}`}>
+                                    {passwordStatus.startsWithLetter ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password starts with a letter
+                                </p>
+                                <p className={`password-criteria-item ${passwordStatus.minLength ? 'valid' : 'invalid'}`}>
+                                    {passwordStatus.minLength ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password is at least 8 characters long
+                                </p>
+                                <p className={`password-criteria-item ${passwordStatus.specialChar ? 'valid' : 'invalid'}`}>
+                                    {passwordStatus.specialChar ? <CheckIcon style={{ color: 'green' }} /> : <CloseIcon style={{ color: 'red' }} />} Password contains a special character
+                                </p>
+                            </div>
 
-                        <Button className="loginWithGoogle mt-2" variant="outlined"><img src={GoogleImg} alt="Google" /> Sign In with Google</Button>
-                        {submitted && (
-                            <Confetti
-                                width={window.innerWidth}
-                                height={window.innerHeight}
-                                numberOfPieces={300}
-                                recycle={false}
-                                run={submitted}
-                                confettiSource={{ x: window.innerWidth / 2, y: window.innerHeight / 2, w: 0, h: 0 }}
-                            />
-                        )}
-                    </form>
+                            <div className="d-flex align-items-center mt-3 mb-3">
+                                <div className="row w-100">
+                                    <div className="col-md-6">
+                                        <Button type="submit" disabled={isLoading} className="btn-blue w-100 btn-lg btn-big">
+                                            {isLoading ? <CircularProgress /> : 'Sign Up'}
+                                        </Button>
+                                    </div>
+                                    <div className="col-md-6 pr-0">
+                                        <Link to="/" className="d-block w-100">
+                                            <Button className="btn-lg btn-big w-100" variant="outlined" onClick={() => context.setisHeaderFooterShow(true)}>Cancel</Button>
+                                        </Link>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <p className="txt">Not Registered? <Link to="/signIn" className="border-effect">Sign In</Link></p>
+
+                            <h6 className="mt-4 text-center font-weight-bold">Or continue with social account</h6>
+
+                            <Button className="loginWithGoogle mt-2" variant="outlined"><img src={GoogleImg} alt="Google" /> Sign In with Google</Button>
+                            {submitted && (
+                                <Confetti
+                                    width={window.innerWidth}
+                                    height={window.innerHeight}
+                                    numberOfPieces={300}
+                                    recycle={false}
+                                    run={submitted}
+                                    confettiSource={{ x: window.innerWidth / 2, y: window.innerHeight / 2, w: 0, h: 0 }}
+                                />
+                            )}
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </section>
+            </section>
         </>
     );
 };

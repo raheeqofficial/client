@@ -16,7 +16,7 @@ import { Tooltip } from '@mui/material';
 import { SlDrawer } from "react-icons/sl";
 import { CiLogin, CiShop } from "react-icons/ci";
 import Navigation from './Navigation';
-import logo from '../../assets/images/eliph stores-7.png'
+import logo from '../../assets/images/hibuylogo.png'
 
 
 

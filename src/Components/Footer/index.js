@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { IoLogoTiktok } from "react-icons/io5";
 import './footer.css'
 import payments from '../../assets/images/payments.png'
-import logo from '../../assets/images/eliph stores-7.png'
+import logo from '../../assets/images/hibuylogo.png'
 import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import Confetti from 'react-confetti';
@@ -125,8 +125,8 @@ const Footer = () => {
                                         <h4 className="f-widget-title">Information</h4>
 
                                         <ul className="widget-list">
-                                            <li><Link to={'/about'}>About Eliph</Link></li>
-                                            <li><Link to={'#'}>How to shop on Eliph</Link></li>
+                                            <li><Link to={'/about'}>About Hibuy</Link></li>
+                                            <li><Link to={'#'}>How to shop on Hibuy</Link></li>
                                             <li><Link to={'#'}>FAQ</Link></li>
                                             <li><Link to={'/contact'}>Contact us</Link></li>
                                             <li><Link to={'/signUp'}>Sign Up</Link></li>
@@ -168,7 +168,7 @@ const Footer = () => {
 
                     <div className="footer-bottom">
                         <div className="container">
-                            <p className="footer-copyright">Copyright © 2024 Eliph Store. All Rights Reserved.</p>
+                            <p className="footer-copyright">Copyright © 2024 hibuyshopping. All Rights Reserved.</p>
                             <ul className="footer-menu">
                                 <li><Link to={`/terms-of-use/${id}`}>Terms Of Use</Link></li>
                                 <li><Link to={`/privacy-policy/${id}`}>Privacy Policy</Link></li>

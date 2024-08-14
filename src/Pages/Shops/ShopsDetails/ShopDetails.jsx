@@ -6,7 +6,8 @@ import { Box, Button, CircularProgress, Tab, Tabs } from "@mui/material";
 import { MyContext } from "../../../App";
 import { FaSquareWhatsapp } from "react-icons/fa6";
 import axios from "axios";
-import '../Shop.css'
+import "../Shop.css";
+import { Helmet } from "react-helmet-async";
 
 const ShopDetails = () => {
   const { id } = useParams();
@@ -50,7 +51,9 @@ const ShopDetails = () => {
   useEffect(() => {
     const fetchShopDetails = async () => {
       try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/shop/${id}`);
+        const response = await axios.get(
+          `${process.env.REACT_APP_API_URL}/api/shop/${id}`
+        );
         setShop(response.data);
       } catch (error) {
         console.error("Error fetching shop details", error);
@@ -58,16 +61,20 @@ const ShopDetails = () => {
     };
 
     const checkIfFollowing = async () => {
-      if(context.isLogin === true){
+      if (context.isLogin === true) {
         const { userId } = JSON.parse(localStorage.getItem("user"));
-      try {
-        const response = await axios.get(`${process.env.REACT_APP_API_URL}/api/user/${userId}`);
-        const followedShops = response.data.followedShops.map(shop => shop._id);
-        console.log(followedShops)
-        setIsFollowing(followedShops.includes(id));
-      } catch (error) {
-        console.error("Error checking if following", error);
-      }
+        try {
+          const response = await axios.get(
+            `${process.env.REACT_APP_API_URL}/api/user/${userId}`
+          );
+          const followedShops = response.data.followedShops.map(
+            (shop) => shop._id
+          );
+          console.log(followedShops);
+          setIsFollowing(followedShops.includes(id));
+        } catch (error) {
+          console.error("Error checking if following", error);
+        }
       }
     };
 
@@ -81,32 +88,38 @@ const ShopDetails = () => {
   const handleFollow = async () => {
     if (context.isLogin === true) {
       const { userId } = JSON.parse(localStorage.getItem("user"));
-    try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/user/follow/${id}`, { userId });
-      setIsFollowing(true);
-      setShop(prevShop => ({
-        ...prevShop,
-        followersCount: prevShop.followersCount + 1,
-      }));
-      localStorage.setItem("isFollowingShop-" + id, true);
-    } catch (error) {
-      console.error("Error following shop", error);
-    }
-    }else{
+      try {
+        await axios.post(
+          `${process.env.REACT_APP_API_URL}/api/user/follow/${id}`,
+          { userId }
+        );
+        setIsFollowing(true);
+        setShop((prevShop) => ({
+          ...prevShop,
+          followersCount: prevShop.followersCount + 1,
+        }));
+        localStorage.setItem("isFollowingShop-" + id, true);
+      } catch (error) {
+        console.error("Error following shop", error);
+      }
+    } else {
       context.setAlertBox({
         open: true,
         error: true,
-        msg: "You need to login first"
-      })
+        msg: "You need to login first",
+      });
     }
   };
 
   const handleUnfollow = async () => {
     const { userId } = JSON.parse(localStorage.getItem("user"));
     try {
-      await axios.post(`${process.env.REACT_APP_API_URL}/api/user/unfollow/${id}`, { userId });
+      await axios.post(
+        `${process.env.REACT_APP_API_URL}/api/user/unfollow/${id}`,
+        { userId }
+      );
       setIsFollowing(false);
-      setShop(prevShop => ({
+      setShop((prevShop) => ({
         ...prevShop,
         followersCount: prevShop.followersCount - 1,
       }));
@@ -119,7 +132,7 @@ const ShopDetails = () => {
   const handleWhatsAppClick = () => {
     if (shop?.whatsappNumber) {
       const whatsappURL = `https://wa.me/${shop.whatsappNumber}?text=Hello, I'm interested in your products!`;
-      window.open(whatsappURL, '_blank');
+      window.open(whatsappURL, "_blank");
     } else {
       console.error("Shop's WhatsApp number not found");
     }
@@ -129,7 +142,9 @@ const ShopDetails = () => {
     if (selectedCat !== null) {
       const encodedCategory = encodeURIComponent(selectedCat);
       setIsLoading(true);
-      fetchDataFromApi(`/api/products?shop=${id}&subCatName=${encodedCategory}`).then((res) => {
+      fetchDataFromApi(
+        `/api/products?shop=${id}&subCatName=${encodedCategory}`
+      ).then((res) => {
         setFilterData(res.products);
         setIsLoading(false);
       });
@@ -148,88 +163,135 @@ const ShopDetails = () => {
   }
 
   return (
-    <div className="shopDetailPage">
-      <div className="topImage">
-        <div className="topImgWrapper">
-          <div className="vendorContainer">
-            <div className="vendorWrapper">
-              <div className="vendorImgBox">
-                <img
-                  width="40"
-                  height="40"
-                  src="https://img.icons8.com/skeuomorphism/40/shop.png"
-                  alt="shop"
-                />
-              </div>
-              <div className="vendorTextBox">
-                <p className="pb-0">{shop?.name}</p>
-                <div className="d-flex">
-                  <p className="pb-0 pr-2">Vendor Store</p> |
-                  <p className="pl-2">{shop?.followersCount} followers</p>
+    <>
+      <Helmet>
+        <title>{`${shop?.name} - Hibuyshopping | ${shop?.name} - Explore Products and Offers`}</title>
+        <meta
+          name="title"
+          content={`Vendor Shop Detail - Hibuyshopping | ${shop?.name} - Explore Products and Offers`}
+        />
+        <meta
+          name="description"
+          content={`Explore the details of the ${shop?.name} on Hibuyshopping. Discover the shop's unique products, special offers, and more. Learn about the vendor's offerings and browse their collection to find what you're looking for on Pakistan's leading e-commerce platform.`}
+        />
+        <meta
+          name="keywords"
+          content={`vendor shop detail, Hibuyshopping, ${shop?.name}, vendor products, shop offers, shop details, multi-vendor store, e-commerce vendor, Pakistani e-commerce, online shopping`}
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content={`Vendor Shop Detail - Hibuyshopping | ${shop?.name} - Explore Products and Offers`}
+        />
+        <meta
+          property="og:description"
+          content="Check out the details of the Vendor Shop on Hibuyshopping. View the shop's products, special deals, and other information. Browse through their offerings and enjoy a personalized shopping experience on Pakistan's top e-commerce platform."
+        />
+        <meta
+          property="og:image"
+          content="URL_TO_YOUR_VENDOR_SHOP_DETAIL_PAGE_IMAGE"
+        />
+        <meta property="og:url" content="URL_TO_YOUR_VENDOR_SHOP_DETAIL_PAGE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Vendor Shop Detail - Hibuyshopping | Shop Name - Explore Products and Offers"
+        />
+        <meta
+          name="twitter:description"
+          content="Explore the Vendor Shop's details on Hibuyshopping. Discover their products, special offers, and more. Browse the shop's collection and enjoy a unique shopping experience on Pakistan's leading e-commerce site."
+        />
+        <meta
+          name="twitter:image"
+          content="URL_TO_YOUR_VENDOR_SHOP_DETAIL_PAGE_IMAGE"
+        />
+      </Helmet>
+      <div className="shopDetailPage">
+        <div className="topImage">
+          <div className="topImgWrapper">
+            <div className="vendorContainer">
+              <div className="vendorWrapper">
+                <div className="vendorImgBox">
+                  <img
+                    width="40"
+                    height="40"
+                    src="https://img.icons8.com/skeuomorphism/40/shop.png"
+                    alt="shop"
+                  />
+                </div>
+                <div className="vendorTextBox">
+                  <p className="pb-0">{shop?.name}</p>
+                  <div className="d-flex">
+                    <p className="pb-0 pr-2">Vendor Store</p> |
+                    <p className="pl-2">{shop?.followersCount} followers</p>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
-          <div className="shopButtons">
-            <Button className="whatsApp" onClick={handleWhatsAppClick}>
-              <FaSquareWhatsapp />
-            </Button>
-            {isFollowing === true ? (
-              <Button onClick={handleUnfollow} className={"unfollow"}>
-                Following
+            <div className="shopButtons">
+              <Button className="whatsApp" onClick={handleWhatsAppClick}>
+                <FaSquareWhatsapp />
               </Button>
-            ) : (
-              <Button onClick={handleFollow} className={"follow"}>
-                Follow
-              </Button>
-            )}
-          </div>
-        </div>
-      </div>
-      <div className="container">
-        <div className="popularProducts">
-          <div className="catTabs mt-4">
-            <div className="catTabsName">
-              <Box
-                sx={{
-                  maxWidth: { xs: 420, sm: 680 },
-                  bgcolor: "background.paper",
-                }}
-              >
-                <Tabs
-                  value={value}
-                  onChange={handleChange}
-                  variant="scrollable"
-                  className="filterTabs"
-                >
-                  {subCat?.map((item, index) => {
-                    const decodedCat = decodeURIComponent(item?.subCat);
-                    return (
-                      <Tab
-                        key={index}
-                        className="item"
-                        label={decodedCat}
-                        onClick={() => selectCat(decodedCat)}
-                      />
-                    );
-                  })}
-                </Tabs>
-              </Box>
+              {isFollowing === true ? (
+                <Button onClick={handleUnfollow} className={"unfollow"}>
+                  Following
+                </Button>
+              ) : (
+                <Button onClick={handleFollow} className={"follow"}>
+                  Follow
+                </Button>
+              )}
             </div>
           </div>
+        </div>
+        <div className="container">
+          <div className="popularProducts">
+            <div className="catTabs mt-4">
+              <div className="catTabsName">
+                <Box
+                  sx={{
+                    maxWidth: { xs: 420, sm: 680 },
+                    bgcolor: "background.paper",
+                  }}
+                >
+                  <Tabs
+                    value={value}
+                    onChange={handleChange}
+                    variant="scrollable"
+                    className="filterTabs"
+                  >
+                    {subCat?.map((item, index) => {
+                      const decodedCat = decodeURIComponent(item?.subCat);
+                      return (
+                        <Tab
+                          key={index}
+                          className="item"
+                          label={decodedCat}
+                          onClick={() => selectCat(decodedCat)}
+                        />
+                      );
+                    })}
+                  </Tabs>
+                </Box>
+              </div>
+            </div>
 
-          <div className="product_row productRow2 w-100 mt-2 mb-3">
-            {filterData.length > 0 ? (
-              filterData.slice(0).reverse().map((item, index) => (
-                <ProductItem key={index} item={item} />
-              ))
-            ) : (
-              <div className="no-products-message">No products available for this category.</div>
-            )}
+            <div className="product_row productRow2 w-100 mt-2 mb-3">
+              {filterData.length > 0 ? (
+                filterData
+                  .slice(0)
+                  .reverse()
+                  .map((item, index) => <ProductItem key={index} item={item} />)
+              ) : (
+                <div className="no-products-message">
+                  No products available for this category.
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 

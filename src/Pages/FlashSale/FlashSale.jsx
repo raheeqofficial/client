@@ -16,7 +16,7 @@ const FlashSale = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setisLoading(true)
+    setisLoading(true);
     fetchDataFromApi(`/api/products?discount=50`)
       .then((res) => {
         setProductData(res);
@@ -43,8 +43,10 @@ const FlashSale = () => {
           Sorry, there are no products available in this category at the moment.
           Please check back later or explore other categories.
         </h6>
-        <BsEmojiExpressionless/>
-        <Button className="btn btn-blue btn-lg mt-2"><Link to={'/'}>Back</Link></Button>
+        <BsEmojiExpressionless />
+        <Button className="btn btn-blue btn-lg mt-2">
+          <Link to={"/"}>Back</Link>
+        </Button>
       </div>
     );
   }
@@ -52,15 +54,51 @@ const FlashSale = () => {
   return (
     <>
       <Helmet>
-        <title>Sale - Hibuyshopping</title>
+        <title>
+          Exclusive 50% Discount - Hibuyshopping | Save Big on Top Brands in
+          Pakistan
+        </title>
+        <meta
+          name="title"
+          content="Exclusive 50% Discount - Hibuyshopping | Save Big on Top Brands in Pakistan"
+        />
         <meta
           name="description"
-          content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
+          content="Enjoy a massive 50% discount on selected products at Hibuyshopping! Shop now and save big on top brands across fashion, electronics, home goods, and more. Don't miss out on these limited-time offers available in Pakistan's leading multi-vendor e-commerce store."
         />
         <meta
           name="keywords"
-          content="Sale, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
+          content="50% discount, Hibuyshopping, exclusive offers, online discounts, save big, fashion sale, electronics sale, home goods discount, top brands, limited-time offers, Pakistani e-commerce, multi-vendor store"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Exclusive 50% Discount - Hibuyshopping | Save Big on Top Brands in Pakistan"
+        />
+        <meta
+          property="og:description"
+          content="Unlock a 50% discount on selected products at Hibuyshopping! Shop now to take advantage of massive savings on top brands across various categories. Limited-time offer available at Pakistan's leading multi-vendor e-commerce platform."
+        />
+        <meta
+          property="og:image"
+          content="https://hibuyshopping.com/products/flash-sale/4d9040da-a6ea-4ff0-8ceb-91e44dda3a25bf80965f-a231-4289-9805-c1f0ed86a73d"
+        />
+        <meta
+          property="og:url"
+          content="https://hibuyshopping.com/products/flash-sale/4d9040da-a6ea-4ff0-8ceb-91e44dda3a25bf80965f-a231-4289-9805-c1f0ed86a73d"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Exclusive 50% Discount - Hibuyshopping | Save Big on Top Brands in Pakistan"
+        />
+        <meta
+          name="twitter:description"
+          content="Get 50% off on selected items at Hibuyshopping! Shop now to save on top brands in fashion, electronics, and more. Don't miss these limited-time discounts at Pakistan's top e-commerce store."
+        />
+        <meta
+          name="twitter:image"
+          content="https://hibuyshopping.com/products/flash-sale/4d9040da-a6ea-4ff0-8ceb-91e44dda3a25bf80965f-a231-4289-9805-c1f0ed86a73d"
         />
       </Helmet>
       <div className="flashTopBanner">

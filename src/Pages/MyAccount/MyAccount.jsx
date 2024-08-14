@@ -25,7 +25,6 @@ import moment from "moment";
 import Dialog from "@mui/material/Dialog";
 import { MdClose } from "react-icons/md";
 
-
 import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemText from "@mui/material/ListItemText";
@@ -33,6 +32,7 @@ import ListItemAvatar from "@mui/material/ListItemAvatar";
 import Avatar from "@mui/material/Avatar";
 
 import axios from "axios";
+import { Helmet } from "react-helmet-async";
 const formatDate = (isoDate) => {
   return moment(isoDate).format("DD/MM/YYYY hh:mm A");
 };
@@ -436,63 +436,106 @@ const ManageAccount = () => {
   };
 
   return (
-    <div className="page-wrapper myAccount">
-      <main className="main">
-        <div className="page-header text-center myAccountTopBg">
-          <div className="container">
-            <h1 className="page-title">
-              My Account<span>Shop</span>
-            </h1>
-          </div>
-        </div>
-        <br />
-
-        <div className="page-content">
-          <div className="dashboard">
+    <>
+      <Helmet>
+        <title>
+          My Account - Hibuyshopping | Manage Your Personal Information and
+          Orders
+        </title>
+        <meta
+          name="title"
+          content="My Account - Hibuyshopping | Manage Your Personal Information and Orders"
+        />
+        <meta
+          name="description"
+          content="Access and manage your personal information, orders, and account settings on Hibuyshopping. View your order history, update profile details, and manage your preferences on Pakistan's leading e-commerce platform."
+        />
+        <meta
+          name="keywords"
+          content="my account, Hibuyshopping, account management, personal information, order history, profile settings, manage orders, e-commerce account, Pakistani e-commerce, multi-vendor store"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="My Account - Hibuyshopping | Manage Your Personal Information and Orders"
+        />
+        <meta
+          property="og:description"
+          content="Manage your account on Hibuyshopping. Access your personal information, view order history, update profile details, and adjust account settings. Stay organized and manage your shopping preferences on Pakistan's top e-commerce platform."
+        />
+        <meta property="og:image" content="URL_TO_YOUR_MY_ACCOUNT_PAGE_IMAGE" />
+        <meta property="og:url" content="URL_TO_YOUR_MY_ACCOUNT_PAGE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="My Account - Hibuyshopping | Manage Your Personal Information and Orders"
+        />
+        <meta
+          name="twitter:description"
+          content="Access and manage your account on Hibuyshopping. View and update your personal information, track your order history, and manage your profile settings. Organize your account and preferences on Pakistan's leading e-commerce site."
+        />
+        <meta
+          name="twitter:image"
+          content="URL_TO_YOUR_MY_ACCOUNT_PAGE_IMAGE"
+        />
+      </Helmet>
+      <div className="page-wrapper myAccount">
+        <main className="main">
+          <div className="page-header text-center myAccountTopBg">
             <div className="container">
-              <Box
-                sx={{
-                  flexGrow: 1,
-                  bgcolor: "background.paper",
-                  display: "flex",
-                  height: 424,
-                }}
-              >
-                <Tabs
-                  orientation="vertical"
-                  variant="scrollable"
-                  value={value}
-                  onChange={handleChange}
-                  aria-label="Vertical tabs example"
-                  sx={{ borderRight: 1, borderColor: "divider" }}
+              <h1 className="page-title">
+                My Account<span>Shop</span>
+              </h1>
+            </div>
+          </div>
+          <br />
+
+          <div className="page-content">
+            <div className="dashboard">
+              <div className="container">
+                <Box
+                  sx={{
+                    flexGrow: 1,
+                    bgcolor: "background.paper",
+                    display: "flex",
+                    height: 424,
+                  }}
                 >
-                  <Tab label="Profile" {...a11yProps(0)} />
-                  <Tab label="Wishlist" {...a11yProps(1)} />
-                  <Tab label="Orders" {...a11yProps(2)} />
-                  <Tab label="Returns" {...a11yProps(3)} />
-                  <Tab label="Cancelled" {...a11yProps(4)} />
-                  <Tab label="Followed Shops" {...a11yProps(5)} />
-                  <Tab label="Become a seller" {...a11yProps(6)} />
-                </Tabs>
-                <TabPanel value={value} index={0}>
-                  <Box
-                    sx={{ width: "100%" }}
-                    className="myAccBox card border-0"
+                  <Tabs
+                    orientation="vertical"
+                    variant="scrollable"
+                    value={value}
+                    onChange={handleChange}
+                    aria-label="Vertical tabs example"
+                    sx={{ borderRight: 1, borderColor: "divider" }}
                   >
-                    <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                      <Tabs
-                        value={accValue}
-                        onChange={handleAccChange}
-                        aria-label="basic tabs example"
-                      >
-                        <Tab label="Edit Profile" {...a11yPropsAcc(0)} />
-                        <Tab label="Change Password" {...a11yPropsAcc(1)} />
-                      </Tabs>
-                    </Box>
-                    <CustomTabPanel value={accValue} index={0}>
-                      <form onSubmit={edituser}>
-                        <div className="row">
-                          {/* <div className='col-md-4'>
+                    <Tab label="Profile" {...a11yProps(0)} />
+                    <Tab label="Wishlist" {...a11yProps(1)} />
+                    <Tab label="Orders" {...a11yProps(2)} />
+                    <Tab label="Returns" {...a11yProps(3)} />
+                    <Tab label="Cancelled" {...a11yProps(4)} />
+                    <Tab label="Followed Shops" {...a11yProps(5)} />
+                    <Tab label="Become a seller" {...a11yProps(6)} />
+                  </Tabs>
+                  <TabPanel value={value} index={0}>
+                    <Box
+                      sx={{ width: "100%" }}
+                      className="myAccBox card border-0"
+                    >
+                      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                        <Tabs
+                          value={accValue}
+                          onChange={handleAccChange}
+                          aria-label="basic tabs example"
+                        >
+                          <Tab label="Edit Profile" {...a11yPropsAcc(0)} />
+                          <Tab label="Change Password" {...a11yPropsAcc(1)} />
+                        </Tabs>
+                      </Box>
+                      <CustomTabPanel value={accValue} index={0}>
+                        <form onSubmit={edituser}>
+                          <div className="row">
+                            {/* <div className='col-md-4'>
                                     <div className='userImage'>
                                         {
                                             previews?.length !== 0 ? previews?.map((img, index) => {
@@ -512,694 +555,708 @@ const ManageAccount = () => {
                                     </div>
                                 </div> */}
 
-                          <div className="col-md-8">
-                            <div className="row">
-                              <div className="col-md-6">
-                                <div className="form-group">
-                                  <TextField
-                                    label="Name"
-                                    variant="outlined"
-                                    className="w-100"
-                                    name="name"
-                                    onChange={changeInput}
-                                    value={formFields.name}
-                                  />
+                            <div className="col-md-8">
+                              <div className="row">
+                                <div className="col-md-6">
+                                  <div className="form-group">
+                                    <TextField
+                                      label="Name"
+                                      variant="outlined"
+                                      className="w-100"
+                                      name="name"
+                                      onChange={changeInput}
+                                      value={formFields.name}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-md-6">
+                                  <div className="form-group">
+                                    <TextField
+                                      label="Email"
+                                      disabled
+                                      variant="outlined"
+                                      className="w-100"
+                                      name="email"
+                                      onChange={changeInput}
+                                      value={formFields.email}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-md-6">
+                                  <div className="form-group">
+                                    <TextField
+                                      label="Phone"
+                                      variant="outlined"
+                                      className="w-100"
+                                      name="phone"
+                                      onChange={changeInput}
+                                      value={formFields.phone}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                              <div className="col-md-6">
-                                <div className="form-group">
-                                  <TextField
-                                    label="Email"
-                                    disabled
-                                    variant="outlined"
-                                    className="w-100"
-                                    name="email"
-                                    onChange={changeInput}
-                                    value={formFields.email}
-                                  />
-                                </div>
+                              <div className="form-group">
+                                <Button
+                                  type="submit"
+                                  className="btn-blue bg-red btn-lg btn-big"
+                                >
+                                  {" "}
+                                  Save
+                                </Button>
                               </div>
-                              <div className="col-md-6">
-                                <div className="form-group">
-                                  <TextField
-                                    label="Phone"
-                                    variant="outlined"
-                                    className="w-100"
-                                    name="phone"
-                                    onChange={changeInput}
-                                    value={formFields.phone}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="form-group">
-                              <Button
-                                type="submit"
-                                className="btn-blue bg-red btn-lg btn-big"
-                              >
-                                {" "}
-                                Save
-                              </Button>
                             </div>
                           </div>
-                        </div>
-                      </form>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={accValue} index={1}>
-                      <form onSubmit={changePassword}>
-                        <div className="row">
-                          <div className="col-md-12">
-                            <div className="row">
-                              <div className="col-md-4">
-                                <div className="form-group">
-                                  <TextField
-                                    label="Old Password"
-                                    variant="outlined"
-                                    className="w-100"
-                                    name="oldPassword"
-                                    onChange={changeInput2}
-                                  />
+                        </form>
+                      </CustomTabPanel>
+                      <CustomTabPanel value={accValue} index={1}>
+                        <form onSubmit={changePassword}>
+                          <div className="row">
+                            <div className="col-md-12">
+                              <div className="row">
+                                <div className="col-md-4">
+                                  <div className="form-group">
+                                    <TextField
+                                      label="Old Password"
+                                      variant="outlined"
+                                      className="w-100"
+                                      name="oldPassword"
+                                      onChange={changeInput2}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-md-4">
+                                  <div className="form-group">
+                                    <TextField
+                                      label="New password"
+                                      variant="outlined"
+                                      className="w-100"
+                                      name="password"
+                                      onChange={changeInput2}
+                                    />
+                                  </div>
+                                </div>
+                                <div className="col-md-4">
+                                  <div className="form-group">
+                                    <TextField
+                                      label="Confirm Password"
+                                      variant="outlined"
+                                      className="w-100"
+                                      name="confirmPassword"
+                                      onChange={changeInput2}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                              <div className="col-md-4">
-                                <div className="form-group">
-                                  <TextField
-                                    label="New password"
-                                    variant="outlined"
-                                    className="w-100"
-                                    name="password"
-                                    onChange={changeInput2}
-                                  />
-                                </div>
+                              <div className="form-group">
+                                <Button
+                                  type="submit"
+                                  className="btn-blue bg-red btn-lg btn-big"
+                                >
+                                  {" "}
+                                  Save
+                                </Button>
                               </div>
-                              <div className="col-md-4">
-                                <div className="form-group">
-                                  <TextField
-                                    label="Confirm Password"
-                                    variant="outlined"
-                                    className="w-100"
-                                    name="confirmPassword"
-                                    onChange={changeInput2}
-                                  />
-                                </div>
-                              </div>
-                            </div>
-                            <div className="form-group">
-                              <Button
-                                type="submit"
-                                className="btn-blue bg-red btn-lg btn-big"
-                              >
-                                {" "}
-                                Save
-                              </Button>
                             </div>
                           </div>
-                        </div>
-                      </form>
-                    </CustomTabPanel>
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={1}>
-                  <div className="">
-                    {myListData?.length !== 0 ? (
-                      <table className="table table-wishlist table-mobile">
-                        <thead>
-                          <tr>
-                            <th>Product</th>
-                            <th>Price</th>
-                            <th>Stock Status</th>
-                            <th></th>
-                            <th></th>
-                          </tr>
-                        </thead>
-
-                        <tbody>
-                          {myListData?.length !== 0 &&
-                            myListData?.map((item, index) => {
-                              return (
-                                <tr key={index}>
-                                  <td className="product-col">
-                                    <div className="product">
-                                      <figure className="product-media">
-                                        <Link to={`/product/${item?.staticId}`}>
-                                          <LazyLoadImage
-                                            src={item.image}
-                                            alt={item.productTitle}
-                                            effect="blur" // You can use other effects like 'opacity' or 'black-and-white'
-                                            placeholderSrc="path_to_placeholder_image" // Optional: Placeholder image while loading
-                                          />
-                                        </Link>
-                                      </figure>
-
-                                      <h3 className="product-title">
-                                        <Link to={`/product/${item?.staticId}`}>
-                                          {item?.productTitle}
-                                        </Link>
-                                      </h3>
-                                    </div>
-                                  </td>
-                                  <td className="price-col">
-                                    Rs {item?.price}
-                                  </td>
-                                  {item?.countInStock === 0 ? (
-                                    <td className="stock-col">
-                                      <span className="out-of-stock">
-                                        Out of stock
-                                      </span>
-                                    </td>
-                                  ) : (
-                                    <td className="stock-col">
-                                      <span className="in-stock">In stock</span>
-                                    </td>
-                                  )}
-                                  <td className="remove-col">
-                                    <button
-                                      className="btn-remove"
-                                      onClick={() => removeItem(item?._id)}
-                                    >
-                                      <i className="icon-close"></i>
-                                    </button>
-                                  </td>
-                                </tr>
-                              );
-                            })}
-                        </tbody>
-                      </table>
-                    ) : (
-                      <div className="empty d-flex align-items-center justify-content-center flex-column">
-                        <img src={emprtCart} width="150" />
-                        <h3 className="emptyPageMsg">
-                          Wishlist is currently empty
-                        </h3>
-                        <br />
-                        <Link to="/">
-                          {" "}
-                          <Button className="btn-blue bg-red btn-lg btn-big btn-round">
-                            <FaHome /> &nbsp; Continue Shopping
-                          </Button>
-                        </Link>
-                      </div>
-                    )}
-                  </div>
-                </TabPanel>
-                <TabPanel value={value} index={2}>
-                  <Box
-                    sx={{ width: "100%" }}
-                    className="myAccBox card border-0"
-                  >
-                    <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
-                      <Tabs
-                        value={orderValue}
-                        onChange={handleOrderChange}
-                        aria-label="basic tabs example"
-                      >
-                        <Tab label="All" {...a11yPropsAcc(0)} />
-                        <Tab label="Pending" {...a11yPropsAcc(1)} />
-                        <Tab label="Confirm" {...a11yPropsAcc(2)} />
-                        <Tab label="Shipped" {...a11yPropsAcc(3)} />
-                        <Tab label="Delivered" {...a11yPropsAcc(4)} />
-                        <Tab label="To Review" {...a11yPropsAcc(5)} />
-                      </Tabs>
+                        </form>
+                      </CustomTabPanel>
                     </Box>
-                    <CustomTabPanel value={orderValue} index={0}>
-                      <div>
-                        <div className="table-responsive orderTable">
-                          <table className="table table-striped table-bordered">
-                            <thead className="thead-light">
-                              <tr>
-                                <th>Order Id</th>
-                                <th>Products</th>
-                                <th>Order Details</th>
-                                <th>Order Status</th>
-                                <th>Date</th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {orders?.length !== 0 &&
-                                orders?.map((order, index) => {
-                                  const formattedDate = formatDate(order?.date);
-                                  return (
-                                    <>
-                                      <tr key={index}>
-                                        <td>
-                                          <span className="text-blue fonmt-weight-bold">
-                                            {order?.id}
-                                          </span>
-                                        </td>
-                                        <td>
-                                          <span
-                                            className="text-blue fonmt-weight-bold cursor"
-                                            onClick={() =>
-                                              showProducts(order?._id)
-                                            }
-                                          >
-                                            Click here to view
-                                          </span>
-                                        </td>
-                                        <td>
-                                          <Link
-                                            to={`/order/details/${order?._id}`}
-                                          >
-                                            See details
-                                          </Link>
-                                        </td>
-                                        <td
-                                          className={`${
-                                            order.status === "Cancelled" ||
-                                            order.status === "Pending"
-                                              ? "text text-danger"
-                                              : order.status === "Confirm"
-                                              ? "text text-secondary"
-                                              : order.status === "Shippied"
-                                              ? "text text-primary"
-                                              : order.status === "Delivered"
-                                              ? "text text-success"
-                                              : "text text-default"
-                                          }`}
-                                        >
-                                          {order?.status}
-                                        </td>
-                                        <td>{formattedDate}</td>
-                                      </tr>
-                                    </>
-                                  );
-                                })}
-                            </tbody>
-                          </table>
-                        </div>
-                        <Dialog open={isOpenModal} className="productModal">
-                          <Button
-                            className="close_"
-                            onClick={() => setIsOpenModal(false)}
-                          >
-                            <MdClose />
-                          </Button>
-                          <h4 className="mb-1 font-weight-bold pr-5 mb-4">
-                            Products
-                          </h4>
+                  </TabPanel>
+                  <TabPanel value={value} index={1}>
+                    <div className="">
+                      {myListData?.length !== 0 ? (
+                        <table className="table table-wishlist table-mobile">
+                          <thead>
+                            <tr>
+                              <th>Product</th>
+                              <th>Price</th>
+                              <th>Stock Status</th>
+                              <th></th>
+                              <th></th>
+                            </tr>
+                          </thead>
 
+                          <tbody>
+                            {myListData?.length !== 0 &&
+                              myListData?.map((item, index) => {
+                                return (
+                                  <tr key={index}>
+                                    <td className="product-col">
+                                      <div className="product">
+                                        <figure className="product-media">
+                                          <Link
+                                            to={`/product/${item?.staticId}`}
+                                          >
+                                            <LazyLoadImage
+                                              src={item.image}
+                                              alt={item.productTitle}
+                                              effect="blur"
+                                              placeholderSrc="path_to_placeholder_image" // Optional: Placeholder image while loading
+                                            />
+                                          </Link>
+                                        </figure>
+
+                                        <h3 className="product-title">
+                                          <Link
+                                            to={`/product/${item?.staticId}`}
+                                          >
+                                            {item?.productTitle}
+                                          </Link>
+                                        </h3>
+                                      </div>
+                                    </td>
+                                    <td className="price-col">
+                                      Rs {item?.price}
+                                    </td>
+                                    {item?.countInStock === 0 ? (
+                                      <td className="stock-col">
+                                        <span className="out-of-stock">
+                                          Out of stock
+                                        </span>
+                                      </td>
+                                    ) : (
+                                      <td className="stock-col">
+                                        <span className="in-stock">
+                                          In stock
+                                        </span>
+                                      </td>
+                                    )}
+                                    <td className="remove-col">
+                                      <button
+                                        className="btn-remove"
+                                        onClick={() => removeItem(item?._id)}
+                                      >
+                                        <i className="icon-close"></i>
+                                      </button>
+                                    </td>
+                                  </tr>
+                                );
+                              })}
+                          </tbody>
+                        </table>
+                      ) : (
+                        <div className="empty d-flex align-items-center justify-content-center flex-column">
+                          <img src={emprtCart} width="150" />
+                          <h3 className="emptyPageMsg">
+                            Wishlist is currently empty
+                          </h3>
+                          <br />
+                          <Link to="/">
+                            {" "}
+                            <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                              <FaHome /> &nbsp; Continue Shopping
+                            </Button>
+                          </Link>
+                        </div>
+                      )}
+                    </div>
+                  </TabPanel>
+                  <TabPanel value={value} index={2}>
+                    <Box
+                      sx={{ width: "100%" }}
+                      className="myAccBox card border-0"
+                    >
+                      <Box sx={{ borderBottom: 1, borderColor: "divider" }}>
+                        <Tabs
+                          value={orderValue}
+                          onChange={handleOrderChange}
+                          aria-label="basic tabs example"
+                        >
+                          <Tab label="All" {...a11yPropsAcc(0)} />
+                          <Tab label="Pending" {...a11yPropsAcc(1)} />
+                          <Tab label="Confirm" {...a11yPropsAcc(2)} />
+                          <Tab label="Shipped" {...a11yPropsAcc(3)} />
+                          <Tab label="Delivered" {...a11yPropsAcc(4)} />
+                          <Tab label="To Review" {...a11yPropsAcc(5)} />
+                        </Tabs>
+                      </Box>
+                      <CustomTabPanel value={orderValue} index={0}>
+                        <div>
                           <div className="table-responsive orderTable">
                             <table className="table table-striped table-bordered">
                               <thead className="thead-light">
                                 <tr>
-                                  <th>Product Id</th>
-                                  <th>Product Title</th>
-                                  <th>Image</th>
-                                  <th>Quantity</th>
-                                  <th>Price</th>
-                                  <th>SubTotal</th>
+                                  <th>Order Id</th>
+                                  <th>Products</th>
+                                  <th>Order Details</th>
+                                  <th>Order Status</th>
+                                  <th>Date</th>
                                 </tr>
                               </thead>
-
                               <tbody>
-                                {products?.length !== 0 &&
-                                  products?.map((item, index) => {
+                                {orders?.length !== 0 &&
+                                  orders?.map((order, index) => {
+                                    const formattedDate = formatDate(
+                                      order?.date
+                                    );
                                     return (
-                                      <tr key={index}>
-                                        <td>{item?.productId}</td>
-                                        <td style={{ whiteSpace: "inherit" }}>
-                                          <span>
-                                            {item?.productTitle?.substr(0, 30) +
-                                              "..."}
-                                          </span>
-                                        </td>
-                                        <td>
-                                          <div className="img">
-                                            <img src={item?.image} />
-                                          </div>
-                                        </td>
-                                        <td>{item?.quantity}</td>
-                                        <td>{item?.price}</td>
-                                        <td>{item?.subTotal}</td>
-                                      </tr>
+                                      <>
+                                        <tr key={index}>
+                                          <td>
+                                            <span className="text-blue fonmt-weight-bold">
+                                              {order?.id}
+                                            </span>
+                                          </td>
+                                          <td>
+                                            <span
+                                              className="text-blue fonmt-weight-bold cursor"
+                                              onClick={() =>
+                                                showProducts(order?._id)
+                                              }
+                                            >
+                                              Click here to view
+                                            </span>
+                                          </td>
+                                          <td>
+                                            <Link
+                                              to={`/order/details/${order?._id}`}
+                                            >
+                                              See details
+                                            </Link>
+                                          </td>
+                                          <td
+                                            className={`${
+                                              order.status === "Cancelled" ||
+                                              order.status === "Pending"
+                                                ? "text text-danger"
+                                                : order.status === "Confirm"
+                                                ? "text text-secondary"
+                                                : order.status === "Shippied"
+                                                ? "text text-primary"
+                                                : order.status === "Delivered"
+                                                ? "text text-success"
+                                                : "text text-default"
+                                            }`}
+                                          >
+                                            {order?.status}
+                                          </td>
+                                          <td>{formattedDate}</td>
+                                        </tr>
+                                      </>
                                     );
                                   })}
                               </tbody>
                             </table>
                           </div>
-                        </Dialog>
-                      </div>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={orderValue} index={1}>
-                      <table className="table table-wishlist table-mobile">
-                        {pendOrders?.length !== 0 ? (
-                          pendOrders?.map((item, index) => {
-                            return (
-                              <tbody>
-                                <tr key={index}>
-                                  {item?.products.map((data) => (
-                                    <>
-                                      <td className="product-col">
-                                        <div className="product">
-                                          <figure className="product-media">
-                                            <Link
-                                              to={`/product/${data?.staticId}`}
-                                            >
-                                              <LazyLoadImage
-                                                src={data.image}
-                                                alt={data.productTitle}
-                                                effect="blur"
-                                                placeholderSrc="path_to_placeholder_image"
-                                              />
-                                            </Link>
-                                          </figure>
-
-                                          <h3 className="product-title">
-                                            <Link
-                                              to={`/product/${data?.staticId}`}
-                                            >
-                                              {data?.productTitle?.substr(
-                                                0,
-                                                30
-                                              ) + "..."}
-                                            </Link>
-                                          </h3>
-                                        </div>
-                                      </td>
-                                      <td className="price-col">
-                                        Rs {data?.price}
-                                      </td>
-                                      <td className="stock-col">
-                                        Qty <b>:</b> {data?.quantity}
-                                      </td>
-                                    </>
-                                  ))}
-                                  <td className="remove-col">
-                                    <button className="badge badge-danger">
-                                      {item.status}
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            );
-                          })
-                        ) : (
-                          <div className="empty d-flex align-items-center justify-content-center flex-column">
-                            <img src={emprtCart} width="150" />
-                            <h3 className="emptyPageMsg">
-                              No any Pending order yet
-                            </h3>
-                            <br />
-                            <Link to="/">
-                              {" "}
-                              <Button className="btn-blue bg-red btn-lg btn-big btn-round">
-                                <FaHome /> &nbsp; Continue Shopping
-                              </Button>
-                            </Link>
-                          </div>
-                        )}
-                      </table>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={orderValue} index={2}>
-                      <table className="table table-wishlist table-mobile">
-                        {confOrders?.length !== 0 ? (
-                          confOrders?.map((item, index) => {
-                            return (
-                              <tbody>
-                                <tr key={index}>
-                                  {item?.products.map((data) => (
-                                    <>
-                                      <td className="product-col">
-                                        <div className="product">
-                                          <figure className="product-media">
-                                            <Link
-                                              to={`/product/${data?.staticId}`}
-                                            >
-                                              <LazyLoadImage
-                                                src={data.image}
-                                                alt={data.productTitle}
-                                                effect="blur"
-                                                placeholderSrc="path_to_placeholder_image"
-                                              />
-                                            </Link>
-                                          </figure>
-
-                                          <h3 className="product-title">
-                                            <Link
-                                              to={`/product/${data?.staticId}`}
-                                            >
-                                              {data?.productTitle?.substr(
-                                                0,
-                                                30
-                                              ) + "..."}
-                                            </Link>
-                                          </h3>
-                                        </div>
-                                      </td>
-                                      <td className="price-col">
-                                        Rs {data?.price}
-                                      </td>
-                                      <td className="stock-col">
-                                        Qty <b>:</b> {data?.quantity}
-                                      </td>
-                                    </>
-                                  ))}
-                                  <td className="remove-col">
-                                    <button className="badge badge-secondary">
-                                      {item.status}
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            );
-                          })
-                        ) : (
-                          <div className="empty d-flex align-items-center justify-content-center flex-column">
-                            <img src={emprtCart} width="150" />
-                            <h3 className="emptyPageMsg">
-                              No any Confirm order yet
-                            </h3>
-                            <br />
-                            <Link to="/">
-                              <Button className="btn-blue bg-red btn-lg btn-big btn-round">
-                                <FaHome /> &nbsp; Continue Shopping
-                              </Button>
-                            </Link>
-                          </div>
-                        )}
-                      </table>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={orderValue} index={3}>
-                      <table className="table table-wishlist table-mobile">
-                        {shipOrders?.length !== 0 ? (
-                          shipOrders?.map((item, index) => {
-                            return (
-                              <tbody>
-                                <tr key={index}>
-                                  {item?.products.map((data) => (
-                                    <>
-                                      <td className="product-col">
-                                        <div className="product">
-                                          <figure className="product-media">
-                                            <Link
-                                              to={`/product/${data?.staticId}`}
-                                            >
-                                              <LazyLoadImage
-                                                src={data.image}
-                                                alt={data.productTitle}
-                                                effect="blur"
-                                                placeholderSrc="path_to_placeholder_image"
-                                              />
-                                            </Link>
-                                          </figure>
-
-                                          <h3 className="product-title">
-                                            <Link
-                                              to={`/product/${data?.staticId}`}
-                                            >
-                                              {data?.productTitle?.substr(
-                                                0,
-                                                30
-                                              ) + "..."}
-                                            </Link>
-                                          </h3>
-                                        </div>
-                                      </td>
-                                      <td className="price-col">
-                                        Rs {data?.price}
-                                      </td>
-                                      <td className="stock-col">
-                                        Qty <b>:</b> {data?.quantity}
-                                      </td>
-                                    </>
-                                  ))}
-                                  <td className="remove-col">
-                                    <button className="badge badge-primary">
-                                      {item.status}
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            );
-                          })
-                        ) : (
-                          <div className="empty d-flex align-items-center justify-content-center flex-column">
-                            <img src={emprtCart} width="150" />
-                            <h3 className="emptyPageMsg">
-                              No any Shipped order yet
-                            </h3>
-                            <br />
-                            <Link to="/">
-                              <Button className="btn-blue bg-red btn-lg btn-big btn-round">
-                                <FaHome /> &nbsp; Continue Shopping
-                              </Button>
-                            </Link>
-                          </div>
-                        )}
-                      </table>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={orderValue} index={4}>
-                      <table className="table table-wishlist table-mobile">
-                        {deliverOrders?.length !== 0 ? (
-                          deliverOrders?.map((item, index) => {
-                            return (
-                              <tbody>
-                                <tr key={index}>
-                                  {item?.products.map((data) => (
-                                    <>
-                                      <td className="product-col">
-                                        <div className="product">
-                                          <figure className="product-media">
-                                            <Link
-                                              to={`/product/${data?.staticId}`}
-                                            >
-                                              <LazyLoadImage
-                                                src={data.image}
-                                                alt={data.productTitle}
-                                                effect="blur"
-                                                placeholderSrc="path_to_placeholder_image"
-                                              />
-                                            </Link>
-                                          </figure>
-
-                                          <h3 className="product-title">
-                                            <Link
-                                              to={`/product/${data?.staticId}`}
-                                            >
-                                              {data?.productTitle?.substr(
-                                                0,
-                                                30
-                                              ) + "..."}
-                                            </Link>
-                                          </h3>
-                                        </div>
-                                      </td>
-                                      <td className="price-col">
-                                        Rs {data?.price}
-                                      </td>
-                                      <td className="stock-col">
-                                        Qty <b>:</b> {data?.quantity}
-                                      </td>
-                                    </>
-                                  ))}
-                                  <td className="remove-col">
-                                    <button className="badge badge-success">
-                                      {item.status}
-                                    </button>
-                                  </td>
-                                </tr>
-                              </tbody>
-                            );
-                          })
-                        ) : (
-                          <div className="empty d-flex align-items-center justify-content-center flex-column">
-                            <img src={emprtCart} width="150" />
-                            <h3 className="emptyPageMsg">
-                              No any Delivered order yet
-                            </h3>
-                            <br />
-                            <Link to="/">
-                              <Button className="btn-blue bg-red btn-lg btn-big btn-round">
-                                <FaHome /> &nbsp; Continue Shopping
-                              </Button>
-                            </Link>
-                          </div>
-                        )}
-                      </table>
-                    </CustomTabPanel>
-                    <CustomTabPanel value={orderValue} index={5}>
-                      <EligibleProducts customerId={userId} />
-                    </CustomTabPanel>
-                  </Box>
-                </TabPanel>
-                <TabPanel value={value} index={3}>
-                  <div className="empty d-flex align-items-center justify-content-center flex-column">
-                    <img src={emprtCart} width="150" />
-                    <h3 className="emptyPageMsg">No any return order yet</h3>
-                    <br />
-                    <Link to="/">
-                      {" "}
-                      <Button className="btn-blue bg-red btn-lg btn-big btn-round">
-                        <FaHome /> &nbsp; Continue Shopping
-                      </Button>
-                    </Link>
-                  </div>
-                </TabPanel>
-                <TabPanel value={value} index={4}>
-                  <div className="empty d-flex align-items-center justify-content-center flex-column">
-                    <img src={emprtCart} width="150" />
-                    <h3 className="emptyPageMsg">
-                      no any cancelled order yet.
-                    </h3>
-                    <br />
-                    <Link to="/">
-                      {" "}
-                      <Button className="btn-blue bg-red btn-lg btn-big btn-round">
-                        <FaHome /> &nbsp; Continue Shopping
-                      </Button>
-                    </Link>
-                  </div>
-                </TabPanel>
-                <TabPanel value={value} index={5}>
-                  <div className=" followedShops">
-                    <h1 className="text-center font-weight-bold">
-                      My Favourite Shops
-                    </h1>
-                    {shops?.length !== 0 ? (
-                      shops?.map((shop, index) => {
-                        const formattedDate = formatDate(shop?.createdAt);
-                        return (
-                          <div key={index}>
-                            <List
-                              sx={{
-                                width: "100%",
-                                maxWidth: 360,
-                                bgcolor: "background.paper",
-                              }}
+                          <Dialog open={isOpenModal} className="productModal">
+                            <Button
+                              className="close_"
+                              onClick={() => setIsOpenModal(false)}
                             >
-                              <Link to={`/shops/${shop._id}`}>
-                                <ListItem>
-                                  <ListItemAvatar>
-                                    <Avatar>{shop?.name?.charAt(0)}</Avatar>
-                                  </ListItemAvatar>
-                                  <ListItemText
-                                    primary={shop.name}
-                                    secondary={formattedDate}
-                                  />
-                                </ListItem>
+                              <MdClose />
+                            </Button>
+                            <h4 className="mb-1 font-weight-bold pr-5 mb-4">
+                              Products
+                            </h4>
+
+                            <div className="table-responsive orderTable">
+                              <table className="table table-striped table-bordered">
+                                <thead className="thead-light">
+                                  <tr>
+                                    <th>Product Id</th>
+                                    <th>Product Title</th>
+                                    <th>Image</th>
+                                    <th>Quantity</th>
+                                    <th>Price</th>
+                                    <th>SubTotal</th>
+                                  </tr>
+                                </thead>
+
+                                <tbody>
+                                  {products?.length !== 0 &&
+                                    products?.map((item, index) => {
+                                      return (
+                                        <tr key={index}>
+                                          <td>{item?.productId}</td>
+                                          <td style={{ whiteSpace: "inherit" }}>
+                                            <span>
+                                              {item?.productTitle?.substr(
+                                                0,
+                                                30
+                                              ) + "..."}
+                                            </span>
+                                          </td>
+                                          <td>
+                                            <div className="img">
+                                              <img src={item?.image} />
+                                            </div>
+                                          </td>
+                                          <td>{item?.quantity}</td>
+                                          <td>{item?.price}</td>
+                                          <td>{item?.subTotal}</td>
+                                        </tr>
+                                      );
+                                    })}
+                                </tbody>
+                              </table>
+                            </div>
+                          </Dialog>
+                        </div>
+                      </CustomTabPanel>
+                      <CustomTabPanel value={orderValue} index={1}>
+                        <table className="table table-wishlist table-mobile">
+                          {pendOrders?.length !== 0 ? (
+                            pendOrders?.map((item, index) => {
+                              return (
+                                <tbody>
+                                  <tr key={index}>
+                                    {item?.products.map((data) => (
+                                      <>
+                                        <td className="product-col">
+                                          <div className="product">
+                                            <figure className="product-media">
+                                              <Link
+                                                to={`/product/${data?.staticId}`}
+                                              >
+                                                <LazyLoadImage
+                                                  src={data.image}
+                                                  alt={data.productTitle}
+                                                  effect="blur"
+                                                  placeholderSrc="path_to_placeholder_image"
+                                                />
+                                              </Link>
+                                            </figure>
+
+                                            <h3 className="product-title">
+                                              <Link
+                                                to={`/product/${data?.staticId}`}
+                                              >
+                                                {data?.productTitle?.substr(
+                                                  0,
+                                                  30
+                                                ) + "..."}
+                                              </Link>
+                                            </h3>
+                                          </div>
+                                        </td>
+                                        <td className="price-col">
+                                          Rs {data?.price}
+                                        </td>
+                                        <td className="stock-col">
+                                          Qty <b>:</b> {data?.quantity}
+                                        </td>
+                                      </>
+                                    ))}
+                                    <td className="remove-col">
+                                      <button className="badge badge-danger">
+                                        {item.status}
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              );
+                            })
+                          ) : (
+                            <div className="empty d-flex align-items-center justify-content-center flex-column">
+                              <img src={emprtCart} width="150" />
+                              <h3 className="emptyPageMsg">
+                                No any Pending order yet
+                              </h3>
+                              <br />
+                              <Link to="/">
+                                {" "}
+                                <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                                  <FaHome /> &nbsp; Continue Shopping
+                                </Button>
                               </Link>
-                            </List>
-                          </div>
-                        );
-                      })
-                    ) : (
-                      <div>
-                        <p>You haven't followed any shops yet.</p>
-                      </div>
-                    )}
-                  </div>
-                </TabPanel>
-                <TabPanel value={value} index={6}>
-                  <div className="followContent">
-                     if you want to become a seller on our website <Link to={'#'}><b>Click Here</b></Link>
-                  </div>
-                </TabPanel>
-              </Box>
+                            </div>
+                          )}
+                        </table>
+                      </CustomTabPanel>
+                      <CustomTabPanel value={orderValue} index={2}>
+                        <table className="table table-wishlist table-mobile">
+                          {confOrders?.length !== 0 ? (
+                            confOrders?.map((item, index) => {
+                              return (
+                                <tbody>
+                                  <tr key={index}>
+                                    {item?.products.map((data) => (
+                                      <>
+                                        <td className="product-col">
+                                          <div className="product">
+                                            <figure className="product-media">
+                                              <Link
+                                                to={`/product/${data?.staticId}`}
+                                              >
+                                                <LazyLoadImage
+                                                  src={data.image}
+                                                  alt={data.productTitle}
+                                                  effect="blur"
+                                                  placeholderSrc="path_to_placeholder_image"
+                                                />
+                                              </Link>
+                                            </figure>
+
+                                            <h3 className="product-title">
+                                              <Link
+                                                to={`/product/${data?.staticId}`}
+                                              >
+                                                {data?.productTitle?.substr(
+                                                  0,
+                                                  30
+                                                ) + "..."}
+                                              </Link>
+                                            </h3>
+                                          </div>
+                                        </td>
+                                        <td className="price-col">
+                                          Rs {data?.price}
+                                        </td>
+                                        <td className="stock-col">
+                                          Qty <b>:</b> {data?.quantity}
+                                        </td>
+                                      </>
+                                    ))}
+                                    <td className="remove-col">
+                                      <button className="badge badge-secondary">
+                                        {item.status}
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              );
+                            })
+                          ) : (
+                            <div className="empty d-flex align-items-center justify-content-center flex-column">
+                              <img src={emprtCart} width="150" />
+                              <h3 className="emptyPageMsg">
+                                No any Confirm order yet
+                              </h3>
+                              <br />
+                              <Link to="/">
+                                <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                                  <FaHome /> &nbsp; Continue Shopping
+                                </Button>
+                              </Link>
+                            </div>
+                          )}
+                        </table>
+                      </CustomTabPanel>
+                      <CustomTabPanel value={orderValue} index={3}>
+                        <table className="table table-wishlist table-mobile">
+                          {shipOrders?.length !== 0 ? (
+                            shipOrders?.map((item, index) => {
+                              return (
+                                <tbody>
+                                  <tr key={index}>
+                                    {item?.products.map((data) => (
+                                      <>
+                                        <td className="product-col">
+                                          <div className="product">
+                                            <figure className="product-media">
+                                              <Link
+                                                to={`/product/${data?.staticId}`}
+                                              >
+                                                <LazyLoadImage
+                                                  src={data.image}
+                                                  alt={data.productTitle}
+                                                  effect="blur"
+                                                  placeholderSrc="path_to_placeholder_image"
+                                                />
+                                              </Link>
+                                            </figure>
+
+                                            <h3 className="product-title">
+                                              <Link
+                                                to={`/product/${data?.staticId}`}
+                                              >
+                                                {data?.productTitle?.substr(
+                                                  0,
+                                                  30
+                                                ) + "..."}
+                                              </Link>
+                                            </h3>
+                                          </div>
+                                        </td>
+                                        <td className="price-col">
+                                          Rs {data?.price}
+                                        </td>
+                                        <td className="stock-col">
+                                          Qty <b>:</b> {data?.quantity}
+                                        </td>
+                                      </>
+                                    ))}
+                                    <td className="remove-col">
+                                      <button className="badge badge-primary">
+                                        {item.status}
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              );
+                            })
+                          ) : (
+                            <div className="empty d-flex align-items-center justify-content-center flex-column">
+                              <img src={emprtCart} width="150" />
+                              <h3 className="emptyPageMsg">
+                                No any Shipped order yet
+                              </h3>
+                              <br />
+                              <Link to="/">
+                                <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                                  <FaHome /> &nbsp; Continue Shopping
+                                </Button>
+                              </Link>
+                            </div>
+                          )}
+                        </table>
+                      </CustomTabPanel>
+                      <CustomTabPanel value={orderValue} index={4}>
+                        <table className="table table-wishlist table-mobile">
+                          {deliverOrders?.length !== 0 ? (
+                            deliverOrders?.map((item, index) => {
+                              return (
+                                <tbody>
+                                  <tr key={index}>
+                                    {item?.products.map((data) => (
+                                      <>
+                                        <td className="product-col">
+                                          <div className="product">
+                                            <figure className="product-media">
+                                              <Link
+                                                to={`/product/${data?.staticId}`}
+                                              >
+                                                <LazyLoadImage
+                                                  src={data.image}
+                                                  alt={data.productTitle}
+                                                  effect="blur"
+                                                  placeholderSrc="path_to_placeholder_image"
+                                                />
+                                              </Link>
+                                            </figure>
+
+                                            <h3 className="product-title">
+                                              <Link
+                                                to={`/product/${data?.staticId}`}
+                                              >
+                                                {data?.productTitle?.substr(
+                                                  0,
+                                                  30
+                                                ) + "..."}
+                                              </Link>
+                                            </h3>
+                                          </div>
+                                        </td>
+                                        <td className="price-col">
+                                          Rs {data?.price}
+                                        </td>
+                                        <td className="stock-col">
+                                          Qty <b>:</b> {data?.quantity}
+                                        </td>
+                                      </>
+                                    ))}
+                                    <td className="remove-col">
+                                      <button className="badge badge-success">
+                                        {item.status}
+                                      </button>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              );
+                            })
+                          ) : (
+                            <div className="empty d-flex align-items-center justify-content-center flex-column">
+                              <img src={emprtCart} width="150" />
+                              <h3 className="emptyPageMsg">
+                                No any Delivered order yet
+                              </h3>
+                              <br />
+                              <Link to="/">
+                                <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                                  <FaHome /> &nbsp; Continue Shopping
+                                </Button>
+                              </Link>
+                            </div>
+                          )}
+                        </table>
+                      </CustomTabPanel>
+                      <CustomTabPanel value={orderValue} index={5}>
+                        <EligibleProducts customerId={userId} />
+                      </CustomTabPanel>
+                    </Box>
+                  </TabPanel>
+                  <TabPanel value={value} index={3}>
+                    <div className="empty d-flex align-items-center justify-content-center flex-column">
+                      <img src={emprtCart} width="150" />
+                      <h3 className="emptyPageMsg">No any return order yet</h3>
+                      <br />
+                      <Link to="/">
+                        {" "}
+                        <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                          <FaHome /> &nbsp; Continue Shopping
+                        </Button>
+                      </Link>
+                    </div>
+                  </TabPanel>
+                  <TabPanel value={value} index={4}>
+                    <div className="empty d-flex align-items-center justify-content-center flex-column">
+                      <img src={emprtCart} width="150" />
+                      <h3 className="emptyPageMsg">
+                        no any cancelled order yet.
+                      </h3>
+                      <br />
+                      <Link to="/">
+                        {" "}
+                        <Button className="btn-blue bg-red btn-lg btn-big btn-round">
+                          <FaHome /> &nbsp; Continue Shopping
+                        </Button>
+                      </Link>
+                    </div>
+                  </TabPanel>
+                  <TabPanel value={value} index={5}>
+                    <div className=" followedShops">
+                      <h1 className="text-center font-weight-bold">
+                        My Favourite Shops
+                      </h1>
+                      {shops?.length !== 0 ? (
+                        shops?.map((shop, index) => {
+                          const formattedDate = formatDate(shop?.createdAt);
+                          return (
+                            <div key={index}>
+                              <List
+                                sx={{
+                                  width: "100%",
+                                  maxWidth: 360,
+                                  bgcolor: "background.paper",
+                                }}
+                              >
+                                <Link to={`/shops/${shop._id}`}>
+                                  <ListItem>
+                                    <ListItemAvatar>
+                                      <Avatar>{shop?.name?.charAt(0)}</Avatar>
+                                    </ListItemAvatar>
+                                    <ListItemText
+                                      primary={shop.name}
+                                      secondary={formattedDate}
+                                    />
+                                  </ListItem>
+                                </Link>
+                              </List>
+                            </div>
+                          );
+                        })
+                      ) : (
+                        <div>
+                          <p>You haven't followed any shops yet.</p>
+                        </div>
+                      )}
+                    </div>
+                  </TabPanel>
+                  <TabPanel value={value} index={6}>
+                    <div className="followContent">
+                      if you want to become a seller on our website{" "}
+                      <Link to={"#"}>
+                        <b>Click Here</b>
+                      </Link>
+                    </div>
+                  </TabPanel>
+                </Box>
+              </div>
             </div>
           </div>
-        </div>
-      </main>
-    </div>
+        </main>
+      </div>
+    </>
   );
 };
 

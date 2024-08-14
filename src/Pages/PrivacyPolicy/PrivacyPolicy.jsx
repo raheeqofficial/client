@@ -9,15 +9,45 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Helmet>
-        <title>Privacy Policy - Hibuyshopping</title>
+        <title>Privacy Policy - Hibuyshopping | How We Protect Your Information</title>
+        <meta
+          name="title"
+          content="Privacy Policy - Hibuyshopping | How We Protect Your Information"
+        />
         <meta
           name="description"
-          content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
+          content="Read Hibuyshopping's Privacy Policy to understand how we collect, use, and protect your personal information. Learn about our data handling practices and your rights regarding your privacy on Pakistan's leading e-commerce platform."
         />
         <meta
           name="keywords"
-          content="Contact, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
+          content="privacy policy, Hibuyshopping, data protection, personal information, privacy practices, e-commerce privacy, user rights, Pakistani e-commerce, multi-vendor store"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Privacy Policy - Hibuyshopping | How We Protect Your Information"
+        />
+        <meta
+          property="og:description"
+          content="Learn about Hibuyshopping's Privacy Policy, including how we handle your personal data and protect your privacy. Understand our practices and your rights regarding data security on Pakistan's top e-commerce platform."
+        />
+        <meta
+          property="og:image"
+          content="URL_TO_YOUR_PRIVACY_POLICY_PAGE_IMAGE"
+        />
+        <meta property="og:url" content="URL_TO_YOUR_PRIVACY_POLICY_PAGE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Privacy Policy - Hibuyshopping | How We Protect Your Information"
+        />
+        <meta
+          name="twitter:description"
+          content="Discover Hibuyshopping's Privacy Policy to learn about our data protection practices. Understand how we handle your personal information and ensure your privacy on Pakistan's leading e-commerce site."
+        />
+        <meta
+          name="twitter:image"
+          content="URL_TO_YOUR_PRIVACY_POLICY_PAGE_IMAGE"
         />
       </Helmet>
       <div className="wrap">
@@ -106,55 +136,82 @@ const PrivacyPolicy = () => {
                         and feedback we receive from you.
                       </p>
                       <p>
-                        <b>3. Enhance Customer Service</b>: Your information helps us to more effectively respond to your customer service requests and support needs.
+                        <b>3. Enhance Customer Service</b>: Your information
+                        helps us to more effectively respond to your customer
+                        service requests and support needs.
                       </p>
                       <p>
-                        <b>4. Send Promotional Emails</b>: We may periodically send promotional emails about new products, special offers, or other information we think you may find interesting using the email address you have provided.
+                        <b>4. Send Promotional Emails</b>: We may periodically
+                        send promotional emails about new products, special
+                        offers, or other information we think you may find
+                        interesting using the email address you have provided.
                       </p>
                       <p>
-                        <b>5. Administer Contests, Promotions, or Surveys</b>: To run contests, promotions, or surveys and provide you with relevant information.
+                        <b>5. Administer Contests, Promotions, or Surveys</b>:
+                        To run contests, promotions, or surveys and provide you
+                        with relevant information.
                       </p>
                     </div>
                   </p>
                   <hr />
                   <h3>Data Security</h3>
                   <p>
-                  We implement a variety of security measures to maintain the safety of your personal information when you place an order or enter, submit, or access your personal information. These measures include:
+                    We implement a variety of security measures to maintain the
+                    safety of your personal information when you place an order
+                    or enter, submit, or access your personal information. These
+                    measures include:
                     <div>
                       <p>
-                        <b>1. Secure Socket Layer (SSL) Technology</b>: We use SSL technology to encrypt sensitive information during transmission.
+                        <b>1. Secure Socket Layer (SSL) Technology</b>: We use
+                        SSL technology to encrypt sensitive information during
+                        transmission.
                       </p>
                       <p>
-                        <b>2. Payment Security</b>: We process all payments through a secure payment gateway and do not store your payment details on our servers.
+                        <b>2. Payment Security</b>: We process all payments
+                        through a secure payment gateway and do not store your
+                        payment details on our servers.
                       </p>
                       <p>
-                        <b>3. Access Controls</b>: We restrict access to your personal information to authorized personnel only.
+                        <b>3. Access Controls</b>: We restrict access to your
+                        personal information to authorized personnel only.
                       </p>
                     </div>
                   </p>
                   <hr />
                   <h3>Third-Party Disclosure</h3>
                   <p>
-                  We do not sell, trade, or otherwise transfer your personally identifiable information to outside parties. This does not include trusted third parties who assist us in operating our website, conducting our business, or servicing you, so long as those parties agree to keep this information confidential. We may also release your information when we believe release is appropriate to comply with the law, enforce our site policies, or protect ours or others' rights, property, or safety.
+                    We do not sell, trade, or otherwise transfer your personally
+                    identifiable information to outside parties. This does not
+                    include trusted third parties who assist us in operating our
+                    website, conducting our business, or servicing you, so long
+                    as those parties agree to keep this information
+                    confidential. We may also release your information when we
+                    believe release is appropriate to comply with the law,
+                    enforce our site policies, or protect ours or others'
+                    rights, property, or safety.
                   </p>
 
                   <hr />
                   <h3>Your Consent</h3>
                   <p>
-                  By using our site, you consent to our website's privacy policy. If you do not agree with this policy, please do not use our website.
+                    By using our site, you consent to our website's privacy
+                    policy. If you do not agree with this policy, please do not
+                    use our website.
                   </p>
                   <hr />
                   <h3>Changes to Our Privacy Policy </h3>
                   <p>
-                  Hibuyshopping.com reserves the right to update or change our Privacy Policy at any time. We will notify you of any changes by posting the new Privacy Policy on this page. You are advised to review this Privacy
+                    Hibuyshopping.com reserves the right to update or change our
+                    Privacy Policy at any time. We will notify you of any
+                    changes by posting the new Privacy Policy on this page. You
+                    are advised to review this Privacy
                   </p>
                   <hr />
                   <h3>10. Contact Information</h3>
                   <p>
-                    If you have any questions about these Privacy policy, please contact
-                    us at <b>support@hibuyshopping.com</b>.
+                    If you have any questions about these Privacy policy, please
+                    contact us at <b>support@hibuyshopping.com</b>.
                   </p>
-                  
                 </div>
               </div>
             </div>

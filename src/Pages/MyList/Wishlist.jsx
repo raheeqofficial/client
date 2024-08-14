@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import Button from "@mui/material/Button";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import emprtCart from "../../assets/images/myList.png";
 import { FaHome } from "react-icons/fa";
 import { MyContext } from "../../App";
@@ -54,16 +54,40 @@ const Wishlist = () => {
   return (
     <div>
       <Helmet>
-        <title>Wishlist - Hibuyshopping</title>
+        <title>Wishlist - Hibuyshopping | Save and Manage Your Favorite Products</title>
+        <meta
+          name="title"
+          content="Wishlist - Hibuyshopping | Save and Manage Your Favorite Products"
+        />
         <meta
           name="description"
-          content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
+          content="Manage and view your wishlist on Hibuyshopping. Save your favorite products, track desired items, and access your saved selections easily. Keep track of products you love and plan your purchases on Pakistan's leading e-commerce platform."
         />
         <meta
           name="keywords"
-          content="Wishlist, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
+          content="wishlist, Hibuyshopping, favorite products, save products, manage wishlist, e-commerce wishlist, track desired items, Pakistani e-commerce, multi-vendor store"
         />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Wishlist - Hibuyshopping | Save and Manage Your Favorite Products"
+        />
+        <meta
+          property="og:description"
+          content="View and manage your wishlist on Hibuyshopping. Save your favorite items, track products you love, and access your saved selections with ease. Stay organized and plan your purchases on Pakistan's top e-commerce platform."
+        />
+        <meta property="og:image" content="URL_TO_YOUR_WISHLIST_PAGE_IMAGE" />
+        <meta property="og:url" content="URL_TO_YOUR_WISHLIST_PAGE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Wishlist - Hibuyshopping | Save and Manage Your Favorite Products"
+        />
+        <meta
+          name="twitter:description"
+          content="Access and manage your wishlist on Hibuyshopping. Save your favorite products, keep track of desired items, and easily view your saved selections. Organize your shopping and plan purchases on Pakistan's leading online store."
+        />
+        <meta name="twitter:image" content="URL_TO_YOUR_WISHLIST_PAGE_IMAGE" />
       </Helmet>
       <main className="main">
         <div className="page-header text-center">
@@ -110,8 +134,8 @@ const Wishlist = () => {
                                   <LazyLoadImage
                                     src={item.image}
                                     alt={item.productTitle}
-                                    effect="blur" // You can use other effects like 'opacity' or 'black-and-white'
-                                    placeholderSrc="path_to_placeholder_image" // Optional: Placeholder image while loading
+                                    effect="blur"
+                                    placeholderSrc="path_to_placeholder_image"
                                   />
                                 </Link>
                               </figure>

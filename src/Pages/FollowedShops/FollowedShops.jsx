@@ -9,6 +9,7 @@ import Avatar from "@mui/material/Avatar";
 import { fetchDataFromApi } from "../../utils/api";
 import moment from "moment";
 import { Link } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 
 const formatDate = (isoDate) => {
   return moment(isoDate).format("DD MMMM YYYY");
@@ -23,38 +24,91 @@ const FollowedShops = () => {
     });
   }, []);
   return (
-    <div className="container followedShops">
-      <h1 className="text-center font-weight-bold">My Favourite Shops</h1>
-      {shops?.length !== 0 ? (
-        shops?.map((shop, index) => {
-          const formattedDate = formatDate(shop?.createdAt);
-          return (
-            <div key={index}>
-              <List
-                sx={{
-                  width: "100%",
-                  maxWidth: 360,
-                  bgcolor: "background.paper",
-                }}
-              >
-                <Link to={`/shops/${shop._id}`}>
-                <ListItem>
-                  <ListItemAvatar>
-                    <Avatar>{shop?.name?.charAt(0)}</Avatar>
-                  </ListItemAvatar>
-                  <ListItemText primary={shop.name} secondary={formattedDate} />
-                </ListItem>
-                </Link>
-              </List>
-            </div>
-          );
-        })
-      ) : (
-        <div>
-          <p>You haven't followed any shops yet.</p>
-        </div>
-      )}
-    </div>
+    <>
+      <Helmet>
+        <title>
+          Followed Shops - Hibuyshopping | Stay Updated with Your Favorite
+          Stores
+        </title>
+        <meta
+          name="title"
+          content="Followed Shops - Hibuyshopping | Stay Updated with Your Favorite Stores"
+        />
+        <meta
+          name="description"
+          content="View and manage the shops you follow on Hibuyshopping. Stay updated with the latest products, offers, and updates from your favorite stores. Enjoy a personalized shopping experience with easy access to the shops you love."
+        />
+        <meta
+          name="keywords"
+          content="followed shops, Hibuyshopping, favorite stores, shop updates, personalized shopping, e-commerce, multi-vendor store, manage followed shops, latest offers, shop notifications"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Followed Shops - Hibuyshopping | Stay Updated with Your Favorite Stores"
+        />
+        <meta
+          property="og:description"
+          content="Manage your followed shops on Hibuyshopping and stay informed about the latest products and offers from your favorite stores. Enjoy a tailored shopping experience with updates from the shops you love."
+        />
+        <meta
+          property="og:image"
+          content="https://hibuyshopping.com/my-account/followed-shops"
+        />
+        <meta
+          property="og:url"
+          content="https://hibuyshopping.com/my-account/followed-shops"
+        />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Followed Shops - Hibuyshopping | Stay Updated with Your Favorite Stores"
+        />
+        <meta
+          name="twitter:description"
+          content="See and manage the shops you follow on Hibuyshopping. Get the latest updates, products, and offers from your favorite stores for a customized shopping experience."
+        />
+        <meta
+          name="twitter:image"
+          content="https://hibuyshopping.com/my-account/followed-shops"
+        />
+      </Helmet>
+      <div className="container followedShops">
+        <h1 className="text-center font-weight-bold">My Favourite Shops</h1>
+        {shops?.length !== 0 ? (
+          shops?.map((shop, index) => {
+            const formattedDate = formatDate(shop?.createdAt);
+            return (
+              <div key={index}>
+                <List
+                  sx={{
+                    width: "100%",
+                    maxWidth: 360,
+                    bgcolor: "background.paper",
+                  }}
+                >
+                  <Link to={`/shops/${shop._id}`}>
+                    <ListItem>
+                      <ListItemAvatar>
+                        <Avatar>{shop?.name?.charAt(0)}</Avatar>
+                      </ListItemAvatar>
+                      <ListItemText
+                        primary={shop.name}
+                        secondary={formattedDate}
+                      />
+                    </ListItem>
+                  </Link>
+                </List>
+              </div>
+            );
+          })
+        ) : (
+          <div>
+            <p>You haven't followed any shops yet.</p>
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 

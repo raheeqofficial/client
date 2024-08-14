@@ -3,7 +3,7 @@ import ProductItem from "../../Components/ProductItem";
 import { fetchDataFromApi } from "../../utils/api";
 import CircularProgress from "@mui/material/CircularProgress";
 import img from "../../assets/images/sale-banner-top.jpg";
-import './NewProducts.css'
+import "./NewProducts.css";
 import { Helmet } from "react-helmet-async";
 import { BsEmojiExpressionless } from "react-icons/bs";
 
@@ -14,7 +14,7 @@ const NewProducts = () => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    setisLoading(true)
+    setisLoading(true);
     fetchDataFromApi(`/api/products`)
       .then((res) => {
         setProductData(res);
@@ -40,31 +40,61 @@ const NewProducts = () => {
           Sorry, there are no products available in this category at the moment.
           Please check back later or explore other categories.
         </h6>
-        <BsEmojiExpressionless/>
+        <BsEmojiExpressionless />
       </div>
     );
   }
   return (
     <>
-    <Helmet>
-      <title>New products - Hibuyshopping</title>
-      <meta
-        name="description"
-        content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-      />
-      <meta
-        name="keywords"
-        content="New products, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
-      />
-    </Helmet>
-     <div className="flashTopBanner">
-      <div className="flashTopBannerWrapper">
-        <div className="flashTopBannerImg">
-        <img src={img} alt="flash sale banner" />
+      <Helmet>
+        <title>New Products - Hibuyshopping | Discover the Latest Arrivals and Trends</title>
+        <meta
+          name="title"
+          content="New Products - Hibuyshopping | Discover the Latest Arrivals and Trends"
+        />
+        <meta
+          name="description"
+          content="Explore the newest arrivals on Hibuyshopping. Discover the latest products, trends, and innovations across various categories. Stay updated with fresh offerings and find new favorites on Pakistan's leading e-commerce platform."
+        />
+        <meta
+          name="keywords"
+          content="new products, Hibuyshopping, latest arrivals, new arrivals, trending products, e-commerce trends, latest products, Pakistani e-commerce, multi-vendor store"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="New Products - Hibuyshopping | Discover the Latest Arrivals and Trends"
+        />
+        <meta
+          property="og:description"
+          content="Browse the latest products on Hibuyshopping. Find new arrivals, trending items, and fresh offerings across categories. Stay updated with the newest trends and discover your next favorite product on Pakistan's top e-commerce platform."
+        />
+        <meta
+          property="og:image"
+          content="URL_TO_YOUR_NEW_PRODUCTS_PAGE_IMAGE"
+        />
+        <meta property="og:url" content="URL_TO_YOUR_NEW_PRODUCTS_PAGE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="New Products - Hibuyshopping | Discover the Latest Arrivals and Trends"
+        />
+        <meta
+          name="twitter:description"
+          content="Check out the newest products on Hibuyshopping. Discover the latest trends, new arrivals, and fresh offerings across categories. Find new favorites and stay updated with the latest in e-commerce on Pakistan's leading online store."
+        />
+        <meta
+          name="twitter:image"
+          content="URL_TO_YOUR_NEW_PRODUCTS_PAGE_IMAGE"
+        />
+      </Helmet>
+      <div className="flashTopBanner">
+        <div className="flashTopBannerWrapper">
+          <div className="flashTopBannerImg">
+            <img src={img} alt="flash sale banner" />
+          </div>
         </div>
       </div>
-    </div>
       <section className="product_Listing_Page">
         <div className="container">
           <div className="productListing w-100">
@@ -76,15 +106,19 @@ const NewProducts = () => {
                   </div>
                 ) : (
                   <>
-                    {productData?.products?.length !==0 && productData?.products?.slice(0).reverse().map((item, index) => {
-                      return (
-                        <ProductItem
-                          key={index}
-                          itemView={productView}
-                          item={item}
-                        />
-                      );
-                    })}
+                    {productData?.products?.length !== 0 &&
+                      productData?.products
+                        ?.slice(0)
+                        .reverse()
+                        .map((item, index) => {
+                          return (
+                            <ProductItem
+                              key={index}
+                              itemView={productView}
+                              item={item}
+                            />
+                          );
+                        })}
                   </>
                 )}
               </div>

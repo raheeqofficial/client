@@ -42,24 +42,56 @@ const OrderCancellationForm = () => {
 
   return (
     <>
-    <Helmet>
-      <title>Cancel order - Hibuyshopping</title>
-      <meta
-        name="description"
-        content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-      />
-      <meta
-        name="keywords"
-        content="Cancel order, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
-      />
-    </Helmet>
+      <Helmet>
+        <title>Cancel Order - Hibuyshopping | Easily Cancel Your Orders</title>
+        <meta
+          name="title"
+          content="Cancel Order - Hibuyshopping | Easily Cancel Your Orders"
+        />
+        <meta
+          name="description"
+          content="Cancel your orders with ease on Hibuyshopping. Use our Cancel Order page to request an order cancellation, provide a reason, and manage your order status effectively. Ensure a smooth process for handling cancellations on Pakistan's leading e-commerce platform."
+        />
+        <meta
+          name="keywords"
+          content="cancel order, Hibuyshopping, order cancellation, manage orders, e-commerce cancellation, request cancellation, multi-vendor store, order status, Pakistani e-commerce, smooth process"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Cancel Order - Hibuyshopping | Easily Cancel Your Orders"
+        />
+        <meta
+          property="og:description"
+          content="Request to cancel your orders easily on Hibuyshopping. Use our Cancel Order page to provide reasons and manage your order status. Enjoy a seamless cancellation process on Pakistan's top e-commerce platform."
+        />
+        <meta
+          property="og:image"
+          content="https://hibuyshopping.com/help-center/cancel-order"
+        />
+        <meta property="og:url" content="https://hibuyshopping.com/help-center/cancel-order" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Cancel Order - Hibuyshopping | Easily Cancel Your Orders"
+        />
+        <meta
+          name="twitter:description"
+          content="Easily cancel your orders on Hibuyshopping. Visit our Cancel Order page to manage your order status, submit cancellation requests, and handle cancellations smoothly."
+        />
+        <meta
+          name="twitter:image"
+          content="https://hibuyshopping.com/help-center/cancel-order"
+        />
+      </Helmet>
       <HelpNav />
       <div className="form-container cancelOrderPage">
         <form className="cancellation-form" onSubmit={handleCancelOrder}>
           <h2 className="hd">Cancel Order</h2>
           <div className="form-group">
-            <label htmlFor="orderId" className="sml-hd">Order ID</label>
+            <label htmlFor="orderId" className="sml-hd">
+              Order ID
+            </label>
             <input
               type="text"
               id="orderId"
@@ -69,7 +101,9 @@ const OrderCancellationForm = () => {
             />
           </div>
           <div className="form-group">
-            <label htmlFor="reason" className="sml-hd">Reason for Cancellation</label>
+            <label htmlFor="reason" className="sml-hd">
+              Reason for Cancellation
+            </label>
             <textarea
               id="reason"
               value={reason}
@@ -78,7 +112,7 @@ const OrderCancellationForm = () => {
             ></textarea>
           </div>
           <Button type="submit" className="btn btn-blue btn-big w-100 mt-1">
-            Cancel Order &nbsp; <TbShoppingCartCancel/>
+            Cancel Order &nbsp; <TbShoppingCartCancel />
           </Button>
         </form>
         {message && <p className="message">{message}</p>}

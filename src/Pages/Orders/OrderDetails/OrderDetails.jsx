@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet-async";
 
 const OrderDetails = () => {
   const [orders, setOrders] = useState([]);
-  const [receiptUrl, setReceiptUrl] = useState('');
+  const [receiptUrl, setReceiptUrl] = useState("");
   const [products, setProducts] = useState([]);
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
@@ -32,21 +32,21 @@ const OrderDetails = () => {
   // };
   const downloadReceipt = async () => {
     try {
-      setIsLoading(true)
+      setIsLoading(true);
       const response = await axios({
         url: `${process.env.REACT_APP_API_URL}/api/orders/generate-receipt/${id}`,
-        method: 'GET',
-        responseType: 'blob', // important
+        method: "GET",
+        responseType: "blob", // important
       });
-      setIsLoading(false)
+      setIsLoading(false);
       const url = window.URL.createObjectURL(new Blob([response.data]));
-      const link = document.createElement('a');
+      const link = document.createElement("a");
       link.href = url;
-      link.setAttribute('download', `receipt_${id}.pdf`);
+      link.setAttribute("download", `receipt_${id}.pdf`);
       document.body.appendChild(link);
       link.click();
     } catch (error) {
-      setError('Error generating receipt.');
+      setError("Error generating receipt.");
     }
   };
   const shareImage = async () => {
@@ -136,91 +136,121 @@ const OrderDetails = () => {
 
   return (
     <>
-    <Helmet>
-      <title>Order details - Hibuyshopping</title>
-      <meta
-        name="description"
-        content="Experience the future of online shopping at Hibuyshopping, where innovation meets tradition. Support a global community of creators and entrepreneurs with every purchase. Shop smart, shop Hibuyshopping!."
-      />
-      <meta
-        name="keywords"
-        content="Order details, Hibuyshopping.com, online shopping website, online shop, online store website, clothing websites, online shopping sites, best online clothing stores, shopping websites, shopping sites, clothing online stores, best online shopping websites, good online clothing stores, store website, best online shopping sites, best online store, best online clothes shopping, clothes online, top online clothing stores, clothing store online shopping, website online shop, internet shopping sites, all online shopping websites, good online shopping sites, best online clothes shops, good online shops, online shops for clothes, good online shopping websites, top shopping sites, e-commerce store, online store, buy online, buy clothes online, online fashion store, discount shopping online, shop online for electronics, buy shoes online, women's clothes online, top-selling products online, online sale, e-store, online jewellery shopping, clothing sales online, cheap clothing brands, men's sale clothing, women's sale clothing, Hibuyshopping.com, multivendor online store, shopping needs, multivendor online store, clothing, footwear, fashion, kitchen accessories, latest fashion trends, home essentials, unique gifts, seamless shopping experience, customer service, variety of choices, multivendor marketplace, quality and variety, online shopping in Pakistan, newest fashion trends, renowned brands, seasonal collections, Pakistani brands, shawls, sweaters, t-shirts, caps, hoodies, sleeves, trousers, kurtas, kurtis, coats, shrugs, jackets, boots, sneakers, flats, high heels, khussa, stitched and unstitched clothes, chic accessories, jewelry, watches, scarves, hijabs, perfumes, hottest new arrivals, timeless style, modern trends, high-quality fashion wear, elegant dresses, stylish shoes, trendy handbags, top 10 online branded shopping sites, competitive prices, 24/7 service, fast delivery, effortless shopping,
-       designer collections, seamless online shopping experience "
-      />
-    </Helmet>
+      <Helmet>
+        <title>Order Details - Hibuyshopping | View Detailed Information for Your Order</title>
+        <meta
+          name="title"
+          content="Order Details - Hibuyshopping | View Detailed Information for Your Order"
+        />
+        <meta
+          name="description"
+          content="View detailed information about your order on Hibuyshopping. Access comprehensive details including items purchased, order status, delivery information, and more. Track your order and stay informed on Pakistan's leading e-commerce platform."
+        />
+        <meta
+          name="keywords"
+          content="order details, Hibuyshopping, order information, view order, order status, delivery details, e-commerce order, track order, Pakistani e-commerce, multi-vendor store"
+        />
+        <meta name="author" content="Hibuyshopping Team" />
+        <meta
+          property="og:title"
+          content="Order Details - Hibuyshopping | View Detailed Information for Your Order"
+        />
+        <meta
+          property="og:description"
+          content="Access detailed information about your order on Hibuyshopping. View purchased items, order status, delivery information, and more. Stay informed and track your order on Pakistan's top e-commerce platform."
+        />
+        <meta
+          property="og:image"
+          content="URL_TO_YOUR_ORDER_DETAILS_PAGE_IMAGE"
+        />
+        <meta property="og:url" content="URL_TO_YOUR_ORDER_DETAILS_PAGE" />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta
+          name="twitter:title"
+          content="Order Details - Hibuyshopping | View Detailed Information for Your Order"
+        />
+        <meta
+          name="twitter:description"
+          content="Get comprehensive details about your order on Hibuyshopping. Check items purchased, order status, delivery info, and more. Track and manage your order efficiently on Pakistan's leading e-commerce site."
+        />
+        <meta
+          name="twitter:image"
+          content="URL_TO_YOUR_ORDER_DETAILS_PAGE_IMAGE"
+        />
+      </Helmet>
       <div className="od-page">
-      <div className="od-Container">
-        <div className="od-card p-3 mt-1">
-          <div className="od-card-container">
-            <h1>ORDER INFO</h1>
-            <div>
-              <h6>
-                <b>Order Id </b>:
-              </h6>
-              <p>
-                {orders?.id}{" "}
-                <Button onClick={copyToClipboard} className="btn-blue">
-                  <FaCopy style={{ fontSize: "16px" }} />
-                </Button>
-              </p>
-            </div>
-            <div className="details">
-              <h5>User Info</h5>
-              <p>
-                <b>Name</b>: {orders?.name}
-              </p>
-              <p>
-                <b>Contact</b>: {orders?.phoneNumber}
-              </p>
-              <p>
-                <b>Address</b>: {orders?.address}
-              </p>
-              <p>
-                <b>Zip</b>: {orders?.pincode}
-              </p>
-            </div>
-            <div className="details">
-              <h5>Amount Info</h5>
-              <p>
-                <b>Subtotal</b>: {orders?.amount}
-              </p>
-              <p>
-                <b>Shipping Charges</b>: 150
-              </p>
-              <p>
-                <b>Tax</b>: 0
-              </p>
-              <p>
-                <b>Discount</b>: 0
-              </p>
-              <p>
-                <b>Total</b>: {orders?.amount}
-              </p>
-            </div>
-            <div className="details">
-              <h5>Status Info</h5>
-              <p>
-                <b>Status</b>:{" "}
-                <span
-                  className={
-                    orders?.status === "Pending" ||
-                    orders?.status === "Cancelled"
-                      ? "badge badge-danger"
-                      : orders?.status === "Confirm"
-                      ? "badge badge-secondary"
-                      : orders?.status === "Shipped"
-                      ? "badge badge-primary"
-                      : orders?.status === "Delivered"
-                      ? "badge badge-success"
-                      : "badge badge-default"
-                  }
-                >
-                  {orders?.status}
-                </span>
-              </p>
-            </div>
-            {/* {receiptUrl && ( */}
-            {/* <div className="mt-4">
+        <div className="od-Container">
+          <div className="od-card p-3 mt-1">
+            <div className="od-card-container">
+              <h1>ORDER INFO</h1>
+              <div>
+                <h6>
+                  <b>Order Id </b>:
+                </h6>
+                <p>
+                  {orders?.id}{" "}
+                  <Button onClick={copyToClipboard} className="btn-blue">
+                    <FaCopy style={{ fontSize: "16px" }} />
+                  </Button>
+                </p>
+              </div>
+              <div className="details">
+                <h5>User Info</h5>
+                <p>
+                  <b>Name</b>: {orders?.name}
+                </p>
+                <p>
+                  <b>Contact</b>: {orders?.phoneNumber}
+                </p>
+                <p>
+                  <b>Address</b>: {orders?.address}
+                </p>
+                <p>
+                  <b>Zip</b>: {orders?.pincode}
+                </p>
+              </div>
+              <div className="details">
+                <h5>Amount Info</h5>
+                <p>
+                  <b>Subtotal</b>: {orders?.amount}
+                </p>
+                <p>
+                  <b>Shipping Charges</b>: 150
+                </p>
+                <p>
+                  <b>Tax</b>: 0
+                </p>
+                <p>
+                  <b>Discount</b>: 0
+                </p>
+                <p>
+                  <b>Total</b>: {orders?.amount}
+                </p>
+              </div>
+              <div className="details">
+                <h5>Status Info</h5>
+                <p>
+                  <b>Status</b>:{" "}
+                  <span
+                    className={
+                      orders?.status === "Pending" ||
+                      orders?.status === "Cancelled"
+                        ? "badge badge-danger"
+                        : orders?.status === "Confirm"
+                        ? "badge badge-secondary"
+                        : orders?.status === "Shipped"
+                        ? "badge badge-primary"
+                        : orders?.status === "Delivered"
+                        ? "badge badge-success"
+                        : "badge badge-default"
+                    }
+                  >
+                    {orders?.status}
+                  </span>
+                </p>
+              </div>
+              {/* {receiptUrl && ( */}
+              {/* <div className="mt-4">
               <a
                 href={receiptUrl}
                 download={`receipt_${orders._id}.pdf`}
@@ -229,37 +259,36 @@ const OrderDetails = () => {
                 Download Receipt
               </a>
             </div> */}
-           {/* )}  */}
+              {/* )}  */}
+            </div>
           </div>
-        </div>
-        <div className="od-card p-3 mt-2">
-          <div className="od-card-container">
-            <h1>PRODUCT INFO</h1>
-            {products?.length !== 0 &&
-              products?.map((item, i) => (
-                <div key={i}>
-                  <div className="details mb-3">
-                    <h5>Product Details</h5>
-                    <Link to={`/product/${item?.staticId}`}>
-                      <div className="pd-container cursor">
-                        <div className="img-con shadow">
-                          <img src={item?.image} alt="" />
+          <div className="od-card p-3 mt-2">
+            <div className="od-card-container">
+              <h1>PRODUCT INFO</h1>
+              {products?.length !== 0 &&
+                products?.map((item, i) => (
+                  <div key={i}>
+                    <div className="details mb-3">
+                      <h5>Product Details</h5>
+                      <Link to={`/product/${item?.staticId}`}>
+                        <div className="pd-container cursor">
+                          <div className="img-con shadow">
+                            <img src={item?.image} alt="" />
+                          </div>
+                          <div className="txt-con">
+                            <p className="p-name">{item?.productTitle}</p>
+                            <p>{item?.price}</p>
+                            <p>x {item?.quantity}</p>
+                          </div>
                         </div>
-                        <div className="txt-con">
-                          <p className="p-name">{item?.productTitle}</p>
-                          <p>{item?.price}</p>
-                          <p>x {item?.quantity}</p>
-                        </div>
-                      </div>
-                    </Link>
+                      </Link>
+                    </div>
                   </div>
-                </div>
-              ))}
-            
+                ))}
+            </div>
           </div>
         </div>
       </div>
-    </div>
     </>
   );
 };
