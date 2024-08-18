@@ -48,6 +48,7 @@ const Cart = () => {
         fetchDataFromApi(`/api/cart?userId=${userId}`).then((res) => {
             setCartData(res);
             setselectedQuantity(res?.quantity);
+            console.log(res)
         });
     }, []);
 

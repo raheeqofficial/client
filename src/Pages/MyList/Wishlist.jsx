@@ -9,6 +9,7 @@ import { useContext, useEffect, useState } from "react";
 import { deleteData, editData, fetchDataFromApi } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import './list.css'
 
 const Wishlist = () => {
   const [myListData, setmyListData] = useState([]);
@@ -54,7 +55,9 @@ const Wishlist = () => {
   return (
     <div>
       <Helmet>
-        <title>Wishlist - Hibuyshopping | Save and Manage Your Favorite Products</title>
+        <title>
+          Wishlist - Hibuyshopping | Save and Manage Your Favorite Products
+        </title>
         <meta
           name="title"
           content="Wishlist - Hibuyshopping | Save and Manage Your Favorite Products"
@@ -89,7 +92,7 @@ const Wishlist = () => {
         />
         <meta name="twitter:image" content="URL_TO_YOUR_WISHLIST_PAGE_IMAGE" />
       </Helmet>
-      <main className="main">
+      {/* <main className="main">
         <div className="page-header text-center">
           <div className="container">
             <h1 className="page-title">
@@ -230,7 +233,27 @@ const Wishlist = () => {
             </div>
           </div>
         </div>
-      </main>
+      </main> */}
+      <div className="container">
+      <div class="order-card">
+        <div class="order-header">
+          <div class="store-name">Trend Corner</div>
+          <div class="order-status">Completed</div>
+        </div>
+        <div class="order-content">
+          <img src="sunglasses.jpg" alt="Sunglasses" class="product-image" />
+          <div class="product-details">
+            <h3>
+              Kabir Singh India Movie Sunglasses For Men Square Retro Sun Shades
+              Steampunk Style...
+            </h3>
+            <p>Lens Color: Black, Frame Color: Black</p>
+          </div>
+          <div class="product-price">Rs. 199</div>
+          <div class="product-quantity">Qty: 1</div>
+        </div>
+      </div>
+      </div>
     </div>
   );
 };

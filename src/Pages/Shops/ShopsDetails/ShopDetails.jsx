@@ -2,12 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import { fetchDataFromApi } from "../../../utils/api";
 import { useParams } from "react-router-dom";
 import ProductItem from "../../../Components/ProductItem";
-import { Box, Button, CircularProgress, Tab, Tabs } from "@mui/material";
+import { Box, Button, CircularProgress } from "@mui/material";
 import { MyContext } from "../../../App";
 import { FaSquareWhatsapp } from "react-icons/fa6";
 import axios from "axios";
 import "../Shop.css";
 import { Helmet } from "react-helmet-async";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
 
 const ShopDetails = () => {
   const { id } = useParams();
@@ -248,31 +250,26 @@ const ShopDetails = () => {
           <div className="popularProducts">
             <div className="catTabs mt-4">
               <div className="catTabsName">
-                <Box
-                  sx={{
-                    maxWidth: { xs: 420, sm: 680 },
-                    bgcolor: "background.paper",
-                  }}
+                <div
+                  onChange={handleChange}
+                  value={value}
+                  className="category-container-tabs"
                 >
-                  <Tabs
-                    value={value}
-                    onChange={handleChange}
-                    variant="scrollable"
-                    className="filterTabs"
-                  >
-                    {subCat?.map((item, index) => {
-                      const decodedCat = decodeURIComponent(item?.subCat);
-                      return (
-                        <Tab
-                          key={index}
-                          className="item"
-                          label={decodedCat}
-                          onClick={() => selectCat(decodedCat)}
-                        />
-                      );
-                    })}
-                  </Tabs>
-                </Box>
+                  {subCat?.map((item, index) => {
+                    const decodedCat = decodeURIComponent(item?.subCat);
+                    return (
+                      <div
+                        key={index}
+                        onClick={() => selectCat(decodedCat)}
+                        className={`category-item-tab ${
+                          selectedCat === decodedCat ? "active" : ""
+                        }`}
+                      >
+                        {decodedCat}
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </div>
 

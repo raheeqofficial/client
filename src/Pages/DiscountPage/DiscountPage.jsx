@@ -28,8 +28,6 @@ const DiscountPage = () => {
 
   const openDropdown = Boolean(anchorEl);
 
-  const context = useContext(MyContext);
-
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -125,19 +123,12 @@ const DiscountPage = () => {
       <section className="product_Listing_Page">
         <div className="container">
           <div className="productListing w-100">
-            {/* <Sidebar filterData={filterData} filterByPrice={filterByPrice} filterByRating={filterByRating} isOpenFilter={isOpenFilter} /> */}
-
             <div className="content_right">
               <div className="showBy mt-0 mb-3 d-flex align-items-center">
                 <div className="d-flex align-items-center btnWrapper">
-                  {/* <Button className={productView === 'one' && 'act'} onClick={() => setProductView('one')}><IoIosMenu />
-                                    </Button> */}
                   <Button className={"act"}>
                     <IoIosMenu />
                   </Button>
-
-                  {/* <Button className={productView === 'three' && 'act'} onClick={() => setProductView('three')}>
-                                        <CgMenuGridR /></Button> */}
                   <Button className={"act"}>
                     <CgMenuGridR />
                   </Button>

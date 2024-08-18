@@ -132,7 +132,6 @@ const Listing = () => {
 
                         <div className="content_right">
                             <div className="showBy mt-0 mb-3 d-flex align-items-center ">
-                                <p>Showing result for</p>
                             </div>
 
                             <div className="productListing-data">

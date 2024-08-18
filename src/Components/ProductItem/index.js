@@ -79,7 +79,6 @@ const ProductItem = (props) => {
         }, 500);
     }, []);
 
-
     const addToMyList = (id) => {
         const user = JSON.parse(localStorage.getItem("user"));
         if (user !== undefined && user !== null && user !== "") {
@@ -137,7 +136,7 @@ const ProductItem = (props) => {
     return (
         <>
             {
-                isLoading ?  (
+                isLoading ? (
                     <div className="product-skeleton">
                         <Skeleton height={300} width={200} />
                         <Skeleton height={20} width={150} />
@@ -146,85 +145,85 @@ const ProductItem = (props) => {
                     </div>
                 ) : (
                     <div className={`productItem ${props.itemView}`}
-                onMouseEnter={() => handleMouseEnter(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}
-                onMouseLeave={handleMouseLeave}
-            >
+                        onMouseEnter={() => handleMouseEnter(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}
+                        onMouseLeave={handleMouseLeave}
+                    >
 
-                <div className="img_rapper">
-                    <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId}`}>
-                        <div className='productItemSliderWrapper'>
-                            {
-                                isHovered === true &&
-                                <Slider {...settings} ref={sliderRef} className='productItemSlider'>
+                        <div className="img_rapper">
+                            <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId}`}>
+                                <div className='productItemSliderWrapper'>
                                     {
-                                        props.item?.images?.map((image, index) => {
-                                            return (
-                                                <div className='slick-slide' key={index}>
-                                                    <img src={image} className="w-100" />
-                                                </div>
-                                            )
-                                        })
+                                        isHovered === true &&
+                                        <Slider {...settings} ref={sliderRef} className='productItemSlider'>
+                                            {
+                                                props.item?.images?.map((image, index) => {
+                                                    return (
+                                                        <div className='slick-slide' key={index}>
+                                                            <img src={image} className="w-100" />
+                                                        </div>
+                                                    )
+                                                })
+                                            }
+
+                                        </Slider>
                                     }
 
-                                </Slider>
-                            }
+                                </div>
+
+                                {
+                                    isLoading === true ?
+                                        <Skeleton variant="rectangular" width={300} height={400}>
+                                            <IoIosImages />
+                                        </Skeleton>
+
+                                        :
+
+                                        <img src={props.item?.images[0]} className="w-100" />
+                                }
+
+
+
+
+                            </Link>
+
+                            <span className="badge badge-primary">{props.item?.discount}%</span>
+                            <div className="actions">
+                                <Button onClick={() => viewProductDetails(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}><TfiFullscreen /></Button>
+
+                                <Button className={isAddedToMyList === true && 'active'} onClick={() => addToMyList(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}>
+                                    {
+                                        isAddedToMyList === true ? <FaHeart style={{ fontSize: '20px' }} />
+                                            :
+                                            <IoMdHeartEmpty style={{ fontSize: '20px' }} />
+                                    }
+
+                                </Button>
+                            </div>
 
                         </div>
 
-                        {
-                            isLoading === true ?
-                                <Skeleton variant="rectangular" width={300} height={400}>
-                                    <IoIosImages />
-                                </Skeleton>
+                        <div className="info">
+                            <div className='infoWrapper'>
+                                <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId}`}><h4>{props?.item?.name?.substr(0, 30) + '...'}</h4></Link>
 
-                                :
+                                {
+                                    props?.item?.countInStock >= 1 ? <span className="text-success d-block">In Stock</span>
+                                        :
 
-                                <img src={props.item?.images[0]} className="w-100" />
-                        }
+                                        <span className="text-danger d-block">Out of Stock</span>
 
+                                }
 
+                                <Rating className="info-rating" name="read-only" value={props?.item?.rating} readOnly size="small" precision={0.5} />
 
-
-                    </Link>
-
-                    <span className="badge badge-primary">{props.item?.discount}%</span>
-                    <div className="actions">
-                        <Button onClick={() => viewProductDetails(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}><TfiFullscreen /></Button>
-
-                        <Button className={isAddedToMyList === true && 'active'} onClick={() => addToMyList(props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId)}>
-                            {
-                                isAddedToMyList === true ? <FaHeart style={{ fontSize: '20px' }} />
-                                    :
-                                    <IoMdHeartEmpty style={{ fontSize: '20px' }} />
-                            }
-
-                        </Button>
-                    </div>
-
-                </div>
-
-                <div className="info">
-                    <div className='infoWrapper'>
-                        <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId}`}><h4>{props?.item?.name?.substr(0, 30) + '...'}</h4></Link>
-
-                        {
-                            props?.item?.countInStock >= 1 ? <span className="text-success d-block">In Stock</span>
-                                :
-
-                                <span className="text-danger d-block">Out of Stock</span>
-
-                        }
-
-                        <Rating className="info-rating" name="read-only" value={props?.item?.rating} readOnly size="small" precision={0.5} />
-
-                        <div className="d-flex">
-                            <span className="oldPrice">Rs {props?.item?.oldPrice}</span>
-                            <span className="netPrice text-danger ml-2">Rs {props?.item?.price}</span>
+                                <div className="d-flex">
+                                    <span className="oldPrice">Rs {props?.item?.oldPrice}</span>
+                                    <span className="netPrice text-danger ml-2">Rs {props?.item?.price}</span>
+                                </div>
+                            </div>
                         </div>
-                    </div>
-                </div>
 
-            </div>
+                    </div>
                 )
             }
 

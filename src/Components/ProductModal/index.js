@@ -135,6 +135,7 @@ const ProductModal = (props) => {
             cartFields.subTotal = parseInt(props?.data?.price * productQuantity)
             cartFields.productId = props?.data?.id
             cartFields.staticId = props?.data?.staticId
+            cartFields.countInStock = props?.data?.countInStock
             cartFields.userId = user?.userId
 
 

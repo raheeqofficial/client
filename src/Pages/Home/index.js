@@ -12,13 +12,18 @@ import { MyContext } from "../../App";
 import { fetchDataFromApi } from "../../utils/api";
 import Tabs from '@mui/material/Tabs';
 import Tab from '@mui/material/Tab';
-import { Box, CircularProgress } from "@mui/material";
+import { Box, CircularProgress, Rating } from "@mui/material";
 import DealOfDay from "../../Components/DealOfDay/DealOfDay";
 import { Link, useNavigate } from "react-router-dom";
 import SaleCards from "../../Components/SaleCards/SaleCards";
 import FiftyPerSaleCard from "../../Components/fiftyPerSaleCard/FiftyPerSaleCard";
 import { Helmet } from "react-helmet-async";
 import TopBanners from "../../Components/topBanners/TopBanners";
+import Under600 from "../../Components/Under600/Under600";
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import { Navigation } from 'swiper/modules';
 
 const Home = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
@@ -27,7 +32,8 @@ const Home = () => {
     const [filterData, setFilterData] = useState([]);
     const [homeSlides, setHomeSlides] = useState([]);
     const [isLoading, setisLoading] = useState(false);
-    const [TFDiscount, setTFDiscount] = useState([])
+
+    const [menProducts, setMenProducts] = useState([]);
     const navigate = useNavigate()
 
     const [value, setValue] = React.useState(0);
@@ -55,7 +61,9 @@ const Home = () => {
             setisLoading(false)
         })
 
-
+        fetchDataFromApi('/api/products?productFor=men').then((res) => {
+            setMenProducts(res.products)
+        })
         setisLoading(true)
         fetchDataFromApi("/api/products").then((res) => {
             setProductsData(res);
@@ -74,7 +82,6 @@ const Home = () => {
             // const products = res?.products
             // const filteredProducts = products.filter(product => product.discount >= minDiscount && product.discount <= maxDiscount);
             // setTFDiscount(filteredProducts)
-            console.log(res)
             setisLoading(false);
         }).catch((error) => {
             console.error("Error fetching products:", error);
@@ -82,7 +89,6 @@ const Home = () => {
         });
 
     }, [])
-
     const handleDiscountClick = (discount) => {
         navigate(`/products/all?discount=${discount}`)
     }
@@ -143,8 +149,244 @@ const Home = () => {
             {
                 homeSlides?.length !== 0 && <HomeBanner data={homeSlides} />
             }
-            <TopBanners />
 
+            {/* <TopBanners /> */}
+            <div className="container">
+                <div className="container-wrapper">
+                    
+                <div className="text-box">
+                    
+                <h4>Mens Wear</h4>
+                    <Button className="btn btn-blue">Sell All Products</Button>
+                </div>
+
+                <div className="product_row card-container w-100">
+                    <Swiper
+                        slidesPerView={4}
+                        spaceBetween={0}
+                        navigation={true}
+                        slidesPerGroup={context.windowWidth > 992 ? 1 : 1}
+                        modules={[Navigation]}
+                        className="mySwiper"
+                        breakpoints={{
+                            300: {
+                                slidesPerView: 3,
+                            },
+                            400: {
+                                slidesPerView: 3,
+                            },
+                            600: {
+                                slidesPerView: 3,
+                            },
+                            750: {
+                                slidesPerView: 4,
+                            }
+                        }}
+                    >
+                        {
+                            productsData.products?.length !== 0 && productsData.products?.slice(0, 8)?.reverse()?.map((item, index) => {
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div className="card-container-wrapper productItem">
+                                            <div className="img_wrapper">
+                                                <img src={item.images[0]} alt={item.name} />
+                                                <span className="badge badge-primary">{item?.discount}%</span>
+                                            </div>
+                                            <div className="card_text_box">
+                                                <h5>{item?.name?.substr(0, 35) + '...'}</h5>
+
+                                                <div className="d-flex priceBox info">
+                                                    <span className="oldPrice">Rs {item?.oldPrice}</span>
+                                                    <span className="netPrice text-danger ml-2">Rs {item?.price}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
+
+                    </Swiper>
+                </div>
+                </div>
+            </div>
+            <div className="container mt-2">
+                <div className="container-wrapper">
+                    
+                <div className="text-box">
+                    
+                <h4>Womens Wear</h4>
+                    <Button className="btn btn-blue">Sell All Products</Button>
+                </div>
+
+                <div className="product_row card-container w-100">
+                    <Swiper
+                        slidesPerView={4}
+                        spaceBetween={0}
+                        navigation={true}
+                        slidesPerGroup={context.windowWidth > 992 ? 1 : 1}
+                        modules={[Navigation]}
+                        className="mySwiper"
+                        breakpoints={{
+                            300: {
+                                slidesPerView: 3,
+                            },
+                            400: {
+                                slidesPerView: 3,
+                            },
+                            600: {
+                                slidesPerView: 3,
+                            },
+                            750: {
+                                slidesPerView: 4,
+                            }
+                        }}
+                    >
+                        {
+                            productsData.products?.length !== 0 && productsData.products?.slice(0, 8)?.reverse()?.map((item, index) => {
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div className="card-container-wrapper productItem">
+                                            <div className="img_wrapper">
+                                                <img src={item.images[0]} alt={item.name} />
+                                                <span className="badge badge-primary">{item?.discount}%</span>
+                                            </div>
+                                            <div className="card_text_box">
+                                                <h5>{item?.name?.substr(0, 35) + '...'}</h5>
+
+                                                <div className="d-flex priceBox info">
+                                                    <span className="oldPrice">Rs {item?.oldPrice}</span>
+                                                    <span className="netPrice text-danger ml-2">Rs {item?.price}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
+
+                    </Swiper>
+                </div>
+                </div>
+            </div>
+            <div className="container mt-2">
+                <div className="container-wrapper">
+                    
+                <div className="text-box">
+                    
+                <h4>Kids Wear</h4>
+                    <Button className="btn btn-blue">Sell All Products</Button>
+                </div>
+
+                <div className="product_row card-container w-100">
+                    <Swiper
+                        slidesPerView={4}
+                        spaceBetween={0}
+                        navigation={true}
+                        slidesPerGroup={context.windowWidth > 992 ? 1 : 1}
+                        modules={[Navigation]}
+                        className="mySwiper"
+                        breakpoints={{
+                            300: {
+                                slidesPerView: 3,
+                            },
+                            400: {
+                                slidesPerView: 3,
+                            },
+                            600: {
+                                slidesPerView: 3,
+                            },
+                            750: {
+                                slidesPerView: 4,
+                            }
+                        }}
+                    >
+                        {
+                            productsData.products?.length !== 0 && productsData.products?.slice(0, 8)?.reverse()?.map((item, index) => {
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div className="card-container-wrapper productItem">
+                                            <div className="img_wrapper">
+                                                <img src={item.images[0]} alt={item.name} />
+                                                <span className="badge badge-primary">{item?.discount}%</span>
+                                            </div>
+                                            <div className="card_text_box">
+                                                <h5>{item?.name?.substr(0, 35) + '...'}</h5>
+
+                                                <div className="d-flex priceBox info">
+                                                    <span className="oldPrice">Rs {item?.oldPrice}</span>
+                                                    <span className="netPrice text-danger ml-2">Rs {item?.price}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
+
+                    </Swiper>
+                </div>
+                </div>
+            </div>
+            <div className="container mt-2">
+                <div className="container-wrapper">
+                    
+                <div className="text-box">
+                    
+                <h4>On Sale Now</h4>
+                    <Button className="btn btn-blue">Sell All Products</Button>
+                </div>
+
+                <div className="product_row card-container w-100">
+                    <Swiper
+                        slidesPerView={4}
+                        spaceBetween={0}
+                        navigation={true}
+                        slidesPerGroup={context.windowWidth > 992 ? 1 : 1}
+                        modules={[Navigation]}
+                        className="mySwiper"
+                        breakpoints={{
+                            300: {
+                                slidesPerView: 3,
+                            },
+                            400: {
+                                slidesPerView: 3,
+                            },
+                            600: {
+                                slidesPerView: 3,
+                            },
+                            750: {
+                                slidesPerView: 4,
+                            }
+                        }}
+                    >
+                        {
+                            productsData.products?.length !== 0 && productsData.products?.slice(0, 8)?.reverse()?.map((item, index) => {
+                                return (
+                                    <SwiperSlide key={index}>
+                                        <div className="card-container-wrapper productItem">
+                                            <div className="img_wrapper">
+                                                <img src={item.images[0]} alt={item.name} />
+                                                <span className="badge badge-primary">{item?.discount}%</span>
+                                            </div>
+                                            <div className="card_text_box">
+                                                <h5>{item?.name?.substr(0, 35) + '...'}</h5>
+
+                                                <div className="d-flex priceBox info">
+                                                    <span className="oldPrice">Rs {item?.oldPrice}</span>
+                                                    <span className="netPrice text-danger ml-2">Rs {item?.price}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </SwiperSlide>
+                                )
+                            })
+                        }
+
+                    </Swiper>
+                </div>
+                </div>
+            </div>
             <SaleCards />
             <FiftyPerSaleCard />
             <DealOfDay />
@@ -152,22 +394,9 @@ const Home = () => {
             <section className="homeProducts">
                 <div className="container">
                     <div className="row homeProductsRow">
-                        {/* <div className="col-md-3">
-                            <div className="sticky">
-                                <div className="banner">
-                                    <img src={banner1} className="cursor w-100" />
-                                </div>
-
-                                <div className="banner mt-4">
-                                    <img src={banner2} className="cursor w-100" />
-                                </div>
-                            </div>
-                        </div> */}
-
                         <div className="col-md-12 productRow">
-
-                            <div className="featuredProducts">
-                                <div className="d-flex align-items-center mt-4">
+                            {/* <div className="featuredProducts">
+                                <div className="d-flex align-items-center">
                                     <div className="info">
                                         <h3 className="mb-0 hd">featured products</h3>
                                         <p className="text-light text-sml mb-0">Do not miss the current offers until the end of March.</p>
@@ -176,7 +405,7 @@ const Home = () => {
 
                                 </div>
 
-                                <div className="product_row productRow2 w-100 mt-4">
+                                <div className="product_row productRow2 w-100 mt-2">
                                     {
                                         featuredProducts?.length !== 0 && featuredProducts?.slice(0)?.reverse()?.map((item, index) => {
                                             return (
@@ -187,20 +416,20 @@ const Home = () => {
 
 
                                 </div>
-                            </div>
+                            </div> */}
 
 
 
                             <div className="newProducts">
-                                <div className="d-flex align-items-center mt-3">
+                                <div className="d-flex align-items-center mt-2">
                                     <div className="info w-75">
-                                        <h3 className="mb-0 hd">All PRODUCTS</h3>
+                                        <h3 className="mb-0 hd">Just For You</h3>
                                         <p className="text-light text-sml mb-0">All products with updated stocks.</p>
                                     </div>
 
                                 </div>
 
-                                <div className="product_row productRow2 w-100 mt-4">
+                                <div className="product_row productRow2 w-100">
                                     {
                                         productsData?.products?.length !== 0 && productsData?.products?.map((item, index) => {
                                             return (
@@ -210,7 +439,7 @@ const Home = () => {
                                     }
                                 </div>
                             </div>
-                            <div className="popularProducts">
+                            {/* <div className="popularProducts">
                                 <div className="catTabs mt-4">
                                     <div className="tabsHd">
                                         <h3 className="mb-0">#Trending Products</h3>
@@ -253,7 +482,7 @@ const Home = () => {
                                         }) : <div><p>No Products for display</p></div>
                                     }
                                 </div>
-                            </div>
+                            </div> */}
 
 
 

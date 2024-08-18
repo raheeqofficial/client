@@ -17,7 +17,7 @@ const EligibleProducts = ({ customerId }) => {
           `${process.env.REACT_APP_API_URL}/api/productReviews/eligible-for-review/${customerId}`
         );
         setProducts(response.data);
-        console.log(response.data)
+        console.log(response.data);
         setLoading(false);
       } catch (err) {
         setError("Failed to load products.");
@@ -41,42 +41,40 @@ const EligibleProducts = ({ customerId }) => {
       {products.length === 0 ? (
         <p>No products available for review.</p>
       ) : (
-        <ul>
+        <div className="container">
           {products.map((product, index) => (
-            <table className="table table-wishlist table-mobile" key={index}>
-              <tbody>
-                <tr>
-                  <td className="product-col">
-                    <div className="product">
-                      <figure className="product-media">
-                        <Link to={`/product/${product?.staticId}`}>
-                          <LazyLoadImage
-                            src={product.images[0]}
-                            alt={product.name}
-                            effect="blur"
-                            placeholderSrc="path_to_placeholder_image"
-                          />
-                        </Link>
-                      </figure>
-
-                      <h3 className="product-title">
-                        <Link to={`/product/${product?.staticId}`}>
-                          {product?.name?.substr(0, 30) + "..."}
-                        </Link>
-                      </h3>
-                    </div>
-                  </td>
-                  <td className="price-col">Rs {product?.price}</td>
-                  <td className="remove-col">
-                    <button className="badge badge-primary" onClick={() => handleReviewClick(product)}>
-                        Review
-                    </button>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+            <div class="order-card" key={index}>
+              <div class="order-header">
+                <div class="store-name">Trend Corner</div>
+                <div
+                  class="order-status bg-blue"
+                  onClick={() => handleReviewClick(product)}
+                >
+                  Write Review
+                </div>
+              </div>
+              <div class="order-content">
+                <img
+                  src={product.images[0]}
+                  alt={product.name}
+                  class="product-image"
+                />
+                <div class="product-details">
+                  <h3 className="mb-0">
+                    <Link to={`/product/${product?.staticId}`}>
+                      {product?.name?.substr(0, 100) + "..."}
+                    </Link>
+                  </h3>
+                  {/* <p className="mb-0">Lens Color: Black, Frame Color: Black</p> */}
+                </div>
+                <div class="product-price mb-0">Rs {product?.price}</div>
+                <div class="product-quantity mb-0">
+                  Qty <b>:</b> {product?.quantity}
+                </div>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       )}
     </div>
   );

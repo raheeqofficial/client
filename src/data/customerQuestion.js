@@ -12,7 +12,7 @@ export const questionData = [
     {
         id: 3,
         question: "How can I cancel my order?",
-        answer:"In order to cancel your order, please login to app in your my account section. Open the order you want to cancel and you will see an option to cancel the order. Your order can only be cancelled before it reaches the ‘Dispatched’ status in your my account on Clicky app.",
+        answer:"In order to cancel your order, please login to app in your my account section. Open the order you want to cancel and you will see an option to cancel the order. Your order can only be cancelled before it reaches the ‘Dispatched’ status in your my account on hibuyshopping app.",
     },
     {
         id: 4,
@@ -21,7 +21,7 @@ export const questionData = [
     },
     {
         id: 5,
-        question: "I wish to become a seller on Clicky",
+        question: "I wish to become a seller on hibuyshopping",
         answer:"Fill this form and our team will reach you as soon as possible.",
     },
 ]

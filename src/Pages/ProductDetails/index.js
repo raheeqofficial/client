@@ -108,7 +108,6 @@ const ProductDetails = () => {
                     })
                 fetchDataFromApi(`/api/products/recentlyViewd`).then((response) => {
                     setRecentlyViewdProducts(response);
-                    console.log(response)
                 })
                 postData(`/api/products/recentlyViewd`, res?.data);
             } catch (err) {
@@ -129,7 +128,6 @@ const ProductDetails = () => {
         fetchProduct();
         fetchDataFromApi(`/api/productReviews?productId=${id}`).then((res) => {
             setreviewsData(res)
-            console.log("reviews", res)
         })
 
 
@@ -203,10 +201,6 @@ const ProductDetails = () => {
     }
 
     const addtoCart = () => {
-        const hasSize = productData?.size?.length > 0
-        const hasRam = productData?.productRam?.length > 0;
-        const hasWeight = productData?.productWeight?.length > 0;
-        const hasColor = productData?.color?.length > 0;
         const user = JSON.parse(localStorage.getItem("user"));
         const selectedSize = productData?.size?.length !== 0 ? productData.size[activeSize] : null
         const selectedWeight = productData?.productWeight?.length !== 0 ? productData.productWeight[activeWeight] : null
@@ -225,6 +219,7 @@ const ProductDetails = () => {
         cartFields.quantity = productQuantity
         cartFields.subTotal = parseInt(productData?.price * productQuantity)
         cartFields.productId = productData?.id
+        cartFields.countInStock = productData?.countInStock
         cartFields.userId = user?.userId
 
 
