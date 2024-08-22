@@ -18,14 +18,10 @@ const ShippingAndDelivery = () => {
   return (
     <>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/help-center/shipping-delivery" />
         <title>
-          Shopping & Delivery - Hibuyshopping | Seamless Shopping Experience and
-          Fast Delivery
+          Shopping & Delivery - Hibuyshopping
         </title>
-        <meta
-          name="title"
-          content="Shopping & Delivery - Hibuyshopping | Seamless Shopping Experience and Fast Delivery"
-        />
         <meta
           name="description"
           content="Discover Hibuyshopping's shopping and delivery options. Learn about our seamless shopping process, available delivery methods, and estimated delivery times. Enjoy a smooth and efficient shopping experience with fast delivery on Pakistan's leading e-commerce platform."
@@ -36,36 +32,10 @@ const ShippingAndDelivery = () => {
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="Shopping & Delivery - Hibuyshopping | Seamless Shopping Experience and Fast Delivery"
-        />
-        <meta
-          property="og:description"
-          content="Explore Hibuyshopping's shopping and delivery services. Learn about our efficient shopping process, diverse delivery options, and delivery time estimates. Experience a hassle-free shopping journey with fast delivery on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="URL_TO_YOUR_SHOPPING_AND_DELIVERY_PAGE_IMAGE"
-        />
-        <meta
           property="og:url"
-          content="URL_TO_YOUR_SHOPPING_AND_DELIVERY_PAGE"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Shopping & Delivery - Hibuyshopping | Seamless Shopping Experience and Fast Delivery"
-        />
-        <meta
-          name="twitter:description"
-          content="Learn about Hibuyshopping's shopping and delivery options. Discover our streamlined shopping process, available delivery methods, and delivery times for a smooth and efficient shopping experience."
-        />
-        <meta
-          name="twitter:image"
-          content="URL_TO_YOUR_SHOPPING_AND_DELIVERY_PAGE_IMAGE"
+          content="https://hibuyshopping.com/help-center/shipping-delivery"
         />
       </Helmet>
-      <HelpNav />
       <section className="helpCenter">
         <div className="helpCenterWrapper">
           <Link
@@ -77,7 +47,7 @@ const ShippingAndDelivery = () => {
               <IoArrowBackSharp />
             </Button>
           </Link>
-          <div className="helpQuestions">
+          {/* <div className="helpQuestions">
             <h1>Customers Questions</h1>
             <div className="accordianBox mb-3 mt-3">
               {data.map((data) => (
@@ -93,7 +63,65 @@ const ShippingAndDelivery = () => {
                 </Accordion>
               ))}
             </div>
-          </div>
+          </div> */}
+          <h2 className="hd">Shipping and Delivery</h2>
+              <div className="accordianBox mb-1 mt-1">
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                  >
+                    <b>Q5: How long will it take for my order to arrive?</b>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    A: Delivery times vary based on your location and the
+                    shipping method selected. Standard shipping typically takes
+                    5-7 business days, while expedited shipping takes 2-3
+                    business days.
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                  >
+                    <b>Q7: Can I track my order?</b>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    A: Yes, once your order is confirmed, you can track your
+                    order. Simply follow these steps:
+                    <br />
+                    1.
+                    <b>Visit the Help Center</b> : Go to our Help Center on the
+                    website. <br /> 2.<b>Find the Order Track Option</b> : Look
+                    for the order track section.
+                    <br />
+                    <br />
+                    If you need further assistance, feel free to contact our
+                    customer service team.
+                  </AccordionDetails>
+                </Accordion>
+                <Accordion>
+                  <AccordionSummary
+                    expandIcon={<ExpandMoreIcon />}
+                    aria-controls="panel1-content"
+                    id="panel1-header"
+                  >
+                    <b>Q7: Do you ship internationally?</b>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    A: Yes, we offer international shipping to many countries.
+                    Shipping fees and delivery times vary depending on the
+                    destination.
+                    <br />
+                    <br />
+                    If you need further assistance, feel free to contact our
+                    customer service team(support@hibuyshopping.com).
+                  </AccordionDetails>
+                </Accordion>
+              </div>
         </div>
       </section>
     </>

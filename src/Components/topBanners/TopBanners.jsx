@@ -22,7 +22,7 @@ const TopBanners = () => {
         <div className="bg-transparent mb-2">
             <img src={topImg} alt="banner bottom img"/>
         </div>
-        <div className="container">
+        {/* <div className="container">
           <div className="row justify-content-center">
             <div className="col-md-6 col-lg-4">
               <div className="banner banner-overlay text-white">
@@ -48,7 +48,7 @@ const TopBanners = () => {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </main>
     </div>
   );

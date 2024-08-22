@@ -142,7 +142,7 @@ const Sidebar = (props) => {
 
                 <br />
 
-                <Link to="#"><img src='https://klbtheme.com/bacola/wp-content/uploads/2021/05/sidebar-banner.gif' className='w-100' /></Link>
+                <Link to="#"><img src='https://klbtheme.com/bacola/wp-content/uploads/2021/05/sidebar-banner.gif' alt='image' className='w-100' /></Link>
 
             </div>
         </>

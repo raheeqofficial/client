@@ -56,8 +56,8 @@ const HomeBanner = (props) => {
                                 <div className="homeBannerLeftContainer">
                                     <ul>
                                     {
-                                                catData?.length !== 0 && catData?.map((cat, index) =>(
-                                                    <li className="homeBannerLeft" key={index}><Link to={`/products/category/${cat.id}`}><img src={cat.images[0]}/><p>{cat?.name}</p></Link></li>
+                                                catData?.length !== 0 && catData?.reverse().map((cat, index) =>(
+                                                    <li className="homeBannerLeft" key={index}><Link to={`/products/category/${cat.id}`}><img src={cat.images[0]} alt={cat.name}/><p className="font-weight-bold">{cat?.name}</p></Link></li>
                                                 ))
                                     }
                                     </ul>

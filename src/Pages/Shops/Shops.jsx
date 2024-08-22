@@ -30,11 +30,8 @@ const Shops = () => {
   return (
     <>
       <Helmet>
-        <title>Vendor Shops - Hibuyshopping | Explore Shops and Products from Multiple Vendors</title>
-        <meta
-          name="title"
-          content="Vendor Shops - Hibuyshopping | Explore Shops and Products from Multiple Vendors"
-        />
+        <link rel="canonical" href="https://hibuyshopping.com/shops" />
+        <title>Explore Vendor Shops - Hibuyshopping </title>
         <meta
           name="description"
           content="Discover a variety of shops and products from multiple vendors on Hibuyshopping. Explore different vendor shops, browse their offerings, and find unique products tailored to your preferences on Pakistan's leading e-commerce platform."
@@ -44,32 +41,7 @@ const Shops = () => {
           content="vendor shops, Hibuyshopping, explore shops, multi-vendor stores, e-commerce vendors, shop listings, Pakistani e-commerce, vendor products, online shopping"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="Vendor Shops - Hibuyshopping | Explore Shops and Products from Multiple Vendors"
-        />
-        <meta
-          property="og:description"
-          content="Browse a diverse range of vendor shops and products on Hibuyshopping. Explore offerings from various vendors and find unique items tailored to your interests. Experience the best of multi-vendor shopping on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="https://hibuyshopping.com/shops"
-        />
         <meta property="og:url" content="https://hibuyshopping.com/shops" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Vendor Shops - Hibuyshopping | Explore Shops and Products from Multiple Vendors"
-        />
-        <meta
-          name="twitter:description"
-          content="Explore different vendor shops and their unique products on Hibuyshopping. Discover a wide range of offerings from multiple vendors and enhance your shopping experience on Pakistan's leading e-commerce platform."
-        />
-        <meta
-          name="twitter:image"
-          content="https://hibuyshopping.com/shops"
-        />
       </Helmet>
       <section className="shopPage">
         <div className="topImage">

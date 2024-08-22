@@ -1,17 +1,14 @@
-import { useState } from "react";
 import "./Faq.css";
-import { IoIosArrowDown } from "react-icons/io";
-import { IoIosArrowUp } from "react-icons/io";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { Accordion, AccordionDetails, AccordionSummary } from "@mui/material";
 import { Link } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 
 const Faq = () => {
-  const [isOpen, setIsOpen] = useState(0);
   return (
     <>
       <Helmet>
+        <link rel="canonical" href="https://hibuyshopping.com/faq" />
         <title>
           FAQ - Hibuyshopping | Frequently Asked Questions About Our E-Commerce Platform
         </title>
@@ -29,25 +26,10 @@ const Faq = () => {
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="FAQ - Hibuyshopping | Frequently Asked Questions About Our E-Commerce Platform"
-        />
-        <meta
           property="og:description"
           content="Get answers to your questions on Hibuyshopping's FAQ page. Learn about order processing, shipping, returns, payments, and more. Find the information you need to enhance your shopping experience in Pakistan's leading multi-vendor e-commerce store."
         />
-        <meta property="og:image" content="https://hibuyshopping.com/faq" />
         <meta property="og:url" content="https://hibuyshopping.com/faq" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="FAQ - Hibuyshopping | Frequently Asked Questions About Our E-Commerce Platform"
-        />
-        <meta
-          name="twitter:description"
-          content="Explore Hibuyshopping's FAQ page for answers to common questions about our platform. From order processing to shipping and returns, get the information you need to make your shopping experience seamless."
-        />
-        <meta name="twitter:image" content="https://hibuyshopping.com/faq" />
       </Helmet>
       <div className="page-wrapper">
         <main className="main">

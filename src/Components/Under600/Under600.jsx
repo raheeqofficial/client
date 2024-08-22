@@ -22,7 +22,7 @@ const Under600 = () => {
         <div key={index}>
           <div className="img_rapper">
             <Link to={`/product/`}>
-              <img src={item?.images[0]} className="w-100" />
+              <img src={item?.images[0]} className="w-100" alt={item.productTitle} />
             </Link>
 
             <span className="badge badge-primary">{item?.discount}%</span>

@@ -13,7 +13,7 @@
   
   .terms-title h1{
     font-size: 22px;
-    font-family: "RobotoCondensed-Bold";
+    font-family: "Roboto", sans-serif;
     text-align: center;
     font-weight: bold;
     letter-spacing: 10px;  
@@ -26,7 +26,7 @@
   }
   
   .terms-body h3{
-    font-family: "RobotoCondensed-Bold";
+    font-family: "Roboto", sans-serif;
     color: #262626;
     font-weight: bold;
     text-align: left;

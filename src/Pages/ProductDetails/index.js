@@ -307,18 +307,12 @@ const ProductDetails = () => {
         <>
 
             <Helmet>
-                <title>{`${productData.name} - Hibuyshopping | ${productData.name} - Explore Features and Reviews`}</title>
+            <link rel="canonical" href="https://hibuyshopping.com/product/:id" />
+                <title>{`${productData.name} - Hibuyshopping | ${productData.name}`}</title>
                 <meta name="description" content={`View detailed information about ${productData.name} on Hibuyshopping. Discover features, specifications, customer reviews, and pricing. Learn more about this product to make an informed purchase decision on Pakistan's leading e-commerce platform.`} />
                 <meta name="keywords" content="product details, Hibuyshopping, Product Name, product features, specifications, customer reviews, product pricing, multi-vendor store, e-commerce product, Pakistani e-commerce" />
                 <meta name="author" content="Hibuyshopping Team" />
-                <meta property="og:title" content="Product Details - Hibuyshopping | Shop Name - Product Name - Explore Features and Reviews" />
-                <meta property="og:description" content="Explore detailed information about Product Name on Hibuyshopping. Check out features, specifications, customer reviews, and pricing to make an informed decision. Find everything you need about this product on Pakistan's top e-commerce platform." />
-                <meta property="og:image" content="URL_TO_YOUR_PRODUCT_DETAILS_PAGE_IMAGE" />
-                <meta property="og:url" content="URL_TO_YOUR_PRODUCT_DETAILS_PAGE" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Product Details - Hibuyshopping | Shop Name - Product Name - Explore Features and Reviews" />
-                <meta name="twitter:description" content="Get detailed information about Product Name on Hibuyshopping. Discover its features, specs, reviews, and pricing to help you decide. Learn more about this product on Pakistan's leading e-commerce site." />
-                <meta name="twitter:image" content="URL_TO_YOUR_PRODUCT_DETAILS_PAGE_IMAGE" />
+                <meta property="og:url" content="https://hibuyshopping.com/product/:id" />
             </Helmet>
             <section className="productDetails section">
                 <div className="container">

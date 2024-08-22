@@ -43,6 +43,7 @@ const ReturnOrder = () => {
   return (
     <>
       <Helmet>
+        <link rel="canonical" href="https://hibuyshopping.com/help-center/return-order" />
         <title>
           Return Order - Hibuyshopping | Easy Order Returns and Exchanges
         </title>
@@ -59,37 +60,12 @@ const ReturnOrder = () => {
           content="return order, Hibuyshopping, order returns, order exchanges, easy returns, manage returns, e-commerce return process, Pakistani e-commerce, multi-vendor store, hassle-free returns"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="Return Order - Hibuyshopping | Easy Order Returns and Exchanges"
-        />
-        <meta
-          property="og:description"
-          content="Initiate and manage your order returns on Hibuyshopping easily. Use our Return Order page to request returns, provide reasons, and handle exchanges seamlessly. Experience a smooth return process on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="https://hibuyshopping.com/help-center/return-order"
-        />
         <meta property="og:url" content="https://hibuyshopping.com/help-center/return-order" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Return Order - Hibuyshopping | Easy Order Returns and Exchanges"
-        />
-        <meta
-          name="twitter:description"
-          content="Effortlessly request order returns and exchanges on Hibuyshopping. Use our Return Order page to manage returns and handle exchanges with ease for a seamless experience."
-        />
-        <meta
-          name="twitter:image"
-          content="https://hibuyshopping.com/help-center/return-order"
-        />
       </Helmet>
       <div className="returnPage">
         <div className="container">
           <div className="returnDialog">
-            <h2 className="hd">Request Return</h2>
+            <h1 className="hd">Request Return</h1>
             <form onSubmit={handleReturnRequest}>
               <div>
                 <label htmlFor="orderId">Order ID:</label>

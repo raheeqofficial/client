@@ -44,22 +44,25 @@
 .card-container-wrapper{
     cursor: pointer;
     box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
-    width: 170px;
+    width: 150px;
     height: auto;
 }
 .card-container .swiper-slide{
-    width: 170px !important;
+    width: 150px !important;
 }
 .card-container-wrapper .img_wrapper{
-    width: 170px;
+    width: 150px;
     height: 150px;
 }
 .card-container-wrapper .img_wrapper img{
     width: 100%;
     height: 100%;
+    background-position: center;
+    background-size: cover;
+    object-fit: cover;
 }
 .card-container-wrapper .card_text_box{
-    width: 170px;
+    width: 150px;
     height: 110px;
     padding: 5px;
 }
@@ -67,6 +70,42 @@
     font-size: 15px;
     font-weight: 300;
 }
+.transperant-btn{
+    background-color: #343A40;
+    border-radius: 4px;  
+    color: #fff;
+    cursor: pointer;
+    padding: 8px 16px;
+    
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, red);
+  animation:slidebg 2s linear infinite;
+    /* color: #2d2df5;
+    font-weight: bold;
+    border: 1px solid #2d2df5;
+    transition: all 0.3s ease-in-out; */
+}
+
+.transperant-btn:hover{
+    /* background-color: #2d2df5;
+    color: #fff; */
+    background-image: linear-gradient(to right, red, orange, yellow, green, blue, indigo, red);
+  animation:slidebg 2s linear infinite;
+}
+.box{
+    width: 100%;
+    height: 150px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.box p{
+    font-weight: bold;
+}
+@keyframes slidebg {
+    to {
+      background-position:20vw;
+    }
+  }
 @media only screen and (max-width: 768px){
     .seoContent .seoContentWrapper{
         grid-template-columns: repeat(2, 1fr);

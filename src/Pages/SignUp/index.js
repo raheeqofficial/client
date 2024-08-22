@@ -155,20 +155,12 @@ const SignUp = () => {
     return (
         <>
             <Helmet>
-                <title>Sign Up for Hibuyshopping - Join Now for Exclusive Deals and Offers</title>
-                <meta name="title" content="Sign Up for Hibuyshopping - Join Now for Exclusive Deals and Offers" />
+            <link rel="canonical" href="https://hibuyshopping.com/signUp" />
+                <title>Sign Up for Hibuyshopping </title>
                 <meta name="description" content="Create an account on Hibuyshopping to access exclusive discounts, personalized recommendations, early access to new arrivals, and more. Sign up today and start enjoying amazing shopping benefits!" />
                 <meta name="keywords" content="online shopping Pakistan, buy electronics online, Pakistan e-commerce, fashion shopping Pakistan, online clothing store Pakistan, buy mobile phones Pakistan, online shopping deals, Pakistan online store, best online shopping sites, discount codes Pakistan, online groceries Pakistan, buy shoes online Pakistan, Pakistani online marketplace, electronics sale Pakistan, fashion trends Pakistan, mobile accessories Pakistan, e-commerce websites Pakistan, Pakistani fashion brands, online home appliances, buy laptops online Pakistan, online beauty products, Pakistani online clothing, latest gadgets Pakistan, online book store Pakistan, health and wellness products, Pakistani e-commerce platform, online kids clothing, best deals on electronics, online furniture store Pakistan, Pakistani online retailers, online shopping for women, discount electronics Pakistan, online shopping for men, buy jewelry online Pakistan" />
                 <meta name="author" content="Hibuyshopping Team" />
-                <meta property="og:title" content="Sign Up for Hibuyshopping" />
-                <meta property="og:description" content="Join Hibuyshopping now and get exclusive access to discounts, early notifications about sales, and personalized shopping recommendations. Create your account today!" />
-                <meta property="og:image" content="https://hibuyshopping.com/signUp" />
                 <meta property="og:url" content="https://hibuyshopping.com/signUp" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Sign Up for Hibuyshopping" />
-                <meta name="twitter:description" content="Sign up today at Hibuyshopping to enjoy exclusive deals, early access to new products, and personalized recommendations. Join us and start shopping smarter!" />
-                <meta name="twitter:image" content="https://hibuyshopping.com/signUp" />
-
             </Helmet>
             <section className="section signInPage signUpPage">
                 <div className="shape-bottom">
@@ -277,7 +269,11 @@ const SignUp = () => {
                             <h6 className="mt-4 text-center font-weight-bold">Or continue with social account</h6>
 
                             <Button className="loginWithGoogle mt-2" variant="outlined"><img src={GoogleImg} alt="Google" /> Sign In with Google</Button>
-                            {submitted && (
+                        </form>
+                    </div>
+                </div>
+            </section>
+                {/* {submitted && (
                                 <Confetti
                                     width={window.innerWidth}
                                     height={window.innerHeight}
@@ -286,11 +282,7 @@ const SignUp = () => {
                                     run={submitted}
                                     confettiSource={{ x: window.innerWidth / 2, y: window.innerHeight / 2, w: 0, h: 0 }}
                                 />
-                            )}
-                        </form>
-                    </div>
-                </div>
-            </section>
+                            )} */}
         </>
     );
 };

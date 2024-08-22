@@ -26,6 +26,7 @@ const FollowedShops = () => {
   return (
     <>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/followed-shops" />
         <title>
           Followed Shops - Hibuyshopping | Stay Updated with Your Favorite
           Stores
@@ -44,32 +45,7 @@ const FollowedShops = () => {
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="Followed Shops - Hibuyshopping | Stay Updated with Your Favorite Stores"
-        />
-        <meta
-          property="og:description"
-          content="Manage your followed shops on Hibuyshopping and stay informed about the latest products and offers from your favorite stores. Enjoy a tailored shopping experience with updates from the shops you love."
-        />
-        <meta
-          property="og:image"
-          content="https://hibuyshopping.com/my-account/followed-shops"
-        />
-        <meta
           property="og:url"
-          content="https://hibuyshopping.com/my-account/followed-shops"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Followed Shops - Hibuyshopping | Stay Updated with Your Favorite Stores"
-        />
-        <meta
-          name="twitter:description"
-          content="See and manage the shops you follow on Hibuyshopping. Get the latest updates, products, and offers from your favorite stores for a customized shopping experience."
-        />
-        <meta
-          name="twitter:image"
           content="https://hibuyshopping.com/my-account/followed-shops"
         />
       </Helmet>

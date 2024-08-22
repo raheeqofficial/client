@@ -73,6 +73,7 @@ const DiscountPage = () => {
   return (
     <>
       <Helmet>
+        <link rel="canonical" href="https://hibuyshopping.com/products/flash-sale/4d9040da-a6ea-4ff0-8ceb-91e44dda3a25bf80965f-a231-4289-9805-c1f0ed86a73d" />
         <title>
           Exclusive 50% Discount - Hibuyshopping | Save Big on Top Brands in
           Pakistan
@@ -91,32 +92,11 @@ const DiscountPage = () => {
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="Exclusive 50% Discount - Hibuyshopping | Save Big on Top Brands in Pakistan"
-        />
-        <meta
           property="og:description"
           content="Unlock a 50% discount on selected products at Hibuyshopping! Shop now to take advantage of massive savings on top brands across various categories. Limited-time offer available at Pakistan's leading multi-vendor e-commerce platform."
         />
         <meta
-          property="og:image"
-          content="https://hibuyshopping.com/products/flash-sale/4d9040da-a6ea-4ff0-8ceb-91e44dda3a25bf80965f-a231-4289-9805-c1f0ed86a73d"
-        />
-        <meta
           property="og:url"
-          content="https://hibuyshopping.com/products/flash-sale/4d9040da-a6ea-4ff0-8ceb-91e44dda3a25bf80965f-a231-4289-9805-c1f0ed86a73d"
-        />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Exclusive 50% Discount - Hibuyshopping | Save Big on Top Brands in Pakistan"
-        />
-        <meta
-          name="twitter:description"
-          content="Get 50% off on selected items at Hibuyshopping! Shop now to save on top brands in fashion, electronics, and more. Don't miss these limited-time discounts at Pakistan's top e-commerce store."
-        />
-        <meta
-          name="twitter:image"
           content="https://hibuyshopping.com/products/flash-sale/4d9040da-a6ea-4ff0-8ceb-91e44dda3a25bf80965f-a231-4289-9805-c1f0ed86a73d"
         />
       </Helmet>

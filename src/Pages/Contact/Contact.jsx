@@ -94,9 +94,9 @@ const Contact = () => {
   return (
     <>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/contact" />
         <title>
-          Contact Us - Hibuyshopping | Get in Touch with Pakistan's Leading
-          E-Commerce Platform
+          Contact Us - Hibuyshopping
         </title>
         <meta
           name="title"
@@ -112,33 +112,15 @@ const Contact = () => {
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="Contact Us - Hibuyshopping | Get in Touch with Pakistan's Leading E-Commerce Platform"
-        />
-        <meta
           property="og:description"
           content="Get in touch with Hibuyshopping for any inquiries, feedback, or support. Our Contact Us page provides all necessary information to connect with our team and receive assistance. We're dedicated to ensuring a smooth online shopping experience in Pakistan."
         />
-        <meta property="og:image" content="https://hibuyshopping.com/contact" />
         <meta property="og:url" content="https://hibuyshopping.com/contact" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Contact Us - Hibuyshopping | Get in Touch with Pakistan's Leading E-Commerce Platform"
-        />
-        <meta
-          name="twitter:description"
-          content="Reach out to Hibuyshopping for support, feedback, or inquiries. Visit our Contact Us page for the details you need to connect with us and get assistance with your online shopping experience in Pakistan."
-        />
-        <meta
-          name="twitter:image"
-          content="https://hibuyshopping.com/contact"
-        />
       </Helmet>
       <div className="contactForm">
         <div className="contact-container">
           <div className="contact-left">
-            <h2>Get In Touch</h2>
+            <h1 className="hd">Get In Touch</h1>
             <form className="contact-form" onSubmit={handleSubmit}>
               <div className="single-row">
                 <input

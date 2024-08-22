@@ -98,19 +98,12 @@ const SignIn = () => {
     return (
         <>
             <Helmet>
+                <link rel="canonical" href="https://hibuyshopping.com/signIn" />
                 <title>Login - Hibuyshopping | Access Your Account and Start Shopping</title>
-                <meta name="title" content="Login - Hibuyshopping | Access Your Account and Start Shopping" />
                 <meta name="description" content="Log in to your Hibuyshopping account to access personalized features and start shopping. Securely enter your credentials to manage your account, view orders, and enjoy a tailored shopping experience on Pakistan's leading e-commerce platform." />
                 <meta name="keywords" content="login, Hibuyshopping, account access, user login, secure login, e-commerce account, manage account, shopping account, Pakistani e-commerce, multi-vendor store" />
                 <meta name="author" content="Hibuyshopping Team" />
-                <meta property="og:title" content="Login - Hibuyshopping | Access Your Account and Start Shopping" />
-                <meta property="og:description" content="Access your Hibuyshopping account by logging in securely. Manage your account, view orders, and enjoy a personalized shopping experience. Log in now to start shopping on Pakistan's top e-commerce platform." />
-                <meta property="og:image" content="https://hibuyshopping.com/signIn" />
                 <meta property="og:url" content="https://hibuyshopping.com/signIn" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Login - Hibuyshopping | Access Your Account and Start Shopping" />
-                <meta name="twitter:description" content="Log in to your Hibuyshopping account to access your personalized shopping experience. Securely manage your account, view orders, and enjoy a seamless shopping journey on Pakistan's leading e-commerce platform." />
-                <meta name="twitter:image" content="https://hibuyshopping.com/signIn" />
             </Helmet>
             <section className="section signInPage">
                 <div className="shape-bottom"> <svg fill="#fff" id="Layer_1" x="0px" y="0px" viewBox="0 0 1921 819.8" style={{ enableBackground: 'new 0 0 1921 819.8' }} > <path className="st0" d="M1921,413.1v406.7H0V0.5h0.4l228.1,598.3c30,74.4,80.8,130.6,152.5,168.6c107.6,57,212.1,40.7,245.7,34.4 c22.4-4.2,54.9-13.1,97.5-26.6L1921,400.5V413.1z"></path> </svg>
@@ -152,7 +145,13 @@ const SignIn = () => {
                             <h6 className="mt-4 text-center font-weight-bold">Or continue with social account</h6>
 
                             <Button className="loginWithGoogle mt-2" variant="outlined"><img src={GoogleImg} /> Sign In with Google</Button>
-                            {submitted && (
+
+                        </form>
+
+                    </div>
+                </div>
+            </section>
+            {/* {submitted && (
                                 <Confetti
                                     width={window.innerWidth}
                                     height={window.innerHeight}
@@ -161,12 +160,7 @@ const SignIn = () => {
                                     run={submitted}
                                     confettiSource={{ x: window.innerWidth / 2, y: window.innerHeight / 2, w: 0, h: 0 }}
                                 />
-                            )}
-                        </form>
-
-                    </div>
-                </div>
-            </section>
+                            )} */}
         </>
 
     )

@@ -9,14 +9,10 @@ const TermsOfUse = () => {
   return (
     <>
       <Helmet>
+        <link rel="canonical" href="https://hibuyshopping.com/terms-of-use/17f949fc-db7e-4da7-bf75-50f964fe4e2887141884-c773-46fe-8fc0-02411815db2b" />
         <title>
-          Terms of Use - Hibuyshopping | Terms and Conditions for Using Our
-          Services
+          Terms of Use - Hibuyshopping 
         </title>
-        <meta
-          name="title"
-          content="Terms of Use - Hibuyshopping | Terms and Conditions for Using Our Services"
-        />
         <meta
           name="description"
           content="Review the Terms of Use for Hibuyshopping. Understand the terms and conditions that govern your use of our services, including shopping, account management, and more. Stay informed about your rights and responsibilities on Pakistan's leading e-commerce platform."
@@ -26,32 +22,7 @@ const TermsOfUse = () => {
           content="Terms of Use, Hibuyshopping, terms and conditions, e-commerce terms, user agreement, service terms, account management, Pakistani e-commerce, multi-vendor store"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="Terms of Use - Hibuyshopping | Terms and Conditions for Using Our Services"
-        />
-        <meta
-          property="og:description"
-          content="Explore Hibuyshopping's Terms of Use. Learn about the terms and conditions that apply to your use of our services, including shopping, account management, and more. Ensure you understand your rights and responsibilities on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="https://hibuyshopping.com/terms-of-use/687d9f72-397c-4125-8395-17d7ab10091a03b8a255-7104-4d60-9791-d148b6e20ef1"
-        />
-        <meta property="og:url" content="https://hibuyshopping.com/terms-of-use/687d9f72-397c-4125-8395-17d7ab10091a03b8a255-7104-4d60-9791-d148b6e20ef1" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Terms of Use - Hibuyshopping | Terms and Conditions for Using Our Services"
-        />
-        <meta
-          name="twitter:description"
-          content="Read the Terms of Use for Hibuyshopping to understand the terms and conditions governing your use of our services. Learn about shopping, account management, and other important details to ensure compliance and a smooth experience."
-        />
-        <meta
-          name="twitter:image"
-          content="https://hibuyshopping.com/terms-of-use/687d9f72-397c-4125-8395-17d7ab10091a03b8a255-7104-4d60-9791-d148b6e20ef1"
-        />
+        <meta property="og:url" content="https://hibuyshopping.com/terms-of-use/17f949fc-db7e-4da7-bf75-50f964fe4e2887141884-c773-46fe-8fc0-02411815db2b" />
       </Helmet>
       <div className="wrap">
         <div className="container">

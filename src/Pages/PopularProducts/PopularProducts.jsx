@@ -52,14 +52,10 @@ const PopularProducts = () => {
   return (
     <>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/78c44c48-c5a2-4e15-b362-40402e3c36511dbb78b4-f4c0-4b64-8819-873c7e9c4fba" />
         <title>
-          Popular Products - Hibuyshopping | Top-Selling Items and Trending
-          Products
+          Popular Products - Hibuyshopping
         </title>
-        <meta
-          name="title"
-          content="Popular Products - Hibuyshopping | Top-Selling Items and Trending Products"
-        />
         <meta
           name="description"
           content="Discover the most popular products on Hibuyshopping. Explore top-selling items, trending products, and customer favorites. Find the best deals and must-have products on Pakistan's leading e-commerce platform."
@@ -70,31 +66,10 @@ const PopularProducts = () => {
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="Popular Products - Hibuyshopping | Top-Selling Items and Trending Products"
-        />
-        <meta
           property="og:description"
           content="Explore Hibuyshopping's popular products. Browse top-selling items, trending products, and customer favorites to find the best deals and must-have items on Pakistan's top e-commerce platform."
         />
-        <meta
-          property="og:image"
-          content="URL_TO_YOUR_POPULAR_PRODUCTS_PAGE_IMAGE"
-        />
-        <meta property="og:url" content="URL_TO_YOUR_POPULAR_PRODUCTS_PAGE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Popular Products - Hibuyshopping | Top-Selling Items and Trending Products"
-        />
-        <meta
-          name="twitter:description"
-          content="Check out the most popular products on Hibuyshopping. Find top-selling items, trending products, and customer favorites to get the best deals on Pakistan's leading e-commerce site."
-        />
-        <meta
-          name="twitter:image"
-          content="URL_TO_YOUR_POPULAR_PRODUCTS_PAGE_IMAGE"
-        />
+        <meta property="og:url" content="https://hibuyshopping.com/products/popular-products/78c44c48-c5a2-4e15-b362-40402e3c36511dbb78b4-f4c0-4b64-8819-873c7e9c4fba" />
       </Helmet>
       <div className="flashTopBanner">
         <div className="flashTopBannerWrapper">

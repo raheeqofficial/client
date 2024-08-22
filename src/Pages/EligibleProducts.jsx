@@ -41,7 +41,7 @@ const EligibleProducts = ({ customerId }) => {
       {products.length === 0 ? (
         <p>No products available for review.</p>
       ) : (
-        <div className="container">
+        <div>
           {products.map((product, index) => (
             <div class="order-card" key={index}>
               <div class="order-header">

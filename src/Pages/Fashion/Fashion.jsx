@@ -52,12 +52,9 @@ const Fashion = () => {
   }
   return (
     <>
-      <Helmet>
+      {/* <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/products/category/" />
         <title>Fashion - Hibuyshopping | Latest Trends and Styles in Pakistan</title>
-        <meta
-          name="title"
-          content="Fashion - Hibuyshopping | Latest Trends and Styles in Pakistan"
-        />
         <meta
           name="description"
           content="Explore the latest trends and styles in fashion at Hibuyshopping. Shop a wide range of clothing, accessories, and footwear from top brands in Pakistan. Discover exclusive deals and updates on fashion products."
@@ -68,26 +65,11 @@ const Fashion = () => {
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="Fashion - Hibuyshopping | Latest Trends and Styles in Pakistan"
-        />
-        <meta
           property="og:description"
           content="Discover the latest fashion trends and styles at Hibuyshopping. Browse through a diverse collection of clothing, accessories, and footwear from top brands in Pakistan. Enjoy exclusive deals and stay updated on the newest fashion arrivals."
         />
-        <meta property="og:image" content="https://hibuyshopping.com/" />
         <meta property="og:url" content="https://hibuyshopping.com/" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Fashion - Hibuyshopping | Latest Trends and Styles in Pakistan"
-        />
-        <meta
-          name="twitter:description"
-          content="Shop the latest fashion trends at Hibuyshopping. From clothing to accessories and footwear, find top brands and exclusive deals in Pakistan. Stay stylish with our updated fashion collection."
-        />
-        <meta name="twitter:image" content="https://hibuyshopping.com/" />
-      </Helmet>
+      </Helmet> */}
       <div className="flashTopBanner">
         <div className="flashTopBannerWrapper">
           <div className="flashTopBannerImg">

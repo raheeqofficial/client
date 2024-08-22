@@ -152,21 +152,30 @@ const ProductItem = (props) => {
                         <div className="img_rapper">
                             <Link to={`/product/${props?.itemView === 'recentlyView' ? props.item?.staticId : props.item?.staticId}`}>
                                 <div className='productItemSliderWrapper'>
-                                    {
+                                    {/* {
                                         isHovered === true &&
                                         <Slider {...settings} ref={sliderRef} className='productItemSlider'>
                                             {
                                                 props.item?.images?.map((image, index) => {
                                                     return (
                                                         <div className='slick-slide' key={index}>
-                                                            <img src={image} className="w-100" />
+                                                            <img src={image} className="w-100" alt={props.item.productTitle} />
                                                         </div>
                                                     )
                                                 })
                                             }
 
                                         </Slider>
-                                    }
+                                    } */}
+                                     {
+                                                props.item?.images?.map((image, index) => {
+                                                    return (
+                                                        <div className='slick-slide' key={index}>
+                                                            <img src={image} className="w-100" alt={props.item.productTitle} />
+                                                        </div>
+                                                    )
+                                                })
+                                            }
 
                                 </div>
 
@@ -178,7 +187,7 @@ const ProductItem = (props) => {
 
                                         :
 
-                                        <img src={props.item?.images[0]} className="w-100" />
+                                        <img src={props.item?.images[0]} className="w-100" alt={props.item.productTitle} />
                                 }
 
 

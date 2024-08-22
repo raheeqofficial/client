@@ -10,6 +10,10 @@ import { deleteData, editData, fetchDataFromApi } from "../../utils/api";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import './list.css'
+import { IoLogoTiktok } from "react-icons/io5";
+import { FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { CiInstagram } from "react-icons/ci";
 
 const Wishlist = () => {
   const [myListData, setmyListData] = useState([]);
@@ -55,13 +59,10 @@ const Wishlist = () => {
   return (
     <div>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/my-list" />
         <title>
           Wishlist - Hibuyshopping | Save and Manage Your Favorite Products
         </title>
-        <meta
-          name="title"
-          content="Wishlist - Hibuyshopping | Save and Manage Your Favorite Products"
-        />
         <meta
           name="description"
           content="Manage and view your wishlist on Hibuyshopping. Save your favorite products, track desired items, and access your saved selections easily. Keep track of products you love and plan your purchases on Pakistan's leading e-commerce platform."
@@ -71,28 +72,9 @@ const Wishlist = () => {
           content="wishlist, Hibuyshopping, favorite products, save products, manage wishlist, e-commerce wishlist, track desired items, Pakistani e-commerce, multi-vendor store"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="Wishlist - Hibuyshopping | Save and Manage Your Favorite Products"
-        />
-        <meta
-          property="og:description"
-          content="View and manage your wishlist on Hibuyshopping. Save your favorite items, track products you love, and access your saved selections with ease. Stay organized and plan your purchases on Pakistan's top e-commerce platform."
-        />
-        <meta property="og:image" content="URL_TO_YOUR_WISHLIST_PAGE_IMAGE" />
-        <meta property="og:url" content="URL_TO_YOUR_WISHLIST_PAGE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Wishlist - Hibuyshopping | Save and Manage Your Favorite Products"
-        />
-        <meta
-          name="twitter:description"
-          content="Access and manage your wishlist on Hibuyshopping. Save your favorite products, keep track of desired items, and easily view your saved selections. Organize your shopping and plan purchases on Pakistan's leading online store."
-        />
-        <meta name="twitter:image" content="URL_TO_YOUR_WISHLIST_PAGE_IMAGE" />
+        <meta property="og:url" content="https://hibuyshopping.com/my-list" />
       </Helmet>
-      {/* <main className="main">
+      <main className="main">
         <div className="page-header text-center">
           <div className="container">
             <h1 className="page-title">
@@ -195,7 +177,7 @@ const Wishlist = () => {
                   title="Facebook"
                   target="_blank"
                 >
-                  <i className="icon-facebook-f"></i>
+                  <FaFacebookF/>
                 </a>
                 <a
                   href="#"
@@ -203,7 +185,7 @@ const Wishlist = () => {
                   title="Twitter"
                   target="_blank"
                 >
-                  <i className="icon-twitter"></i>
+                  <FaXTwitter/>
                 </a>
                 <a
                   href="#"
@@ -211,49 +193,21 @@ const Wishlist = () => {
                   title="Instagram"
                   target="_blank"
                 >
-                  <i className="icon-instagram"></i>
+                  <CiInstagram/>
                 </a>
                 <a
                   href="#"
                   className="social-icon"
-                  title="Youtube"
+                  title="Tiktok"
                   target="_blank"
                 >
-                  <i className="icon-youtube"></i>
-                </a>
-                <a
-                  href="#"
-                  className="social-icon"
-                  title="Pinterest"
-                  target="_blank"
-                >
-                  <i className="icon-pinterest"></i>
+                  <IoLogoTiktok/>
                 </a>
               </div>
             </div>
           </div>
         </div>
-      </main> */}
-      <div className="container">
-      <div class="order-card">
-        <div class="order-header">
-          <div class="store-name">Trend Corner</div>
-          <div class="order-status">Completed</div>
-        </div>
-        <div class="order-content">
-          <img src="sunglasses.jpg" alt="Sunglasses" class="product-image" />
-          <div class="product-details">
-            <h3>
-              Kabir Singh India Movie Sunglasses For Men Square Retro Sun Shades
-              Steampunk Style...
-            </h3>
-            <p>Lens Color: Black, Frame Color: Black</p>
-          </div>
-          <div class="product-price">Rs. 199</div>
-          <div class="product-quantity">Qty: 1</div>
-        </div>
-      </div>
-      </div>
+      </main>
     </div>
   );
 };

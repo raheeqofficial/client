@@ -93,7 +93,7 @@ const Header = () => {
                     <header className="header">
                         <div className="container">
                             <div className="row">
-                                <div className="logoWrapper d-flex align-items-center">
+                                <div className="logoWrapper d-flex align-items-center justify-content-center">
                                     <Link to={'/'}><img src={logo} alt='Logo' /></Link>
                                 </div>
 

@@ -115,24 +115,19 @@ const Cart = () => {
     return (
         <>
             <Helmet>
+                <link rel="canonical" href="https://hibuyshopping.com/cart" />
                 <title>Your Cart - Hibuyshopping | Multi-Vendor E-Commerce Store in Pakistan</title>
                 <meta name="title" content="Your Cart - Hibuyshopping | Multi-Vendor E-Commerce Store in Pakistan" />
                 <meta name="description" content="View and manage the items in your cart at Hibuyshopping. Review your selected products, apply discount codes, and proceed to checkout. Enjoy a seamless online shopping experience with Pakistan's leading e-commerce platform." />
                 <meta name="keywords" content="cart page, Hibuyshopping, online shopping cart, manage cart, e-commerce Pakistan, multi-vendor store, checkout process, discount codes, shopping experience, review items, online marketplace" />
                 <meta name="author" content="Hibuyshopping Team" />
-                <meta property="og:title" content="Your Cart - Hibuyshopping | Multi-Vendor E-Commerce Store in Pakistan" />
                 <meta property="og:description" content="Manage your cart at Hibuyshopping, review your items, apply discount codes, and proceed to checkout with ease. Experience top-notch online shopping with Pakistan's premier multi-vendor store." />
-                <meta property="og:image" content="https://hibuyshopping.com/cart" />
                 <meta property="og:url" content="https://hibuyshopping.com/cart" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Your Cart - Hibuyshopping | Multi-Vendor E-Commerce Store in Pakistan" />
-                <meta name="twitter:description" content="Manage your cart, review items, and proceed to checkout at Hibuyshopping. Enjoy a seamless online shopping experience with our multi-vendor e-commerce platform in Pakistan." />
-                <meta name="twitter:image" content="https://hibuyshopping.com/cart" />
                 <meta itemprop="priceCurrency" content="PKR" />
             </Helmet>
             <section className="section cartPage">
                 <div className="container">
-                    <h2 className="hd mb-1">Your Cart</h2>
+                    <h1 className="hd mb-1">Your Cart</h1>
                     <p>There are <b className="text-red">{cartData?.length}</b> products in your cart</p>
 
                     {cartData?.length !== 0 ? (
@@ -215,7 +210,7 @@ const Cart = () => {
                         </div>
                     ) : (
                         <div className="empty d-flex align-items-center justify-content-center flex-column">
-                            <img src={emprtCart} width="150" />
+                            <img src={emprtCart} width="150" alt="cart image" />
                             <h3 className="emptyPageMsg">Your Cart is currently empty</h3>
                             <br />
                             <Link to="/"> <Button className='btn-blue bg-red btn-lg btn-big btn-round'><FaHome /> &nbsp; Continue Shopping</Button></Link>

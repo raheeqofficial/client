@@ -27,45 +27,31 @@ const About = () => {
   return (
     <>
       <Helmet>
+        <link rel="canonical" href="https://hibuyshopping.com/about-us" />
         <title>
-          About Us - Hibuyshopping | Leading Multi-Vendor E-Commerce Store in
-          Pakistan
+          About Us - Hibuyshopping: Pakistan's Premier Multi-Vendor E-Commerce
+          Store
         </title>
         <meta
           name="title"
-          content="About Us - Hibuyshopping | Leading Multi-Vendor E-Commerce Store in Pakistan"
+          content="About Us - Hibuyshopping: Pakistan's Premier Multi-Vendor E-Commerce Store"
         />
         <meta
           name="description"
-          content="Learn more about Hibuyshopping, Pakistan's leading multi-vendor e-commerce store. Discover our mission, vision, and the dedicated team behind our platform. We are committed to providing the best online shopping experience in Pakistan."
+          content="Learn more about Hibuyshopping, Pakistan's leading multi-vendor e-commerce platform. Discover our mission, vision, and the team behind the best online shopping experience in Pakistan."
         />
         <meta
           name="keywords"
-          content="about us, Hibuyshopping, multi-vendor e-commerce store, online shopping Pakistan, e-commerce platform, our mission, our vision, online marketplace, Pakistani online store, team behind Hibuyshopping"
+          content="about Hibuyshopping, Hibuyshopping mission, Hibuyshopping vision, online shopping Pakistan, e-commerce Pakistan, multi-vendor platform, Pakistani online marketplace, online shopping store, Hibuyshopping team"
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="About Us - Hibuyshopping | Leading Multi-Vendor E-Commerce Store in Pakistan"
-        />
-        <meta
           property="og:description"
-          content="Discover Hibuyshopping's mission, vision, and the team behind Pakistan's premier multi-vendor e-commerce platform. Learn about our commitment to providing exceptional online shopping experiences."
+          content="At Hibuyshopping, we aim to provide the best online shopping experience in Pakistan. Learn about our journey, our values, and what makes us the top choice for millions of shoppers."
         />
-        <meta property="og:image" content="https://hibuyshopping.com/about" />
-        <meta property="og:url" content="https://hibuyshopping.com/about" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="About Us - Hibuyshopping | Leading Multi-Vendor E-Commerce Store in Pakistan"
-        />
-        <meta
-          name="twitter:description"
-          content="Learn about Hibuyshopping's mission and vision, and meet the team dedicated to offering the best online shopping experience in Pakistan. Explore our story and values."
-        />
-        <meta name="twitter:image" content="https://hibuyshopping.com/about" />
-        <meta itemprop="priceCurrency" content="PKR" />
+        <meta property="og:url" content="https://hibuyshopping.com/about-us" />
       </Helmet>
+
       <div className="page-wrapper">
         <main className="main">
           <div className="container">

@@ -137,11 +137,8 @@ const OrderDetails = () => {
   return (
     <>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/order/details/:id" />
         <title>Order Details - Hibuyshopping | View Detailed Information for Your Order</title>
-        <meta
-          name="title"
-          content="Order Details - Hibuyshopping | View Detailed Information for Your Order"
-        />
         <meta
           name="description"
           content="View detailed information about your order on Hibuyshopping. Access comprehensive details including items purchased, order status, delivery information, and more. Track your order and stay informed on Pakistan's leading e-commerce platform."
@@ -151,32 +148,7 @@ const OrderDetails = () => {
           content="order details, Hibuyshopping, order information, view order, order status, delivery details, e-commerce order, track order, Pakistani e-commerce, multi-vendor store"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="Order Details - Hibuyshopping | View Detailed Information for Your Order"
-        />
-        <meta
-          property="og:description"
-          content="Access detailed information about your order on Hibuyshopping. View purchased items, order status, delivery information, and more. Stay informed and track your order on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="URL_TO_YOUR_ORDER_DETAILS_PAGE_IMAGE"
-        />
-        <meta property="og:url" content="URL_TO_YOUR_ORDER_DETAILS_PAGE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Order Details - Hibuyshopping | View Detailed Information for Your Order"
-        />
-        <meta
-          name="twitter:description"
-          content="Get comprehensive details about your order on Hibuyshopping. Check items purchased, order status, delivery info, and more. Track and manage your order efficiently on Pakistan's leading e-commerce site."
-        />
-        <meta
-          name="twitter:image"
-          content="URL_TO_YOUR_ORDER_DETAILS_PAGE_IMAGE"
-        />
+        <meta property="og:url" content="https://hibuyshopping.com/order/details/:id" />
       </Helmet>
       <div className="od-page">
         <div className="od-Container">

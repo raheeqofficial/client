@@ -9,11 +9,8 @@ const PrivacyPolicy = () => {
   return (
     <>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/privacy-policy/17f949fc-db7e-4da7-bf75-50f964fe4e2887141884-c773-46fe-8fc0-02411815db2b" />
         <title>Privacy Policy - Hibuyshopping | How We Protect Your Information</title>
-        <meta
-          name="title"
-          content="Privacy Policy - Hibuyshopping | How We Protect Your Information"
-        />
         <meta
           name="description"
           content="Read Hibuyshopping's Privacy Policy to understand how we collect, use, and protect your personal information. Learn about our data handling practices and your rights regarding your privacy on Pakistan's leading e-commerce platform."
@@ -23,32 +20,7 @@ const PrivacyPolicy = () => {
           content="privacy policy, Hibuyshopping, data protection, personal information, privacy practices, e-commerce privacy, user rights, Pakistani e-commerce, multi-vendor store"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="Privacy Policy - Hibuyshopping | How We Protect Your Information"
-        />
-        <meta
-          property="og:description"
-          content="Learn about Hibuyshopping's Privacy Policy, including how we handle your personal data and protect your privacy. Understand our practices and your rights regarding data security on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="URL_TO_YOUR_PRIVACY_POLICY_PAGE_IMAGE"
-        />
-        <meta property="og:url" content="URL_TO_YOUR_PRIVACY_POLICY_PAGE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Privacy Policy - Hibuyshopping | How We Protect Your Information"
-        />
-        <meta
-          name="twitter:description"
-          content="Discover Hibuyshopping's Privacy Policy to learn about our data protection practices. Understand how we handle your personal information and ensure your privacy on Pakistan's leading e-commerce site."
-        />
-        <meta
-          name="twitter:image"
-          content="URL_TO_YOUR_PRIVACY_POLICY_PAGE_IMAGE"
-        />
+        <meta property="og:url" content="https://hibuyshopping.com/privacy-policy/17f949fc-db7e-4da7-bf75-50f964fe4e2887141884-c773-46fe-8fc0-02411815db2b" />
       </Helmet>
       <div className="wrap">
         <div className="container">

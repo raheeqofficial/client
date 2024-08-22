@@ -164,13 +164,13 @@ h6,
   letter-spacing: -0.01em;
 } */
 a {
-  color: #113ebb;
+  color: #333;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 a:hover,
 a:focus {
-  color: #bf8040;
+  color: #113ebb;
   text-decoration: none;
 }
 .link-underline {
@@ -668,7 +668,7 @@ blockquote.text-white cite span {
 }
 .header-dropdown > a::after,
 .header-dropdown > span::after {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f110";
   position: absolute;
   right: 0;
@@ -1498,7 +1498,7 @@ blockquote.text-white cite span {
     padding-right: 0;
   }
   .top-menu:not(.top-link-menu) > li::after {
-    font-family: "molla";
+    font-family: "Roboto", sans-serif;
     content: "\f110";
     position: absolute;
     right: 0;
@@ -1757,7 +1757,7 @@ blockquote.text-white cite span {
   position: relative;
 }
 .menu.sf-arrows .sf-with-ul::after {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f110";
   position: absolute;
   right: 0;
@@ -2003,7 +2003,7 @@ blockquote.text-white cite span {
 }
 .category-dropdown .dropdown-toggle:after {
   content: "\f131";
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   border: none;
   font-size: 2.3rem;
   line-height: 1;
@@ -2186,7 +2186,7 @@ blockquote.text-white cite span {
 }
 .menu-vertical.sf-arrows .sf-with-ul::after {
   display: block;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f112";
   position: absolute;
   right: 1.8rem;
@@ -2485,7 +2485,7 @@ blockquote.text-white cite span {
   transition: color 0.35s;
 }
 .mmenu-btn::after {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f110";
   display: inline-block;
 }
@@ -2653,7 +2653,7 @@ blockquote.text-white cite span {
   color: #333;
 }
 a {
-  font-family: "Poppins";
+  font-family: "Roboto", sans-serif;
 }
 
 .header-2 {
@@ -2673,7 +2673,7 @@ a {
 }
 .header-2 .header-search-extended .form-control {
   padding: 1.2rem 2.4rem 1rem 2rem;
-  font-family: "Poppins";
+  font-family: "Roboto", sans-serif;
   letter-spacing: -0.01em;
 }
 .header-2 .header-search-extended .btn {
@@ -4030,7 +4030,7 @@ a {
   display: block;
   height: auto;
   content: "";
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f110";
   position: absolute;
   left: auto;
@@ -5162,7 +5162,7 @@ a {
 .breadcrumb-item + .breadcrumb-item:before {
   color: #999999;
   content: "\f112";
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   padding-right: 0.7rem;
   font-size: 1.1rem;
   vertical-align: middle;
@@ -5430,7 +5430,7 @@ a {
   right: 1.2rem;
   top: 50%;
   color: #113ebb;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   line-height: 1;
   transform: translateY(-50%);
   -ms-transform: translateY(-50%);
@@ -6634,7 +6634,7 @@ a {
   font-size: 1.4rem;
   letter-spacing: 0.1em;
   line-height: 1;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
 }
 .ratings:before,
 .ratings-val:before {
@@ -6716,7 +6716,7 @@ a {
   border-left: 0.1rem dotted #e5e5e5;
 }
 .btn-product:before {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   margin-right: 0.9rem;
 }
 .btn-product span {
@@ -6779,7 +6779,7 @@ a {
   background-color: #fff;
 }
 .btn-product-icon:before {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
 }
 .btn-product-icon span {
   display: none;
@@ -7472,7 +7472,7 @@ a {
 .product.product-10 .product-title a {
   font-size: 1.3rem;
   font-weight: 400;
-  font-family: "Poppins";
+  font-family: "Roboto", sans-serif;
   letter-spacing: 0;
   color: #333;
 }
@@ -7484,20 +7484,20 @@ a {
   margin-top: 0.8rem;
   font-size: 1.3rem;
   font-weight: 700;
-  font-family: "Poppins";
+  font-family: "Roboto", sans-serif;
   letter-spacing: 0;
   color: #333333;
 }
 .product.product-10 .new-price {
   font-size: 1.3rem;
   font-weight: 700;
-  font-family: "Poppins";
+  font-family: "Roboto", sans-serif;
   letter-spacing: 0;
 }
 .product.product-10 .old-price {
   font-size: 1.3rem;
   font-weight: 400;
-  font-family: "Poppins";
+  font-family: "Roboto", sans-serif;
   letter-spacing: 0;
   text-decoration: none;
 }
@@ -7506,7 +7506,7 @@ a {
   text-transform: uppercase;
   font-size: 1.3rem;
   font-weight: 700;
-  font-family: "Poppins";
+  font-family: "Roboto", sans-serif;
   letter-spacing: -0.01em;
 }
 .product.product-10 .product-label.label-deal {
@@ -8428,7 +8428,7 @@ a {
   color: #3399cc;
 }
 .testimonial-icon:before {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f10d";
   display: inline-block;
   font-style: normal;
@@ -8551,7 +8551,7 @@ small.form-text {
   appearance: none;
 }
 .select-custom::after {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f110";
   position: absolute;
   display: inline-block;
@@ -8622,7 +8622,7 @@ small.form-text {
   color: #fff;
   background-image: none;
   font-size: 1rem;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\ec2d";
   line-height: 1;
   text-align: center;
@@ -9338,7 +9338,7 @@ small.form-text {
 .element-type {
   font-size: 1.3rem;
   font-weight: 400;
-  font-family: "Poppins";
+  font-family: "Roboto", sans-serif;
   letter-spacing: 0.01em;
   color: #666;
   text-transform: uppercase;
@@ -9409,7 +9409,7 @@ small.form-text {
   height: 5rem;
   margin-top: -2.5rem;
   margin-left: -2.5rem;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   position: absolute;
   left: 50%;
   top: 50%;
@@ -10286,7 +10286,7 @@ button:focus {
   color: #333;
   content: "\f110";
   display: block;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   font-size: 1.4rem;
   line-height: 1;
   position: absolute;
@@ -10369,7 +10369,7 @@ button:focus {
 }
 .filter-colors a:after {
   color: #fff;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\ec2d";
   font-size: 1rem;
   line-height: 1;
@@ -11388,7 +11388,7 @@ button:focus {
 }
 .entry-video a:after {
   content: "\ec2c";
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   display: -ms-inline-flexbox;
   display: inline-flex;
   align-items: center;
@@ -11482,7 +11482,7 @@ button:focus {
   transition: all 0.3s ease;
 }
 .read-more:after {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f274";
   font-size: 1.5rem;
   line-height: 1;
@@ -11623,7 +11623,7 @@ button:focus {
   color: #fff;
   position: absolute;
   content: "\f24d";
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   top: 2.6rem;
 }
 .entry-mask .entry-body {
@@ -11960,7 +11960,7 @@ button:focus {
   font-weight: normal;
   font-size: 3rem;
   line-height: 1;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   position: absolute;
   left: 3rem;
   top: 4rem;
@@ -12099,7 +12099,7 @@ button:focus {
 .pager-link:after {
   color: #333;
   display: block;
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   font-size: 1.5rem;
   line-height: 1;
   position: absolute;
@@ -12237,7 +12237,7 @@ button:focus {
   transition: all 0.35s ease;
 }
 .comment-reply:after {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f279";
   font-size: 1.5rem;
   margin-left: 0.7rem;
@@ -13780,7 +13780,7 @@ button:focus {
   border-bottom: 0.1rem solid #ebebeb;
 }
 .nav-dashboard .nav-link:before {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   content: "\f274";
   display: block;
   font-size: 1.5rem;
@@ -14749,7 +14749,7 @@ button:focus {
   }
 }
 @font-face {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   src: url("../fonts/molla0ab2.eot?74273691");
   src: url("../fonts/molla0ab2.eot?74273691#iefix") format("embedded-opentype"),
     url("../fonts/molla0ab2.woff2?74273691") format("woff2"),
@@ -14761,7 +14761,7 @@ button:focus {
 }
 [class^="icon-"]:before,
 [class*=" icon-"]:before {
-  font-family: "molla";
+  font-family: "Roboto", sans-serif;
   font-style: normal;
   font-weight: normal;
   speak: none;

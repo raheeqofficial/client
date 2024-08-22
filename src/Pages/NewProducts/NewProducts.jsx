@@ -47,11 +47,8 @@ const NewProducts = () => {
   return (
     <>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/products/new/c410c9d3-5ada-45b4-8b98-95c0fed5df8212d85d8b-e9e3-4daf-b89d-554a6f429d9c" />
         <title>New Products - Hibuyshopping | Discover the Latest Arrivals and Trends</title>
-        <meta
-          name="title"
-          content="New Products - Hibuyshopping | Discover the Latest Arrivals and Trends"
-        />
         <meta
           name="description"
           content="Explore the newest arrivals on Hibuyshopping. Discover the latest products, trends, and innovations across various categories. Stay updated with fresh offerings and find new favorites on Pakistan's leading e-commerce platform."
@@ -61,32 +58,7 @@ const NewProducts = () => {
           content="new products, Hibuyshopping, latest arrivals, new arrivals, trending products, e-commerce trends, latest products, Pakistani e-commerce, multi-vendor store"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="New Products - Hibuyshopping | Discover the Latest Arrivals and Trends"
-        />
-        <meta
-          property="og:description"
-          content="Browse the latest products on Hibuyshopping. Find new arrivals, trending items, and fresh offerings across categories. Stay updated with the newest trends and discover your next favorite product on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="URL_TO_YOUR_NEW_PRODUCTS_PAGE_IMAGE"
-        />
-        <meta property="og:url" content="URL_TO_YOUR_NEW_PRODUCTS_PAGE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="New Products - Hibuyshopping | Discover the Latest Arrivals and Trends"
-        />
-        <meta
-          name="twitter:description"
-          content="Check out the newest products on Hibuyshopping. Discover the latest trends, new arrivals, and fresh offerings across categories. Find new favorites and stay updated with the latest in e-commerce on Pakistan's leading online store."
-        />
-        <meta
-          name="twitter:image"
-          content="URL_TO_YOUR_NEW_PRODUCTS_PAGE_IMAGE"
-        />
+        <meta property="og:url" content="https://hibuyshopping.com/products/new/c410c9d3-5ada-45b4-8b98-95c0fed5df8212d85d8b-e9e3-4daf-b89d-554a6f429d9c" />
       </Helmet>
       <div className="flashTopBanner">
         <div className="flashTopBannerWrapper">

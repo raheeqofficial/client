@@ -1,7 +1,5 @@
-
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IoLogoTiktok } from "react-icons/io5";
 import './footer.css'
 import payments from '../../assets/images/payments.png'
 import logo from '../../assets/images/hibuylogo.png'
@@ -9,6 +7,10 @@ import { v4 as uuidv4 } from 'uuid';
 import axios from "axios";
 import Confetti from 'react-confetti';
 import footerImg from '../../assets/images/Footer_Payment & Delivery.png'
+import { IoLogoTiktok } from "react-icons/io5";
+import { FaFacebookF } from "react-icons/fa";
+import { FaXTwitter } from "react-icons/fa6";
+import { CiInstagram } from "react-icons/ci";
 
 const Footer = () => {
     const [expanded, setExpanded] = useState(false);
@@ -170,15 +172,15 @@ const Footer = () => {
                         <div className="container">
                             <p className="footer-copyright">Copyright © 2024 hibuyshopping. All Rights Reserved.</p>
                             <ul className="footer-menu">
-                                <li><Link to={`/terms-of-use/${id}`}>Terms Of Use</Link></li>
-                                <li><Link to={`/privacy-policy/${id}`}>Privacy Policy</Link></li>
+                                <li><Link to={`/terms-of-use/17f949fc-db7e-4da7-bf75-50f964fe4e2887141884-c773-46fe-8fc0-02411815db2b`}>Terms Of Use</Link></li>
+                                <li><Link to={`/privacy-policy/17f949fc-db7e-4da7-bf75-50f964fe4e2887141884-c773-46fe-8fc0-02411815db2b`}>Privacy Policy</Link></li>
                             </ul>
 
                             <div className="social-icons social-icons-color">
                                 <span className="social-label">Social Media</span>
-                                <a href="https://www.facebook.com/people/Hibuyshopping/61562441211111/?mibextid=ZbWKwL" target="_blank" className="social-icon social-facebook" title="Facebook" ><i className="icon-facebook-f"></i></a>
-                                <a to={'#'} className="social-icon social-twitter" title="Twitter" target="_blank"><i className="icon-twitter"></i></a>
-                                <a href="https://www.instagram.com/eliphstoreofficial/?utm_source=qr&igsh=MXdkZ3c4YjQ0OWRzag%3D%3D" className="social-icon social-instagram" title="Instagram" target="_blank"><i className="icon-instagram"></i></a>
+                                <a href="https://www.facebook.com/people/Hibuyshopping/61562441211111/?mibextid=ZbWKwL" target="_blank" className="social-icon social-facebook" title="Facebook" ><FaFacebookF/></a>
+                                <a to={'#'} className="social-icon social-twitter" title="Twitter" target="_blank"><FaXTwitter/></a>
+                                <a href="https://www.instagram.com/eliphstoreofficial/?utm_source=qr&igsh=MXdkZ3c4YjQ0OWRzag%3D%3D" className="social-icon social-instagram" title="Instagram" target="_blank"><CiInstagram/></a>
                                 {/* <a to={'#'} className="social-icon social-youtube" title="Youtube" target="_blank"><i className="icon-youtube"></i></a> */}
                                 <a href="https://www.tiktok.com/@Hibuyshopping?_t=8oNFf7Td5Qz&_r=1" className="social-icon social-pinterest" title="Tiktok" target="_blank"><IoLogoTiktok /></a>
                             </div>

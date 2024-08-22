@@ -5,6 +5,7 @@ import { questionData } from "../../data/customerQuestion";
 import { useContext } from "react";
 import { MyContext } from "../../App";
 import { Helmet } from "react-helmet-async";
+import HelpNav from "./HelpNav";
 
 const HelpCenter = () => {
   const context = useContext(MyContext);
@@ -18,9 +19,9 @@ const HelpCenter = () => {
   return (
     <>
       <Helmet>
+        <link rel="canonical" href="https://hibuyshopping.com/help-center" />
         <title>
-          Help Center - Hibuyshopping | Support and Assistance for Your Online
-          Shopping Needs
+          Help Center - Hibuyshopping 
         </title>
         <meta
           name="title"
@@ -35,33 +36,9 @@ const HelpCenter = () => {
           content="Help Center, Hibuyshopping, customer support, online shopping help, e-commerce assistance, order support, returns and exchanges, payment issues, FAQ, Pakistani e-commerce, multi-vendor store"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="Help Center - Hibuyshopping | Support and Assistance for Your Online Shopping Needs"
-        />
-        <meta
-          property="og:description"
-          content="Get all the support you need at Hibuyshopping's Help Center. Find solutions to common issues, get help with orders, returns, payments, and more. Our comprehensive Help Center ensures a seamless shopping experience in Pakistan."
-        />
-        <meta
-          property="og:image"
-          content="https://hibuyshopping.com/help-center"
-        />
         <meta property="og:url" content="https://hibuyshopping.com/help-center" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Help Center - Hibuyshopping | Support and Assistance for Your Online Shopping Needs"
-        />
-        <meta
-          name="twitter:description"
-          content="Access Hibuyshopping's Help Center for detailed support and assistance. Get help with orders, returns, payments, and more to ensure a smooth shopping experience on Pakistan's top e-commerce platform."
-        />
-        <meta
-          name="twitter:image"
-          content="https://hibuyshopping.com/help-center"
-        />
       </Helmet>
+      <HelpNav/>
       <section className="helpCenter">
         <div className="helpCenterWrapper">
           <div className="helpTopics">
@@ -201,7 +178,7 @@ const HelpCenter = () => {
               </Link>
             </div>
           </div>
-          <div className="helpQuestions">
+          {/* <div className="helpQuestions">
             <h1>Customers Questions</h1>
             <div className="accordianBox mb-3 mt-3">
               {questionData.map((data) => (
@@ -217,7 +194,7 @@ const HelpCenter = () => {
                 </Accordion>
               ))}
             </div>
-          </div>
+          </div> */}
         </div>
       </section>
     </>

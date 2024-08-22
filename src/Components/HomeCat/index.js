@@ -24,7 +24,7 @@ const HomeCat = (props) => {
                                 <Link to={`/products/category/${cat.id}`} key={index}>
                                     <div className="homeCatBoxWrapper">
                                         <div className="homeCatImgWrapper">
-                                            <img src={cat.images[0]} />
+                                            <img src={cat.images[0]} alt={cat.name} />
                                         </div>
                                         <h6>{cat?.name.length > 15 ? cat?.name.substr(0, 15) + '...' : cat?.name}</h6>
                                     </div>

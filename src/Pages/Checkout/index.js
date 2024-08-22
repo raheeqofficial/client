@@ -7,7 +7,6 @@ import { fetchDataFromApi, postData } from '../../utils/api';
 
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Autocomplete, CircularProgress, MenuItem, Select } from '@mui/material';
-import { Helmet } from 'react-helmet-async';
 
 const Checkout = () => {
     const { id } = useParams()
@@ -287,22 +286,6 @@ const Checkout = () => {
 
     return (
         <>
-            <Helmet>
-                <title>Checkout - Hibuyshopping | Secure and Easy Checkout for Your Online Orders</title>
-                <meta name="title" content="Checkout - Hibuyshopping | Secure and Easy Checkout for Your Online Orders" />
-                <meta name="description" content="Complete your purchase at Hibuyshopping with our secure and easy checkout process. Review your order, enter shipping details, apply discount codes, and choose your payment method for a smooth transaction experience. Shop confidently with Pakistan's top e-commerce platform." />
-                <meta name="keywords" content="checkout, Hibuyshopping, secure checkout, online orders, payment options, shipping details, discount codes, e-commerce checkout, multi-vendor store, review order, seamless transaction" />
-                <meta name="author" content="Hibuyshopping Team" />
-                <meta property="og:title" content="Checkout - Hibuyshopping | Secure and Easy Checkout for Your Online Orders" />
-                <meta property="og:description" content="Experience a secure and easy checkout process at Hibuyshopping. Review your order, enter shipping information, apply discount codes, and choose your payment method with confidence. Enjoy a smooth transaction experience with Pakistan's leading multi-vendor e-commerce platform." />
-                <meta property="og:image" content="https://hibuyshopping.com/checkout" />
-                <meta property="og:url" content="https://hibuyshopping.com/checkout" />
-                <meta name="twitter:card" content="summary_large_image" />
-                <meta name="twitter:title" content="Checkout - Hibuyshopping | Secure and Easy Checkout for Your Online Orders" />
-                <meta name="twitter:description" content="Complete your order with ease at Hibuyshopping. Our secure checkout process lets you review your purchase, enter shipping details, apply discounts, and select your payment method seamlessly. Shop with confidence!" />
-                <meta name="twitter:image" content="https://hibuyshopping.com/checkout" />
-                <meta itemprop="priceCurrency" content="PKR" />
-            </Helmet>
             <section className='section'>
                 <div className='container'>
                     <form className='checkoutForm' onSubmit={checkout}>

@@ -45,22 +45,15 @@
   margin: 0px;
   padding: 0px;
 }
-@import url("https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap");
-@import url('https://fonts.googleapis.com/css?family=Montserrat:400,600,700');
-@import url('https://fonts.googleapis.com/css?family=Catamaran:400,800');
-@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick.min.css");
-@import url("https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.8.1/slick-theme.min.css");
-@import url("https://fonts.googleapis.com/css2?family=Playwrite+FR+Moderne:wght@100..400&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
 
 body {
-  font-family: "Lato", sans-serif;
+  font-family: "Roboto", sans-serif;
   font-size: 14px;
   color: rgba(0, 0, 0, 0.8);
   overflow-x: hidden;
-  /* background: #fff8f8; */
+  box-sizing: border-box;
   font-size: 15px;
   padding-bottom: 0px !important;
 }
@@ -1022,7 +1015,7 @@ nav .navPart2 ul li:hover .submenu {
   text-decoration: none;
 }
 
-.info .oldPrice {
+.oldPrice {
   font-size: 16px !important;
   font-weight: bold;
   color: rgba(0, 0, 0, 0.4);
@@ -1242,11 +1235,11 @@ nav .navPart2 ul li:hover .submenu {
   color: #fff;
   font-size: 40px;
   font-weight: bold;
-  font-family: "Playwrite FR Moderne", cursive;
+  font-family: "Roboto", sans-serif;
 }
 .catTabs .tabsHd p {
   color: #fff;
-  font-family: "Playfair Display", serif;
+  font-family: "Roboto", sans-serif;
 }
 .product_row {
   margin-left: -10px;
@@ -2410,7 +2403,7 @@ button.loginUser {
   justify-content: center; /*center vertically */
   align-items: center; /* center horizontally */
   background: linear-gradient(135deg, var(--main-blue), var(--main-purple));
-  font-family: "Poppins", sans-serif;
+  font-family: "Roboto", sans-serif;
   padding: 50px 10px;
 }
 /* container and form */
@@ -2588,7 +2581,7 @@ form input[type="radio"] {
   display: flex;
   gap: 40px;
   align-items: center;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Roboto", sans-serif;
   align-items: center;
   width: 100%;
 }
@@ -2650,7 +2643,7 @@ form input[type="radio"] {
 .error-container {
   text-align: center;
   font-size: 180px;
-  font-family: 'Catamaran', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 800;
   margin: 20px 15px;
 }

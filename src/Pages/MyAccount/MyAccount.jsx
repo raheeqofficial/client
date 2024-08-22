@@ -182,6 +182,7 @@ const ManageAccount = () => {
     fetchDataFromApi(`/api/orders?status=Pending&userid=${user?.userId}`).then(
       (res) => {
         setPendOrders(res);
+        console.log(res)
       }
     );
     fetchDataFromApi(`/api/orders?status=Confirm&userid=${user?.userId}`).then(
@@ -438,14 +439,11 @@ const ManageAccount = () => {
   return (
     <>
       <Helmet>
+      <link rel="canonical" href="https://hibuyshopping.com/user/manage-account" />
         <title>
           My Account - Hibuyshopping | Manage Your Personal Information and
           Orders
         </title>
-        <meta
-          name="title"
-          content="My Account - Hibuyshopping | Manage Your Personal Information and Orders"
-        />
         <meta
           name="description"
           content="Access and manage your personal information, orders, and account settings on Hibuyshopping. View your order history, update profile details, and manage your preferences on Pakistan's leading e-commerce platform."
@@ -455,29 +453,7 @@ const ManageAccount = () => {
           content="my account, Hibuyshopping, account management, personal information, order history, profile settings, manage orders, e-commerce account, Pakistani e-commerce, multi-vendor store"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="My Account - Hibuyshopping | Manage Your Personal Information and Orders"
-        />
-        <meta
-          property="og:description"
-          content="Manage your account on Hibuyshopping. Access your personal information, view order history, update profile details, and adjust account settings. Stay organized and manage your shopping preferences on Pakistan's top e-commerce platform."
-        />
-        <meta property="og:image" content="URL_TO_YOUR_MY_ACCOUNT_PAGE_IMAGE" />
-        <meta property="og:url" content="URL_TO_YOUR_MY_ACCOUNT_PAGE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="My Account - Hibuyshopping | Manage Your Personal Information and Orders"
-        />
-        <meta
-          name="twitter:description"
-          content="Access and manage your account on Hibuyshopping. View and update your personal information, track your order history, and manage your profile settings. Organize your account and preferences on Pakistan's leading e-commerce site."
-        />
-        <meta
-          name="twitter:image"
-          content="URL_TO_YOUR_MY_ACCOUNT_PAGE_IMAGE"
-        />
+        <meta property="og:url" content="https://hibuyshopping.com/user/manage-account" />
       </Helmet>
       <div className="page-wrapper myAccount">
         <main className="main">
@@ -898,52 +874,48 @@ const ManageAccount = () => {
                           {pendOrders?.length !== 0 ? (
                             pendOrders?.map((item, index) => {
                               return (
-                                <tbody>
-                                  <tr key={index}>
-                                    {item?.products.map((data) => (
-                                      <>
-                                        <td className="product-col">
-                                          <div className="product">
-                                            <figure className="product-media">
-                                              <Link
-                                                to={`/product/${data?.staticId}`}
-                                              >
-                                                <LazyLoadImage
-                                                  src={data.image}
-                                                  alt={data.productTitle}
-                                                  effect="blur"
-                                                  placeholderSrc="path_to_placeholder_image"
-                                                />
-                                              </Link>
-                                            </figure>
-
-                                            <h3 className="product-title">
-                                              <Link
-                                                to={`/product/${data?.staticId}`}
-                                              >
-                                                {data?.productTitle?.substr(
-                                                  0,
-                                                  30
-                                                ) + "..."}
-                                              </Link>
-                                            </h3>
+                                <>
+                                <div class="order-card" key={index}>
+                                      <div class="order-header">
+                                        
+                                      <div class="store-name">
+                                            {item.shop.name}
                                           </div>
-                                        </td>
-                                        <td className="price-col">
-                                          Rs {data?.price}
-                                        </td>
-                                        <td className="stock-col">
-                                          Qty <b>:</b> {data?.quantity}
-                                        </td>
-                                      </>
+                                        <div
+                                          class="order-status"
+                                        >
+                                          {item.status}
+                                        </div>
+                                      </div>
+                                    
+                                    {item?.products.map((product, index) => (
+                                      
+                                      <div class="order-content" key={index}>
+                                      <img
+                                        src={product.image}
+                                        alt={product.productTitle}
+                                        class="product-image"
+                                      />
+                                      <div class="product-details">
+                                        <h3 className="mb-0">
+                                          <Link
+                                            to={`/product/${product?.staticId}`}
+                                          >
+                                            {product?.productTitle}
+                                          </Link>
+                                        </h3>
+                                        {/* <p className="mb-0">Lens Color: Black, Frame Color: Black</p> */}
+                                      </div>
+                                      <div class="product-price mb-0">
+                                        Rs {product?.price}
+                                      </div>
+                                      <div class="product-quantity mb-0">
+                                        Qty <b>:</b> {product?.quantity}
+                                      </div>
+                                    </div>
                                     ))}
-                                    <td className="remove-col">
-                                      <button className="badge badge-danger">
-                                        {item.status}
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
+                                    </div>
+                                </>
                               );
                             })
                           ) : (
@@ -968,52 +940,47 @@ const ManageAccount = () => {
                           {confOrders?.length !== 0 ? (
                             confOrders?.map((item, index) => {
                               return (
-                                <tbody>
-                                  <tr key={index}>
-                                    {item?.products.map((data) => (
-                                      <>
-                                        <td className="product-col">
-                                          <div className="product">
-                                            <figure className="product-media">
-                                              <Link
-                                                to={`/product/${data?.staticId}`}
-                                              >
-                                                <LazyLoadImage
-                                                  src={data.image}
-                                                  alt={data.productTitle}
-                                                  effect="blur"
-                                                  placeholderSrc="path_to_placeholder_image"
-                                                />
-                                              </Link>
-                                            </figure>
-
-                                            <h3 className="product-title">
-                                              <Link
-                                                to={`/product/${data?.staticId}`}
-                                              >
-                                                {data?.productTitle?.substr(
-                                                  0,
-                                                  30
-                                                ) + "..."}
-                                              </Link>
-                                            </h3>
+                                
+                                <div class="order-card" key={index}>
+                                      <div class="order-header">
+                                        
+                                      <div class="store-name">
+                                            {item.shop.name}
                                           </div>
-                                        </td>
-                                        <td className="price-col">
-                                          Rs {data?.price}
-                                        </td>
-                                        <td className="stock-col">
-                                          Qty <b>:</b> {data?.quantity}
-                                        </td>
-                                      </>
+                                        <div
+                                          class="order-status"
+                                        >
+                                          {item.status}
+                                        </div>
+                                      </div>
+                                    
+                                    {item?.products.map((product, index) => (
+                                      
+                                      <div class="order-content" key={index}>
+                                      <img
+                                        src={product.image}
+                                        alt={product.productTitle}
+                                        class="product-image"
+                                      />
+                                      <div class="product-details">
+                                        <h3 className="mb-0">
+                                          <Link
+                                            to={`/product/${product?.staticId}`}
+                                          >
+                                            {product?.productTitle}
+                                          </Link>
+                                        </h3>
+                                        {/* <p className="mb-0">Lens Color: Black, Frame Color: Black</p> */}
+                                      </div>
+                                      <div class="product-price mb-0">
+                                        Rs {product?.price}
+                                      </div>
+                                      <div class="product-quantity mb-0">
+                                        Qty <b>:</b> {product?.quantity}
+                                      </div>
+                                    </div>
                                     ))}
-                                    <td className="remove-col">
-                                      <button className="badge badge-secondary">
-                                        {item.status}
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
+                                    </div>
                               );
                             })
                           ) : (
@@ -1037,52 +1004,46 @@ const ManageAccount = () => {
                           {shipOrders?.length !== 0 ? (
                             shipOrders?.map((item, index) => {
                               return (
-                                <tbody>
-                                  <tr key={index}>
-                                    {item?.products.map((data) => (
-                                      <>
-                                        <td className="product-col">
-                                          <div className="product">
-                                            <figure className="product-media">
-                                              <Link
-                                                to={`/product/${data?.staticId}`}
-                                              >
-                                                <LazyLoadImage
-                                                  src={data.image}
-                                                  alt={data.productTitle}
-                                                  effect="blur"
-                                                  placeholderSrc="path_to_placeholder_image"
-                                                />
-                                              </Link>
-                                            </figure>
-
-                                            <h3 className="product-title">
-                                              <Link
-                                                to={`/product/${data?.staticId}`}
-                                              >
-                                                {data?.productTitle?.substr(
-                                                  0,
-                                                  30
-                                                ) + "..."}
-                                              </Link>
-                                            </h3>
+                                <div class="order-card" key={index}>
+                                      <div class="order-header">
+                                        
+                                      <div class="store-name">
+                                            {item.shop.name}
                                           </div>
-                                        </td>
-                                        <td className="price-col">
-                                          Rs {data?.price}
-                                        </td>
-                                        <td className="stock-col">
-                                          Qty <b>:</b> {data?.quantity}
-                                        </td>
-                                      </>
+                                        <div
+                                          class="order-status"
+                                        >
+                                          {item.status}
+                                        </div>
+                                      </div>
+                                    
+                                    {item?.products.map((product, index) => (
+                                      
+                                      <div class="order-content" key={index}>
+                                      <img
+                                        src={product.image}
+                                        alt={product.productTitle}
+                                        class="product-image"
+                                      />
+                                      <div class="product-details">
+                                        <h3 className="mb-0">
+                                          <Link
+                                            to={`/product/${product?.staticId}`}
+                                          >
+                                            {product?.productTitle}
+                                          </Link>
+                                        </h3>
+                                        {/* <p className="mb-0">Lens Color: Black, Frame Color: Black</p> */}
+                                      </div>
+                                      <div class="product-price mb-0">
+                                        Rs {product?.price}
+                                      </div>
+                                      <div class="product-quantity mb-0">
+                                        Qty <b>:</b> {product?.quantity}
+                                      </div>
+                                    </div>
                                     ))}
-                                    <td className="remove-col">
-                                      <button className="badge badge-primary">
-                                        {item.status}
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
+                                    </div>
                               );
                             })
                           ) : (
@@ -1106,57 +1067,51 @@ const ManageAccount = () => {
                           {deliverOrders?.length !== 0 ? (
                             deliverOrders?.map((item, index) => {
                               return (
-                                <tbody>
-                                  <tr key={index}>
-                                    {item?.products.map((data) => (
-                                      <>
-                                        <td className="product-col">
-                                          <div className="product">
-                                            <figure className="product-media">
-                                              <Link
-                                                to={`/product/${data?.staticId}`}
-                                              >
-                                                <LazyLoadImage
-                                                  src={data.image}
-                                                  alt={data.productTitle}
-                                                  effect="blur"
-                                                  placeholderSrc="path_to_placeholder_image"
-                                                />
-                                              </Link>
-                                            </figure>
-
-                                            <h3 className="product-title">
-                                              <Link
-                                                to={`/product/${data?.staticId}`}
-                                              >
-                                                {data?.productTitle?.substr(
-                                                  0,
-                                                  30
-                                                ) + "..."}
-                                              </Link>
-                                            </h3>
+                                <div class="order-card" key={index}>
+                                      <div class="order-header">
+                                        
+                                      <div class="store-name">
+                                            {item.shop.name}
                                           </div>
-                                        </td>
-                                        <td className="price-col">
-                                          Rs {data?.price}
-                                        </td>
-                                        <td className="stock-col">
-                                          Qty <b>:</b> {data?.quantity}
-                                        </td>
-                                      </>
+                                        <div
+                                          class="order-status"
+                                        >
+                                          {item.status}
+                                        </div>
+                                      </div>
+                                    
+                                    {item?.products.map((product, index) => (
+                                      
+                                      <div class="order-content" key={index}>
+                                      <img
+                                        src={product.image}
+                                        alt={product.productTitle}
+                                        class="product-image"
+                                      />
+                                      <div class="product-details">
+                                        <h3 className="mb-0">
+                                          <Link
+                                            to={`/product/${product?.staticId}`}
+                                          >
+                                            {product?.productTitle}
+                                          </Link>
+                                        </h3>
+                                        {/* <p className="mb-0">Lens Color: Black, Frame Color: Black</p> */}
+                                      </div>
+                                      <div class="product-price mb-0">
+                                        Rs {product?.price}
+                                      </div>
+                                      <div class="product-quantity mb-0">
+                                        Qty <b>:</b> {product?.quantity}
+                                      </div>
+                                    </div>
                                     ))}
-                                    <td className="remove-col">
-                                      <button className="badge badge-success">
-                                        {item.status}
-                                      </button>
-                                    </td>
-                                  </tr>
-                                </tbody>
+                                    </div>
                               );
                             })
                           ) : (
                             <div className="empty d-flex align-items-center justify-content-center flex-column">
-                              <img src={emprtCart} width="150" />
+                              <img src={emprtCart} width="150" alt="image" />
                               <h3 className="emptyPageMsg">
                                 No any Delivered order yet
                               </h3>
@@ -1177,7 +1132,7 @@ const ManageAccount = () => {
                   </TabPanel>
                   <TabPanel value={value} index={3}>
                     <div className="empty d-flex align-items-center justify-content-center flex-column">
-                      <img src={emprtCart} width="150" />
+                      <img src={emprtCart} width="150" alt="image" />
                       <h3 className="emptyPageMsg">No any return order yet</h3>
                       <br />
                       <Link to="/">
@@ -1190,7 +1145,7 @@ const ManageAccount = () => {
                   </TabPanel>
                   <TabPanel value={value} index={4}>
                     <div className="empty d-flex align-items-center justify-content-center flex-column">
-                      <img src={emprtCart} width="150" />
+                      <img src={emprtCart} width="150" alt="cart image" />
                       <h3 className="emptyPageMsg">
                         no any cancelled order yet.
                       </h3>

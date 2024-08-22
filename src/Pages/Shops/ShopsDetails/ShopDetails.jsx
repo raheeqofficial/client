@@ -167,11 +167,8 @@ const ShopDetails = () => {
   return (
     <>
       <Helmet>
-        <title>{`${shop?.name} - Hibuyshopping | ${shop?.name} - Explore Products and Offers`}</title>
-        <meta
-          name="title"
-          content={`Vendor Shop Detail - Hibuyshopping | ${shop?.name} - Explore Products and Offers`}
-        />
+      <link rel="canonical" href="https://hibuyshopping.com/shops/:id" />
+        <title>{`${shop?.name} - Hibuyshopping | ${shop?.name}`}</title>
         <meta
           name="description"
           content={`Explore the details of the ${shop?.name} on Hibuyshopping. Discover the shop's unique products, special offers, and more. Learn about the vendor's offerings and browse their collection to find what you're looking for on Pakistan's leading e-commerce platform.`}
@@ -181,32 +178,7 @@ const ShopDetails = () => {
           content={`vendor shop detail, Hibuyshopping, ${shop?.name}, vendor products, shop offers, shop details, multi-vendor store, e-commerce vendor, Pakistani e-commerce, online shopping`}
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content={`Vendor Shop Detail - Hibuyshopping | ${shop?.name} - Explore Products and Offers`}
-        />
-        <meta
-          property="og:description"
-          content="Check out the details of the Vendor Shop on Hibuyshopping. View the shop's products, special deals, and other information. Browse through their offerings and enjoy a personalized shopping experience on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="URL_TO_YOUR_VENDOR_SHOP_DETAIL_PAGE_IMAGE"
-        />
-        <meta property="og:url" content="URL_TO_YOUR_VENDOR_SHOP_DETAIL_PAGE" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Vendor Shop Detail - Hibuyshopping | Shop Name - Explore Products and Offers"
-        />
-        <meta
-          name="twitter:description"
-          content="Explore the Vendor Shop's details on Hibuyshopping. Discover their products, special offers, and more. Browse the shop's collection and enjoy a unique shopping experience on Pakistan's leading e-commerce site."
-        />
-        <meta
-          name="twitter:image"
-          content="URL_TO_YOUR_VENDOR_SHOP_DETAIL_PAGE_IMAGE"
-        />
+        <meta property="og:url" content="https://hibuyshopping.com/shops/:id" />
       </Helmet>
       <div className="shopDetailPage">
         <div className="topImage">

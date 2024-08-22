@@ -1,22 +1,28 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { MyContext } from "../../App";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { Button } from "@mui/material";
+import { Button, CircularProgress } from "@mui/material";
 import "../VerifyCode/OtpVerification.css";
 
 const ForgotPassword = () => {
   const [email, setEmail] = useState("");
+  const [isLoading, setIsLoading] = useState(false)
   const context = useContext(MyContext);
   const navigate = useNavigate();
+  useEffect(() => {
+    context.setisHeaderFooterShow(true)
+  }, [])
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
+      setIsLoading(true)
       const response = await axios.post(
         `${process.env.REACT_APP_API_URL}/api/user/forgotPassword`,
         { email }
       );
+      setIsLoading(false)
       context.setAlertBox({
         open: true,
         error: false,
@@ -25,6 +31,7 @@ const ForgotPassword = () => {
       localStorage.setItem("verify-email", email);
       navigate("/user/verify-email");
     } catch (error) {
+      setIsLoading(false)
       context.setAlertBox({
         open: true,
         error: false,
@@ -36,7 +43,10 @@ const ForgotPassword = () => {
   return (
     <>
       <Helmet>
-        <title>Forgot Password - Hibuyshopping | Reset Your Account Password</title>
+      <link rel="canonical" href="https://hibuyshopping.com/user/forget-password" />
+        <title>
+          Forgot Password - Hibuyshopping | Reset Your Account Password
+        </title>
 
         <meta
           name="title"
@@ -52,59 +62,34 @@ const ForgotPassword = () => {
         />
         <meta name="author" content="Hibuyshopping Team" />
         <meta
-          property="og:title"
-          content="Forgot Password - Hibuyshopping | Reset Your Account Password"
-        />
-        <meta
-          property="og:description"
-          content="Use Hibuyshopping's Forgot Password page to securely reset your account password. Enter your email to get instructions on how to regain access to your account and continue shopping seamlessly."
-        />
-        <meta
-          property="og:image"
-          content="https://hibuyshopping.com/user/forget-password"
-        />
-        <meta property="og:url" content="https://hibuyshopping.com/user/forget-password" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Forgot Password - Hibuyshopping | Reset Your Account Password"
-        />
-        <meta
-          name="twitter:description"
-          content="Recover your Hibuyshopping account by resetting your password. Enter your email to receive detailed instructions and regain access securely."
-        />
-        <meta
-          name="twitter:image"
+          property="og:url"
           content="https://hibuyshopping.com/user/forget-password"
         />
       </Helmet>
-      <div className="verify-container">
-        <div className="verify-box">
-          <h1 className="">Forgot Password</h1>
-          <p>
-            Please enter the account email that you want to reset the password.
-          </p>
-          <form onSubmit={handleSubmit}>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm font-medium text-gray-700"
-              >
-                Email
-              </label>
-              <input
-                type="email"
-                id="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required
-                className="verify-input"
-              />
-            </div>
-            <Button type="submit" className="btn btn-blue w-100">
-              Send Code
-            </Button>
-          </form>
+      <div className="forgot-password-container-wrapper">
+        <div className="overlay">
+          
+      <div className="forgot-password-container">
+        <h2>Forgot your password?</h2>
+        <p>Please enter the account that you want to reset the password.</p>
+        <form className="forgot-password-form" onSubmit={handleSubmit}>
+          <input
+            type="text"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="Please enter your Email"
+            className="input-field"
+            required
+          />
+          
+          <Button type="submit" className="btn btn-blue w-100 btn-big">{
+            isLoading ? <CircularProgress color="inherit" /> : "Send Code"
+            }</Button>
+        </form>
+        <Link to={'/signIn'} className="go-back">
+          Go back
+        </Link>
+      </div>
         </div>
       </div>
     </>

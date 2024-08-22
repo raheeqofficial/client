@@ -42,6 +42,7 @@ const OrderCancellationForm = () => {
 
   return (
     <>
+      <link rel="canonical" href="https://hibuyshopping.com/help-center/cancel-order" />
       <Helmet>
         <title>Cancel Order - Hibuyshopping | Easily Cancel Your Orders</title>
         <meta
@@ -57,37 +58,11 @@ const OrderCancellationForm = () => {
           content="cancel order, Hibuyshopping, order cancellation, manage orders, e-commerce cancellation, request cancellation, multi-vendor store, order status, Pakistani e-commerce, smooth process"
         />
         <meta name="author" content="Hibuyshopping Team" />
-        <meta
-          property="og:title"
-          content="Cancel Order - Hibuyshopping | Easily Cancel Your Orders"
-        />
-        <meta
-          property="og:description"
-          content="Request to cancel your orders easily on Hibuyshopping. Use our Cancel Order page to provide reasons and manage your order status. Enjoy a seamless cancellation process on Pakistan's top e-commerce platform."
-        />
-        <meta
-          property="og:image"
-          content="https://hibuyshopping.com/help-center/cancel-order"
-        />
         <meta property="og:url" content="https://hibuyshopping.com/help-center/cancel-order" />
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta
-          name="twitter:title"
-          content="Cancel Order - Hibuyshopping | Easily Cancel Your Orders"
-        />
-        <meta
-          name="twitter:description"
-          content="Easily cancel your orders on Hibuyshopping. Visit our Cancel Order page to manage your order status, submit cancellation requests, and handle cancellations smoothly."
-        />
-        <meta
-          name="twitter:image"
-          content="https://hibuyshopping.com/help-center/cancel-order"
-        />
       </Helmet>
-      <HelpNav />
       <div className="form-container cancelOrderPage">
         <form className="cancellation-form" onSubmit={handleCancelOrder}>
-          <h2 className="hd">Cancel Order</h2>
+          <h1 className="hd">Cancel Order</h1>
           <div className="form-group">
             <label htmlFor="orderId" className="sml-hd">
               Order ID
